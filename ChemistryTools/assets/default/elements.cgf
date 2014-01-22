@@ -1,0 +1,479 @@
+<?xml version="1.0"?>
+
+<elements>
+
+    <element name = "HYDROGEN">
+        <string symbol = "H"/>
+        <int number = "1" mass = "1.01" period = "1" group = "1" valence = "1" charge = "1" activity = "1"/>
+    </element>
+    <element name = "HELIUM">
+        <string symbol = "He"/>
+        <int number = "2" mass = "4.00" period = "1" group = "18" valence = "2" charge = "0" activity = "1"/>
+    </element>
+    <element name = "LITHIUM">
+        <string symbol = "Li"/>
+        <int number = "3" mass = "6.94" period = "2" group = "1" valence = "2" charge = "2" activity = "1"/>
+    </element>
+    <element name = "BERYLLIUM">
+        <string symbol = "Be"/>
+        <int number = "4" mass = "9.01" period = "2" group = "2" valence = "2" charge = "2" activity = "1"/>
+    </element>
+    <element name = "BORON">
+        <string symbol = "B"/>
+        <int number = "5" mass = "10.81" period = "2" group = "13" valence = "3" charge = "3" activity = "1"/>
+    </element>
+    <element name = "CARBON">
+        <string symbol = "C"/>
+        <int number = "6" mass = "12.01" period = "2" group = "14" valence = "4" charge = "-4" activity = "1"/>
+    </element>
+    <element name = "NITROGEN">
+        <string symbol = "N"/>
+        <int number = "7" mass = "14.01" period = "2" group = "15" valence = "5" charge = "-3" activity = "1"/>
+    </element>
+    <element name = "OXYGEN">
+        <string symbol = "O"/>
+        <int number = "8" mass = "16.00" period = "2" group = "16" valence = "6" charge = "-2" activity = "1"/>
+    </element>
+    <element name = "FLUORINE">
+        <string symbol = "F"/>
+        <int number = "9" mass = "19.00" period = "2" group = "17" valence = "7" charge = "-1" activity = "1"/>
+    </element>
+    <element name = "NEON">
+        <string symbol = "Ne"/>
+        <int number = "10" mass = "20.18" period = "2" group = "18" valence = "8" charge = "0" activity = "1"/>
+    </element>
+    <element name = "SODIUM">
+        <string symbol = "Na"/>
+        <int number = "11" mass = "22.99" period = "3" group = "1" valence = "1" charge = "1" activity = "1"/>
+    </element>
+    <element name = "MAGNESIUM">
+        <string symbol = "Mg"/>
+        <int number = "12" mass = "24.31" period = "3" group = "2" valence = "2" charge = "2" activity = "1"/>
+    </element>
+    <element name = "ALUMINIUM">
+        <string symbol = "Al"/>
+        <int number = "13" mass = "26.98" period = "3" group = "13" valence = "3" charge = "3" activity = "1"/>
+    </element>
+    <element name = "SILICON">
+        <string symbol = "Si"/>
+        <int number = "14" mass = "28.09" period = "3" group = "14" valence = "4" charge = "-4" activity = "1"/>
+    </element>
+    <element name = "PHOSPHORUS">
+        <string symbol = "P"/>
+        <int number = "15" mass = "30.97" period = "3" group = "15" valence = "5" charge = "-3" activity = "1"/>
+    </element>
+    <element name = "SULFUR">
+        <string symbol = "S"/>
+        <int number = "16" mass = "32.07" period = "3" group = "16" valence = "6" charge = "-2" activity = "1"/>
+    </element>
+    <element name = "CHLORINE">
+        <string symbol = "Cl"/>
+        <int number = "17" mass = "35.45" period = "3" group = "17" valence = "7" charge = "-1" activity = "1"/>
+    </element>
+    <element name = "ARGON">
+        <string symbol = "Ar"/>
+        <int number = "18" mass = "39.95" period = "3" group = "18" valence = "8" charge = "0" activity = "1"/>
+    </element>
+    <element name = "POTASSIUM">
+        <string symbol = "K"/>
+        <int number = "19" mass = "39.10" period = "4" group = "1" valence = "1" charge = "1" activity = "1"/>
+
+    </element>
+    <element name = "CALCIUM">
+        <string symbol = "Ca"/>
+        <int number = "20" mass = "40.08" period = "4" group = "2" valence = "2" charge = "2" activity = "1"/>
+    </element>
+    <element name = "SCANDIUM">
+        <string symbol = "Sc"/>
+        <int number = "21" mass = "44.96" period = "4" group = "3" valence = "3" charge = "3" activity = "1"/>
+    </element>
+    <element name = "TITANIUM">
+        <string symbol = "Ti"/>
+        <int number = "22" mass = "47.87" period = "4" group = "4" valence = "2" charge = "3" activity = "1"/>
+    </element>
+    <element name = "VANADIUM">
+        <string symbol = "V"/>
+        <int number = "23" mass = "50.94" period = "4" group = "5" valence = "9" charge = "4" activity = "1"/>
+    </element>
+    <element name = "CHROMIUM">
+        <string symbol = "Cr"/>
+        <int number = "24" mass = "52" period = "4" group = "6" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "MANGANESE">
+        <string symbol = "Mn"/>
+        <int number = "25" mass = "54.94" period = "4" group = "7" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "IRON">
+        <string symbol = "Fe"/>
+        <int number = "26" mass = "55.85" period = "4" group = "8" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "COBALT">
+        <string symbol = "Co"/>
+        <int number = "27" mass = "58.93" period = "4" group = "9" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "NICKEL">
+        <string symbol = "Ni"/>
+        <int number = "28" mass = "58.69" period = "4" group = "10" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "COPPER">
+        <string symbol = "Cu"/>
+        <int number = "29" mass = "63.55" period = "4" group = "11" valence = "0" charge = "1" activity = "1"/>
+    </element>
+    <element name = "ZINC">
+        <string symbol = "Zn"/>
+        <int number = "30" mass = "65.38" period = "9" group = "12" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "GALLIUM">
+        <string symbol = "Ga"/>
+        <int number = "31" mass = "69.72" period = "4" group = "13" valence = "3" charge = "3" activity = "1"/>
+    </element>
+    <element name = "GERMANIUM">
+        <string symbol = "Ge"/>
+        <int number = "32" mass = "72.64" period = "4" group = "14" valence = "4" charge = "2" activity = "1"/>
+    </element>
+    <element name = "ARSENIC">
+        <string symbol = "As"/>
+        <int number = "33" mass = "74.92" period = "4" group = "15" valence = "5" charge = "-3" activity = "1"/>
+    </element>
+    <element name = "SELENIUM">
+        <string symbol = "Se"/>
+        <int number = "34" mass = "78.96" period = "4" group = "16" valence = "6" charge = "-2" activity = "1"/>
+    </element>
+    <element name = "BROMINE">
+        <string symbol = "Br"/>
+        <int number = "35" mass = "79.90" period = "4" group = "17" valence = "7" charge = "-1" activity = "1"/>
+    </element>
+    <element name = "KRYPTON">
+        <string symbol = "Kr"/>
+        <int number = "36" mass = "83.80" period = "4" group = "18" valence = "8" charge = "0" activity = "1"/>
+    </element>
+    <element name = "RUBIDIUM">
+        <string symbol = "Rb"/>
+        <int number = "37" mass = "85.47" period = "5" group = "1" valence = "1" charge = "1" activity = "1"/>
+    </element>
+    <element name = "STRONTIUM">
+        <string symbol = "Sr"/>
+        <int number = "38" mass = "87.62" period = "5" group = "2" valence = "1" charge = "2" activity = "1"/>
+    </element>
+    <element name = "YTTRIUM">
+        <string symbol = "Y"/>
+        <int number = "39" mass = "88.91" period = "5" group = "3" valence = "1" charge = "3" activity = "1"/>
+    </element>
+    <element name = "ZIRCONIUM">
+        <string symbol = "Zr"/>
+        <int number = "40" mass = "91.22" period = "5" group = "4" valence = "9" charge = "4" activity = "1"/>
+    </element>
+    <element name = "NIOBIUM">
+        <string symbol = "Nb"/>
+        <int number = "41" mass = "92.91" period = "5" group = "5" valence = "9" charge = "4" activity = "1"/>
+    </element>
+    <element name = "MOLYBDENUM">
+        <string symbol = "Mo"/>
+        <int number = "42" mass = "95.94" period = "5" group = "6" valence = "9" charge = "6" activity = "1"/>
+    </element>
+    <element name = "TECHNETIUM">
+        <string symbol = "Tc"/>
+        <int number = "43" mass = "98.00" period = "5" group = "7" valence = "9" charge = "7" activity = "1"/>
+    </element>
+    <element name = "RUTHENIUM">
+        <string symbol = "Ru"/>
+        <int number = "44" mass = "101.07" period = "5" group = "8" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "RHODIUM">
+        <string symbol = "Rh"/>
+        <int number = "45" mass = "102.91" period = "5" group = "9" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "PALLADIUM">
+        <string symbol = "Pd"/>
+        <int number = "46" mass = "106.42" period = "5" group = "10" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "SILVER">
+        <string symbol = "Ag"/>
+        <int number = "47" mass = "107.87" period = "5" group = "11" valence = "9" charge = "1" activity = "1"/>
+    </element>
+    <element name = "CADMIUM">
+        <string symbol = "Cd"/>
+        <int number = "48" mass = "112.41" period = "5" group = "12" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "INDIUM">
+        <string symbol = "In"/>
+        <int number = "49" mass = "114.82" period = "5" group = "13" valence = "3" charge = "1" activity = "1"/>
+    </element>
+    <element name = "TIN">
+        <string symbol = "Sn"/>
+        <int number = "50" mass = "118.71" period = "5" group = "14" valence = "4" charge = "2" activity = "1"/>
+    </element>
+    <element name = "ANTIMONY">
+        <string symbol = "Sb"/>
+        <int number = "51" mass = "121.76" period = "5" group = "15" valence = "5" charge = "-3" activity = "1"/>
+    </element>
+    <element name = "TELLURIUM">
+        <string symbol = "Te"/>
+        <int number = "52" mass = "127.6" period = "5" group = "16" valence = "6" charge = "-2" activity = "1"/>
+    </element>
+    <element name = "IODINE">
+        <string symbol = "I"/>
+        <int number = "53" mass = "126.9" period = "5" group = "17" valence = "7" charge = "-1" activity = "1"/>
+    </element>
+    <element name = "XENON">
+        <string symbol = "Xe"/>
+        <int number = "54" mass = "131.29" period = "5" group = "18" valence = "8" charge = "0" activity = "1"/>
+    </element>
+    <element name = "CESIUM">
+        <string symbol = "Ce"/>
+        <int number = "55" mass = "132.91" period = "6" group = "1" valence = "1" charge = "1" activity = "1"/>
+    </element>
+    <element name = "BARIUM">
+        <string symbol = "Ba"/>
+        <int number = "56" mass = "137.33" period = "6" group = "2" valence = "2" charge = "2" activity = "1"/>
+    </element>
+    <element name = "LANTHANUM">
+        <string symbol = "La"/>
+        <int number = "57" mass = "138.91" period = "6" group = "3" valence = "3" charge = "3" activity = "1"/>
+    </element>
+    <element name = "CERIUM">
+        <string symbol = "Ce"/>
+        <int number = "58" mass = "140.12" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "PRASEODYMIUM">
+        <string symbol = "Pr"/>
+        <int number = "59" mass = "140.91" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "NEODYMIUM">
+        <string symbol = "NeO"/>
+        <int number = "60" mass = "144.24" period = "6" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "PROMETHIUM">
+        <string symbol = "Pm"/>
+        <int number = "61" mass = "145.00" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "SAMARIUM">
+        <string symbol = "Sm"/>
+        <int number = "62" mass = "150.36" period = "6" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "EUROPIUM">
+        <string symbol = "Eu"/>
+        <int number = "63" mass = "151.96" period = "6" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "GADOLINIUM">
+        <string symbol = "Gd"/>
+        <int number = "64" mass = "157.25" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "TERBIUM">
+        <string symbol = "Tb"/>
+        <int number = "65" mass = "158.93" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "DYSPROSIUM">
+        <string symbol = "Dy"/>
+        <int number = "66" mass = "162.50" period = "6" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "HOLMIUM">
+        <string symbol = "Ho"/>
+        <int number = "67" mass = "164.93" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "ERBIUM">
+        <string symbol = "Er"/>
+        <int number = "68" mass = "167.26" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "THULIUM">
+        <string symbol = "Tm"/>
+        <int number = "69" mass = "168.93" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "YTTERBIUM">
+        <string symbol = "Yb"/>
+        <int number = "70" mass = "173.05" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "LUTETIUM">
+        <string symbol = "Lu"/>
+        <int number = "71" mass = "174.97" period = "6" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "HAFNIUM">
+        <string symbol = "Hf"/>
+        <int number = "72" mass = "178.49" period = "6" group = "0" valence = "9" charge = "4" activity = "1"/>
+    </element>
+    <element name = "TANTALUM">
+        <string symbol = "Ta"/>
+        <int number = "73" mass = "180.95" period = "6" group = "5" valence = "9" charge = "4" activity = "1"/>
+    </element>
+    <element name = "TUNGSTEN">
+        <string symbol = "W"/>
+        <int number = "74" mass = "183.84" period = "6" group = "6" valence = "9" charge = "6" activity = "1"/>
+    </element>
+    <element name = "RHENIUM">
+        <string symbol = "Re"/>
+        <int number = "75" mass = "186.21" period = "6" group = "7" valence = "9" charge = "7" activity = "1"/>
+    </element>
+    <element name = "OSMIUM">
+        <string symbol = "Os"/>
+        <int number = "76" mass = "190.23" period = "6" group = "8" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "IRIDIUM">
+        <string symbol = "Ir"/>
+        <int number = "77" mass = "192.22" period = "6" group = "9" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "PLATINUM">
+        <string symbol = "Pt"/>
+        <int number = "78" mass = "195.08" period = "6" group = "10" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "GOLD">
+        <string symbol = "Au"/>
+        <int number = "79" mass = "196.97" period = "6" group = "11" valence = "9" charge = "1" activity = "1"/>
+    </element>
+    <element name = "MERCURY">
+        <string symbol = "Hg"/>
+        <int number = "80" mass = "200.59" period = "6" group = "12" valence = "9" charge = "1" activity = "1"/>
+    </element>
+    <element name = "THALLIUM">
+        <string symbol = "Tl"/>
+        <int number = "81" mass = "204.38" period = "6" group = "13" valence = "3" charge = "1" activity = "1"/>
+    </element>
+    <element name = "LEAD">
+        <string symbol = "Pb"/>
+        <int number = "82" mass = "207.2" period = "6" group = "14" valence = "4" charge = "2" activity = "1"/>
+    </element>
+    <element name = "BISMUTH">
+        <string symbol = "Bi"/>
+        <int number = "83" mass = "208.98" period = "6" group = "15" valence = "5" charge = "3" activity = "1"/>
+    </element>
+    <element name = "POLONIUM">
+        <string symbol = "Po"/>
+        <int number = "84" mass = "209.00" period = "6" group = "16" valence = "6" charge = "2" activity = "1"/>
+    </element>
+    <element name = "ASTATINE">
+        <string symbol = "At"/>
+        <int number = "85" mass = "210.00" period = "6" group = "17" valence = "6" charge = "-1" activity = "1"/>
+    </element>
+    <element name = "RADON">
+        <string symbol = "Rn"/>
+        <int number = "86" mass = "222.00" period = "6" group = "18" valence = "8" charge = "0" activity = "1"/>
+    </element>
+    <element name = "FRANCIUM">
+        <string symbol = "Fr"/>
+        <int number = "87" mass = "223.00" period = "7" group = "1" valence = "1" charge = "1" activity = "1"/>
+    </element>
+    <element name = "RADIUM">
+        <string symbol = "Ra"/>
+        <int number = "88" mass = "226.00" period = "7" group = "2" valence = "2" charge = "2" activity = "1"/>
+    </element>
+    <element name = "ACTINIUM">
+        <string symbol = "Ac"/>
+        <int number = "89" mass = "227.00" period = "7" group = "3" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "THORIUM">
+        <string symbol = "Ac"/>
+        <int number = "90" mass = "232.04" period = "7" group = "4" valence = "9" charge = "4" activity = "1"/>
+    </element>
+    <element name = "PROTACTINIUM">
+        <string symbol = "Pa"/>
+        <int number = "91" mass = "231.04" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "URANIUM">
+        <string symbol = "U"/>
+        <int number = "92" mass = "238" period = "7" group = "0" valence = "9" charge = "3" activity = "0"/>
+    </element>
+    <element name = "NEPTUNIUM">
+        <string symbol = "Np"/>
+        <int number = "93" mass = "237" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "PLUTONIUM">
+        <string symbol = "Pu"/>
+        <int number = "94" mass = "244" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "AMERICIUM">
+        <string symbol = "Am"/>
+        <int number = "95" mass = "243" period = "7" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "CURIUM">
+        <string symbol = "Cm"/>
+        <int number = "96" mass = "247" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "BERKELIUM">
+        <string symbol = "Bk"/>
+        <int number = "97" mass = "247" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "CALIFORNIUM">
+        <string symbol = "Cf"/>
+        <int number = "98" mass = "251" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "EINSTEINIUM">
+        <string symbol = "Es"/>
+        <int number = "99" mass = "252" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "FERMIUM">
+        <string symbol = "Fm"/>
+        <int number = "100" mass = "257" period = "7" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "MENDELEVIUM">
+        <string symbol = "Md"/>
+        <int number = "101" mass = "258" period = "7" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "NOBELIUM">
+        <string symbol = "No"/>
+        <int number = "102" mass = "259" period = "7" group = "0" valence = "9" charge = "2" activity = "1"/>
+    </element>
+    <element name = "LAWRENCIUM">
+        <string symbol = "Lr"/>
+        <int number = "103" mass = "262" period = "7" group = "0" valence = "9" charge = "3" activity = "1"/>
+    </element>
+    <element name = "RUTHERFORDIUM">
+        <string symbol = "Rf"/>
+        <int number = "104" mass = "261" period = "7" group = "0" valence = "9" charge = "4" activity = "1"/>
+    </element>
+    <element name = "DUBNIUM">
+        <string symbol = "Db"/>
+        <int number = "105" mass = "268" period = "7" group = "0" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "SEABORGIUM">
+        <string symbol = "Sg"/>
+        <int number = "106" mass = "271" period = "7" group = "0" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "BOHRIUM">
+        <string symbol = "Bh"/>
+        <int number = "107" mass = "272" period = "7" group = "0" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "HASSIUM">
+        <string symbol = "Hs"/>
+        <int number = "108" mass = "270" period = "7" group = "0" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "MEITNERIUM">
+        <string symbol = "Ht"/>
+        <int number = "109" mass = "278" period = "7" group = "0" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "DARMSTADTIUM">
+        <string symbol = "Ds"/>
+        <int number = "110" mass = "281" period = "7" group = "10" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "ROENTGENIUM">
+        <string symbol = "Rg"/>
+        <int number = "111" mass = "280" period = "7" group = "11" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "COPERNICIUM">
+        <string symbol = "Cn"/>
+        <int number = "112" mass = "285" period = "7" group = "12" valence = "9" charge = "0" activity = "1"/>
+    </element>
+    <element name = "UNUNTRIUM">
+        <string symbol = "Uut"/>
+        <int number = "113" mass = "284" period = "7" group = "13" valence = "3" charge = "0" activity = "1"/>
+    </element>
+    <element name = "UNUNQUADIUM">
+        <string symbol = "Uuq"/>
+        <int number = "114" mass = "289" period = "7" group = "14" valence = "4" charge = "0" activity = "1"/>
+    </element>
+    <element name = "UNUNPENTIUM">
+        <string symbol = "Uup"/>
+        <int number = "115" mass = "288" period = "7" group = "15" valence = "5" charge = "0" activity = "1"/>
+    </element>
+    <element name = "UNUNHEXIUM">
+        <string symbol = "Uuh"/>
+        <int number = "116" mass = "293" period = "7" group = "16" valence = "6" charge = "0" activity = "1"/>
+    </element>
+    <element name = "UNUNSEPTIUM">
+        <string symbol = "Uus"/>
+        <int number = "117" mass = "294" period = "7" group = "17" valence = "7" charge = "0" activity = "1"/>
+    </element>
+    <element name = "UNUNOCTIUM">
+        <string symbol = "Uuo"/>
+        <int number = "118" mass = "294" period = "7" group = "18" valence = "8" charge = "0" activity = "1"/>
+    </element>
+
+</elements>

@@ -1,0 +1,252 @@
+<?xml version = "1.0" ?>
+
+<polyatomics>
+
+	<ion>
+		<string name = "hydroxide"/>
+		<elements list = "OH"/>
+		<int charge = "-1"/>
+	</ion>
+
+	<ion>
+		<string name = "ammonium"/>
+		<elements list = "NH4"/>
+		<int charge = "1"/>
+	</ion>
+	
+	<ion>
+		<string name = "hydronium"/>
+		<elements list = "H3O"/>
+		<int charge = "1"/>
+	</ion>
+	
+	<ion>
+		<string name = "hydronium"/>
+		<elements list = "H3O"/>
+		<int charge = "1"/>
+	</ion>
+	
+	<ion>
+		<string name = "nitrite"/>
+		<elements list = "NO2"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "nitrate"/>
+		<elements list = "NO3"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "acetate"/>
+		<elements list = "CH3COO"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "chromite"/>
+		<elements list = "CrO2"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "cyanide"/>
+		<elements list = "CN"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "cyanate"/>
+		<elements list = "CNO"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "thiocyanate"/>
+		<elements list = "CNS"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "permanganate"/>
+		<elements list = "MnO4"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "chlorite"/>
+		<elements list = "ClO2"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "chlorate"/>
+		<elements list = "ClO3"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "borite"/>
+		<elements list = "BO2"/>
+		<int charge = "-3"/>
+	</ion>
+	
+	<ion>
+		<string name = "borate"/>
+		<elements list = "BO3"/>
+		<int charge = "-3"/>
+	</ion>
+	
+	<ion>
+		<string name = "perchlorate"/>
+		<elements list = "ClO4"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "bromite"/>
+		<elements list = "BrO2"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "bromate"/>
+		<elements list = "BrO3"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "perbromate"/>
+		<elements list = "BrO4"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "iodite"/>
+		<elements list = "IO2"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "iodate"/>
+		<elements list = "IO3"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "periodate"/>
+		<elements list = "IO4"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "aluminate"/>
+		<elements list = "AlO2"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
+		<string name = "carbonate"/>
+		<elements list = "CO3"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "sulfite"/>
+		<elements list = "SO3"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "sulfate"/>
+		<elements list = "SO4"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "thiosulfate"/>
+		<elements list = "S2O3"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "silicate"/>
+		<elements list = "SiO3"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "oxalate"/>
+		<elements list = "C2O4"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "chromate"/>
+		<elements list = "CO3"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "dichromate"/>
+		<elements list = "C2O7"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "tartrate"/>
+		<elements list = "C4H4O6"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "molybdate"/>
+		<elements list = "MoO4"/>
+		<int charge = "-2"/>
+	</ion>
+	
+	<ion>
+		<string name = "phosphite"/>
+		<elements list = "PO2"/>
+		<int charge = "-3"/>
+	</ion>
+	
+	<ion>
+		<string name = "phosphate"/>
+		<elements list = "PO4"/>
+		<int charge = "-3"/>
+	</ion>
+
+	<ion>
+		<string name = "phosphate"/>
+		<elements list = "PO3"/>
+		<int charge = "-3"/>
+	</ion>
+	
+	
+	<ion>
+		<string name = "hypophosphite"/>
+		<elements list = "PO2"/>
+		<int charge = "-3"/>
+	</ion>
+	
+	<ion>
+		<string name = "arsenite"/>
+		<elements list = "AsO3"/>
+		<int charge = "-3"/>
+	</ion>
+	
+	<ion>
+		<string name = "arsenate"/>
+		<elements list = "AsO4"/>
+		<int charge = "-3"/>
+	</ion>
+	
+	<ion>
+		<string name = "pyrophosphate"/>
+		<elements list = "P2O7"/>
+		<int charge = "-4"/>
+	</ion>
+	
+</polyatomics>

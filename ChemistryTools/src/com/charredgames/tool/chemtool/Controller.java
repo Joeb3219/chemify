@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -29,6 +32,7 @@ public class Controller {
 	private static AssetManager assets;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
+	public static Map<Integer, String> romanNumerals = new HashMap<Integer, String>();
 
 	
 	public static void reset(AssetManager aManager){
@@ -37,6 +41,41 @@ public class Controller {
 		setIons("/default/polyions.cgf");
 		if(ResponseType.answer instanceof ResponseType);
 		if(Prefix.mono instanceof Prefix);
+		
+		romanNumerals.put(1, "I");
+		romanNumerals.put(2, "II");
+		romanNumerals.put(3, "III");
+		romanNumerals.put(4, "IV");
+		romanNumerals.put(5, "V");
+		romanNumerals.put(6, "VI");
+		romanNumerals.put(7, "VII");
+		romanNumerals.put(8, "VIII");
+		romanNumerals.put(9, "IX");
+		romanNumerals.put(10, "X");
+		romanNumerals.put(11, "XI");
+		romanNumerals.put(12, "XII");
+		romanNumerals.put(13, "XIII");
+		romanNumerals.put(14, "XIV");
+		romanNumerals.put(15, "XV");
+	}
+	
+	public static String convertIntToNumeral(int num){
+		if(romanNumerals.containsKey(num)) return romanNumerals.get(num);
+		return "I";
+	}
+	
+	public static int convertNumeralToInt(String str){
+		for(Entry<Integer, String> entry : romanNumerals.entrySet()){
+			if(entry.getValue().equalsIgnoreCase(str)) return entry.getKey();
+		}
+		
+		try{
+			Integer.parseInt(str);
+		}catch(Exception e){
+			return 1;
+		}
+		
+		return Integer.parseInt(str);
 	}
 	
 	private static void setElements(String path){

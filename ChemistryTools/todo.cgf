@@ -1,0 +1,33 @@
+=========
+Joe Boyle
+
+=====
+TODO:
+=====
+
+- Refactor Nomenclature, Problem, etc. code
+	- It works, but isn't clean or efficient.
+	- Move most of individual problem methods to Problem mainclass.
+		- Most problems share similar methods, could be refactored as one.
+			- Cleaner, more efficient code execution.
+- Add tap-section displays
+	- Data already sectioned off (input, answer, nomenclature, etc.)
+	- By default, show only the final answer (as attributed by data structure) in respective box.
+		- If box is tapped, show the steps that the app had to use to get to answer.
+			- EG: "Is there only two compounds? Yes. Does it begin with H? Yes. Substitute anion ending."
+- Do away with problem_type selector
+	- Ideally, app will take input and generate as much data as it can about it.
+		- EG: Input "Hydrochloric Acid + H2O"
+			- Outputs predicted reaction (balanced), weight, etc.
+			- Allows for user to sub in values (grams, moles, liters, etc.) of each, calculate outputs (stoichiometry)
+			- EG: Remove the requirement that the user must know what they want to do with the data.
+				- Show user more data than they want, and then they can pick it.
+- Introduce some sort of custom keyboard with common inputs (Element symbols, names, etc.) ????
+- Fix nomenclature
+	- When converting from formula to name, does not consider adding prefixes.
+
+==========
+Changelog:
+==========
+
+

@@ -179,8 +179,8 @@ public abstract class Problem {
 
 	public ElementGroup revertEnding(String string, boolean binary){
 		ElementGroup group = new ElementGroup();
-		if(string.contains("ate")) string = string.replace("ate", "");
-		if(string.contains("ite")) string = string.replace("ite", "");
+		//if(string.contains("ate")) string = string.replace("ate", "");
+		//if(string.contains("ite")) string = string.replace("ite", "");
 		if(!binary){
 			if(string.contains("ous")) string = string.replace("ous", "ite");
 			if(string.contains("ic")) {
@@ -203,17 +203,31 @@ public abstract class Problem {
 				}
 			}
 		}else{
+			ElementSet elementSet = null;
+			int quantity = 1;
+			for(Prefix prefix : Controller.prefixes){
+				if(string.contains(prefix.getPrinted())) {
+					quantity = prefix.getValue();
+					string = string.replace(prefix.getPrinted(), "");
+					break;
+				}
+				else if(string.contains(prefix.getSecondary())) {
+					quantity = prefix.getValue();
+					string = string.replace(prefix.getSecondary(), "");
+					break;
+				}
+			}
+			
 			for(Element element : Element.elements){
 				if(element.getName().toLowerCase().contains(string)){
-					for(Prefix prefix : Controller.prefixes){
-						if(string.contains(prefix.getPrinted()) || string.contains(prefix.getSecondary())){
-							group.addElementSet(new ElementSet(element, prefix.getValue()));
-							return group;
-						}
-					}
-					group.addElementSet(new ElementSet(element, 1));
-					return group;
+					elementSet = new ElementSet(element, quantity);
+					break;
 				}
+			}
+			
+			if(elementSet != null){
+				group.addElementSet(elementSet);
+				return group;
 			}
 		}
 		if(group.getElementCount() == 0) group.addElementSet(new ElementSet(Element.HYDROGEN, 1));

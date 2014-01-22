@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ElementGroup implements Comparable<ElementGroup>{
 
 	private ArrayList<ElementSet> elementSets;
-	private int quantity = 1, charge = 1; //Mostly used if is a polyatomic ion.
+	private int quantity = 1, charge = 0; //Mostly used if is a polyatomic ion.
 	private Ion ion = null;
 	
 	public ElementGroup(){
@@ -55,6 +55,7 @@ public class ElementGroup implements Comparable<ElementGroup>{
 	
 	public int getCharge(){
 		if(ion != null) return ion.getCharge();
+		if(charge != 0) return charge;
 		return getAdditiveCharge();
 	}
 	

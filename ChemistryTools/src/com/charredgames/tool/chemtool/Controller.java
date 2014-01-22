@@ -28,7 +28,7 @@ import com.charredgames.tool.chemtool.problems.ResponseType;
  */
 public class Controller {
 
-	public static final String _VERSION = "1.0";
+	public static final String _VERSION = "1.0.1";
 	private static AssetManager assets;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();

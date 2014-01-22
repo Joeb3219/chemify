@@ -74,6 +74,7 @@
 		<int charge = "-1"/>
 	</ion>
 	
+	
 	<ion>
 		<string name = "chlorite"/>
 		<elements list = "ClO2"/>
@@ -86,6 +87,12 @@
 		<int charge = "-1"/>
 	</ion>
 	
+	<ion>
+		<string name = "hypochlorite"/>
+		<elements list = "ClO"/>
+		<int charge = "-1"/>
+	</ion>
+
 	<ion>
 		<string name = "borite"/>
 		<elements list = "BO2"/>

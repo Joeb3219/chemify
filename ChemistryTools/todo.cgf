@@ -1,9 +1,22 @@
 =========
 Joe Boyle
+=========
+
+An overview of how compounds are structured within my app:
+- Element -> N, O, H
+- ElementSet (An element + quantity) -> N * 1, O * 3, H * 1
+- ElementGroup (A collection of elementSets and the quantity of those sets) -> NO3 * 1, H * 2
+- Compound (A collection of elementGroups, and a number of moles) HNO3
+
+Collectively, a compound is a very large assortment of arraylists, which contains an even larger list of arraylists.
+This structural design comes in handy for easily deciphering parts of an equation, and make it easy to do a lot of computation with minimal variables.
+A collection of compounds should later have a name, so as to show its structure as a side of an equation.
 
 =====
 TODO:
 =====
+
+
 
 - Refactor Nomenclature, Problem, etc. code
 	- It works, but isn't clean or efficient.

@@ -12,7 +12,7 @@ public class Weight extends Problem{
 
 	public Weight(String input) {
 		super(input);
-		elementGroups = getElementGroups(input);
+		//elementGroups = getElementGroups(input);
 	}
 	
 	public Weight(ArrayList<ElementGroup> elementGroups){
@@ -21,20 +21,25 @@ public class Weight extends Problem{
 
 	public void solve(boolean isPrimary){
 		double weight = 0.00;
+		String collectiveInput = "";
+		
+		if(input != null) {
+			elementGroups = convertNameToElementGroups(input);
+			collectiveInput = input;
+		}else{
+			for(ElementGroup group : elementGroups){
+				collectiveInput += group.getDrawString();
+			}
+		}
 		
 		for(ElementGroup group : elementGroups){
 			weight += group.getOverallWeight();
 		}
 		
-		String collectiveInput = "";
-		for(ElementGroup group : elementGroups){
-			collectiveInput += group.getDrawString();
-		}
-		
 		DecimalFormat f = new DecimalFormat("##.00");
 		
 		if(isPrimary) {
-			String output = "";
+			String output = "<u>" + weight + " g/mol</u><br>";
 			for(ElementGroup group : elementGroups){
 				String generalGroupMarkup = "[ " + group.getDrawString() + " -> " + group.getOverallWeight() + " g/mol (" + f.format((group.getOverallWeight() / weight) * 100) + "%) ]";
 				output += "<b>" + generalGroupMarkup + "</b>:<br>";
@@ -42,7 +47,7 @@ public class Weight extends Problem{
 					output += set.getDrawString() + " -> " + set.getWeight() + " g/mol (" + f.format((set.getWeight() / group.getOverallWeight()) * 100) + "% of group, " + f.format((set.getWeight() / weight) * 100) + "% of total) <br>";
 				}
 			}
-			response.addLine(collectiveInput + ": " + f.format(weight) + " g/mol", ResponseType.input);
+			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(output, ResponseType.answer);
 		}
 		else response.addLine("<b>Weight</b>:" + f.format(weight) + " g/mol", ResponseType.weight);

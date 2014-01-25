@@ -95,7 +95,20 @@ public class Compound {
 			str += group.getDrawString();
 		}
 		
+		int charge = getOverallCharge();
+		if(charge != 0) str += "<sup>" + charge + "</sup>";
+		
 		return str;
+	}
+	
+	public int getOverallCharge(){
+		int charge = 0;
+		
+		for(ElementGroup group : elementGroups){
+			charge += group.getAdditiveCharge();
+		}
+		
+		return charge;
 	}
 	
 }

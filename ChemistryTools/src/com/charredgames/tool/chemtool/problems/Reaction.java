@@ -3,6 +3,7 @@ package com.charredgames.tool.chemtool.problems;
 import java.util.ArrayList;
 
 import com.charredgames.tool.chemtool.constant.Compound;
+import com.charredgames.tool.chemtool.constant.ElementGroup;
 
 public class Reaction extends Problem{
 
@@ -36,6 +37,11 @@ public class Reaction extends Problem{
 				if(secondCompound.isWater()){
 					
 				}else{
+					ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
+					groups.addAll(firstCompound.getElementGroups());
+					groups.addAll(secondCompound.getElementGroups());
+					
+					
 					
 				}
 			}

@@ -56,6 +56,10 @@ public class Compound {
 		return num;
 	}
 	
+	public int getNumberOfElementGroups(){
+		return elementGroups.size();
+	}
+	
 	public boolean isHydrocarbon(){
 		if(elementGroups.size() != 1) return false;
 		if(elementGroups.get(0).getElementCount() != 2) return false;
@@ -105,7 +109,7 @@ public class Compound {
 		int charge = 0;
 		
 		for(ElementGroup group : elementGroups){
-			charge += group.getAdditiveCharge();
+			charge += group.getCharge();
 		}
 		
 		return charge;

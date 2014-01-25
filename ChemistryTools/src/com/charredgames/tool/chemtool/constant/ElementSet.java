@@ -37,7 +37,8 @@ public class ElementSet {
 	}
 	
 	public void setQuantity(int num){
-		this.quantity = num;
+		if(num == 0) num = 1;
+		this.quantity = Math.abs(num);
 	}
 	
 }

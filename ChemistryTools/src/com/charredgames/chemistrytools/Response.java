@@ -17,6 +17,7 @@ import com.charredgames.tool.chemtool.gui.ResponsePanel;
 import com.charredgames.tool.chemtool.problems.ElementInfo;
 import com.charredgames.tool.chemtool.problems.Nomenclature;
 import com.charredgames.tool.chemtool.problems.Problem;
+import com.charredgames.tool.chemtool.problems.Reaction;
 import com.charredgames.tool.chemtool.problems.ResponseType;
 import com.charredgames.tool.chemtool.problems.Weight;
 
@@ -45,6 +46,7 @@ public class Response extends Activity {
 		if(selectedOperation.equalsIgnoreCase("element info")) problem = new ElementInfo(input);
 		else if(selectedOperation.equalsIgnoreCase("nomenclature")) problem = new Nomenclature(input);
 		else if(selectedOperation.equalsIgnoreCase("weight")) problem = new Weight(input);
+		else if(selectedOperation.equalsIgnoreCase("Predict Reactions")) problem = new Reaction(input);
 		else problem = new Nomenclature(input);
 		
 		problem.solve(true);

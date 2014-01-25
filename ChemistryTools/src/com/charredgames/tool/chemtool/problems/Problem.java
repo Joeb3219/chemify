@@ -78,7 +78,7 @@ public abstract class Problem {
 	public ArrayList<Compound> getCompoundsFromString(String string){
 		ArrayList<Compound> compounds = new ArrayList<Compound>();
 		if(string.contains(" + ")) string = string.replace(" + ", "+");
-		String[] compoundStrings = string.split("+");
+		String[] compoundStrings = string.split("\\+");
 		for(String str : compoundStrings){
 			ArrayList<ElementGroup> elementGroups;
 			elementGroups = convertNameToElementGroups(str);
@@ -399,5 +399,18 @@ public abstract class Problem {
 
 	public ResponseType getType(){
 		return type;
+	}
+	
+	public int getGCD(int a, int b){
+		if(a == 0 || b == 0) return a+b;
+		return getGCD(b, a%b);
+	}
+	
+	public int getGCD(ArrayList<Integer> list){
+		int result = list.get(0);
+		
+		for(int i = 1; i < list.size(); i ++) result = getGCD(result, list.get(i));
+		
+		return result;
 	}
 }

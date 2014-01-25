@@ -72,6 +72,7 @@ public class ElementGroup implements Comparable<ElementGroup>{
 	}
 	
 	public void setQuantity(int num){
+		if(num == 0) num = 1;
 		this.quantity = Math.abs(num);
 	}
 	
@@ -101,6 +102,10 @@ public class ElementGroup implements Comparable<ElementGroup>{
 		if(this.getIon() != null && another.getIon() == null) return 1;
 		
 		return 0;
+	}
+	
+	public void multiplyAllSets(double num){
+		for(ElementSet set: elementSets) set.setQuantity((int) (set.getQuantity() * num));
 	}
 	
 }

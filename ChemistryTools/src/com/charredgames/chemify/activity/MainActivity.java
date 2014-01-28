@@ -14,7 +14,7 @@ import com.charredgames.chemify.R;
 
 public class MainActivity extends Activity {
 
-	public final static String EXTRA_MESSAGE = "com.charredgames.chemistrytools.MESSAGE";
+	public final static String EXTRA_MESSAGE = "com.charredgames.chemify.MESSAGE";
 	public static Spinner problem_type;
 	
 	@Override
@@ -43,6 +43,19 @@ public class MainActivity extends Activity {
 		EditText input = (EditText) findViewById(R.id.edit_input);
 		intent.putExtra(EXTRA_MESSAGE, input.getText().toString());
 		startActivity(intent);
+	}
+	
+	
+	public void onPause(){
+		super.onPause();
+	}
+	
+	public void onSaveInstanceState(Bundle outState){
+		super.onSaveInstanceState(outState);
+	}
+	
+	public void onResume(){
+		super.onResume();
 	}
 	
 }

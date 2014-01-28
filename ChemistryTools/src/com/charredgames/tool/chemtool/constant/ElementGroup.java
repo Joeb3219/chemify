@@ -94,7 +94,11 @@ public class ElementGroup implements Comparable<ElementGroup>{
 		return str;
 	}
 
-
+	public boolean isPolyatomic(){
+		if(ion == null) return false;
+		return true;
+	}
+	
 	public int compareTo(ElementGroup another) {
 		
 		if((this.getIon() == null && another.getIon() == null) || (this.getIon() != null && another.getIon() != null)) return 0;

@@ -47,6 +47,15 @@ public abstract class Problem {
 		return response;
 	}
 	
+	public Compound correctAtomCount(Compound compound){
+		ArrayList<ElementGroup> finalGroups = compound.getElementGroups();
+		int fCharge = finalGroups.get(0).getCharge();
+		int sCharge = finalGroups.get(1).getCharge();
+		finalGroups.get(0).setQuantity(sCharge);
+		finalGroups.get(1).setQuantity(fCharge);
+		return compound;
+	}
+	
 	public ArrayList<Element> getElements(String string){
 		ArrayList<Element> elements = new ArrayList<Element>();
 		String current = null;

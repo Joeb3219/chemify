@@ -43,4 +43,12 @@ TODO:
 Changelog:
 ==========
 
+- Chemistry Tools v 1.0.1
+	- Initial Release (in dev)
+- Chemify v 1.1.0
+	- Remains as in dev.
+	- Name changed from Chemistry Tools to Chemify.
+	- Package format changed to reflect new name. No longer clear split from old project adaptations.
+	- Weight, Nomenclature, Element Info completely work. Reactions, Oxidation problems somewhat work.
+	- Style formatting. 
 

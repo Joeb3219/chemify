@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.charredgames.chemistrytools"
-    android:versionCode="1"
-    android:versionName="1.0.1" >
+    package="com.charredgames.chemify"
+    android:versionCode="2"
+    android:versionName="1.1.0" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
     
@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.charredgames.chemistrytools.MainActivity"
+            android:name="com.charredgames.chemify.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,12 +25,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.charredgames.chemistrytools.Response"
+            android:name="com.charredgames.chemify.activity.Response"
             android:label="@string/title_activity_response"
-            android:parentActivityName="com.charredgames.chemistrytools.MainActivity" >
+            android:parentActivityName="com.charredgames.chemify.activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.charredgames.chemistrytools.MainActivity" />
+                android:value="com.charredgames.chemify.MainActivity" />
         </activity>
     </application>
 

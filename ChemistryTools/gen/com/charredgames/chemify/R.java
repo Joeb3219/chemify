@@ -118,6 +118,8 @@ public final class R {
         /** <item name = "android:drawableLeft">@drawable/answer_label</item> 
          */
         public static final int problem_answer=0x7f070002;
+        /** <item name = "android:textIsSelectable">true</item>
+         */
         public static final int problem_generic=0x7f070000;
         /** <item name = "android:drawableLeft">@drawable/input_label</item>
          */

@@ -14,7 +14,6 @@ public class ElementInfo extends Problem{
 		super(input);
 	}
 
-	
 	public void solve(boolean isPrimary){
 		getElements(input);
 		Element element = null;

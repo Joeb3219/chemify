@@ -176,6 +176,7 @@ public class Nomenclature extends Problem{
 			}
 		//Convert formula to name.
 		}else{
+			reason += "Does the input contain a space? No.<br>";
 			groups = getElementGroups(input);
 			for(ElementGroup group : groups){
 				collectiveInput += group.getDrawString();

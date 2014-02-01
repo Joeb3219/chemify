@@ -7,6 +7,7 @@ import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
+import com.charredgames.chemify.constant.Ion;
 
 public class Reaction extends Problem{
 
@@ -26,6 +27,77 @@ public class Reaction extends Problem{
 		//Decomposition
 		if(compounds.size() == 1){
 			reason += "Only one reactant -> decomposition. <br>";
+			Compound compound = compounds.get(0);
+			boolean solved = false;
+			if(compound.getElementGroups().get(0).containsOnlyM() && compound.getElementGroups().get(0).getElementCount() == 1){
+				reason += "Is the first element a metal? Yes.<br>";
+				if(compound.getElementGroups().get(1).isPolyatomic()){
+					ElementSet metal = new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1);
+					ElementGroup group = compound.getElementGroups().get(1);
+					if(Controller.getIon("CO2") == group.getIon()){
+						reason += "Polyatomic Ion " + group.getIon().getName() + " found.<br>";
+						reason += "A metal carbonate yields a metal oxide + CO2.<br>";
+						ElementGroup metalOxide = new ElementGroup();
+						metalOxide.addElementSet(compound.getElementGroups().get(0).getElementSets().get(0));
+						metalOxide.addElementSet(new ElementSet(Element.OXYGEN, 1));
+						answerCompounds.add(new Compound(metalOxide));
+						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						else{
+							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " does not equal zero.<br>";
+							correctAtomCount(answerCompounds.get(0));
+						}
+
+						Ion ion = Controller.getIon("CO2");
+						ElementGroup co2 = new ElementGroup(ion.getElementSet());
+						co2.setIon(ion);
+						
+						answerCompounds.add(new Compound(co2));
+						solved = true;
+					}
+					else if(Controller.getIon("ClO3") == group.getIon()){
+						reason += "Polyatomic Ion " + group.getIon().getName() + " found.<br>";
+						reason += "A metal chlorate yields a metal chloride + O2.<br>";
+						ElementGroup metalChlorate = new ElementGroup();
+						metalChlorate.addElementSet(compound.getElementGroups().get(0).getElementSets().get(0));
+						metalChlorate.addElementSet(new ElementSet(Element.CHLORINE, 1));
+						answerCompounds.add(new Compound(metalChlorate));
+						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						else{
+							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " does not equal zero.<br>";
+							correctAtomCount(answerCompounds.get(0));
+						}
+
+						ElementGroup oxygen = new ElementGroup(new ElementSet(Element.OXYGEN, 2));
+						
+						answerCompounds.add(new Compound(oxygen));
+						solved = true;
+					}
+					else if(Controller.getIon("OH") == group.getIon()){
+						reason += "Polyatomic Ion " + group.getIon().getName() + " found.<br>";
+						reason += "A metal hydroxide yields a metal oxide + H2O.<br>";
+						ElementGroup metalHydroxide = new ElementGroup();
+						metalHydroxide.addElementSet(compound.getElementGroups().get(0).getElementSets().get(0));
+						metalHydroxide.addElementSet(new ElementSet(Element.OXYGEN, 1));
+						answerCompounds.add(new Compound(metalHydroxide));
+						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						else{
+							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " does not equal zero.<br>";
+							correctAtomCount(answerCompounds.get(0));
+						}
+
+						ElementGroup water = new ElementGroup();
+						water.addElementSet(new ElementSet(Element.HYDROGEN, 2));
+						water.addElementSet(new ElementSet(Element.OXYGEN, 1));
+						
+						answerCompounds.add(new Compound(water));
+						solved = true;
+					}
+				}
+			}
+			if(!solved){
+				reason += "Either no metal or no CO2/ClO3/OH found.<br>";
+				
+			}
 		}
 		//Other reactions, makes sure not 0 compounds.
 		else if(compounds.size() > 1){
@@ -44,6 +116,7 @@ public class Reaction extends Problem{
 				Compound finalCompound;
 				//NM + water == acid, M + water == metallic hydroxide
 				if(secondCompound.isWater()){
+					reason += "Does the input contain water? Yes.<br>";
 					ArrayList<ElementGroup> finalGroups = new ArrayList<ElementGroup>();
 					if(firstCompound.isMetal()){
 						reason += "Metal + Water -> Metalic Hydroxide<br>";
@@ -68,21 +141,29 @@ public class Reaction extends Problem{
 					answerCompounds.add(finalCompound);
 					
 				}else{
-					
+					reason += "Does the input contain water? No.<br>";
 					ArrayList<ElementGroup> newGroups = new ArrayList<ElementGroup>();
 					for(ElementGroup group : allElementGroups){
 						if(group.isPolyatomic()) {
-							newGroups.add(new ElementGroup(group.getElementSets()));
+							ElementGroup grp = new ElementGroup(group.getElementSets());
+							newGroups.add(grp);
+							reason += "Polyatomic ion " + grp.getDrawString() + " found.<br>";
 							continue;
 						}
 						ArrayList<ElementSet> newSets = new ArrayList<ElementSet>();
 						for(ElementSet set : group.getElementSets()) newSets.add(new ElementSet(set.getElement(), 1));
-						newGroups.add(new ElementGroup(newSets));
+						ElementGroup grp = new ElementGroup(newSets);
+						newGroups.add(grp);
+						reason += "Converting input string to " + grp.getDrawString() + ".<br>";
 					}
 					
 					finalCompound = new Compound(newGroups);
 					
-					if(finalCompound.getOverallCharge() != 0) finalCompound = correctAtomCount(finalCompound);
+					if(finalCompound.getOverallCharge() == 0) reason += "Charge of " + finalCompound.getDrawString() + " equals zero.<br>";
+					else {
+						reason += "Charge of " + finalCompound.getDrawString() + " does not equal zero (" + finalCompound.getOverallCharge() + "). Correcting atom counts.<br>";
+						finalCompound = correctAtomCount(finalCompound);
+					}
 					
 					answerCompounds.add(finalCompound);
 					

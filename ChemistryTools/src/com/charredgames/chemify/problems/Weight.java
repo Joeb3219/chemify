@@ -21,7 +21,7 @@ public class Weight extends Problem{
 
 	public void solve(boolean isPrimary){
 		double weight = 0.00;
-		String collectiveInput = "";
+		String collectiveInput = "", reason = "{reason}";
 		
 		if(input != null) {
 			elementGroups = convertNameToElementGroups(input);
@@ -32,25 +32,25 @@ public class Weight extends Problem{
 			}
 		}
 		
-		for(ElementGroup group : elementGroups){
-			weight += group.getOverallWeight();
-		}
+		for(ElementGroup group : elementGroups) weight += group.getOverallWeight();
 		
 		DecimalFormat f = new DecimalFormat("##.00");
 		
-		if(isPrimary) {
-			String output = "<u>" + weight + " g/mol</u><br>";
-			for(ElementGroup group : elementGroups){
-				String generalGroupMarkup = "[ " + group.getDrawString() + " -> " + group.getOverallWeight() + " g/mol (" + f.format((group.getOverallWeight() / weight) * 100) + "%) ]";
-				output += "<b>" + generalGroupMarkup + "</b>:<br>";
-				for(ElementSet set : group.getElementSets()){
-					output += set.getDrawString() + " -> " + set.getWeight() + " g/mol (" + f.format((set.getWeight() / group.getOverallWeight()) * 100) + "% of group, " + f.format((set.getWeight() / weight) * 100) + "% of total) <br>";
-				}
+		for(ElementGroup group : elementGroups){
+			String generalGroupMarkup = "[ " + group.getDrawString() + " -> " + group.getOverallWeight() + " g/mol (" + f.format((group.getOverallWeight() / weight) * 100) + "%) ]";
+			reason += "<b>" + generalGroupMarkup + "</b>:<br>";
+			for(ElementSet set : group.getElementSets()){
+				reason += set.getDrawString() + " -> " + set.getWeight() + " g/mol (" + f.format((set.getWeight() / group.getOverallWeight()) * 100) + "% of group, " + f.format((set.getWeight() / weight) * 100) + "% of total) <br>";
 			}
+		}
+		
+		String output = f.format(weight) + " g/mol" + reason;
+		
+		if(isPrimary) {
 			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(output, ResponseType.answer);
 		}
-		else response.addLine("<b>Weight</b>:" + f.format(weight) + " g/mol", ResponseType.weight);
+		else response.addLine(output, ResponseType.weight);
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -48,6 +49,86 @@ public abstract class Problem {
 		return response;
 	}
 	
+	public void balanceEquation(ArrayList<Compound> reactants, ArrayList<Compound> products){
+		int maxLoop = 20;
+		ArrayList<Compound> allCompounds = new ArrayList<Compound>();
+		for(Compound cmp : reactants) allCompounds.add(cmp);
+		for(Compound cmp : products) allCompounds.add(cmp);
+		
+		if(isBalanced(getElementQuantityMap(reactants), getElementQuantityMap(products))) return;
+
+		//TODO: Make recursive later. Will allow for infinite sized compound lists.
+		
+		if(allCompounds.size() == 3){
+			for(int a = 1; a < maxLoop; a ++){
+				allCompounds.get(0).setMoles(a);
+				for(int b = 1; b < maxLoop; b ++){
+					allCompounds.get(1).setMoles(b);
+					for(int c = 1; c < maxLoop; c ++){
+						allCompounds.get(2).setMoles(c);
+						if(isBalanced(getElementQuantityMap(reactants), getElementQuantityMap(products))) return;
+					}
+				}
+			}
+		}
+		else if(allCompounds.size() == 4){
+			for(int a = 1; a < maxLoop; a ++){
+				allCompounds.get(0).setMoles(a);
+				for(int b = 1; b < maxLoop; b ++){
+					allCompounds.get(1).setMoles(b);
+					for(int c = 1; c < maxLoop; c ++){
+						allCompounds.get(2).setMoles(c);
+						for(int d = 1; d < maxLoop; d ++){
+							allCompounds.get(3).setMoles(d);
+							if(isBalanced(getElementQuantityMap(reactants), getElementQuantityMap(products))) return;
+						}
+					}
+				}
+			}
+		}
+		else if(allCompounds.size() == 5){
+			for(int a = 1; a < maxLoop; a ++){
+				allCompounds.get(0).setMoles(a);
+				for(int b = 1; b < maxLoop; b ++){
+					allCompounds.get(1).setMoles(b);
+					for(int c = 1; c < maxLoop; c ++){
+						allCompounds.get(2).setMoles(c);
+						for(int d = 1; d < maxLoop; d ++){
+							allCompounds.get(3).setMoles(d);
+							for(int e = 1; e < maxLoop; e ++){
+								allCompounds.get(4).setMoles(e);
+								if(isBalanced(getElementQuantityMap(reactants), getElementQuantityMap(products))) return;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	
+	private boolean isBalanced(Map<Element, Integer> left, Map<Element, Integer> right){
+		for(Entry<Element, Integer> entry : left.entrySet()){
+			if(entry.getValue() != right.get(entry.getKey())) return false;
+		}
+		return true;
+	}
+	
+	private Map<Element, Integer> getElementQuantityMap(ArrayList<Compound> compounds){
+		Map<Element, Integer> map = new HashMap<Element, Integer>();
+		for(Compound compound : compounds){
+			for(ElementGroup group : compound.getElementGroups()){
+				for(ElementSet set : group.getElementSets()){
+					Element element = set.getElement();
+					int quantity = set.getQuantity() * group.getQuantity() * (int) (compound.getMoles());
+					if(map.containsKey(element)) map.put(element, map.get(element) + quantity);
+					else map.put(element, quantity);
+				}
+			}
+		}
+		return map;
+	}
+	
 	public Compound correctAtomCount(Compound compound){
 		int maxLoop = 30;
 		ArrayList<ElementGroup> finalGroups = compound.getElementGroups();
@@ -55,7 +136,7 @@ public abstract class Problem {
 		
 		//TODO: Make recursive later. Will allow for infinite sized groups.
 		
-		if(compound.containsOnlyNM() || compound.containsOnlyM()){
+		if(compound.containsOnlyNMAndPoly() || compound.containsOnlyMAndPoly()){
 			int fCharge = finalGroups.get(0).getCharge();
 			int sCharge = finalGroups.get(1).getCharge();
 			finalGroups.get(0).setQuantity(sCharge);
@@ -70,6 +151,33 @@ public abstract class Problem {
 				for(int b = 0; b <= maxLoop; b++){
 					finalGroups.get(1).setQuantity(b);
 					if(compound.getOverallCharge() == 0) return compound;
+				}
+			}
+		}
+		else if(finalGroups.size() == 3){
+			for(int a = 0; a <= maxLoop; a++){
+				finalGroups.get(0).setQuantity(a);
+				for(int b = 0; b <= maxLoop; b++){
+					finalGroups.get(1).setQuantity(b);
+					for(int c = 0; c <= maxLoop; c++){
+						finalGroups.get(2).setQuantity(c);
+						if(compound.getOverallCharge() == 0) return compound;
+					}
+				}
+			}
+		}
+		else if(finalGroups.size() == 4){
+			for(int a = 0; a <= maxLoop; a++){
+				finalGroups.get(0).setQuantity(a);
+				for(int b = 0; b <= maxLoop; b++){
+					finalGroups.get(1).setQuantity(b);
+					for(int c = 0; c <= maxLoop; c++){
+						finalGroups.get(2).setQuantity(c);
+						for(int d = 0; d <= maxLoop; d++){
+							finalGroups.get(3).setQuantity(d);
+							if(compound.getOverallCharge() == 0) return compound;
+						}
+					}
 				}
 			}
 		}

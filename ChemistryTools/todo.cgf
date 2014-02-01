@@ -16,18 +16,11 @@ A collection of compounds should later have a name, so as to show its structure 
 TODO:
 =====
 
-
-
 - Refactor Nomenclature, Problem, etc. code
 	- It works, but isn't clean or efficient.
 	- Move most of individual problem methods to Problem mainclass.
 		- Most problems share similar methods, could be refactored as one.
 			- Cleaner, more efficient code execution.
-- Add tap-section displays
-	- Data already sectioned off (input, answer, nomenclature, etc.)
-	- By default, show only the final answer (as attributed by data structure) in respective box.
-		- If box is tapped, show the steps that the app had to use to get to answer.
-			- EG: "Is there only two compounds? Yes. Does it begin with H? Yes. Substitute anion ending."
 - Do away with problem_type selector
 	- Ideally, app will take input and generate as much data as it can about it.
 		- EG: Input "Hydrochloric Acid + H2O"
@@ -51,4 +44,16 @@ Changelog:
 	- Package format changed to reflect new name. No longer clear split from old project adaptations.
 	- Weight, Nomenclature, Element Info completely work. Reactions, Oxidation problems somewhat work.
 	- Style formatting. 
+- Chemify v. 1.1.1
+	- Added tap-section displays (see todo:completed #1)
 
+==============
+TODO:COMPLETED
+==============
+
+- 1. Tap-section displays (v. 1.1.1)
+	- Add tap-section displays
+	- Data already sectioned off (input, answer, nomenclature, etc.)
+	- By default, show only the final answer (as attributed by data structure) in respective box.
+		- If box is tapped, show the steps that the app had to use to get to answer.
+			- EG: "Is there only two compounds? Yes. Does it begin with H? Yes. Substitute anion ending."

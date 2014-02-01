@@ -148,4 +148,11 @@ public class Controller {
 		return file;
 	}
 	
+	public static Ion getIon(String str){
+		for(Ion ion : Ion.ions){
+			if(ion.getElementString().equals(str)) return ion;
+		}
+		return Ion.ions.get(0);
+	}
+	
 }

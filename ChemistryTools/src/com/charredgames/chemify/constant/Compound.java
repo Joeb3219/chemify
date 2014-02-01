@@ -60,6 +60,15 @@ public class Compound {
 		return elementGroups.size();
 	}
 	
+	public boolean containsElement(Element element){
+		for(ElementGroup group : elementGroups){
+			for(ElementSet set : group.getElementSets()){
+				if(set.getElement() == element) return true;
+			}
+		}
+		return false;
+	}
+	
 	public boolean isHydrocarbon(){
 		if(elementGroups.size() != 1) return false;
 		if(elementGroups.get(0).getElementCount() != 2) return false;
@@ -90,6 +99,16 @@ public class Compound {
 		ArrayList<ElementSet> sets = elementGroups.get(0).getElementSets();
 		if(sets.get(0).getElement().getMetalType() == MetalType.NONMETAL) return true;
 		return false;
+	}
+	
+	public boolean containsOnlyNMAndPoly(){
+		for(ElementGroup group : elementGroups) if(!group.containsOnlyNM() && !group.isPolyatomic()) return false;
+		return true;
+	}
+	
+	public boolean containsOnlyMAndPoly(){
+		for(ElementGroup group : elementGroups) if(!group.containsOnlyM() && !group.isPolyatomic()) return false;
+		return true;
 	}
 	
 	public boolean containsOnlyNM(){

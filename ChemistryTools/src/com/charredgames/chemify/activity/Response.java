@@ -1,6 +1,8 @@
 package com.charredgames.chemify.activity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.charredgames.chemify.R;
+import com.charredgames.chemify.gui.ResponseBlock;
 import com.charredgames.chemify.gui.ResponsePanel;
 import com.charredgames.chemify.problems.ElementInfo;
 import com.charredgames.chemify.problems.Nomenclature;
@@ -25,8 +28,9 @@ import com.charredgames.chemify.problems.Weight;
 public class Response extends Activity {
 
 	private Problem problem;
+	private ArrayList<Integer> expandedViews = new ArrayList<Integer>();
+	private Map<Integer, ResponseBlock> answers = new HashMap<Integer, ResponseBlock>();
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,35 +60,20 @@ public class Response extends Activity {
 			ResponsePanel response = problem.getResponse();
 			responses = response.getResponses();
 			
-			//String responseHTML = response.getResponse();
-			//answer = android.text.Html.fromHtml(responseHTML);
-		}//else answer = new SpannedString("Problem or response returned null.");
+		}
 		
-		/*TextView txtView = new TextView(this);
-		txtView.setTextSize(15);
-		txtView.setText(answer);
-		
-		ScrollView scroll = new ScrollView(this);
-		scroll.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-		
-		RelativeLayout layout = new RelativeLayout(this);
-		layout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)); 
-		layout.addView(txtView);
-		RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) txtView.getLayoutParams();
-		layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-		txtView.setLayoutParams(layoutParams);
-		
-		scroll.addView(layout, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-		
-		setContentView(scroll);*/
 		setContentView(R.layout.problem_nomenclature);
 		
 		//Get each string that the problem returned.
 		for(String str : responses){
 			if(!str.contains("{")) continue;
+			ResponseBlock block;
 			String[] groups = str.split("[{}]");
 			String responseTypeString = groups[1];
 			Spanned responseString = Html.fromHtml(groups[2]);
+			if(groups.length == 5){
+				block = new ResponseBlock(responseString, Html.fromHtml(groups[4]));
+			}else block = new ResponseBlock(responseString);
 			ResponseType responseType = ResponseType.getTypeByString(responseTypeString);
 			switch(responseType){
 				case input:
@@ -92,15 +81,18 @@ public class Response extends Activity {
 					break;
 				case answer:
 					((TextView) findViewById(R.id.problem_answer)).setText(responseString);
+					answers.put(R.id.problem_answer, block);
 					break;
 				/*case nomenclature:
 					((TextView) findViewById(R.id.problem_nomenclature)).setText(responseString);
 					break;*/
 				case weight:
 					((TextView) findViewById(R.id.problem_weight)).setText(responseString);
+					answers.put(R.id.problem_weight, block);
 					break;
 				case oxidation:
 					((TextView) findViewById(R.id.problem_oxidation)).setText(responseString);
+					answers.put(R.id.problem_oxidation, block);
 					break;
 				default:
 					
@@ -146,6 +138,18 @@ public class Response extends Activity {
 	public void responseClicked(View view){
 		//TextView v = (TextView) view;
 		//v.setText(view.getId());
+		int id = view.getId();
+		if(!answers.containsKey(id)) return;
+		ResponseBlock block = answers.get(id);
+		if(expandedViews.contains(id)){
+			expandedViews.remove(expandedViews.indexOf(id));
+			((TextView) (view)).setText(block.getAnswer());
+		}
+		else{
+			expandedViews.add(id);
+			((TextView) (view)).setText(block.getExpanded());
+		}
+		
 	}
 	
 }

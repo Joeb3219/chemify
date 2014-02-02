@@ -3,7 +3,6 @@ package com.charredgames.chemify.problems;
 import java.util.ArrayList;
 
 import com.charredgames.chemify.Controller;
-import com.charredgames.chemify.constant.BondType;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
@@ -18,7 +17,6 @@ public class Nomenclature extends Problem{
 	}
 
 	public void solve(boolean isPrimary){
-		BondType type = BondType.IONIC;
 		String collectiveInput = "", reason = "{reason}";
 		String answer = "Oops, something went wrong.";
 		ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
@@ -27,7 +25,7 @@ public class Nomenclature extends Problem{
 		if(input.contains(" ")){
 			reason += "Does the input contain a space? Yes.<br>";
 			collectiveInput = input;
-			input = input.toLowerCase();
+			input = input.toLowerCase(Controller._LOCALE);
 			String[] inputGroups = input.split(" ");
 			//Binary acid
 			if(inputGroups[1].equalsIgnoreCase("acid")){
@@ -191,8 +189,7 @@ public class Nomenclature extends Problem{
 			else if(sets.size() == 2 && groups.size() < 2){
 				reason += "Input contains no polyatomic ions.<br>";
 				if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
-					type = BondType.IONIC_ACID;
-					answer =  "Hydro" + getAcidEnding(sets.get(1).getElement().getName().toLowerCase(), true) + " Acid";
+					answer =  "Hydro" + getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), true) + " Acid";
 					reason += "Contains hydrogen: must be an acid.<br>";
 					reason += "Binary acid - only Hydrogen and " + sets.get(1).getDrawString() + ".<br>";
 				}else{
@@ -222,14 +219,13 @@ public class Nomenclature extends Problem{
 				reason += "Input may contain polyatomic ions.<br>";
 				if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
 					reason += "Input begins with Hydrogen: acid.<br>";
-					type = BondType.IONIC_ACID;
 					if(groups.size() > 1 && groups.get(1).getIon() != null){
 						reason += "Input contains polyatomic ions: " + groups.get(1).getIon().getName() + ".<br>";
-						reason += "Converting " + groups.get(1).getIon().getName() + " to " + getAcidEnding(groups.get(1).getIon().getName().toLowerCase(), false) + " and apending 'acid' to name.<br>";
-						answer = getAcidEnding(groups.get(1).getIon().getName().toLowerCase(), false) + " Acid";
+						reason += "Converting " + groups.get(1).getIon().getName() + " to " + getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " and apending 'acid' to name.<br>";
+						answer = getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
 					}else{
 						reason += "Input does not contain polyatomic ions. Adding 'acid' to end of name.<br>";
-						answer = getAcidEnding(sets.get(1).getElement().getName().toLowerCase(), false) + " Acid";
+						answer = getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
 					}
 				}
 				else if((groups.size() == 2 || groups.size() == 3) && groups.get(0).getElementCount() == 1){

@@ -136,7 +136,7 @@ public abstract class Problem {
 		
 		//TODO: Make recursive later. Will allow for infinite sized groups.
 		
-		if(compound.containsOnlyNMAndPoly() || compound.containsOnlyMAndPoly()){
+		if((compound.containsOnlyNMAndPoly() || compound.containsOnlyMAndPoly())){
 			int fCharge = finalGroups.get(0).getCharge();
 			int sCharge = finalGroups.get(1).getCharge();
 			finalGroups.get(0).setQuantity(sCharge);
@@ -233,7 +233,7 @@ public abstract class Problem {
 		ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
 		groups.add(new ElementGroup(new ElementSet(Element.HYDROGEN, 1)));
 		
-		input = input.toLowerCase();
+		input = input.toLowerCase(Controller._LOCALE);
 		String[] inputGroups = input.split(" ");
 		//Binary acid
 		if(inputGroups[1].equalsIgnoreCase("acid")){
@@ -398,10 +398,22 @@ public abstract class Problem {
 			if(!containsPolyatomics) elementGroups.add(new ElementGroup(getElementSets(string)));
 		}
 		
-		//Organize groups so that the polyatomics always follow non polyatomics
-		Collections.sort(elementGroups);
+		ArrayList<ElementGroup> finalGroups = new ArrayList<ElementGroup>();
+		for(ElementGroup g : elementGroups){
+			boolean alreadyExists = false;
+			for(ElementGroup fg : finalGroups) {
+				if(fg.getDrawString().equals(g.getDrawString())) alreadyExists = true;
+			}
+			if(!alreadyExists) finalGroups.add(g);
+		}
 		
-		return elementGroups;
+		//Organize groups so that the polyatomics always follow non polyatomics
+		//Collections.sort(elementGroups);
+		Collections.sort(finalGroups);
+		
+		//return elementGroups;
+		return finalGroups;
+
 	}
 	
 	public static ArrayList<ElementSet> getElementSets(String string){
@@ -427,14 +439,14 @@ public abstract class Problem {
 	}
 	
 	public String normalizeString(String string, boolean upper){
-		String str = string.toLowerCase();
-		if(upper) return str.substring(0,1).toUpperCase() + str.substring(1);
+		String str = string.toLowerCase(Controller._LOCALE);
+		if(upper) return str.substring(0,1).toUpperCase(Controller._LOCALE) + str.substring(1);
 		return str;
 	}
 	
 	public String changeEnding(String string, String ending){
-		String str = string.toLowerCase();
-		string = str.substring(0,1).toUpperCase() + str.substring(1);
+		String str = string.toLowerCase(Controller._LOCALE);
+		string = str.substring(0,1).toUpperCase(Controller._LOCALE) + str.substring(1);
 		if(string.contains("orus")) return string.replace("orus", ending);
 		else if(string.contains("ygen")) return string.replace("ygen", ending);
 		else if(string.contains("ogen")) return string.replace("ogen", ending);
@@ -464,7 +476,7 @@ public abstract class Problem {
 		
 		if(!binary){
 			for(Ion ion : Ion.ions){
-				if(ion.getName().toLowerCase().contains(string)){
+				if(ion.getName().toLowerCase(Controller._LOCALE).contains(string)){
 					group = new ElementGroup(ion.getElementSet());
 					group.setIon(ion);
 					return group;
@@ -487,7 +499,7 @@ public abstract class Problem {
 			}
 			
 			for(Element element : Element.elements){
-				if(element.getName().toLowerCase().contains(string)){
+				if(element.getName().toLowerCase(Controller._LOCALE).contains(string)){
 					elementSet = new ElementSet(element, quantity);
 					break;
 				}
@@ -512,13 +524,13 @@ public abstract class Problem {
 	}
 	
 	public String getAcidEnding(String string, boolean binary){
-		String str = string.toLowerCase();
-		string = str.substring(0,1).toUpperCase() + str.substring(1);
+		String str = string.toLowerCase(Controller._LOCALE);
+		string = str.substring(0,1).toUpperCase(Controller._LOCALE) + str.substring(1);
 		if(!binary){
 			if(string.contains("ate")) return string.replace("ate", "ic");
 			else if(string.contains("ite")) return string.replace("ate", "ous");
 		}else{
-			return changeEnding(string, "ic").toLowerCase();
+			return changeEnding(string, "ic").toLowerCase(Controller._LOCALE);
 		}
 		return "Error 12";
 	}

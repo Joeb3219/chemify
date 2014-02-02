@@ -1,7 +1,5 @@
 package com.charredgames.chemify.problems;
 
-import android.R;
-
 import com.charredgames.chemify.Controller;
 
 /**

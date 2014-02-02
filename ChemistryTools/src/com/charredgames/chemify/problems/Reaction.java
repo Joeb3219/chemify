@@ -23,6 +23,10 @@ public class Reaction extends Problem{
 		ArrayList<Element> allElements = new ArrayList<Element>();
 		for(Compound c : compounds) allElementGroups.addAll(c.getElementGroups());
 		for(ElementGroup group : allElementGroups) for(ElementSet set : group.getElementSets()) allElements.add(set.getElement());
+
+		for(Compound cmp : compounds){
+			if(cmp.getOverallCharge() != 0) cmp = correctAtomCount(cmp);
+		}
 		
 		//Decomposition
 		if(compounds.size() == 1){
@@ -32,14 +36,14 @@ public class Reaction extends Problem{
 			if(compound.getElementGroups().get(0).containsOnlyM() && compound.getElementGroups().get(0).getElementCount() == 1){
 				reason += "Is the first element a metal? Yes.<br>";
 				if(compound.getElementGroups().get(1).isPolyatomic()){
-					ElementSet metal = new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1);
+					//ElementSet metal = new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1);
 					ElementGroup group = compound.getElementGroups().get(1);
-					if(Controller.getIon("CO2") == group.getIon()){
+					if(Controller.getIon("CO2") == group.getIon() || Controller.getIon("CO3") == group.getIon()){
 						reason += "Polyatomic Ion " + group.getIon().getName() + " found.<br>";
 						reason += "A metal carbonate yields a metal oxide + CO2.<br>";
-						ElementGroup metalOxide = new ElementGroup();
-						metalOxide.addElementSet(compound.getElementGroups().get(0).getElementSets().get(0));
-						metalOxide.addElementSet(new ElementSet(Element.OXYGEN, 1));
+						ArrayList<ElementGroup> metalOxide = new ArrayList<ElementGroup>();
+						metalOxide.add(new ElementGroup(new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1)));
+						metalOxide.add(new ElementGroup(new ElementSet(Element.OXYGEN, 1)));
 						answerCompounds.add(new Compound(metalOxide));
 						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
 						else{
@@ -57,9 +61,9 @@ public class Reaction extends Problem{
 					else if(Controller.getIon("ClO3") == group.getIon()){
 						reason += "Polyatomic Ion " + group.getIon().getName() + " found.<br>";
 						reason += "A metal chlorate yields a metal chloride + O2.<br>";
-						ElementGroup metalChlorate = new ElementGroup();
-						metalChlorate.addElementSet(compound.getElementGroups().get(0).getElementSets().get(0));
-						metalChlorate.addElementSet(new ElementSet(Element.CHLORINE, 1));
+						ArrayList<ElementGroup> metalChlorate = new ArrayList<ElementGroup>();
+						metalChlorate.add(new ElementGroup(new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1)));
+						metalChlorate.add(new ElementGroup(new ElementSet(Element.CHLORINE, 1)));
 						answerCompounds.add(new Compound(metalChlorate));
 						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
 						else{
@@ -75,9 +79,9 @@ public class Reaction extends Problem{
 					else if(Controller.getIon("OH") == group.getIon()){
 						reason += "Polyatomic Ion " + group.getIon().getName() + " found.<br>";
 						reason += "A metal hydroxide yields a metal oxide + H2O.<br>";
-						ElementGroup metalHydroxide = new ElementGroup();
-						metalHydroxide.addElementSet(compound.getElementGroups().get(0).getElementSets().get(0));
-						metalHydroxide.addElementSet(new ElementSet(Element.OXYGEN, 1));
+						ArrayList<ElementGroup> metalHydroxide = new ArrayList<ElementGroup>();
+						metalHydroxide.add(new ElementGroup(new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1)));
+						metalHydroxide.add(new ElementGroup(new ElementSet(Element.OXYGEN, 1)));
 						answerCompounds.add(new Compound(metalHydroxide));
 						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
 						else{
@@ -95,7 +99,7 @@ public class Reaction extends Problem{
 				}
 			}
 			if(!solved){
-				reason += "Either no metal or no CO2/ClO3/OH found.<br>";
+				reason += "Either no metal or no CO3/ClO3/OH found.<br>";
 				
 			}
 		}

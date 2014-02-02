@@ -6,10 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Locale;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -17,6 +15,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import android.content.res.AssetManager;
+import android.util.SparseArray;
 
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.problems.Prefix;
@@ -32,8 +31,8 @@ public class Controller {
 	private static AssetManager assets;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
-	public static Map<Integer, String> romanNumerals = new HashMap<Integer, String>();
-
+	public static SparseArray<String> romanNumerals = new SparseArray<String>();
+	public static final Locale _LOCALE = Locale.getDefault();
 	
 	public static void reset(AssetManager aManager){
 		assets = aManager;
@@ -60,12 +59,12 @@ public class Controller {
 	}
 	
 	public static String convertIntToNumeral(int num){
-		if(romanNumerals.containsKey(num)) return romanNumerals.get(num);
+		if(romanNumerals.get(num) != null) return romanNumerals.get(num);
 		return "I";
 	}
 	
 	public static int convertNumeralToInt(String str){
-		for(Entry<Integer, String> entry : romanNumerals.entrySet()){
+		/*for(Entry<Integer, String> entry : romanNumerals.entrySet()){
 			if(entry.getValue().equalsIgnoreCase(str)) return entry.getKey();
 		}
 		
@@ -75,7 +74,17 @@ public class Controller {
 			return 1;
 		}
 		
-		return Integer.parseInt(str);
+		return Integer.parseInt(str);*/
+		if(romanNumerals.indexOfValue(str) > 0){
+			return romanNumerals.keyAt(romanNumerals.indexOfValue(str));
+		}else{
+			try{
+				Integer.parseInt(str);
+			}catch(Exception e){
+				return 1;
+			}
+			return Integer.parseInt(str);
+		}
 	}
 	
 	private static void setElements(String path){

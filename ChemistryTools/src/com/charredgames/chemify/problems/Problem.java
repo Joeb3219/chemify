@@ -129,10 +129,12 @@ public abstract class Problem {
 		return map;
 	}
 	
-	public Compound correctAtomCount(Compound compound){
+	public static Compound correctAtomCount(Compound compound){
 		int maxLoop = 30;
 		ArrayList<ElementGroup> finalGroups = compound.getElementGroups();
 		//TODO: Make recursive later. Will allow for infinite sized groups.
+		
+		if(compound.getOverallCharge() == 0) return compound;
 		
 		if(finalGroups.size() == 1){
 			if(finalGroups.get(0).getElementCount() == 1){
@@ -405,10 +407,12 @@ public abstract class Problem {
 			if(!containsPolyatomics) elementGroups.add(new ElementGroup(getElementSets(string)));
 		}
 		
-		ArrayList<ElementGroup> finalGroups = new ArrayList<ElementGroup>();
-		
+		for(ElementGroup group : elementGroups) if(group.getElementSets().size() == 0) elementGroups.remove(group);
 		//Organize groups so that the polyatomics always follow non polyatomics
 		Collections.sort(elementGroups);
+		
+		//Create a compound so that correctAtomCount can be ran, updated groups.
+		correctAtomCount(new Compound(elementGroups));
 		
 		return elementGroups;
 	}

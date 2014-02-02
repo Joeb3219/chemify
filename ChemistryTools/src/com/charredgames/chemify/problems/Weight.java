@@ -49,6 +49,7 @@ public class Weight extends Problem{
 		if(isPrimary) {
 			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(output, ResponseType.answer);
+			addProblemToPanel(response, new Nomenclature(input));
 		}
 		else response.addLine(output, ResponseType.weight);
 	}

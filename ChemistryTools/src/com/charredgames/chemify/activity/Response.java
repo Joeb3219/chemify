@@ -62,7 +62,9 @@ public class Response extends Activity {
 			
 		}
 		
-		setContentView(R.layout.problem_nomenclature);
+		if(selectedOperation.equalsIgnoreCase("nomenclature")) setContentView(R.layout.problem_nomenclature);
+		else if(selectedOperation.equalsIgnoreCase("weight")) setContentView(R.layout.problem_weight);
+		else setContentView(R.layout.problem_nomenclature);
 		
 		//Get each string that the problem returned.
 		for(String str : responses){
@@ -83,9 +85,10 @@ public class Response extends Activity {
 					((TextView) findViewById(R.id.problem_answer)).setText(responseString);
 					answers.put(R.id.problem_answer, block);
 					break;
-				/*case nomenclature:
+				case nomenclature:
 					((TextView) findViewById(R.id.problem_nomenclature)).setText(responseString);
-					break;*/
+					answers.put(R.id.problem_nomenclature, block);
+					break;
 				case weight:
 					((TextView) findViewById(R.id.problem_weight)).setText(responseString);
 					answers.put(R.id.problem_weight, block);
@@ -133,8 +136,6 @@ public class Response extends Activity {
 	}
 
 	public void responseClicked(View view){
-		//TextView v = (TextView) view;
-		//v.setText(view.getId());
 		int id = view.getId();
 		if(!answers.containsKey(id)) return;
 		ResponseBlock block = answers.get(id);

@@ -4,7 +4,7 @@ package com.charredgames.chemify.constant;
  * @author Joe Boyle <joe@charredgames.com>
  * @since Nov 18, 2013
  */
-public class ElementSet {
+public class ElementSet{
 
 	private Element element;
 	private int quantity;
@@ -40,5 +40,6 @@ public class ElementSet {
 		if(num == 0) num = 1;
 		this.quantity = Math.abs(num);
 	}
+
 	
 }

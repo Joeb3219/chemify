@@ -1,6 +1,7 @@
 package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -121,5 +122,5 @@ public class ElementGroup implements Comparable<ElementGroup>{
 		for(ElementSet set : elementSets) if(set.getElement().getMetalType() == MetalType.NONMETAL) return false;
 		return true;
 	}
-	
+
 }

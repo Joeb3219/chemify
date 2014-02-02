@@ -8,6 +8,7 @@ import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.constant.MetalType;
 
 public class Reaction extends Problem{
 
@@ -100,7 +101,11 @@ public class Reaction extends Problem{
 			}
 			if(!solved){
 				reason += "Either no metal or no CO3/ClO3/OH found.<br>";
+				for(ElementSet set : compound.getElementGroups().get(0).getElementSets()){
+					answerCompounds.add(new Compound(new ElementGroup(new ElementSet(set.getElement(), 1))));
+				}
 				
+				for(Compound c : answerCompounds) correctAtomCount(c);
 			}
 		}
 		//Other reactions, makes sure not 0 compounds.
@@ -173,25 +178,101 @@ public class Reaction extends Problem{
 					
 				}
 			}
+			//Combustion
+			else if(compounds.size() == 2 && (compounds.get(0).isHydrocarbon() && (compounds.get(1).getNumberOfElements() == 1 && compounds.get(1).getElementGroups().get(0).getElementSets().get(0).getElement() == Element.OXYGEN))){
+				reason += "Hydrocarbon + Oxygen yields CO2 + H2O: combustion reaction.<br>";
+				ElementGroup co2 = new ElementGroup(Controller.getIon("CO2").getElementSet());
+				co2.setIon(Controller.getIon("CO2"));
+				answerCompounds.add(new Compound(co2));
+				ElementGroup water = new ElementGroup();
+				water.addElementSet(new ElementSet(Element.HYDROGEN, 2));
+				water.addElementSet(new ElementSet(Element.OXYGEN, 1));
+				answerCompounds.add(new Compound(water));
+			}
 			//Redox (single)
-			else if(compounds.size() == 2 && ( (firstCompound.getNumberOfElements() == 1 && secondCompound.getNumberOfElements() == 2) || (firstCompound.getNumberOfElements() == 2 && secondCompound.getNumberOfElements() == 1))){
+			else if(compounds.size() == 2 && ( (firstCompound.getNumberOfMolecules() == 1 && secondCompound.getNumberOfMolecules() == 2) || (firstCompound.getNumberOfMolecules() == 2 && secondCompound.getNumberOfMolecules() == 1))){
+				reason += "One compound has two groups, the other has one: Redox.<br>";
+				if(firstCompound.getNumberOfElements() == 1){
+					Compound tmp = firstCompound;
+					secondCompound = firstCompound;
+					firstCompound = tmp;
+				}
+				Element replacer = secondCompound.getElementGroups().get(0).getElementSets().get(0).getElement();
+				Element replaced = firstCompound.getElementGroups().get(0).getElementSets().get(0).getElement();
+				if((replacer.getMetalType() == MetalType.NONMETAL || replaced.getMetalType() == MetalType.NONMETAL) || replacer.getActivityNumber() > replaced.getActivityNumber()){
+					reason += "Replacing element is either a nonmetal or has a higher activity number.<br>";
+					reason += replacer.getName() + " can replace " + replaced.getName() + ".<br>";
+					ArrayList<ElementGroup> newGroups = new ArrayList<ElementGroup>();
+					newGroups.add(new ElementGroup(new ElementSet(replacer, 1)));
+					if(firstCompound.getElementGroups().size() == 1) newGroups.add(new ElementGroup(new ElementSet(firstCompound.getElementGroups().get(0).getElementSets().get(1).getElement(), 1)));
+					else{
+						ElementGroup g = new ElementGroup();
+						if(firstCompound.getElementGroups().get(1).isPolyatomic()) {
+							for(ElementSet set : firstCompound.getElementGroups().get(1).getIon().getElementSet()) g.addElementSet(set);
+							g.setIon(firstCompound.getElementGroups().get(1).getIon());
+						}
+						else for(ElementSet set : firstCompound.getElementGroups().get(1).getElementSets()) g.addElementSet(new ElementSet(set.getElement(), 1));
+						newGroups.add(g);
+					}
+					answerCompounds.add(new Compound(newGroups));
+					if(answerCompounds.get(0).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(0));
+					answerCompounds.add(new Compound(new ElementGroup(new ElementSet(replaced, 1))));
+				}else reason += "No reaction: " + replacer.getName() + "'s activity number is less than " + replaced.getName() + "'s.<br>";
+			}
+			//Double Replacement
+			else if(compounds.size() == 2 && firstCompound.getNumberOfMolecules() > 1 && secondCompound.getNumberOfMolecules() > 1){
+				reason += "All other checks failed: must be double replacement.<br>";
+				
+				ArrayList<ElementGroup> c1 = new ArrayList<ElementGroup>();
+				ArrayList<ElementGroup> c2 = new ArrayList<ElementGroup>();
+				if(firstCompound.getElementGroups().size() == 1){
+					ElementGroup fGroup = firstCompound.getElementGroups().get(0);
+					c1.add(new ElementGroup(new ElementSet(fGroup.getElementSets().get(1).getElement(), 1)));
+					c2.add(new ElementGroup(new ElementSet(fGroup.getElementSets().get(0).getElement(), 1)));
+				}else{
+					ElementGroup fGroup = firstCompound.getElementGroups().get(0);
+					ElementGroup sGroup = firstCompound.getElementGroups().get(1);
+					c1.add(sGroup);
+					c2.add(fGroup);
+				}
+				
+				if(secondCompound.getElementGroups().size() == 1){
+					ElementGroup fGroup = secondCompound.getElementGroups().get(0);
+					c1.add(new ElementGroup(new ElementSet(fGroup.getElementSets().get(0).getElement(), 1)));
+					c2.add(new ElementGroup(new ElementSet(fGroup.getElementSets().get(1).getElement(), 1)));
+				}else{
+					ElementGroup fGroup = secondCompound.getElementGroups().get(0);
+					ElementGroup sGroup = secondCompound.getElementGroups().get(1);
+					c1.add(fGroup);
+					c2.add(sGroup);
+				}
+				
+				answerCompounds.add(new Compound(c1));
+				answerCompounds.add(new Compound(c2));
+				
+				if(answerCompounds.get(0).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(0));
+				if(answerCompounds.get(1).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(1));
 				
 			}
+			else reason += "Unknown reaction type.<br>";
 		}
 		
-		balanceEquation(compounds, answerCompounds);
-		
-		for(int i = 0; i < compounds.size(); i ++){
-			answer += compounds.get(i).getDrawString();
-			if(i < compounds.size() - 1) answer += " + ";
-			else answer += " -> ";
+		if(answerCompounds.size() == 0){
+			answer += "No reaction.";
+		}else{
+			balanceEquation(compounds, answerCompounds);
+			
+			for(int i = 0; i < compounds.size(); i ++){
+				answer += compounds.get(i).getDrawString();
+				if(i < compounds.size() - 1) answer += " + ";
+				else answer += " -> ";
+			}
+			
+			for(int i = 0; i < answerCompounds.size(); i ++){
+				answer += answerCompounds.get(i).getDrawString();
+				if(i < answerCompounds.size() - 1) answer += " + ";
+			}
 		}
-		
-		for(int i = 0; i < answerCompounds.size(); i ++){
-			answer += answerCompounds.get(i).getDrawString();
-			if(i < answerCompounds.size() - 1) answer += " + ";
-		}
-		
 		answer += reason;
 		
 		if(isPrimary){

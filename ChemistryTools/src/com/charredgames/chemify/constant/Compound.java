@@ -1,6 +1,7 @@
 package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -17,7 +18,23 @@ public class Compound {
 	}
 	
 	public Compound(ArrayList<ElementGroup> groups){
-		this.elementGroups = groups;
+		ArrayList<ElementGroup> newGroups = new ArrayList<ElementGroup>();
+		for(ElementGroup group : groups) {
+			ElementGroup g = new ElementGroup();
+			ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
+			if(group.isPolyatomic()) {
+				sets.addAll(group.getIon().getElementSet());
+				g.setIon(group.getIon());
+			}
+			else{
+				for(ElementSet set : group.getElementSets()){
+					sets.add(new ElementSet(set.getElement(), set.getQuantity()));
+				}
+			}
+			for(ElementSet set : sets) g.addElementSet(set);
+			newGroups.add(g);
+		}
+		this.elementGroups = newGroups;
 	}
 
 	public Compound(ElementGroup group){
@@ -56,6 +73,17 @@ public class Compound {
 		return num;
 	}
 	
+	public int getNumberOfMolecules(){
+		int num = 0;
+		
+		for(ElementGroup group : elementGroups){
+			if(group.isPolyatomic()) num += 1;
+			else num += group.getElementSets().size();
+		}
+		
+		return num;
+	}
+	
 	public int getNumberOfElementGroups(){
 		return elementGroups.size();
 	}
@@ -74,6 +102,7 @@ public class Compound {
 		if(elementGroups.get(0).getElementCount() != 2) return false;
 		ArrayList<ElementSet> sets = elementGroups.get(0).getElementSets();
 		if(sets.get(0).getElement() == Element.HYDROGEN && sets.get(1).getElement() == Element.CARBON) return true;
+		if(sets.get(0).getElement() == Element.CARBON && sets.get(1).getElement() == Element.HYDROGEN) return true;
 		return false;
 	}
 	

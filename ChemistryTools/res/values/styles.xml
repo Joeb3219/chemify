@@ -23,6 +23,12 @@
         <item name = "android:textColor">#FFFFFF</item>
         <!--<item name = "android:drawableLeft">@drawable/answer_label</item> -->
     </style>
+
+    <style name = "problem_nomenclature" parent = "@style/problem_generic">
+        <item name = "android:background">#717171</item>
+        <item name = "android:textColor">#FFFFFF</item>
+       <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
+    </style>
     
     <style name = "problem_weight" parent = "@style/problem_generic">
         <item name = "android:background">#888888</item>
@@ -35,6 +41,7 @@
         <item name = "android:textColor">#FFFFFF</item>
        <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
     </style>
+    
     
     <!--
         Base application theme, dependent on API level. This theme is replaced

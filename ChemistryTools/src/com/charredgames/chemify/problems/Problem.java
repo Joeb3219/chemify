@@ -132,9 +132,16 @@ public abstract class Problem {
 	public Compound correctAtomCount(Compound compound){
 		int maxLoop = 30;
 		ArrayList<ElementGroup> finalGroups = compound.getElementGroups();
-		
-		
 		//TODO: Make recursive later. Will allow for infinite sized groups.
+		
+		if(finalGroups.size() == 1){
+			if(finalGroups.get(0).getElementCount() == 1){
+				Element element = finalGroups.get(0).getElementSets().get(0).getElement();
+				if(element == Element.HYDROGEN || element == Element.NITROGEN || element == Element.OXYGEN || element == Element.FLUORINE || 
+						element == Element.CHLORINE || element == Element.IODINE || element == Element.BROMINE) finalGroups.get(0).getElementSets().get(0).setQuantity(2);
+			}
+			return compound;
+		}
 		
 		if((compound.containsOnlyNMAndPoly() || compound.containsOnlyMAndPoly())){
 			int fCharge = finalGroups.get(0).getCharge();
@@ -376,11 +383,11 @@ public abstract class Problem {
 						g.setIon(ion);
 						g.setQuantity(quan);
 						elementGroups.add(g);
-						group.replace(ion.getElementString(), "");
+						group = group.replace(ion.getElementString(), "");
 					}
 				}
 				if(!containsPolyatomics) elementGroups.add(new ElementGroup(getElementSets(group)));
-				string.replace(group, ""); //Allows for the quantity approach to work if same thing is repeated in input.
+				string = string.replace(group, ""); //Allows for the quantity approach to work if same thing is repeated in input.
 			}
 		}else{
 			boolean containsPolyatomics = false;
@@ -391,29 +398,19 @@ public abstract class Problem {
 					group.setCharge(ion.getCharge());
 					group.setIon(ion);
 					elementGroups.add(group);
-					string.replace(ion.getElementString(), "");
+					string = string.replace(ion.getElementString(), "");
 				}
 			}
-			
+			if(containsPolyatomics && (!string.equals("") || !string.equals(" "))) elementGroups.add(new ElementGroup(getElementSets(string)));
 			if(!containsPolyatomics) elementGroups.add(new ElementGroup(getElementSets(string)));
 		}
 		
 		ArrayList<ElementGroup> finalGroups = new ArrayList<ElementGroup>();
-		for(ElementGroup g : elementGroups){
-			boolean alreadyExists = false;
-			for(ElementGroup fg : finalGroups) {
-				if(fg.getDrawString().equals(g.getDrawString())) alreadyExists = true;
-			}
-			if(!alreadyExists) finalGroups.add(g);
-		}
 		
 		//Organize groups so that the polyatomics always follow non polyatomics
-		//Collections.sort(elementGroups);
-		Collections.sort(finalGroups);
+		Collections.sort(elementGroups);
 		
-		//return elementGroups;
-		return finalGroups;
-
+		return elementGroups;
 	}
 	
 	public static ArrayList<ElementSet> getElementSets(String string){

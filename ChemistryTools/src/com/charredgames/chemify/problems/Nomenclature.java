@@ -17,161 +17,15 @@ public class Nomenclature extends Problem{
 	}
 
 	public void solve(boolean isPrimary){
-		String collectiveInput = "", reason = "{reason}";
-		String answer = "Oops, something went wrong.";
+		String collectiveInput = "";
+		String answer = "";
 		ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
 		ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
 		//Convert name to formula
 		if(input.contains(" ")){
-			reason += "Does the input contain a space? Yes.<br>";
 			collectiveInput = input;
-			input = input.toLowerCase(Controller._LOCALE);
-			String[] inputGroups = input.split(" ");
-			//Binary acid
-			if(inputGroups[1].equalsIgnoreCase("acid")){
-				reason += "Does input contain the word 'acid'? Yes.<br>";
-				if(inputGroups[0].contains("hydro")){
-					reason += "The word 'hydro' was found: Binary Acid.<br>";
-					inputGroups[0] = inputGroups[0].replace("hydro", "");
-					ElementGroup acidSet = revertEnding(inputGroups[0], true);
-					reason += "The first element must be hydrogen.<br>";
-					reason += "Converted " + inputGroups[0] + " to " + acidSet.getDrawString() + ".<br>";
-					ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
-					
-					if((acidSet.getCharge() + hydrogen.getCharge()) == 0){
-						reason += "Charges of " + hydrogen.getDrawString() + " and " + acidSet.getDrawString() + " equal zero when added.<br>";
-						answer = hydrogen.getDrawString() + acidSet.getDrawString();
-					}
-					else{
-						reason += "Charges of " + hydrogen.getDrawString() + " and " + acidSet.getDrawString() + " do not equal zero when added.<br>";
-						reason += "Setting the quantities of each to the opposite's charge.<br>";
-						int acidElementCharge = acidSet.getCharge();
-						int hydrogenCharge = hydrogen.getCharge();
-						hydrogen.setQuantity(acidElementCharge);
-						acidSet.setQuantity(hydrogenCharge);
-						answer = hydrogen.getDrawString() + acidSet.getDrawString();
-					}
-				//Non-binary acid.
-				}else{
-					reason += "The word 'hydro' wasn't found: non-binary acid.<br>";
-					ElementGroup acidGroup = revertEnding(inputGroups[0], false);
-					ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
-					reason += "First element must be Hydrogen.<br>";
-					reason += "Converted " + inputGroups[0] + " to " + acidGroup.getDrawString() + ".<br>";
-					
-					if((acidGroup.getCharge() + hydrogen.getCharge()) == 0){
-						reason += "Charges of " + hydrogen.getDrawString() + " and " + acidGroup.getDrawString() + " equal zero when added.";
-						answer = hydrogen.getDrawString() + acidGroup.getDrawString();
-					}else{
-						reason += "Charges of " + hydrogen.getDrawString() + " and " + acidGroup.getDrawString() + " do not equal zero when added.<br>";
-						reason += "Setting the quantities of each to the opposite's charge.<br>";
-						int acidGroupCharge = acidGroup.getCharge();
-						int hydrogenCharge = hydrogen.getCharge();
-						
-						hydrogen.setQuantity(acidGroupCharge);
-						acidGroup.setQuantity(hydrogenCharge);
-						
-						answer = hydrogen.getDrawString() + acidGroup.getDrawString();
-					}
-				}
-			//Not an acid.
-			}else{
-				reason += "Does input contain the word 'acid'? No.<br>";
-				//Contains roman-numerals
-				if(input.contains("(")){
-					reason += "Input contains roman numerals? No.<br>";
-					input = input.replace(" ", "");
-					String[] split = input.split("[()]");
-					int anionCharge = Controller.convertNumeralToInt(split[1]);
-					reason += "Roman numeral " + split[1] + " recognized as " + anionCharge + ": anion's charge.<br>";
-					
-					ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
-					reason += "Converted input string " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
-					ElementGroup cation;
-					if(split[2].contains("ide")) cation = revertEnding(split[2], true);
-					else cation = revertEnding(split[2], false);
-					
-					reason += "Converted input string " + split[2] + " to " + cation.getDrawString() + " (cation).<br>";
-					
-					anion.setCharge(anionCharge);
-					
-					if((anion.getCharge() + cation.getCharge()) == 0){
-						reason += "Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " equal zero when added.<br>";
-						answer = anion.getDrawString() + cation.getDrawString();
-					}
-					else{
-						reason += "Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " do not equal zero when added.<br>";
-						reason += "Setting the quantities of each to the opposite's charge.<br>";
-						int cationCharge = cation.getCharge();
-						
-						anion.setQuantity(cationCharge / anion.getQuantity());
-						cation.setQuantity(anionCharge / cation.getQuantity());
-						
-						answer = anion.getDrawString() + cation.getDrawString();
-						
-					}
-					
-				}else{
-					reason += "Input contains roman numerals? No.<br>";
-					boolean usesPrefixes = false;
-					for(Prefix prefix : Controller.prefixes){
-						if(input.contains(prefix.getPrinted()) || input.contains(prefix.getSecondary())){
-							if(!(input.contains("ide") && prefix == Prefix.di) && !(input.contains("sodi") && prefix == Prefix.di)){
-								usesPrefixes = true;
-								break; 
-							}
-						}
-					}
-					
-					//Really easy, just decipher prefixes.
-					if(usesPrefixes){
-						reason += "Input contains at least one prefix (mon, dec, etc).<br>";
-						String[] split = input.split(" ");
-						ElementGroup anion = revertEnding(split[0], true);
-						ElementGroup cation = revertEnding(split[1], true);
-						
-						reason += "Converted input string  " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
-						reason += "Converted input string  " + split[1] + " to " + cation.getDrawString() + " (cation).<br>";
-						
-						answer = anion.getDrawString() + cation.getDrawString();
-						
-					}else{
-						reason += "Input does not contain at least one prefix.<br>";
-						String[] split = input.split(" ");
-						ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
-						reason += "Converted input string " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
-						ElementGroup cation;
-						if(split[1].contains("ide")) cation = revertEnding(split[1], true);
-						else cation = revertEnding(split[1], false);
-						reason += "Converted input string " + split[1] + " to " + cation.getDrawString() + " (cation).<br>";
-						
-						if((anion.getCharge() + cation.getCharge()) == 0) {
-							reason += "Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " equal zero when added.<br>";
-							answer = anion.getDrawString() + cation.getDrawString();
-						}
-						else{
-							reason += "Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " do not equal zero when added.<br>";
-							reason += "Setting the quantities of each to the opposite's charge.<br>";
-							int anionCharge = anion.getCharge();
-							int cationCharge = cation.getCharge();
-							
-							anion.setQuantity(cationCharge / anion.getQuantity());
-							cation.setQuantity(anionCharge / cation.getQuantity());
-							
-							answer = anion.getDrawString() + cation.getDrawString();
-						}
-						
-					}
-					
-				}
-			}
-			
-			if(!answer.equalsIgnoreCase("Oops, something went wrong.")){
-				groups = getElementGroups(stripHtmlTags(answer));
-				for(ElementGroup group : groups){
-					for(ElementSet set : group.getElementSets()) sets.add(set);
-				}
-			}
+			groups = convertNameToElementGroups(collectiveInput, this);
+			for(ElementGroup group : groups) answer += group.getDrawString();
 		//Convert formula to name.
 		}else{
 			reason += "Does the input contain a space? No.<br>";
@@ -246,14 +100,13 @@ public class Nomenclature extends Problem{
 						output += " " + normalizeString(groups.get(1).getIon().getName(), true);
 						reason += "Converting " + groups.get(1).getIon().getName() + " to " + normalizeString(groups.get(1).getIon().getName(), true) + ".<br>";
 					}
-					else output += "Oops, something went wrong!";
 					
 					answer = output;
 				}
 			}
 		}
 		
-		answer += reason;
+		answer += reason.intern();
 		
 		if(isPrimary){
 			response.addLine(collectiveInput, ResponseType.input);
@@ -263,6 +116,161 @@ public class Nomenclature extends Problem{
 		}else{
 			response.addLine(answer, ResponseType.nomenclature);
 		}
+	}
+	
+	public static ArrayList<ElementGroup> convertNameToElementGroups(String input, Problem problem){
+		boolean addReason = false;
+		if(problem != null && problem instanceof Nomenclature)addReason = true;
+		if(!input.contains(" ")) return Problem.getElementGroups(input);
+		String answer = "";
+		ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
+		groups.add(new ElementGroup(new ElementSet(Element.HYDROGEN, 1)));
+		
+		input = input.toLowerCase(Controller._LOCALE);
+		if(addReason) problem.reason +="Does the input contain a space? Yes.<br>";
+		String[] inputGroups = input.split(" ");
+		//Binary acid
+		if(inputGroups[1].equalsIgnoreCase("acid")){
+			if(addReason) problem.reason +="Does input contain the word 'acid'? Yes.<br>";
+			if(inputGroups[0].contains("hydro")){
+				if(addReason) problem.reason +="The word 'hydro' was found: Binary Acid.<br>";
+				inputGroups[0] = inputGroups[0].replace("hydro", "");
+				ElementGroup acidSet = revertEnding(inputGroups[0], true);
+				if(addReason) problem.reason +="The first element must be hydrogen.<br>";
+				if(addReason) problem.reason +="Converted " + inputGroups[0] + " to " + acidSet.getDrawString() + ".<br>";
+				ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
+				
+				if((acidSet.getCharge() + hydrogen.getCharge()) == 0){
+					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidSet.getDrawString() + " equal zero when added.<br>";
+					answer = hydrogen.getDrawString() + acidSet.getDrawString();
+				}
+				else{
+					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidSet.getDrawString() + " do not equal zero when added.<br>";
+					if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+					int acidElementCharge = acidSet.getCharge();
+					int hydrogenCharge = hydrogen.getCharge();
+					hydrogen.setQuantity(acidElementCharge);
+					acidSet.setQuantity(hydrogenCharge);
+					answer = hydrogen.getDrawString() + acidSet.getDrawString();
+				}
+			//Non-binary acid.
+			}else{
+				if(addReason) problem.reason +="The word 'hydro' wasn't found: non-binary acid.<br>";
+				ElementGroup acidGroup = revertEnding(inputGroups[0], false);
+				ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
+				if(addReason) problem.reason +="First element must be Hydrogen.<br>";
+				if(addReason) problem.reason +="Converted " + inputGroups[0] + " to " + acidGroup.getDrawString() + ".<br>";
+				
+				if((acidGroup.getCharge() + hydrogen.getCharge()) == 0){
+					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidGroup.getDrawString() + " equal zero when added.";
+					answer = hydrogen.getDrawString() + acidGroup.getDrawString();
+				}else{
+					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidGroup.getDrawString() + " do not equal zero when added.<br>";
+					if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+					int acidGroupCharge = acidGroup.getCharge();
+					int hydrogenCharge = hydrogen.getCharge();
+					
+					hydrogen.setQuantity(acidGroupCharge);
+					acidGroup.setQuantity(hydrogenCharge);
+					
+					answer = hydrogen.getDrawString() + acidGroup.getDrawString();
+				}
+			}
+		//Not an acid.
+		}else{
+			if(addReason) problem.reason +="Does input contain the word 'acid'? No.<br>";
+			//Contains roman-numerals
+			if(input.contains("(")){
+				if(addReason) problem.reason +="Input contains roman numerals? No.<br>";
+				input = input.replace(" ", "");
+				String[] split = input.split("[()]");
+				int anionCharge = Controller.convertNumeralToInt(split[1]);
+				if(addReason) problem.reason +="Roman numeral " + split[1] + " recognized as " + anionCharge + ": anion's charge.<br>";
+				
+				ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
+				if(addReason) problem.reason +="Converted input string " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
+				ElementGroup cation;
+				if(split[2].contains("ide")) cation = revertEnding(split[2], true);
+				else cation = revertEnding(split[2], false);
+				
+				if(addReason) problem.reason +="Converted input string " + split[2] + " to " + cation.getDrawString() + " (cation).<br>";
+				
+				anion.setCharge(anionCharge);
+				
+				if((anion.getCharge() + cation.getCharge()) == 0){
+					if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " equal zero when added.<br>";
+					answer = anion.getDrawString() + cation.getDrawString();
+				}
+				else{
+					if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " do not equal zero when added.<br>";
+					if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+					int cationCharge = cation.getCharge();
+					
+					anion.setQuantity(cationCharge / anion.getQuantity());
+					cation.setQuantity(anionCharge / cation.getQuantity());
+					
+					answer = anion.getDrawString() + cation.getDrawString();
+					
+				}
+				
+			}else{
+				if(addReason) problem.reason +="Input contains roman numerals? No.<br>";
+				boolean usesPrefixes = false;
+				for(Prefix prefix : Controller.prefixes){
+					if(input.contains(prefix.getPrinted()) || input.contains(prefix.getSecondary())){
+						if(!(input.contains("ide") && prefix == Prefix.di) && !(input.contains("sodi") && prefix == Prefix.di)){
+							usesPrefixes = true;
+							break; 
+						}
+					}
+				}
+				
+				//Really easy, just decipher prefixes.
+				if(usesPrefixes){
+					if(addReason) problem.reason +="Input contains at least one prefix (mon, dec, etc).<br>";
+					String[] split = input.split(" ");
+					ElementGroup anion = revertEnding(split[0], true);
+					ElementGroup cation = revertEnding(split[1], true);
+					
+					if(addReason) problem.reason +="Converted input string  " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
+					if(addReason) problem.reason +="Converted input string  " + split[1] + " to " + cation.getDrawString() + " (cation).<br>";
+					
+					answer = anion.getDrawString() + cation.getDrawString();
+					
+				}else{
+					if(addReason) problem.reason +="Input does not contain at least one prefix.<br>";
+					String[] split = input.split(" ");
+					ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
+					if(addReason) problem.reason +="Converted input string " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
+					ElementGroup cation;
+					if(split[1].contains("ide")) cation = revertEnding(split[1], true);
+					else cation = revertEnding(split[1], false);
+					if(addReason) problem.reason +="Converted input string " + split[1] + " to " + cation.getDrawString() + " (cation).<br>";
+					
+					if((anion.getCharge() + cation.getCharge()) == 0) {
+						if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " equal zero when added.<br>";
+						answer = anion.getDrawString() + cation.getDrawString();
+					}
+					else{
+						if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " do not equal zero when added.<br>";
+						if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+						int anionCharge = anion.getCharge();
+						int cationCharge = cation.getCharge();
+						
+						anion.setQuantity(cationCharge / anion.getQuantity());
+						cation.setQuantity(anionCharge / cation.getQuantity());
+						
+						answer = anion.getDrawString() + cation.getDrawString();
+					}
+					
+				}
+				
+			}
+		}
+		
+		if(!answer.equalsIgnoreCase("")) groups = Problem.getElementGroups(Controller.stripHtmlTags(answer));
+		
+		return groups;
 	}
 	
 }

@@ -23,7 +23,7 @@ public abstract class Problem {
 	protected String input = null;
 	protected ResponsePanel response;
 	protected ArrayList<ElementGroup> elementGroups;
-	protected String leftSide, rightSide;
+	protected String leftSide, rightSide, reason = new String("{reason}");
 	protected ResponseType type = ResponseType.nomenclature;
 	
 	public Problem(String input){
@@ -58,6 +58,10 @@ public abstract class Problem {
 		if(isBalanced(getElementQuantityMap(reactants), getElementQuantityMap(products))) return;
 
 		//TODO: Make recursive later. Will allow for infinite sized compound lists.
+		
+		for(int i = 0; i < maxLoop || isBalanced(getElementQuantityMap(reactants), getElementQuantityMap(products)); i++){
+			
+		}
 		
 		if(allCompounds.size() == 3){
 			for(int a = 1; a < maxLoop; a ++){
@@ -228,7 +232,7 @@ public abstract class Problem {
 		String[] compoundStrings = string.split("\\+");
 		for(String str : compoundStrings){
 			ArrayList<ElementGroup> elementGroups;
-			elementGroups = convertNameToElementGroups(str);
+			elementGroups = Nomenclature.convertNameToElementGroups(str, null);
 
 			compounds.add(new Compound(elementGroups));
 		}
@@ -236,121 +240,6 @@ public abstract class Problem {
 		return compounds;
 	}
 	
-	public ArrayList<ElementGroup> convertNameToElementGroups(String input){
-		if(!input.contains(" ")) return getElementGroups(input);
-		String answer = "";
-		ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
-		groups.add(new ElementGroup(new ElementSet(Element.HYDROGEN, 1)));
-		
-		input = input.toLowerCase(Controller._LOCALE);
-		String[] inputGroups = input.split(" ");
-		//Binary acid
-		if(inputGroups[1].equalsIgnoreCase("acid")){
-			if(inputGroups[0].contains("hydro")){
-				inputGroups[0] = inputGroups[0].replace("hydro", "");
-				ElementGroup acidSet = revertEnding(inputGroups[0], true);
-				ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
-				
-				if((acidSet.getCharge() + hydrogen.getCharge()) == 0) answer = hydrogen.getDrawString() + acidSet.getDrawString();
-				else{
-					int acidElementCharge = acidSet.getCharge();
-					int hydrogenCharge = hydrogen.getCharge();
-					hydrogen.setQuantity(acidElementCharge);
-					acidSet.setQuantity(hydrogenCharge);
-					answer = hydrogen.getDrawString() + acidSet.getDrawString();
-				}
-			//Non-binary acid.
-			}else{
-				ElementGroup acidGroup = revertEnding(inputGroups[0], false);
-				ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
-				
-				if((acidGroup.getCharge() + hydrogen.getCharge()) == 0){
-					answer = hydrogen.getDrawString() + acidGroup.getDrawString();
-				}else{
-					int acidGroupCharge = acidGroup.getCharge();
-					int hydrogenCharge = hydrogen.getCharge();
-					
-					hydrogen.setQuantity(acidGroupCharge);
-					acidGroup.setQuantity(hydrogenCharge);
-					
-					answer = hydrogen.getDrawString() + acidGroup.getDrawString();
-				}
-			}
-		//Not an acid.
-		}else{
-			//Contains roman-numerals
-			if(input.contains("(")){
-				input = input.replace(" ", "");
-				String[] split = input.split("[()]");
-				int anionCharge = Controller.convertNumeralToInt(split[1]);
-				
-				ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
-				ElementGroup cation;
-				if(split[2].contains("ide")) cation = revertEnding(split[2], true);
-				else cation = revertEnding(split[2], false);
-				
-				anion.setCharge(anionCharge);
-				
-				if((anion.getCharge() + cation.getCharge()) == 0) answer = anion.getDrawString() + cation.getDrawString();
-				else{
-					int cationCharge = cation.getCharge();
-					
-					anion.setQuantity(cationCharge / anion.getQuantity());
-					cation.setQuantity(anionCharge / cation.getQuantity());
-					
-					answer = anion.getDrawString() + cation.getDrawString();
-					
-				}
-				
-			}else{
-				boolean usesPrefixes = false;
-				for(Prefix prefix : Controller.prefixes){
-					if(input.contains(prefix.getPrinted()) || input.contains(prefix.getSecondary())){
-						if(!(input.contains("ide") && prefix == Prefix.di) && !(input.contains("sodi") && prefix == Prefix.di)){
-							System.out.println(prefix);
-							usesPrefixes = true;
-							break; 
-						}
-					}
-				}
-				
-				//Really easy, just decipher prefixes.
-				if(usesPrefixes){
-					String[] split = input.split(" ");
-					ElementGroup anion = revertEnding(split[0], true);
-					ElementGroup cation = revertEnding(split[1], true);
-					
-					answer = anion.getDrawString() + cation.getDrawString();
-					
-				}else{
-
-					String[] split = input.split(" ");
-					ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
-					ElementGroup cation;
-					if(split[1].contains("ide")) cation = revertEnding(split[1], true);
-					else cation = revertEnding(split[1], false);
-					
-					if((anion.getCharge() + cation.getCharge()) == 0) answer = anion.getDrawString() + cation.getDrawString();
-					else{
-						int anionCharge = anion.getCharge();
-						int cationCharge = cation.getCharge();
-						
-						anion.setQuantity(cationCharge / anion.getQuantity());
-						cation.setQuantity(anionCharge / cation.getQuantity());
-						
-						answer = anion.getDrawString() + cation.getDrawString();
-					}
-					
-				}
-				
-			}
-		}
-		
-		if(!answer.equalsIgnoreCase("")) groups = getElementGroups(stripHtmlTags(answer));
-		
-		return groups;
-	}
-
 	public static ArrayList<ElementGroup> getElementGroups(String string){
 		ArrayList<ElementGroup> elementGroups = new ArrayList<ElementGroup>();
 		
@@ -433,7 +322,6 @@ public abstract class Problem {
 				quan = Integer.parseInt(quantity);
 			}
 				elementSets.add(new ElementSet(Element.getElement(current), quan));
-			
 		}
 		
 		return elementSets;
@@ -449,19 +337,17 @@ public abstract class Problem {
 		String str = string.toLowerCase(Controller._LOCALE);
 		string = str.substring(0,1).toUpperCase(Controller._LOCALE) + str.substring(1);
 		if(string.contains("orus")) return string.replace("orus", ending);
-		else if(string.contains("ygen")) return string.replace("ygen", ending);
-		else if(string.contains("ogen")) return string.replace("ogen", ending);
-		else if(string.contains("ium")) return string.replace("ium", ending);
-		else if(string.contains("ine")) return string.replace("ine", ending);
-		else if(string.contains("ur")) return string.replace("ur", ending);
-		else if(string.contains("on")) return string.replace("on", ending);
-		return "Error 11";
+		if(string.contains("ygen")) return string.replace("ygen", ending);
+		if(string.contains("ogen")) return string.replace("ogen", ending);
+		if(string.contains("ium")) return string.replace("ium", ending);
+		if(string.contains("ine")) return string.replace("ine", ending);
+		if(string.contains("ur")) return string.replace("ur", ending);
+		if(string.contains("on")) return string.replace("on", ending);
+		return string + ending;
 	}
 
-	public ElementGroup revertEnding(String string, boolean binary){
+	public static ElementGroup revertEnding(String string, boolean binary){
 		ElementGroup group = new ElementGroup();
-		//if(string.contains("ate")) string = string.replace("ate", "");
-		//if(string.contains("ite")) string = string.replace("ite", "");
 		if(!binary){
 			if(string.contains("ous")) string = string.replace("ous", "ite");
 			if(string.contains("ic")) {
@@ -515,32 +401,14 @@ public abstract class Problem {
 		return group;
 	}
 	
-	public static String stripHtmlTags(String str){
-		if(str.contains("<sub>")) str = str.replace("<sub>", "");
-		if(str.contains("</sub>")) str = str.replace("</sub>", "");
-		if(str.contains("<sup>")) str = str.replace("<sup>", "");
-		if(str.contains("</sup>")) str = str.replace("</sup>", "");
-		if(str.contains("<br>")) str = str.replace("<br>", "");
-		return str;
-	}
-	
 	public String getAcidEnding(String string, boolean binary){
 		String str = string.toLowerCase(Controller._LOCALE);
 		string = str.substring(0,1).toUpperCase(Controller._LOCALE) + str.substring(1);
 		if(!binary){
 			if(string.contains("ate")) return string.replace("ate", "ic");
 			else if(string.contains("ite")) return string.replace("ate", "ous");
-		}else{
-			return changeEnding(string, "ic").toLowerCase(Controller._LOCALE);
-		}
-		return "Error 12";
-	}
-	
-	public boolean mapContainsInteger(Map<Element, Integer> map, int num){
-		for(Entry<Element, Integer> e : map.entrySet()){
-			if(e.getValue() == num) return true;
-		}
-		return false;
+		}else return changeEnding(string, "ic").toLowerCase(Controller._LOCALE);
+		return string;
 	}
 	
 	public void addProblemToPanel(ResponsePanel panel, Problem problem){
@@ -552,16 +420,4 @@ public abstract class Problem {
 		return type;
 	}
 	
-	public int getGCD(int a, int b){
-		if(a == 0 || b == 0) return a+b;
-		return getGCD(b, a%b);
-	}
-	
-	public int getGCD(ArrayList<Integer> list){
-		int result = list.get(0);
-		
-		for(int i = 1; i < list.size(); i ++) result = getGCD(result, list.get(i));
-		
-		return result;
-	}
 }

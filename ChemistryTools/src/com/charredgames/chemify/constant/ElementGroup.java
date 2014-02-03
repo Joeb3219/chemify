@@ -1,7 +1,6 @@
 package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>

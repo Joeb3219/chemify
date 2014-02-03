@@ -12,7 +12,6 @@ public class Weight extends Problem{
 
 	public Weight(String input) {
 		super(input);
-		//elementGroups = getElementGroups(input);
 	}
 	
 	public Weight(ArrayList<ElementGroup> elementGroups){
@@ -21,10 +20,10 @@ public class Weight extends Problem{
 
 	public void solve(boolean isPrimary){
 		double weight = 0.00;
-		String collectiveInput = "", reason = "{reason}";
+		String collectiveInput = "";
 		
 		if(input != null) {
-			elementGroups = convertNameToElementGroups(input);
+			elementGroups = Nomenclature.convertNameToElementGroups(input, null);
 			collectiveInput = input;
 		}else{
 			for(ElementGroup group : elementGroups){

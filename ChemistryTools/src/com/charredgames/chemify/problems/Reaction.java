@@ -17,7 +17,7 @@ public class Reaction extends Problem{
 	}
 
 	public void solve(boolean isPrimary){
-		String answer = "", reason = "{reason}", collectiveInput = input;
+		String answer = "", collectiveInput = input;
 		ArrayList<Compound> compounds = getCompoundsFromString(input);
 		ArrayList<Compound> answerCompounds = new ArrayList<Compound>();
 		ArrayList<ElementGroup> allElementGroups = new ArrayList<ElementGroup>();
@@ -265,7 +265,8 @@ public class Reaction extends Problem{
 			for(int i = 0; i < compounds.size(); i ++){
 				answer += compounds.get(i).getDrawString();
 				if(i < compounds.size() - 1) answer += " + ";
-				else answer += " -> ";
+				//One direction arrow: &#8594;
+				else answer += " &#8652; ";
 			}
 			
 			for(int i = 0; i < answerCompounds.size(); i ++){

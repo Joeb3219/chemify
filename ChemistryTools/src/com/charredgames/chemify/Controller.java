@@ -64,17 +64,6 @@ public class Controller {
 	}
 	
 	public static int convertNumeralToInt(String str){
-		/*for(Entry<Integer, String> entry : romanNumerals.entrySet()){
-			if(entry.getValue().equalsIgnoreCase(str)) return entry.getKey();
-		}
-		
-		try{
-			Integer.parseInt(str);
-		}catch(Exception e){
-			return 1;
-		}
-		
-		return Integer.parseInt(str);*/
 		if(romanNumerals.indexOfValue(str) > 0){
 			return romanNumerals.keyAt(romanNumerals.indexOfValue(str));
 		}else{
@@ -162,6 +151,15 @@ public class Controller {
 			if(ion.getElementString().equals(str)) return ion;
 		}
 		return Ion.ions.get(0);
+	}
+
+	public static String stripHtmlTags(String str){
+		if(str.contains("<sub>")) str = str.replace("<sub>", "");
+		if(str.contains("</sub>")) str = str.replace("</sub>", "");
+		if(str.contains("<sup>")) str = str.replace("<sup>", "");
+		if(str.contains("</sup>")) str = str.replace("</sup>", "");
+		if(str.contains("<br>")) str = str.replace("<br>", "");
+		return str;
 	}
 	
 }

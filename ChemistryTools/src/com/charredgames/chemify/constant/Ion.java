@@ -2,6 +2,7 @@ package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
 
+import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.problems.Problem;
 
 public class Ion{
@@ -49,7 +50,7 @@ public class Ion{
 		
 		String str = "";
 		for(ElementGroup group : compound.getElementGroups()){
-			str += Problem.stripHtmlTags(group.getDrawString());
+			str += Controller.stripHtmlTags(group.getDrawString());
 		}
 
 		System.out.println(elementString + " " + str);

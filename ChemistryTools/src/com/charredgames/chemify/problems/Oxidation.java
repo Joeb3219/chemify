@@ -107,4 +107,11 @@ public class Oxidation extends Problem{
 		
 	}
 	
+	private boolean mapContainsInteger(Map<Element, Integer> map, int num){
+		for(Entry<Element, Integer> e : map.entrySet()){
+			if(e.getValue() == num) return true;
+		}
+		return false;
+	}
+	
 }

@@ -14,7 +14,10 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.preference.PreferenceManager;
 import android.util.SparseArray;
 
 import com.charredgames.chemify.constant.Ion;
@@ -33,6 +36,7 @@ public class Controller {
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
 	public static SparseArray<String> romanNumerals = new SparseArray<String>();
 	public static final Locale _LOCALE = Locale.getDefault();
+	public static boolean autoFormat = true, calculateReasoning = true, sendUsage = false;
 	
 	public static void reset(AssetManager aManager){
 		assets = aManager;
@@ -160,6 +164,14 @@ public class Controller {
 		if(str.contains("</sup>")) str = str.replace("</sup>", "");
 		if(str.contains("<br>")) str = str.replace("<br>", "");
 		return str;
+	}
+	
+	public static void reloadSettings(Context context){
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		
+		autoFormat = prefs.getBoolean("pref_auto-format", true);
+		calculateReasoning = prefs.getBoolean("pref_send-data", true);
+		sendUsage = prefs.getBoolean("pref_send-data", false);
 	}
 	
 }

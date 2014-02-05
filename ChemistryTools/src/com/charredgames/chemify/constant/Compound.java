@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Compound {
 
 	private ArrayList<ElementGroup> elementGroups = new ArrayList<ElementGroup>();
-	private int moles = 1;
+	private int moles = 1, soluble = -1;
 	
 	public Compound(ArrayList <ElementGroup> groups, int moles){
 		this.elementGroups = groups;
@@ -170,6 +170,17 @@ public class Compound {
 		}
 		
 		return charge;
+	}
+	
+	public boolean isSoluble(){
+		if(soluble != -1){
+			if(soluble == 1) return true;
+			return false;
+		}
+
+		
+		
+		return false;
 	}
 	
 }

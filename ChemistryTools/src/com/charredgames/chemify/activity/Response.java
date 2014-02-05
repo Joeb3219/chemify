@@ -1,8 +1,17 @@
 package com.charredgames.chemify.activity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,8 +22,10 @@ import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.gui.ResponseBlock;
 import com.charredgames.chemify.gui.ResponsePanel;
@@ -101,6 +112,26 @@ public class Response extends Activity {
 					
 					break;
 			}
+		}
+		
+		if(Controller.sendUsage){
+			 HttpClient httpclient = new DefaultHttpClient();
+       		 HttpPost httppost = new HttpPost("http://www.charredgames.com/usagedata.php");
+       		    
+       		 try {
+       			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+       			nameValuePairs.add(new BasicNameValuePair("version", Controller._VERSION));
+       			nameValuePairs.add(new BasicNameValuePair("problem", selectedOperation));
+       			nameValuePairs.add(new BasicNameValuePair("input", problem.getInput()));
+       			String r = "";
+       			if(problem.getResponse() != null) r = problem.getResponse().getResponse();
+       			nameValuePairs.add(new BasicNameValuePair("output", r));
+       			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+       			
+       			new SendPost(httpclient, httppost).execute();
+       			System.out.println("sent!");
+
+       		} catch (IOException e) {}
 		}
 		
 	}

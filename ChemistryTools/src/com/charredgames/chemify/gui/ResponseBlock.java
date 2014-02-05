@@ -1,5 +1,7 @@
 package com.charredgames.chemify.gui;
 
+import com.charredgames.chemify.Controller;
+
 import android.text.Html;
 import android.text.Spanned;
 
@@ -25,7 +27,7 @@ public class ResponseBlock {
 	}
 	
 	public CharSequence getExpanded(){
-		if(expanded == null) return removeWhiteSpace(answer);
+		if(expanded == null || !Controller.calculateReasoning) return removeWhiteSpace(answer);
 		return removeWhiteSpace(Html.fromHtml(Html.toHtml(expanded) + "<b>" + Html.toHtml(answer) + "</b>"));
 	}
 	

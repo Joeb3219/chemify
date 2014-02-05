@@ -30,7 +30,7 @@ import com.charredgames.chemify.problems.ResponseType;
  */
 public class Controller {
 
-	public static final String _VERSION = "1.0.1";
+	public static final String _VERSION = "1.2.0";
 	private static AssetManager assets;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
@@ -170,7 +170,7 @@ public class Controller {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		
 		autoFormat = prefs.getBoolean("pref_auto-format", true);
-		calculateReasoning = prefs.getBoolean("pref_send-data", true);
+		calculateReasoning = prefs.getBoolean("pref_calculate-reasoning", true);
 		sendUsage = prefs.getBoolean("pref_send-data", false);
 	}
 	

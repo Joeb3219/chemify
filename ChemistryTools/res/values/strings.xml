@@ -13,12 +13,18 @@
     <string name = "bugReport_notes_default">The calculated answer was incorrect.</string>
     <string name = "bugReport_email_hint">adam@johndoe.com</string>
     
+    <string name = "prefCat_performance">Performance</string>
     <string name = "pref_auto_format_title">Auto format input</string>
     <string name = "pref_auto_format_summary">Apply default styling to inputs to improve appearance.</string>
-    <string name = "pref_calculate_reasoning_title">Provide reasoning in answer</string>
+    <string name = "pref_calculate_reasoning_title">Provide reasoning</string>
     <string name = "pref_calculate_reasoning_summary">Tapping an answer will show the reasoning used to calculate the answer.</string>
     <string name = "pref_send_data_title">Send usage data</string>
     <string name = "pref_send_data_summary">Send the Chemify developers usage data (inputs + results) to help them find bugs.</string>
+    
+    <string name = "prefCat_defaults">Constant values</string>
+    <string name = "prefButton_elements_title">Edit Elements</string>
+    <string name = "prefButton_polyatomics_title">Edit Polyatomic Ions</string>
+    <string name = "prefButton_constants_title">Edit Constants</string>
     
     <string-array name = "problem_types">
         <item>Element Info</item>

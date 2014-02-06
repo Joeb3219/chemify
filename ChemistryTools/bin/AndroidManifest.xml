@@ -42,6 +42,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.charredgames.chemify.MainActivity" />
         </activity>
+        
+        <activity
+            android:name="com.charredgames.chemify.activity.ElementEdit"
+            android:label="@string/prefButton_elements_title"
+            android:parentActivityName="com.charredgames.chemify.activity.ElementEdit" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charredgames.chemify.SettingsActivity" />
+			<intent-filter>
+				<action android:name="com.charredgames.chemify.activity.ElementEdit" />
+				<category android:name="android.intent.category.DEFAULT" />
+       		</intent-filter>
+        </activity>
     </application>
 
 </manifest>

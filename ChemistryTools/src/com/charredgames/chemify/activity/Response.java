@@ -22,7 +22,6 @@ import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.charredgames.chemify.Controller;
@@ -34,6 +33,7 @@ import com.charredgames.chemify.problems.Nomenclature;
 import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.Reaction;
 import com.charredgames.chemify.problems.ResponseType;
+import com.charredgames.chemify.problems.Solubility;
 import com.charredgames.chemify.problems.Weight;
 
 public class Response extends Activity {
@@ -63,6 +63,7 @@ public class Response extends Activity {
 		else if(selectedOperation.equalsIgnoreCase("nomenclature")) problem = new Nomenclature(input);
 		else if(selectedOperation.equalsIgnoreCase("weight")) problem = new Weight(input);
 		else if(selectedOperation.equalsIgnoreCase("Predict Reactions")) problem = new Reaction(input);
+		else if(selectedOperation.equalsIgnoreCase("Solubility")) problem = new Solubility(input);
 		else problem = new Nomenclature(input);
 		
 		problem.solve(true);
@@ -75,6 +76,7 @@ public class Response extends Activity {
 		
 		if(selectedOperation.equalsIgnoreCase("nomenclature")) setContentView(R.layout.problem_nomenclature);
 		else if(selectedOperation.equalsIgnoreCase("weight")) setContentView(R.layout.problem_weight);
+		else if(selectedOperation.equalsIgnoreCase("solubility")) setContentView(R.layout.problem_solubility);
 		else setContentView(R.layout.problem_nomenclature);
 		
 		//Get each string that the problem returned.
@@ -104,6 +106,10 @@ public class Response extends Activity {
 					((TextView) findViewById(R.id.problem_weight)).setText(responseString);
 					answers.put(R.id.problem_weight, block);
 					break;
+				/*case solubility:
+					((TextView) findViewById(R.id.problem_solubility)).setText(responseString);
+					answers.put(R.id.problem_solubility, block);
+					break;*/
 				case oxidation:
 					((TextView) findViewById(R.id.problem_oxidation)).setText(responseString);
 					answers.put(R.id.problem_oxidation, block);

@@ -9,14 +9,6 @@ package com.charredgames.chemify;
 
 public final class R {
     public static final class array {
-        /** <item>Oxidation</item>
-		<item>Dimensional Analysis</item>
-		<item>Thermochem</item>
-		<item>Stoichiometry</item>
-		<item>Hess Law</item>
-		<item>Complete Ionic</item>
-		<item>Solubility</item> 
-         */
         public static final int problem_types=0x7f070000;
     }
     public static final class attr {
@@ -61,7 +53,8 @@ public final class R {
         public static final int problem_nomenclature=0x7f030002;
         public static final int problem_oxidation=0x7f030003;
         public static final int problem_reactions=0x7f030004;
-        public static final int problem_weight=0x7f030005;
+        public static final int problem_solubility=0x7f030005;
+        public static final int problem_weight=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -113,11 +106,11 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080006;
+        public static final int AppBaseTheme=0x7f080007;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080007;
+        public static final int AppTheme=0x7f080008;
         /** <item name = "android:drawableLeft">@drawable/answer_label</item> 
          */
         public static final int problem_answer=0x7f080002;
@@ -133,6 +126,9 @@ public final class R {
         /**  <item name = "android:drawableLeft">@drawable/oxidation_label</item> 
          */
         public static final int problem_oxidation=0x7f080005;
+        /**  <item name = "android:drawableLeft">@drawable/oxidation_label</item> 
+         */
+        public static final int problem_solubility=0x7f080006;
         /**  <item name = "android:drawableLeft">@drawable/weight_label</item> 
          */
         public static final int problem_weight=0x7f080004;

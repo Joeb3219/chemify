@@ -2,6 +2,8 @@ package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
 
+import com.charredgames.chemify.Controller;
+
 /**
  * @author Joe Boyle <joe@charredgames.com>
  * @since Jan 22, 2014
@@ -139,6 +141,27 @@ public class Compound {
 		return true;
 	}
 	
+	public boolean containsOnlyG1AndIon(Ion ion){
+		for(ElementGroup group : elementGroups){
+			if(group.getIon() == null){
+				for(ElementSet set : group.getElementSets()){
+					if(set.getElement().getGroup() != 1) return false;
+				}
+			}
+			else if(group.getIon() != ion) return false;
+		}
+		return true;
+	}
+
+	public boolean containsOnlyGroupAndElement(int group, Element element){
+		for(ElementGroup g : elementGroups){
+			for(ElementSet set : g.getElementSets()){
+				if(set.getElement() != element && set.getElement().getGroup() != group) return false;
+			}
+		}
+		return true;
+	}
+	
 	public boolean containsOnlyNM(){
 		for(ElementGroup group : elementGroups) if(!group.containsOnlyNM()) return false;
 		return true;
@@ -172,6 +195,22 @@ public class Compound {
 		return charge;
 	}
 	
+	public boolean containsPolyatomic(Ion ion){
+		for(ElementGroup group : elementGroups){
+			if(group.getIon() != null && group.getIon() == ion) return true;
+		}
+		return false;
+	}
+	
+	public boolean allElementsInGroup(int group){
+		for(ElementGroup g : elementGroups){
+			for(ElementSet set : g.getElementSets()){
+				if(set.getElement().getGroup() != group) return false;
+			}
+		}
+		return true;
+	}
+
 	public boolean isSoluble(){
 		if(soluble != -1){
 			if(soluble == 1) return true;

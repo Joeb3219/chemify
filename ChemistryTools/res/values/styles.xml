@@ -42,6 +42,12 @@
        <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
     </style>
     
+    <style name = "problem_solubility" parent = "@style/problem_generic">
+        <item name = "android:background">#494949</item>
+        <item name = "android:textColor">#FFFFFF</item>
+       <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
+    </style>
+    
     
     <!--
         Base application theme, dependent on API level. This theme is replaced

@@ -11,6 +11,7 @@ import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
+import com.charredgames.chemify.constant.Equation;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.gui.ResponsePanel;
 
@@ -226,8 +227,33 @@ public abstract class Problem {
 		return weight;
 	}
 		
+	public Equation getEquationFromString(String str){
+		Equation equation = new Equation();
+		if(str.contains(" +")) str = str.replace(" +", "+");
+		if(str.contains("+ ")) str = str.replace("+ ", "+");
+		if(str.contains(" + ")) str = str.replace(" + ", "+");
+		if(str.contains(" >")) str = str.replace(" >", ">");
+		if(str.contains("> ")) str = str.replace("> ", ">");
+		if(str.contains(" > ")) str = str.replace(" > ", ">");
+		if(str.contains(" ->")) str = str.replace(" >", ">");
+		if(str.contains("-> ")) str = str.replace("> ", ">");
+		if(str.contains(" -> ")) str = str.replace(" > ", ">");
+		if(str.contains(" &#8652;")) str = str.replace(" >", ">");
+		if(str.contains("&#8652; ")) str = str.replace("> ", ">");
+		if(str.contains(" &#8652; ")) str = str.replace(" > ", ">");
+		String[] sides = str.split("\\>");
+		
+		for(int i = 0; i < sides.length; i++){
+			equation.addCompounds(getCompoundsFromString(sides[i]), i);
+		}
+		
+		return equation;
+	}
+	
 	public ArrayList<Compound> getCompoundsFromString(String string){
 		ArrayList<Compound> compounds = new ArrayList<Compound>();
+		if(string.contains(" +")) string = string.replace(" +", "+");
+		if(string.contains("+ ")) string = string.replace("+ ", "+");
 		if(string.contains(" + ")) string = string.replace(" + ", "+");
 		String[] compoundStrings = string.split("\\+");
 		for(String str : compoundStrings){

@@ -34,23 +34,19 @@
         android:key = "prefCat_defaults"
     >
         
-        <PreferenceScreen
-            android:key = "prefButton_elements"
-            android:title = "@string/prefButton_elements_title"
-            android:persistent= "false">
-        </PreferenceScreen>
+        <Preference android:title = "@string/prefButton_elements_title">
+            <intent 
+                android:action = "com.charredgames.chemify.activity.ElementEdit"
+            />
+        </Preference>
         
-        <PreferenceScreen
-            android:key = "prefButton_polyatomics"
-            android:title = "@string/prefButton_polyatomics_title"
-            android:persistent= "false">
-        </PreferenceScreen>
+        <Preference
+            android:title = "@string/prefButton_polyatomics_title">
+        </Preference>
         
-        <PreferenceScreen
-            android:key = "prefButton_constants"
-            android:title = "@string/prefButton_constants_title"
-            android:persistent= "false">
-        </PreferenceScreen>
+        <Preference
+            android:title = "@string/prefButton_constants_title">
+        </Preference>
         
     </PreferenceCategory>
     

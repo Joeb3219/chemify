@@ -26,6 +26,7 @@ public abstract class Problem {
 	protected ArrayList<ElementGroup> elementGroups;
 	protected String leftSide, rightSide, reason = new String("{reason}");
 	protected ResponseType type = ResponseType.nomenclature;
+	protected Equation equation = null;
 	
 	public Problem(String input){
 		this.input = input;
@@ -36,6 +37,10 @@ public abstract class Problem {
 	public Problem(ArrayList<ElementGroup> elementGroups){
 		this.elementGroups = elementGroups;
 		response = new ResponsePanel();
+	}
+	
+	public Problem(Equation equation){
+		this.equation = equation;
 	}
 	
 	public String getInput(){

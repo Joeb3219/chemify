@@ -62,4 +62,21 @@ public class Equation {
 		else right.addAll(cmps);
 	}
 	
+	public String getDrawString(){
+		String answer = "";
+		
+		for(Compound c : left){
+			answer += c.getDrawString();
+			if(left.get(left.size() - 1) != c) answer += " + ";
+			else if(hasProducts()) answer += " &#8652; ";
+		}
+
+		for(Compound c : right){
+			answer += c.getDrawString();
+			if(right.get(right.size() - 1) != c) answer += " + ";
+		}
+		
+		return answer;
+	}
+	
 }

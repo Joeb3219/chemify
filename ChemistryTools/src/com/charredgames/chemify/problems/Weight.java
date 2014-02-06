@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
+import com.charredgames.chemify.constant.Equation;
 
 public class Weight extends Problem{
 
@@ -18,6 +19,10 @@ public class Weight extends Problem{
 		super(elementGroups);
 	}
 
+	public Weight(Equation equation){
+		super(equation);
+	}
+	
 	public void solve(boolean isPrimary){
 		double weight = 0.00;
 		String collectiveInput = "";
@@ -25,6 +30,8 @@ public class Weight extends Problem{
 		if(input != null) {
 			elementGroups = Nomenclature.convertNameToElementGroups(input, null);
 			collectiveInput = input;
+		}else if(equation != null){
+			collectiveInput = equation.getDrawString();
 		}else{
 			for(ElementGroup group : elementGroups){
 				collectiveInput += group.getDrawString();

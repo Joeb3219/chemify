@@ -26,10 +26,10 @@
 		/>   
 		
 		<TextView
-			android:id = "@+id/problem_oxidation"
-			style = "@style/problem_oxidation"    
+			android:id = "@+id/problem_solubility"
+			style = "@style/problem_solubility"    
 		/>
-        
+		
     </LinearLayout>
 
 </ScrollView>

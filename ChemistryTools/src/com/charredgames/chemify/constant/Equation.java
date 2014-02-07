@@ -79,4 +79,14 @@ public class Equation {
 		return answer;
 	}
 	
+	public double getMass(){
+		double mass = 0.00;
+		for(Compound c : left) mass += c.getMass();
+		return mass;
+	}
+
+	public void balance(){
+		
+	}
+	
 }

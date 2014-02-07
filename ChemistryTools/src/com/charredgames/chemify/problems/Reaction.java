@@ -7,6 +7,7 @@ import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
+import com.charredgames.chemify.constant.Equation;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.constant.MetalType;
 
@@ -257,10 +258,14 @@ public class Reaction extends Problem{
 			else reason += "Unknown reaction type.<br>";
 		}
 		
+		equation = new Equation();
+		
 		if(answerCompounds.size() == 0){
 			answer += "No reaction.";
 		}else{
 			balanceEquation(compounds, answerCompounds);
+			equation.addCompounds(compounds, 0);
+			equation.addCompounds(answerCompounds, 1);
 			
 			for(int i = 0; i < compounds.size(); i ++){
 				answer += compounds.get(i).getDrawString();
@@ -274,11 +279,16 @@ public class Reaction extends Problem{
 				if(i < answerCompounds.size() - 1) answer += " + ";
 			}
 		}
+		
+		if(equation.getAllCompounds().size() == 0) equation.addCompounds(compounds, 0);
+		
 		answer += reason;
 		
 		if(isPrimary){
 			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(answer, ResponseType.answer);
+			addProblemToPanel(response, new Weight(equation));
+			addProblemToPanel(response, new Solubility(equation));
 		}else{
 			response.addLine(answer, ResponseType.reactions);
 		}

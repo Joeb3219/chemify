@@ -13,11 +13,15 @@ public class Solubility extends Problem{
 		super(input);
 	}
 
+	public Solubility(Equation equation){
+		super(equation);
+	}
+	
 	public void solve(boolean isPrimary){
 		String collectiveInput, answer = "";
 		collectiveInput = input;
 		
-		Equation equation = getEquationFromString(input);
+		if(equation == null) equation = getEquationFromString(input);
 		ArrayList<Compound> compounds = equation.getAllCompounds();
 		
 		for(Compound compound : compounds){
@@ -65,7 +69,8 @@ public class Solubility extends Problem{
 				continue;
 			}
 			reason += "Compound doesn't contain SO3, CO3, CrO4, or PO4, or has no G1 metals.<br>";
-			answer += " insoluble.<br>";
+			answer += " insoluble.";
+			if(compounds.get(compounds.size() - 1) != compound) answer += "<br>";
 			reason += "Compound failed all checks.<br>";
 		}
 		

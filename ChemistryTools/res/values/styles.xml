@@ -31,7 +31,7 @@
     </style>
     
     <style name = "problem_weight" parent = "@style/problem_generic">
-        <item name = "android:background">#888888</item>
+        <item name = "android:background">#494949</item>
         <item name = "android:textColor">#FFFFFF</item>
        <!-- <item name = "android:drawableLeft">@drawable/weight_label</item> -->
     </style>
@@ -43,7 +43,7 @@
     </style>
     
     <style name = "problem_solubility" parent = "@style/problem_generic">
-        <item name = "android:background">#494949</item>
+        <item name = "android:background">#747578</item>
         <item name = "android:textColor">#FFFFFF</item>
        <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
     </style>

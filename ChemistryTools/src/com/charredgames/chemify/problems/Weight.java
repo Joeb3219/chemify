@@ -3,6 +3,7 @@ package com.charredgames.chemify.problems;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
 import com.charredgames.chemify.constant.Equation;
@@ -25,39 +26,56 @@ public class Weight extends Problem{
 	
 	public void solve(boolean isPrimary){
 		double weight = 0.00;
-		String collectiveInput = "";
+		String collectiveInput, answer = "";
 		
-		if(input != null) {
-			elementGroups = Nomenclature.convertNameToElementGroups(input, null);
-			collectiveInput = input;
-		}else if(equation != null){
-			collectiveInput = equation.getDrawString();
-		}else{
-			for(ElementGroup group : elementGroups){
-				collectiveInput += group.getDrawString();
+		if(equation == null){
+			if(input != null) equation = getEquationFromString(input);
+			else{
+				Compound c = new Compound(elementGroups);
+				equation = new Equation();
+				equation.addCompound(c, 0);
 			}
 		}
 		
-		for(ElementGroup group : elementGroups) weight += group.getOverallWeight();
+		collectiveInput = equation.getDrawString();
+		
+		ArrayList<Compound> compounds = new ArrayList<Compound>();
+		compounds.addAll(equation.getReactants());
+		compounds.addAll(equation.getProducts());
 		
 		DecimalFormat f = new DecimalFormat("##.00");
+
+		weight = equation.getMass();
 		
-		for(ElementGroup group : elementGroups){
-			String generalGroupMarkup = "[ " + group.getDrawString() + " -> " + group.getOverallWeight() + " g/mol (" + f.format((group.getOverallWeight() / weight) * 100) + "%) ]";
-			reason += "<b>" + generalGroupMarkup + "</b>:<br>";
-			for(ElementSet set : group.getElementSets()){
-				reason += set.getDrawString() + " -> " + set.getWeight() + " g/mol (" + f.format((set.getWeight() / group.getOverallWeight()) * 100) + "% of group, " + f.format((set.getWeight() / weight) * 100) + "% of total) <br>";
+		for(Compound c : compounds){
+			reason += "<b>[" + c.getDrawString() + ": " + c.getMass() + " g (" + f.format((c.getMass() / weight) * 100) + "%) ]</b>:<br>";
+			for(ElementGroup g : c.getElementGroups()){
+				for(ElementSet set : g.getElementSets()){
+					reason += set.getDrawString() + " -> " + set.getWeight() + " g/mol (" + f.format((set.getWeight() / c.getMass()) * 100) + "% of group, " + f.format((set.getWeight() / weight) * 100) + "% of total) <br>";
+				}
 			}
+			if(compounds.size() > 1) answer += c.getDrawString() + ": ";
+			answer += c.getMass();
+			if(compounds.size() == 1) answer += " g/mol";
+			else answer += " grams<br>";
 		}
 		
-		String output = f.format(weight) + " g/mol" + reason;
+		/*if(equation.hasProducts()){
+			for(Compound c : equation.getReactants()){
+				answer += 
+			}
+		}*/
+		
+		if(compounds.size() > 1) answer += "Overall weight: " + f.format(weight) + " grams";
+		
+		answer += reason;
 		
 		if(isPrimary) {
 			response.addLine(collectiveInput, ResponseType.input);
-			response.addLine(output, ResponseType.answer);
+			response.addLine(answer, ResponseType.answer);
 			addProblemToPanel(response, new Nomenclature(input));
 		}
-		else response.addLine(output, ResponseType.weight);
+		else response.addLine(answer, ResponseType.weight);
 	}
 	
 }

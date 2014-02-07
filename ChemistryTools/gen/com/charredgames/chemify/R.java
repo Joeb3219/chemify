@@ -34,15 +34,16 @@ public final class R {
         public static final int weight_label=0x7f020007;
     }
     public static final class id {
-        public static final int action_bug=0x7f0a000b;
-        public static final int action_settings=0x7f0a000a;
+        public static final int action_bug=0x7f0a000c;
+        public static final int action_settings=0x7f0a000b;
         public static final int bugReport_email=0x7f0a0003;
         public static final int bugReport_notes=0x7f0a0004;
         public static final int edit_input=0x7f0a0001;
         public static final int problem_answer=0x7f0a0006;
         public static final int problem_input=0x7f0a0005;
-        public static final int problem_nomenclature=0x7f0a0009;
+        public static final int problem_nomenclature=0x7f0a000a;
         public static final int problem_oxidation=0x7f0a0008;
+        public static final int problem_solubility=0x7f0a0009;
         public static final int problem_type=0x7f0a0000;
         public static final int problem_weight=0x7f0a0007;
         public static final int submit=0x7f0a0002;

@@ -41,6 +41,7 @@ public abstract class Problem {
 	
 	public Problem(Equation equation){
 		this.equation = equation;
+		response = new ResponsePanel();
 	}
 	
 	public String getInput(){

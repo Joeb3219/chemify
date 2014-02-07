@@ -77,6 +77,7 @@ public class Response extends Activity {
 		if(selectedOperation.equalsIgnoreCase("nomenclature")) setContentView(R.layout.problem_nomenclature);
 		else if(selectedOperation.equalsIgnoreCase("weight")) setContentView(R.layout.problem_weight);
 		else if(selectedOperation.equalsIgnoreCase("solubility")) setContentView(R.layout.problem_solubility);
+		else if(selectedOperation.equalsIgnoreCase("predict reactions")) setContentView(R.layout.problem_reactions);
 		else setContentView(R.layout.problem_nomenclature);
 		
 		//Get each string that the problem returned.
@@ -106,10 +107,10 @@ public class Response extends Activity {
 					((TextView) findViewById(R.id.problem_weight)).setText(responseString);
 					answers.put(R.id.problem_weight, block);
 					break;
-				/*case solubility:
+				case solubility:
 					((TextView) findViewById(R.id.problem_solubility)).setText(responseString);
 					answers.put(R.id.problem_solubility, block);
-					break;*/
+					break;
 				case oxidation:
 					((TextView) findViewById(R.id.problem_oxidation)).setText(responseString);
 					answers.put(R.id.problem_oxidation, block);

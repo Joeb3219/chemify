@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
@@ -17,21 +18,22 @@ public class MainActivity extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.charredgames.chemify.MESSAGE";
 	public static Spinner problem_type;
+	private static final String STATE_INPUT = "state_input";
+	private static final String STATE_PTYPE = "ptype_value";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		problem_type = (Spinner) findViewById(R.id.problem_type);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.problem_types, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		problem_type.setAdapter(adapter);
-
 		
 		Controller.reset(this.getAssets());
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -51,7 +53,17 @@ public class MainActivity extends Activity {
 		super.onPause();
 	}
 	
+	public void onRestoreInstanceState(Bundle savedInstanceState){
+		super.onRestoreInstanceState(savedInstanceState);
+		
+		((TextView)findViewById(R.id.edit_input)).setText(savedInstanceState.getString(STATE_INPUT));
+		problem_type.setSelection(savedInstanceState.getInt(STATE_PTYPE));
+	}
+	
 	public void onSaveInstanceState(Bundle outState){
+		outState.putString(STATE_INPUT, ((TextView)findViewById(R.id.edit_input)).getText().toString());
+		outState.putInt(STATE_PTYPE, problem_type.getSelectedItemPosition());
+
 		super.onSaveInstanceState(outState);
 	}
 	

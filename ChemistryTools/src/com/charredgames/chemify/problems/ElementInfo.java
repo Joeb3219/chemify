@@ -15,7 +15,6 @@ public class ElementInfo extends Problem{
 	}
 
 	public void solve(boolean isPrimary){
-		getElements(input);
 		Element element = null;
 		element = Element.getElement(input);
 
@@ -35,6 +34,8 @@ public class ElementInfo extends Problem{
 			output += "Charge: " + element.getCharge() + "<br>";
 		}
 		
+		if(getElements(input).size() != 1) output = "Multiple elements entered.";
+
 		if(isPrimary){
 			response.addLine(input, ResponseType.input);
 			response.addLine(output, ResponseType.answer);

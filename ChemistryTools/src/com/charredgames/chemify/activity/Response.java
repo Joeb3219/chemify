@@ -41,10 +41,18 @@ public class Response extends Activity {
 	private Problem problem;
 	private ArrayList<Integer> expandedViews = new ArrayList<Integer>();
 	private Map<Integer, ResponseBlock> answers = new HashMap<Integer, ResponseBlock>();
+	private String input, selectedOperation = "";
+	private static final String STATE_INPUT = "state_input";
+	private static final String STATE_OPERATION = "state_operation";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		/*if(savedInstanceState != null){
+			input = savedInstanceState.getString(STATE_INPUT);
+			selectedOperation = savedInstanceState.getString(STATE_OPERATION);
+		}*/
 		
 		setTitle(MainActivity.problem_type.getSelectedItem().toString());
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -53,10 +61,10 @@ public class Response extends Activity {
 
 		
 		Intent intent = getIntent();
-		String input = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		input = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 		//Spanned answer;
 		
-		String selectedOperation = MainActivity.problem_type.getSelectedItem().toString();
+		selectedOperation = MainActivity.problem_type.getSelectedItem().toString();
 		
 		//Set the problem
 		if(selectedOperation.equalsIgnoreCase("element info")) problem = new ElementInfo(input);
@@ -143,6 +151,12 @@ public class Response extends Activity {
 		
 	}
 
+	public void onRestoreInstanceState(Bundle savedInstanceState){
+		super.onRestoreInstanceState(savedInstanceState);
+		input = savedInstanceState.getString(STATE_INPUT);
+		selectedOperation = savedInstanceState.getString(STATE_OPERATION);
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -162,6 +176,13 @@ public class Response extends Activity {
 	        default:
 	            return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	public void onSaveInstanceState(Bundle savedInstanceState){
+		savedInstanceState.putString(STATE_INPUT, input);
+		savedInstanceState.putString(STATE_OPERATION, selectedOperation);
+
+		super.onSaveInstanceState(savedInstanceState);
 	}
 	
 	private void sendBugReport(){

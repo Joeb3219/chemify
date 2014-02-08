@@ -5,10 +5,10 @@
     <color name = "first_bg">#FF8800</color>
     <color name = "second_bg">#CC6D00</color> -->
     
-    <color name = "input_bg">#007EB2</color>
-    <color name = "answer_bg">#00B4FF</color>
-    <color name = "first_bg">#FF8800</color>
-    <color name = "second_bg">#CC6D00</color>
+    <color name = "input_bg">#1985C0</color>
+    <color name = "answer_bg">#1EAFFF</color>
+    <color name = "first_bg">#D78919</color>
+    <color name = "second_bg">#FFA31E</color>
         
     <style name = "problem_generic" parent = "@android:style/TextAppearance.Medium">
         <item name = "android:layout_width">fill_parent</item>

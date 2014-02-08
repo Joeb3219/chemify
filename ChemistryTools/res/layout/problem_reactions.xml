@@ -12,22 +12,24 @@
         
         <TextView
           android:id = "@+id/problem_input"
-          style = "@style/problem_input"
+          style = "@style/inputBox"
         />
         
         <TextView
           android:id = "@+id/problem_answer"
-          style = "@style/problem_answer"
+          style = "@style/answerBox"
         />
         
 		<TextView
 		  android:id = "@+id/problem_weight"
-		  style = "@style/problem_weight"
+		  style = "@style/firstBox"
+		  android:background = "@color/first_bg"
 		/>   
 		
 		<TextView
 			android:id = "@+id/problem_solubility"
-			style = "@style/problem_solubility"    
+			style = "@style/secondBox"   
+			android:background = "@color/second_bg"
 		/>
 		
     </LinearLayout>

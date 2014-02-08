@@ -1,5 +1,15 @@
 <resources>
 
+    <!-- <color name = "input_bg">#007EB2</color>
+    <color name = "answer_bg">#00B4FF</color>
+    <color name = "first_bg">#FF8800</color>
+    <color name = "second_bg">#CC6D00</color> -->
+    
+    <color name = "input_bg">#007EB2</color>
+    <color name = "answer_bg">#00B4FF</color>
+    <color name = "first_bg">#FF8800</color>
+    <color name = "second_bg">#CC6D00</color>
+        
     <style name = "problem_generic" parent = "@android:style/TextAppearance.Medium">
         <item name = "android:layout_width">fill_parent</item>
         <item name = "android:layout_height">wrap_content</item>
@@ -12,42 +22,21 @@
     <!--<item name = "android:textIsSelectable">true</item>-->
 	</style>
 	
-    <style name = "problem_input" parent = "@style/problem_generic">
-        <item name = "android:background">#448844</item>
-        <item name = "android:textColor">#FFFFFF</item>
-        <!--<item name = "android:drawableLeft">@drawable/input_label</item>-->
+    <style name = "inputBox" parent = "@style/problem_generic">
+        <item name = "android:background">@color/input_bg</item>
     </style>
     
-    <style name = "problem_answer" parent = "@style/problem_generic">
-        <item name = "android:background">#333333</item>
-        <item name = "android:textColor">#FFFFFF</item>
-        <!--<item name = "android:drawableLeft">@drawable/answer_label</item> -->
-    </style>
-
-    <style name = "problem_nomenclature" parent = "@style/problem_generic">
-        <item name = "android:background">#717171</item>
-        <item name = "android:textColor">#FFFFFF</item>
-       <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
+    <style name = "answerBox" parent = "@style/problem_generic">
+        <item name = "android:background">@color/answer_bg</item>
     </style>
     
-    <style name = "problem_weight" parent = "@style/problem_generic">
-        <item name = "android:background">#494949</item>
-        <item name = "android:textColor">#FFFFFF</item>
-       <!-- <item name = "android:drawableLeft">@drawable/weight_label</item> -->
+    <style name = "firstBox" parent = "@style/problem_generic">
+        <item name = "android:background">@color/first_bg</item>
     </style>
     
-    <style name = "problem_oxidation" parent = "@style/problem_generic">
-        <item name = "android:background">#616161</item>
-        <item name = "android:textColor">#FFFFFF</item>
-       <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
+    <style name = "secondBox" parent = "@style/problem_generic">
+        <item name = "android:background">@color/second_bg</item>
     </style>
-    
-    <style name = "problem_solubility" parent = "@style/problem_generic">
-        <item name = "android:background">#747578</item>
-        <item name = "android:textColor">#FFFFFF</item>
-       <!-- <item name = "android:drawableLeft">@drawable/oxidation_label</item> -->
-    </style>
-    
     
     <!--
         Base application theme, dependent on API level. This theme is replaced

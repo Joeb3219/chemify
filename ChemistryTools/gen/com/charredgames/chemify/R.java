@@ -13,6 +13,17 @@ public final class R {
     }
     public static final class attr {
     }
+    public static final class color {
+        public static final int answer_bg=0x7f080001;
+        public static final int first_bg=0x7f080002;
+        /**  <color name = "input_bg">#007EB2</color>
+    <color name = "answer_bg">#00B4FF</color>
+    <color name = "first_bg">#FF8800</color>
+    <color name = "second_bg">#CC6D00</color> 
+         */
+        public static final int input_bg=0x7f080000;
+        public static final int second_bg=0x7f080003;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -34,19 +45,19 @@ public final class R {
         public static final int weight_label=0x7f020007;
     }
     public static final class id {
-        public static final int action_bug=0x7f0a000c;
-        public static final int action_settings=0x7f0a000b;
-        public static final int bugReport_email=0x7f0a0003;
-        public static final int bugReport_notes=0x7f0a0004;
-        public static final int edit_input=0x7f0a0001;
-        public static final int problem_answer=0x7f0a0006;
-        public static final int problem_input=0x7f0a0005;
-        public static final int problem_nomenclature=0x7f0a000a;
-        public static final int problem_oxidation=0x7f0a0008;
-        public static final int problem_solubility=0x7f0a0009;
-        public static final int problem_type=0x7f0a0000;
-        public static final int problem_weight=0x7f0a0007;
-        public static final int submit=0x7f0a0002;
+        public static final int action_bug=0x7f0b000c;
+        public static final int action_settings=0x7f0b000b;
+        public static final int bugReport_email=0x7f0b0003;
+        public static final int bugReport_notes=0x7f0b0004;
+        public static final int edit_input=0x7f0b0001;
+        public static final int problem_answer=0x7f0b0006;
+        public static final int problem_input=0x7f0b0005;
+        public static final int problem_nomenclature=0x7f0b000a;
+        public static final int problem_oxidation=0x7f0b0008;
+        public static final int problem_solubility=0x7f0b0009;
+        public static final int problem_type=0x7f0b0000;
+        public static final int problem_weight=0x7f0b0007;
+        public static final int submit=0x7f0b0002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -58,8 +69,8 @@ public final class R {
         public static final int problem_weight=0x7f030006;
     }
     public static final class menu {
-        public static final int main=0x7f090000;
-        public static final int response=0x7f090001;
+        public static final int main=0x7f0a0000;
+        public static final int response=0x7f0a0001;
     }
     public static final class string {
         public static final int action_bug=0x7f060006;
@@ -107,32 +118,18 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080007;
+        public static final int AppBaseTheme=0x7f090005;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080008;
-        /** <item name = "android:drawableLeft">@drawable/answer_label</item> 
-         */
-        public static final int problem_answer=0x7f080002;
+        public static final int AppTheme=0x7f090006;
+        public static final int answerBox=0x7f090002;
+        public static final int firstBox=0x7f090003;
+        public static final int inputBox=0x7f090001;
         /** <item name = "android:textIsSelectable">true</item>
          */
-        public static final int problem_generic=0x7f080000;
-        /** <item name = "android:drawableLeft">@drawable/input_label</item>
-         */
-        public static final int problem_input=0x7f080001;
-        /**  <item name = "android:drawableLeft">@drawable/oxidation_label</item> 
-         */
-        public static final int problem_nomenclature=0x7f080003;
-        /**  <item name = "android:drawableLeft">@drawable/oxidation_label</item> 
-         */
-        public static final int problem_oxidation=0x7f080005;
-        /**  <item name = "android:drawableLeft">@drawable/oxidation_label</item> 
-         */
-        public static final int problem_solubility=0x7f080006;
-        /**  <item name = "android:drawableLeft">@drawable/weight_label</item> 
-         */
-        public static final int problem_weight=0x7f080004;
+        public static final int problem_generic=0x7f090000;
+        public static final int secondBox=0x7f090004;
     }
     public static final class xml {
         public static final int settings=0x7f040000;

@@ -39,6 +39,8 @@ public class Weight extends Problem{
 		
 		collectiveInput = equation.getDrawString();
 		
+		equation.balance();
+		
 		ArrayList<Compound> compounds = new ArrayList<Compound>();
 		compounds.addAll(equation.getReactants());
 		compounds.addAll(equation.getProducts());

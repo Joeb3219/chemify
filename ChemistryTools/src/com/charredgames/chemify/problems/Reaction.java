@@ -259,28 +259,17 @@ public class Reaction extends Problem{
 		}
 		
 		equation = new Equation();
+		equation.addCompounds(compounds, 0);
+		equation.addCompounds(answerCompounds, 1);
+		equation.balance();
 		
 		if(answerCompounds.size() == 0){
 			answer += "No reaction.";
 		}else{
-			balanceEquation(compounds, answerCompounds);
-			equation.addCompounds(compounds, 0);
-			equation.addCompounds(answerCompounds, 1);
+			//balanceEquation(compounds, answerCompounds);
 			
-			for(int i = 0; i < compounds.size(); i ++){
-				answer += compounds.get(i).getDrawString();
-				if(i < compounds.size() - 1) answer += " + ";
-				//One direction arrow: &#8594;
-				else answer += " &#8652; ";
-			}
-			
-			for(int i = 0; i < answerCompounds.size(); i ++){
-				answer += answerCompounds.get(i).getDrawString();
-				if(i < answerCompounds.size() - 1) answer += " + ";
-			}
+			answer += equation.getDrawString();
 		}
-		
-		if(equation.getAllCompounds().size() == 0) equation.addCompounds(compounds, 0);
 		
 		answer += reason;
 		

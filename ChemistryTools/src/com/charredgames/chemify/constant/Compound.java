@@ -185,6 +185,19 @@ public class Compound {
 		return str;
 	}
 	
+	public String getDrawString(boolean showMoles){
+		if(showMoles) return getDrawString();
+		String str = "";
+		for(ElementGroup group : elementGroups){
+			str += group.getDrawString();
+		}
+		
+		int charge = getOverallCharge();
+		if(charge != 0 && (!containsOnlyM() && !containsOnlyNM())) str += "<sup>" + charge + "</sup>";
+		
+		return str;
+	}
+	
 	public int getOverallCharge(){
 		int charge = 0;
 		

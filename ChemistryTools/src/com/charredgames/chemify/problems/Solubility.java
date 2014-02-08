@@ -25,14 +25,14 @@ public class Solubility extends Problem{
 		ArrayList<Compound> compounds = equation.getAllCompounds();
 		
 		for(Compound compound : compounds){
-			answer += "<b>" + compound.getDrawString() + ":</b>";
-			reason += "<b>" + compound.getDrawString() + ":</b><br>";
+			answer += "<b>" + compound.getDrawString(false) + ":</b>";
+			reason += "<b>" + compound.getDrawString(false) + ":</b><br>";
 			if(compound.allElementsInGroup(1) || compound.containsOnlyG1AndIon(Controller.getIon("OH"))){
 				answer += " soluble.<br>";
-				reason += "All elements in " + compound.getDrawString() + " are in group 1, or are hydroxide ion.<br>";
+				reason += "All elements in " + compound.getDrawString(false) + " are in group 1, or are hydroxide ion.<br>";
 				continue;
 			}
-			reason += "All elements in " + compound.getDrawString() + " are either not in group 1, or aren't hydroxide ion.<br>";
+			reason += "All elements in " + compound.getDrawString(false) + " are either not in group 1, or aren't hydroxide ion.<br>";
 			if(compound.containsPolyatomic(Controller.getIon("NO3")) || compound.containsPolyatomic(Controller.getIon("ClO3")) || 
 					compound.containsPolyatomic(Controller.getIon("ClO4")) || compound.containsPolyatomic(Controller.getIon("CH3COO"))){
 				answer += " soluble.<br>";

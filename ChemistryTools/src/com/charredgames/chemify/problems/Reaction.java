@@ -278,6 +278,7 @@ public class Reaction extends Problem{
 			response.addLine(answer, ResponseType.answer);
 			addProblemToPanel(response, new Weight(equation));
 			addProblemToPanel(response, new Solubility(equation));
+			addProblemToPanel(response, new Ionic(equation));
 		}else{
 			response.addLine(answer, ResponseType.reactions);
 		}

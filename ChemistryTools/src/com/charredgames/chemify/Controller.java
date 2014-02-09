@@ -30,7 +30,7 @@ import com.charredgames.chemify.problems.ResponseType;
  */
 public class Controller {
 
-	public static final String _VERSION = "1.2.1";
+	public static final String _VERSION = "1.2.3";
 	private static AssetManager assets;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
@@ -172,6 +172,19 @@ public class Controller {
 		autoFormat = prefs.getBoolean("pref_auto-format", true);
 		calculateReasoning = prefs.getBoolean("pref_calculate-reasoning", true);
 		sendUsage = prefs.getBoolean("pref_send-data", false);
+	}
+	
+	public static int getGCD(int a, int b){
+		if(a == 0 || b == 0) return a+b;
+		return getGCD(b, a%b);
+	}
+	
+	public static int getGCD(ArrayList<Integer> list){
+		int result = list.get(0);
+		
+		for(int i = 1; i < list.size(); i ++) result = getGCD(result, list.get(i));
+		
+		return result;
 	}
 	
 }

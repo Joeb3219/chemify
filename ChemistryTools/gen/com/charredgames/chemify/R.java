@@ -9,6 +9,14 @@ package com.charredgames.chemify;
 
 public final class R {
     public static final class array {
+        /** 
+		<item>Oxidation</item>
+		<item>Dimensional Analysis</item>
+		<item>Thermochem</item>
+		<item>Stoichiometry</item>
+		<item>Hess Law</item>
+		
+         */
         public static final int problem_types=0x7f070000;
     }
     public static final class attr {
@@ -45,16 +53,17 @@ public final class R {
         public static final int weight_label=0x7f020007;
     }
     public static final class id {
-        public static final int action_bug=0x7f0b000c;
-        public static final int action_settings=0x7f0b000b;
+        public static final int action_bug=0x7f0b000d;
+        public static final int action_settings=0x7f0b000c;
         public static final int bugReport_email=0x7f0b0003;
         public static final int bugReport_notes=0x7f0b0004;
         public static final int edit_input=0x7f0b0001;
         public static final int problem_answer=0x7f0b0006;
         public static final int problem_input=0x7f0b0005;
-        public static final int problem_nomenclature=0x7f0b000a;
+        public static final int problem_ionic=0x7f0b0009;
+        public static final int problem_nomenclature=0x7f0b000b;
         public static final int problem_oxidation=0x7f0b0008;
-        public static final int problem_solubility=0x7f0b0009;
+        public static final int problem_solubility=0x7f0b000a;
         public static final int problem_type=0x7f0b0000;
         public static final int problem_weight=0x7f0b0007;
         public static final int submit=0x7f0b0002;

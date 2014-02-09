@@ -31,13 +31,15 @@
         <item>Nomenclature</item>
 		<item>Weight</item>
         <item>Predict Reactions</item>
-		<!--<item>Oxidation</item>
+		<item>Solubility</item>
+		<item>Complete/Net Ionic</item>
+		<!--
+		<item>Oxidation</item>
 		<item>Dimensional Analysis</item>
 		<item>Thermochem</item>
 		<item>Stoichiometry</item>
 		<item>Hess Law</item>
-		<item>Complete Ionic</item>-->
-		<item>Solubility</item>
+		-->
 	</string-array>
 
 </resources>

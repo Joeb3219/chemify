@@ -154,6 +154,12 @@
 	</ion>
 	
 	<ion>
+		<string name = "bicarbonate"/>
+		<elements list = "HCO3"/>
+		<int charge = "-1"/>
+	</ion>
+	
+	<ion>
 		<string name = "carbonate"/>
 		<elements list = "CO3"/>
 		<int charge = "-2"/>

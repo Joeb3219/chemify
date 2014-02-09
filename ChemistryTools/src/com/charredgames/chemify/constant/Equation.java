@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.charredgames.chemify.Controller;
+
 /**
  * @author Joe Boyle <joe@charredgames.com>
  * @since Feb 5, 2014
@@ -90,7 +92,19 @@ public class Equation {
 	}
 
 	public void balance(){
-		if(!hasProducts() || isBalanced()) return;
+		if(!hasProducts()) return;
+		if(isBalanced()){
+			ArrayList<Integer> moles = new ArrayList<Integer>();
+			for(Compound c : getAllCompounds()) moles.add(c.getMoles());
+			
+			int gcd = Controller.getGCD(moles);
+			
+			if(gcd > 0 && gcd != 1 && gcd != -1){
+				for(Compound c : getAllCompounds()) c.setMoles(c.getMoles() / gcd);
+			}
+			
+			return;
+		}
 		Map<Element, Integer> l = getElementQuantityMap(left);
 		Map<Element, Integer> r = getElementQuantityMap(right);
 		int iterations = 0;
@@ -154,6 +168,41 @@ public class Equation {
 			}
 		}
 		return map;
+	}
+	
+	public boolean compoundOnBothSides(Compound c){
+		String drawString = c.getDrawString(false);
+		boolean inReactants = false;
+		for(Compound cmp : getReactants()){
+			if(cmp.getDrawString(false).equals(drawString)) inReactants = true;
+		}
+		
+		if(!inReactants) return false;
+		
+		for(Compound cmp : getProducts()){
+			if(cmp.getDrawString(false).equals(drawString)) return true;
+		}
+		
+		return false;
+	}
+
+	public void removeAllInstancesOfCompound(Compound c){
+		String drawString = c.getDrawString(false);
+
+		ArrayList<Compound> remove = new ArrayList<Compound>();
+		
+		for(Compound cmp : left){
+			if(cmp.getDrawString(false).equals(drawString)) remove.add(cmp);
+		}
+		
+		left.removeAll(remove);
+		remove = new ArrayList<Compound>();
+		
+		for(Compound cmp : right){
+			if(cmp.getDrawString(false).equals(drawString)) remove.add(cmp);
+		}
+		
+		right.removeAll(remove);
 	}
 	
 }

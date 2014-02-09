@@ -3,6 +3,7 @@ package com.charredgames.chemify.constant;
 import java.util.ArrayList;
 
 import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.problems.Problem;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -173,6 +174,7 @@ public class Compound {
 	}
 	
 	public String getDrawString(){
+		normalizeCompound();
 		String str = "";
 		if(moles != 1) str += moles;
 		for(ElementGroup group : elementGroups){
@@ -229,10 +231,114 @@ public class Compound {
 			if(soluble == 1) return true;
 			return false;
 		}
-
 		
-		
+		if(allElementsInGroup(1) || containsOnlyG1AndIon(Controller.getIon("OH")) || containsOnlyG1AndIon(Controller.getIon("PO4"))){
+			soluble = 1;
+			return true;
+		}
+		if(containsPolyatomic(Controller.getIon("NO3")) || containsPolyatomic(Controller.getIon("ClO3")) || 
+				containsPolyatomic(Controller.getIon("ClO4")) || containsPolyatomic(Controller.getIon("CH3COO"))){
+			soluble = 1;
+			return true;
+		}
+		if((containsElement(Element.BROMINE) || containsElement(Element.CHLORINE) || containsElement(Element.IODINE))
+				&& !(containsElement(Element.SILVER) || containsElement(Element.LEAD) || containsElement(Element.MERCURY))){
+			soluble = 1;
+			return true;
+		}
+		if (containsPolyatomic(Controller.getIon("SO4"))){
+			if(!containsElement(Element.BARIUM) && !containsElement(Element.STRONTIUM) && !containsElement(Element.CALCIUM) &&
+				!containsElement(Element.LEAD) && !containsElement(Element.MERCURY)){
+				soluble = 1;
+				return true;
+				}
+		}
+		if(containsOnlyGroupAndElement(1, Element.SULFUR) || containsOnlyGroupAndElement(2, Element.SULFUR)){
+			soluble = 1;
+			return true;
+		}
+		if(containsOnlyG1AndIon(Controller.getIon("SO3")) || containsOnlyG1AndIon(Controller.getIon("CO3")) ||
+				containsOnlyG1AndIon(Controller.getIon("CrO3")) || containsOnlyG1AndIon(Controller.getIon("PO3"))){
+			soluble = 1;
+			return true;
+		}
+		soluble = 0;
 		return false;
+	}
+
+	public boolean containsOnlyElementsInCompound(Compound c){
+		ArrayList<Element> these = new ArrayList<Element>();
+		ArrayList<Element> those = new ArrayList<Element>();
+		
+		for(ElementGroup g : getElementGroups()){
+			for(ElementSet set : g.getElementSets()){
+				if(!these.contains(set.getElement())) these.add(set.getElement());
+			}
+		}
+		
+		for(ElementGroup g : getElementGroups()){
+			for(ElementSet set : g.getElementSets()){
+				if(!those.contains(set.getElement())) those.add(set.getElement());
+			}
+		}
+		
+		if(these.size() > those.size()) return false;
+		
+		for(Element element : these){
+			if(!those.contains(element)) return false;
+		}
+		
+		return true;
+	}
+	
+	public Compound cloneCompound(){
+		ArrayList<ElementGroup> grps = new ArrayList<ElementGroup>();
+		for(ElementGroup g : elementGroups){
+			ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
+			for(ElementSet set : g.getElementSets()){
+				sets.add(new ElementSet(set.getElement(), set.getQuantity()));
+			}
+			grps.add(new ElementGroup(sets));
+		}
+		return new Compound(grps);
+	}
+
+	public ArrayList<Compound> breakIntoIons(){
+		normalizeCompound();
+		ArrayList<Compound> compounds = new ArrayList<Compound>();
+		if(!isSoluble()) compounds.add(this);
+		else{
+			for(ElementGroup g : elementGroups){
+				if(g.isPolyatomic()) {
+					Compound cmp = new Compound(new ElementGroup(g.getIon().getElementSet()));
+					cmp.setMoles(getMoles() * g.getQuantity());
+					compounds.add(cmp);
+				}
+				else{
+					for(ElementSet set : g.getElementSets()){
+						Compound cmp = new Compound(new ElementGroup(new ElementSet(set.getElement(), 1)));
+						cmp.setMoles(set.getQuantity() * g.getQuantity() * getMoles());
+						compounds.add(cmp);
+					}
+				}
+			}
+		}
+		return compounds;
+	}
+	
+	private void normalizeCompound(){
+		String drawString = "";
+		
+		for(ElementGroup group : elementGroups){
+			drawString += group.getDrawString();
+		}
+		
+		if(drawString.equals("(OH)<sub>2</sub>H<sub>2</sub>")){
+			elementGroups = new ArrayList<ElementGroup>();
+			
+			elementGroups.add(new ElementGroup(new ElementSet(Element.HYDROGEN, 2)));
+			elementGroups.add(new ElementGroup(new ElementSet(Element.OXYGEN, 1)));
+		}
 	}
 	
 }

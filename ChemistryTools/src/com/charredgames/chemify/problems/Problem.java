@@ -75,8 +75,13 @@ public abstract class Problem {
 		if((compound.containsOnlyNMAndPoly() || compound.containsOnlyMAndPoly())){
 			int fCharge = finalGroups.get(0).getCharge();
 			int sCharge = finalGroups.get(1).getCharge();
-			finalGroups.get(0).setQuantity(sCharge);
-			finalGroups.get(1).setQuantity(fCharge);
+			if(sCharge != fCharge){
+				finalGroups.get(0).setQuantity(sCharge);
+				finalGroups.get(1).setQuantity(fCharge);
+			}else{
+				finalGroups.get(0).setQuantity(1);
+				finalGroups.get(1).setQuantity(1);
+			}
 			
 			return compound;
 		}

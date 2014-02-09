@@ -29,6 +29,7 @@ import com.charredgames.chemify.R;
 import com.charredgames.chemify.gui.ResponseBlock;
 import com.charredgames.chemify.gui.ResponsePanel;
 import com.charredgames.chemify.problems.ElementInfo;
+import com.charredgames.chemify.problems.Ionic;
 import com.charredgames.chemify.problems.Nomenclature;
 import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.Reaction;
@@ -72,6 +73,7 @@ public class Response extends Activity {
 		else if(selectedOperation.equalsIgnoreCase("weight")) problem = new Weight(input);
 		else if(selectedOperation.equalsIgnoreCase("Predict Reactions")) problem = new Reaction(input);
 		else if(selectedOperation.equalsIgnoreCase("Solubility")) problem = new Solubility(input);
+		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) problem = new Ionic(input);
 		else problem = new Nomenclature(input);
 		
 		problem.solve(true);
@@ -86,6 +88,7 @@ public class Response extends Activity {
 		else if(selectedOperation.equalsIgnoreCase("weight")) setContentView(R.layout.problem_weight);
 		else if(selectedOperation.equalsIgnoreCase("solubility")) setContentView(R.layout.problem_solubility);
 		else if(selectedOperation.equalsIgnoreCase("predict reactions")) setContentView(R.layout.problem_reactions);
+		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) setContentView(R.layout.problem_reactions);
 		else setContentView(R.layout.problem_nomenclature);
 		
 		//Get each string that the problem returned.
@@ -118,6 +121,10 @@ public class Response extends Activity {
 				case solubility:
 					((TextView) findViewById(R.id.problem_solubility)).setText(responseString);
 					answers.put(R.id.problem_solubility, block);
+					break;
+				case ionic:
+					((TextView) findViewById(R.id.problem_ionic)).setText(responseString);
+					answers.put(R.id.problem_ionic, block);
 					break;
 				case oxidation:
 					((TextView) findViewById(R.id.problem_oxidation)).setText(responseString);

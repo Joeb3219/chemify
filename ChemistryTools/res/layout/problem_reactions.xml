@@ -19,17 +19,21 @@
           android:id = "@+id/problem_answer"
           style = "@style/answerBox"
         />
+
+    	<TextView
+		  android:id = "@+id/problem_ionic"
+		  style = "@style/firstBox"
+		/>   
+				
         
 		<TextView
 		  android:id = "@+id/problem_weight"
-		  style = "@style/firstBox"
-		  android:background = "@color/first_bg"
+		  style = "@style/secondBox"
 		/>   
-		
+
 		<TextView
 			android:id = "@+id/problem_solubility"
-			style = "@style/secondBox"   
-			android:background = "@color/second_bg"
+			style = "@style/firstBox"   
 		/>
 		
     </LinearLayout>

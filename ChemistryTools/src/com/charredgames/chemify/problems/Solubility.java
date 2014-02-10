@@ -27,9 +27,9 @@ public class Solubility extends Problem{
 		for(Compound compound : compounds){
 			answer += "<b>" + compound.getDrawString(false) + ":</b>";
 			reason += "<b>" + compound.getDrawString(false) + ":</b><br>";
-			if(compound.allElementsInGroup(1) || compound.containsOnlyG1AndIon(Controller.getIon("OH"))){
+			if(compound.allElementsInGroup(1) || compound.containsOnlyG1AndIon(Controller.getIon("OH")) || compound.containsPolyatomic(Controller.getIon("NH4")) || compound.containsOnlyG1AndIon(Controller.getIon("PO4"))){
 				answer += " soluble.<br>";
-				reason += "All elements in " + compound.getDrawString(false) + " are in group 1, or are hydroxide ion.<br>";
+				reason += "All elements in " + compound.getDrawString(false) + " are in group 1, or are hydroxide/ammonium ion.<br>";
 				continue;
 			}
 			reason += "All elements in " + compound.getDrawString(false) + " are either not in group 1, or aren't hydroxide ion.<br>";

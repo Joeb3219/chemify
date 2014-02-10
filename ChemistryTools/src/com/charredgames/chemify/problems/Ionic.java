@@ -13,12 +13,15 @@ public class Ionic extends Problem{
 
 	public Ionic(String input){
 		super(input);
-		equation = getEquationFromString(input);
 	}
 	
 	public void solve(boolean isPrimary){
 		String answer = "", collectiveInput = "";
 		Equation complete = new Equation();
+		
+		if(equation == null){
+			equation = getEquationFromString(input);
+		}
 		
 		if(equation.hasProducts()){
 		
@@ -33,7 +36,7 @@ public class Ionic extends Problem{
 			reason += "<b>Complete Ionic</b><br>";
 			reason += "Breaking compounds into ions.<br><br>";
 			answer += "<u>Complete Ionic</u>:<br>";
-			answer += complete.getDrawString() + "<br>";
+			answer += complete.getDrawStringWithAllCharges() + "<br>";
 			
 			reason += "<b>Net Ionic</b><br>";
 			answer += "<u>Net Ionic</u>:<br>";
@@ -42,15 +45,15 @@ public class Ionic extends Problem{
 			
 			for(Compound c : complete.getReactants()){
 				if(complete.compoundOnBothSides(c)){
-					reason += c.getDrawString() + " exists on both sides: spectator ion.<br>";
+					reason += c.getDrawStringWithAllCharges() + " exists on both sides: spectator ion.<br>";
 					forRemoval.add(c);
 				}
 			}
 			for(Compound c : forRemoval) complete.removeAllInstancesOfCompound(c);
 			complete.balance();
 			
-			answer += complete.getDrawString();
-			
+			if(complete.getAllCompounds().size() != 0) answer += complete.getDrawStringWithAllCharges();
+			else answer = "No Reaction/All Compounds Soluble.";
 			
 		}else{
 			reason = "";

@@ -28,6 +28,7 @@ public class Reaction extends Problem{
 
 		for(Compound cmp : compounds){
 			if(cmp.getOverallCharge() != 0) cmp = correctAtomCount(cmp);
+			//else cmp = reduceAtomCount(cmp);
 		}
 		
 		//Decomposition
@@ -47,7 +48,10 @@ public class Reaction extends Problem{
 						metalOxide.add(new ElementGroup(new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1)));
 						metalOxide.add(new ElementGroup(new ElementSet(Element.OXYGEN, 1)));
 						answerCompounds.add(new Compound(metalOxide));
-						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						if(answerCompounds.get(0).getOverallCharge() == 0){
+							//reduceAtomCount(answerCompounds.get(0));
+							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						}
 						else{
 							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " does not equal zero.<br>";
 							correctAtomCount(answerCompounds.get(0));
@@ -67,7 +71,10 @@ public class Reaction extends Problem{
 						metalChlorate.add(new ElementGroup(new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1)));
 						metalChlorate.add(new ElementGroup(new ElementSet(Element.CHLORINE, 1)));
 						answerCompounds.add(new Compound(metalChlorate));
-						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						if(answerCompounds.get(0).getOverallCharge() == 0){
+							//reduceAtomCount(answerCompounds.get(0));
+							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						}
 						else{
 							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " does not equal zero.<br>";
 							correctAtomCount(answerCompounds.get(0));
@@ -85,7 +92,10 @@ public class Reaction extends Problem{
 						metalHydroxide.add(new ElementGroup(new ElementSet(compound.getElementGroups().get(0).getElementSets().get(0).getElement(), 1)));
 						metalHydroxide.add(new ElementGroup(new ElementSet(Element.OXYGEN, 1)));
 						answerCompounds.add(new Compound(metalHydroxide));
-						if(answerCompounds.get(0).getOverallCharge() == 0) reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						if(answerCompounds.get(0).getOverallCharge() == 0){
+							//reduceAtomCount(answerCompounds.get(0));
+							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " equals zero.<br>";
+						}
 						else{
 							reason += "Charge of " + answerCompounds.get(0).getDrawString() + " does not equal zero.<br>";
 							correctAtomCount(answerCompounds.get(0));
@@ -106,7 +116,10 @@ public class Reaction extends Problem{
 					answerCompounds.add(new Compound(new ElementGroup(new ElementSet(set.getElement(), 1))));
 				}
 				
-				for(Compound c : answerCompounds) correctAtomCount(c);
+				for(Compound c : answerCompounds){
+					correctAtomCount(c);
+					//reduceAtomCount(c);
+				}
 			}
 		}
 		//Other reactions, makes sure not 0 compounds.
@@ -147,6 +160,7 @@ public class Reaction extends Problem{
 					finalCompound = new Compound(finalGroups);
 					
 					if(finalCompound.getOverallCharge() != 0) finalCompound = correctAtomCount(finalCompound);
+					//else finalCompound = reduceAtomCount(finalCompound);
 					
 					answerCompounds.add(finalCompound);
 					
@@ -169,7 +183,10 @@ public class Reaction extends Problem{
 					
 					finalCompound = new Compound(newGroups);
 					
-					if(finalCompound.getOverallCharge() == 0) reason += "Charge of " + finalCompound.getDrawString() + " equals zero.<br>";
+					if(finalCompound.getOverallCharge() == 0) {
+						//reduceAtomCount(finalCompound);
+						reason += "Charge of " + finalCompound.getDrawString() + " equals zero.<br>";
+					}
 					else {
 						reason += "Charge of " + finalCompound.getDrawString() + " does not equal zero (" + finalCompound.getOverallCharge() + "). Correcting atom counts.<br>";
 						finalCompound = correctAtomCount(finalCompound);
@@ -217,6 +234,7 @@ public class Reaction extends Problem{
 					}
 					answerCompounds.add(new Compound(newGroups));
 					if(answerCompounds.get(0).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(0));
+					//else reduceAtomCount(answerCompounds.get(0));
 					answerCompounds.add(new Compound(new ElementGroup(new ElementSet(replaced, 1))));
 				}else reason += "No reaction: " + replacer.getName() + "'s activity number is less than " + replaced.getName() + "'s.<br>";
 			}
@@ -252,7 +270,9 @@ public class Reaction extends Problem{
 				answerCompounds.add(new Compound(c2));
 				
 				if(answerCompounds.get(0).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(0));
+				//else reduceAtomCount(answerCompounds.get(0));
 				if(answerCompounds.get(1).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(1));
+				//else reduceAtomCount(answerCompounds.get(1));
 				
 			}
 			else reason += "Unknown reaction type.<br>";

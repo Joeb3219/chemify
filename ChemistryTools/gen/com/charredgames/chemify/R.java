@@ -30,6 +30,8 @@ public final class R {
     <color name = "second_bg">#CC6D00</color> 
          */
         public static final int input_bg=0x7f080000;
+        /**  <color name = "second_bg">#177AB0</color> 
+         */
         public static final int second_bg=0x7f080003;
     }
     public static final class dimen {

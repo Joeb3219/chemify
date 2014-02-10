@@ -173,6 +173,27 @@ public class Compound {
 		return true;
 	}
 	
+	public String getDrawStringWithAllCharges(){
+		normalizeCompound();
+		String str = "";
+		if(moles != 1) str += moles;
+		for(ElementGroup group : elementGroups){
+			str += group.getDrawString();
+		}
+		
+		int charge = getOverallCharge();
+		if(charge != 0){
+			String c = "";
+			if(charge == 1) c = "+";
+			else if(charge == -1) c = "-";
+			else if(charge > 1) c = "+" + charge;
+			else c = "" + charge;
+			str += "<sup>" + c + "</sup>";
+		}
+		
+		return str;
+	}
+	
 	public String getDrawString(){
 		normalizeCompound();
 		String str = "";
@@ -232,7 +253,7 @@ public class Compound {
 			return false;
 		}
 		
-		if(allElementsInGroup(1) || containsOnlyG1AndIon(Controller.getIon("OH")) || containsOnlyG1AndIon(Controller.getIon("PO4"))){
+		if(allElementsInGroup(1) || containsOnlyG1AndIon(Controller.getIon("OH")) || containsPolyatomic(Controller.getIon("NH4")) || containsOnlyG1AndIon(Controller.getIon("PO4"))){
 			soluble = 1;
 			return true;
 		}
@@ -310,7 +331,9 @@ public class Compound {
 		else{
 			for(ElementGroup g : elementGroups){
 				if(g.isPolyatomic()) {
-					Compound cmp = new Compound(new ElementGroup(g.getIon().getElementSet()));
+					ElementGroup grp = new ElementGroup(g.getIon().getElementSet());
+					grp.setIon(g.getIon());
+					Compound cmp = new Compound(grp);
 					cmp.setMoles(getMoles() * g.getQuantity());
 					compounds.add(cmp);
 				}

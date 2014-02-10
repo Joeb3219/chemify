@@ -50,14 +50,14 @@ public class Weight extends Problem{
 		weight = equation.getMass();
 		
 		for(Compound c : compounds){
-			reason += "<b>[" + c.getDrawString() + ": " + c.getMass() + " g (" + f.format((c.getMass() / weight) * 100) + "%) ]</b>:<br>";
+			reason += "<b>[" + c.getDrawString() + ": " + f.format(c.getMass()) + " g (" + f.format((c.getMass() / weight) * 100) + "%) ]</b>:<br>";
 			for(ElementGroup g : c.getElementGroups()){
 				for(ElementSet set : g.getElementSets()){
-					reason += set.getDrawString() + " -> " + set.getWeight() + " g/mol (" + f.format((set.getWeight() / c.getMass()) * 100) + "% of group, " + f.format((set.getWeight() / weight) * 100) + "% of total) <br>";
+					reason += set.getDrawString() + " -> " + f.format(set.getWeight()) + " g/mol (" + f.format((set.getWeight() / c.getMass()) * 100) + "% of group, " + f.format((set.getWeight() / weight) * 100) + "% of total) <br>";
 				}
 			}
 			if(compounds.size() > 1) answer += c.getDrawString() + ": ";
-			answer += c.getMass();
+			answer += f.format(c.getMass());
 			if(compounds.size() == 1) answer += " g/mol";
 			else answer += " grams<br>";
 		}

@@ -85,6 +85,23 @@ public class Equation {
 		return answer;
 	}
 	
+	public String getDrawStringWithAllCharges(){
+		String answer = "";
+		
+		for(Compound c : left){
+			answer += c.getDrawStringWithAllCharges();
+			if(left.get(left.size() - 1) != c) answer += " + ";
+			else if(hasProducts()) answer += " &#8652; ";
+		}
+
+		for(Compound c : right){
+			answer += c.getDrawStringWithAllCharges();
+			if(right.get(right.size() - 1) != c) answer += " + ";
+		}
+		
+		return answer;
+	}
+	
 	public double getMass(){
 		double mass = 0.00;
 		for(Compound c : left) mass += c.getMass();

@@ -61,7 +61,10 @@ public abstract class Problem {
 		ArrayList<ElementGroup> finalGroups = compound.getElementGroups();
 		//TODO: Make recursive later. Will allow for infinite sized groups.
 		
-		if(compound.getOverallCharge() == 0) return compound;
+		if(compound.getOverallCharge() == 0){
+			
+			return reduceAtomCount(compound);
+		}
 		
 		if(finalGroups.size() == 1){
 			if(finalGroups.get(0).getElementCount() == 1){
@@ -69,7 +72,7 @@ public abstract class Problem {
 				if(element == Element.HYDROGEN || element == Element.NITROGEN || element == Element.OXYGEN || element == Element.FLUORINE || 
 						element == Element.CHLORINE || element == Element.IODINE || element == Element.BROMINE) finalGroups.get(0).getElementSets().get(0).setQuantity(2);
 			}
-			return compound;
+			return reduceAtomCount(compound);
 		}
 		
 		if((compound.containsOnlyNMAndPoly() || compound.containsOnlyMAndPoly())){
@@ -83,7 +86,7 @@ public abstract class Problem {
 				finalGroups.get(1).setQuantity(1);
 			}
 			
-			return compound;
+			return reduceAtomCount(compound);
 		}
 		
 		if(finalGroups.size() == 2){
@@ -91,7 +94,7 @@ public abstract class Problem {
 				finalGroups.get(0).setQuantity(a);
 				for(int b = 0; b <= maxLoop; b++){
 					finalGroups.get(1).setQuantity(b);
-					if(compound.getOverallCharge() == 0) return compound;
+					if(compound.getOverallCharge() == 0) return reduceAtomCount(compound);
 				}
 			}
 		}
@@ -102,7 +105,7 @@ public abstract class Problem {
 					finalGroups.get(1).setQuantity(b);
 					for(int c = 0; c <= maxLoop; c++){
 						finalGroups.get(2).setQuantity(c);
-						if(compound.getOverallCharge() == 0) return compound;
+						if(compound.getOverallCharge() == 0) return reduceAtomCount(compound);
 					}
 				}
 			}
@@ -116,15 +119,29 @@ public abstract class Problem {
 						finalGroups.get(2).setQuantity(c);
 						for(int d = 0; d <= maxLoop; d++){
 							finalGroups.get(3).setQuantity(d);
-							if(compound.getOverallCharge() == 0) return compound;
+							if(compound.getOverallCharge() == 0) return reduceAtomCount(compound);
 						}
 					}
 				}
 			}
 		}
 		
+		return reduceAtomCount(compound);
+	}
+	
+	public static Compound reduceAtomCount(Compound compound){
+		ArrayList<Integer> atoms = new ArrayList<Integer>();
+		
+		for(ElementGroup g : compound.getElementGroups()) atoms.add(g.getQuantity());
+		
+		int gcd = Controller.getGCD(atoms);
+		if(gcd != 0 && gcd != -1 && gcd != 1){
+			for(ElementGroup g : compound.getElementGroups()) g.setQuantity(g.getQuantity() / gcd);
+		}
+		
 		return compound;
 	}
+	
 	
 	public ArrayList<Element> getElements(String string){
 		ArrayList<Element> elements = new ArrayList<Element>();

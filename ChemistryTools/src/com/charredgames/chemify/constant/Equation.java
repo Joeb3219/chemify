@@ -114,6 +114,7 @@ public class Equation {
 
 	public void balance(){
 		if(!hasProducts()) return;
+		for(Compound c : getAllCompounds()) c.normalizeCompound();
 		if(isBalanced()){
 			ArrayList<Integer> moles = new ArrayList<Integer>();
 			for(Compound c : getAllCompounds()) moles.add(c.getMoles());

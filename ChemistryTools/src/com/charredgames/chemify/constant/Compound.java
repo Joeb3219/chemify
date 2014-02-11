@@ -410,7 +410,26 @@ public class Compound {
 		return compounds;
 	}
 	
-	private void normalizeCompound(){
+	public boolean containsPolyatomics(){
+		for(ElementGroup group : elementGroups){
+			if(group.isPolyatomic()) return true;
+		}
+		return false;
+	}
+	
+	public void reduceAtomCount(){
+		ArrayList<Integer> atoms = new ArrayList<Integer>();
+		
+		for(ElementGroup g : elementGroups) atoms.add(g.getQuantity());
+		
+		int gcd = Controller.getGCD(atoms);
+		if(gcd != 0 && gcd != -1 && gcd != 1){
+			for(ElementGroup g : elementGroups) g.setQuantity(g.getQuantity() / gcd);
+		}
+		
+	}
+	
+	public void normalizeCompound(){
 		String drawString = "";
 		
 		for(ElementGroup group : elementGroups){
@@ -422,6 +441,13 @@ public class Compound {
 			ElementGroup g = new ElementGroup();
 			g.addElementSet(new ElementSet(Element.HYDROGEN, 2));
 			g.addElementSet(new ElementSet(Element.OXYGEN, 1));
+			elementGroups.add(g);
+		}
+		else if(drawString.equals("Na<sub>3</sub>Cl<sub>3</sub>")){
+			elementGroups = new ArrayList<ElementGroup>();
+			ElementGroup g = new ElementGroup();
+			g.addElementSet(new ElementSet(Element.SODIUM, 1));
+			g.addElementSet(new ElementSet(Element.CHLORINE, 1));
 			elementGroups.add(g);
 		}
 	}

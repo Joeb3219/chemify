@@ -269,9 +269,9 @@ public class Reaction extends Problem{
 				answerCompounds.add(new Compound(c1));
 				answerCompounds.add(new Compound(c2));
 				
-				if(answerCompounds.get(0).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(0));
+				correctAtomCount(answerCompounds.get(0));
 				//else reduceAtomCount(answerCompounds.get(0));
-				if(answerCompounds.get(1).getOverallCharge() != 0) correctAtomCount(answerCompounds.get(1));
+				correctAtomCount(answerCompounds.get(1));
 				//else reduceAtomCount(answerCompounds.get(1));
 				
 			}

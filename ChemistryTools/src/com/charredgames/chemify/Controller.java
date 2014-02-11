@@ -6,8 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -37,6 +40,7 @@ public class Controller {
 	public static SparseArray<String> romanNumerals = new SparseArray<String>();
 	public static final Locale _LOCALE = Locale.getDefault();
 	public static boolean autoFormat = true, calculateReasoning = true, sendUsage = false;
+	public static Map<String, String> reactionSymbols = new HashMap<String, String>();
 	
 	public static void reset(AssetManager aManager){
 		assets = aManager;
@@ -60,6 +64,31 @@ public class Controller {
 		romanNumerals.put(13, "XIII");
 		romanNumerals.put(14, "XIV");
 		romanNumerals.put(15, "XV");
+		
+		reactionSymbols.put(" +", "+");
+		reactionSymbols.put("+ ", "+");
+		reactionSymbols.put(" + ", "+");
+		reactionSymbols.put(" >", ">");
+		reactionSymbols.put("> ", ">");
+		reactionSymbols.put(" > ", ">");
+		reactionSymbols.put(" ->", ">");
+		reactionSymbols.put("-> ", ">");
+		reactionSymbols.put(" -> ", ">");
+		reactionSymbols.put(" =>", ">");
+		reactionSymbols.put("=> ", ">");
+		reactionSymbols.put(" => ", ">");
+		reactionSymbols.put(" &#8652;", ">");
+		reactionSymbols.put("&#8652; ", ">");
+		reactionSymbols.put(" &#8652; ", ">");
+	}
+
+	public static String replaceReactionSymbols(String str){
+		for(Entry<String, String> entry : reactionSymbols.entrySet()){
+			String key = entry.getKey();
+			if(str.contains(key)) str = str.replace(key, entry.getValue());
+		}
+		
+		return str;
 	}
 	
 	public static String convertIntToNumeral(int num){
@@ -176,10 +205,12 @@ public class Controller {
 	
 	public static int getGCD(int a, int b){
 		if(a == 0 || b == 0) return a+b;
+		//if(a == b) return a;
 		return getGCD(b, a%b);
 	}
 	
 	public static int getGCD(ArrayList<Integer> list){
+		if(list.size() == 1) return 1;
 		int result = list.get(0);
 		
 		for(int i = 1; i < list.size(); i ++) result = getGCD(result, list.get(i));

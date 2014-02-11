@@ -48,7 +48,7 @@ public class Controller {
 		setIons("/default/polyions.cgf");
 		
 		//Only needs to be run once by app.
-		if(assets != null) return;
+		//if(assets != null) return;
 		if(ResponseType.answer instanceof ResponseType);
 		if(Prefix.mono instanceof Prefix);
 		

@@ -111,7 +111,7 @@ public class Compound {
 			Element element = elementGroups.get(0).getElementSets().get(0).getElement();
 			int quantity = elementGroups.get(0).getQuantity() * elementGroups.get(0).getElementSets().get(0).getQuantity();
 			if(element.getGroup() == 18) return true;
-			if(quantity == 2 && (element == Element.HYDROGEN || element == Element.NITROGEN || element == Element.OXYGEN || element == element.FLUORINE || element == Element.CHLORINE || element == Element.BROMINE || element == Element.IODINE)) return true;
+			if(quantity == 2 && (element == Element.HYDROGEN || element == Element.NITROGEN || element == Element.OXYGEN || element == Element.FLUORINE || element == Element.CHLORINE || element == Element.BROMINE || element == Element.IODINE)) return true;
 		}
 		
 		return false;

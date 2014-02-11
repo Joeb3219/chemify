@@ -22,7 +22,6 @@ public class SettingsActivity extends PreferenceActivity{
 	public void onStop(){
 		super.onStop();
 		Controller.reloadSettings(this);
-		System.out.println(Controller.autoFormat + " " + Controller.sendUsage);
 	}
 	
 }

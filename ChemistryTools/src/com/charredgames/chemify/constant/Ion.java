@@ -45,7 +45,6 @@ public class Ion{
 	}
 
 	public boolean compoundMatches(Compound compound){
-		System.out.println(compound.getOverallCharge() + " " + charge);
 		if(compound.getOverallCharge() != charge) return false;
 		
 		String str = "";
@@ -53,8 +52,6 @@ public class Ion{
 			str += Controller.stripHtmlTags(group.getDrawString());
 		}
 
-		System.out.println(elementString + " " + str);
-		
 		if(elementString.equals(str)) return true;
 		
 		return false;

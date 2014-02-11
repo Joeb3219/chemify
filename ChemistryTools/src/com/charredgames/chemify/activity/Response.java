@@ -151,7 +151,6 @@ public class Response extends Activity {
        			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
        			
        			new SendPost(httpclient, httppost).execute();
-       			System.out.println("sent!");
 
        		} catch (IOException e) {}
 		}

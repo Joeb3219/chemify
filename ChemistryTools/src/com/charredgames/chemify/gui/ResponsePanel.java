@@ -18,11 +18,7 @@ public class ResponsePanel{
 	
 	public void addLine(String line, ResponseType type){
 		String finalLine = "";//"{";
-		
 		finalLine += "{" + type.getName() + "}" + line;
-		
-		//finalLine += "}";
-		System.out.println(finalLine);
 		response.add(finalLine);
 	}
 	
@@ -37,7 +33,6 @@ public class ResponsePanel{
 	public String getResponse(){
 		String master = "<html><center>";
 		for(String str : response){
-			System.out.println(str);
 			master += str + "<br>";
 		}
 		master += "</center></html>";

@@ -37,10 +37,12 @@ public class Compound {
 			newGroups.add(g);
 		}
 		this.elementGroups = newGroups;
+		sortElements();
 	}
 
 	public Compound(ElementGroup group){
 		elementGroups.add(group);
+		sortElements();
 	}
 	
 	public int getMoles(){
@@ -65,6 +67,7 @@ public class Compound {
 	
 	public void addElementGroup(ElementGroup group){
 		elementGroups.add(group);
+		sortElements();
 	}
 	
 	public int getNumberOfElements(){
@@ -429,7 +432,26 @@ public class Compound {
 		
 	}
 	
+	private void sortElements(){
+		ArrayList<ElementGroup> newGroups = new ArrayList<ElementGroup>();
+		for(ElementGroup group : elementGroups){
+			if(newGroups.size() == 0) newGroups.add(group);
+			else{
+				for(ElementGroup compared : newGroups){
+					if(group.getCharge() > compared.getCharge()) newGroups.add(newGroups.indexOf(compared), group);
+					else{
+						if(group.getDrawString().compareToIgnoreCase(compared.getDrawString()) > 0) newGroups.add(newGroups.indexOf(compared), group);
+						else newGroups.add(newGroups.indexOf(compared) + 1, group);
+					}
+				}
+			}
+		}
+		
+		elementGroups = newGroups;
+	}
+	
 	public void normalizeCompound(){
+		sortElements();
 		String drawString = "";
 		
 		for(ElementGroup group : elementGroups){

@@ -3,9 +3,9 @@ package com.charredgames.chemify.activity;
 import android.app.Activity;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 
 /**
@@ -24,6 +24,10 @@ public class AboutActivity extends Activity{
 			versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
 		} catch (NameNotFoundException e) {e.printStackTrace();}
 		((TextView)findViewById(R.id.about_app_version)).setText("Version " + versionName + " (" + versionCode + ")");
+	}
+	
+	public void responseClicked(View view){
+		//Silence is golden.
 	}
 	
 }

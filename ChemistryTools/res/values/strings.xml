@@ -5,8 +5,8 @@
     <string name="about_app_developer">Developed by Joe Boyle.</string>
     <string name="about_release_info">Chemify is in alpha release.</string>
     <string name="about_copyright">Chemify is actively developed by Joe Boyle, who retains the right to grant and revoke access to the app. Chemify is considered a work in progress, and makes no claims to be 100% accurate, nor holds any liability for damages which the user may incur.</string>
-    <string name="about_donation_line">Chemify is currently being developed for free, and paid for out of pocket. Any and all donations are greatly appreciated.</string>
-    <string name="about_about_chemify">Chemify is an app designed to help students and chemistry fanatics do less work, and yet still learn.</string>
+    <string name="about_donation_line">Chemify is currently being developed with all expenses paid for out of pocket. Ads are displayed to help pay for these costs.</string>
+    <string name="about_about_chemify">Chemify is an app designed to help students and chemistry fanatics do less work, and yet still learn. It was originally developed to reduce tedious, mundane activities within chemistry.</string>
     <string name="action_settings">Settings</string>
     <string name="edit_input">NaCl</string>
     <string name="submit">Submit</string>

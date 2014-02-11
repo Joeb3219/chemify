@@ -25,28 +25,22 @@
 		  android:text = "@string/about_app_developer"
 		  style = "@style/firstBox"
 		/>
-    	
+
+    	<TextView
+		  android:id = "@+id/about_release_info"
+		  android:text = "@string/about_release_info"
+		  style = "@style/secondBox"
+		/>
+    		
     	<TextView
 		  android:id = "@+id/about_about_chemify"
 		  android:text = "@string/about_about_chemify"
-		  style = "@style/secondBox"
+		  style = "@style/firstBox"
 		/>
     	
     	<TextView
 		  android:id = "@+id/about_donation_line"
 		  android:text = "@string/about_donation_line"
-		  style = "@style/firstBox"
-		/>
-    	
-    	<TextView
-		  android:id = "@+id/about_release_info"
-		  android:text = "@string/about_release_info"
-		  style = "@style/secondBox"
-		/>
-    	
-    	<TextView
-		  android:id = "@+id/about_release_info"
-		  android:text = "@string/about_release_info"
 		  style = "@style/secondBox"
 		/>
     	

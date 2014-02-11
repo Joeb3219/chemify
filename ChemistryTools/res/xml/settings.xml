@@ -50,5 +50,23 @@
         
     </PreferenceCategory>
     
+    <PreferenceCategory 
+        android:title = "@string/prefCat_info"
+        android:key = "prefCat_info"
+        >
+        
+        <Preference android:title = "@string/prefButton_about_title">
+            <intent 
+                android:action = "com.charredgames.chemify.activity.AboutActivity"
+            />
+        </Preference>
+        
+        <Preference android:title = "@string/prefButton_help_title">
+            <intent android:action="android.intent.action.VIEW"  
+                    android:data="http://www.chemify.org" />  
+        </Preference>
+        
+    </PreferenceCategory>
+    
     
 </PreferenceScreen>

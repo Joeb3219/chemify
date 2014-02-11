@@ -50,57 +50,73 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_bug=0x7f0b000d;
-        public static final int action_settings=0x7f0b000c;
-        public static final int bugReport_email=0x7f0b0003;
-        public static final int bugReport_notes=0x7f0b0004;
-        public static final int edit_input=0x7f0b0001;
-        public static final int problem_answer=0x7f0b0006;
-        public static final int problem_input=0x7f0b0005;
-        public static final int problem_ionic=0x7f0b0009;
-        public static final int problem_nomenclature=0x7f0b000b;
-        public static final int problem_oxidation=0x7f0b0008;
-        public static final int problem_solubility=0x7f0b000a;
-        public static final int problem_type=0x7f0b0000;
-        public static final int problem_weight=0x7f0b0007;
-        public static final int submit=0x7f0b0002;
+        public static final int about_about_chemify=0x7f0b0003;
+        public static final int about_app_developer=0x7f0b0002;
+        public static final int about_app_name=0x7f0b0000;
+        public static final int about_app_version=0x7f0b0001;
+        public static final int about_copyright=0x7f0b0006;
+        public static final int about_donation_line=0x7f0b0004;
+        public static final int about_release_info=0x7f0b0005;
+        public static final int action_bug=0x7f0b0014;
+        public static final int action_settings=0x7f0b0013;
+        public static final int bugReport_email=0x7f0b000a;
+        public static final int bugReport_notes=0x7f0b000b;
+        public static final int edit_input=0x7f0b0008;
+        public static final int problem_answer=0x7f0b000d;
+        public static final int problem_input=0x7f0b000c;
+        public static final int problem_ionic=0x7f0b0010;
+        public static final int problem_nomenclature=0x7f0b0012;
+        public static final int problem_oxidation=0x7f0b000f;
+        public static final int problem_solubility=0x7f0b0011;
+        public static final int problem_type=0x7f0b0007;
+        public static final int problem_weight=0x7f0b000e;
+        public static final int submit=0x7f0b0009;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int bug_report=0x7f030001;
-        public static final int problem_nomenclature=0x7f030002;
-        public static final int problem_oxidation=0x7f030003;
-        public static final int problem_reactions=0x7f030004;
-        public static final int problem_solubility=0x7f030005;
-        public static final int problem_weight=0x7f030006;
+        public static final int activity_about=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int bug_report=0x7f030002;
+        public static final int problem_nomenclature=0x7f030003;
+        public static final int problem_oxidation=0x7f030004;
+        public static final int problem_reactions=0x7f030005;
+        public static final int problem_solubility=0x7f030006;
+        public static final int problem_weight=0x7f030007;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
         public static final int response=0x7f0a0001;
     }
     public static final class string {
-        public static final int action_bug=0x7f060006;
-        public static final int action_settings=0x7f060001;
+        public static final int about_about_chemify=0x7f060005;
+        public static final int about_app_developer=0x7f060001;
+        public static final int about_copyright=0x7f060003;
+        public static final int about_donation_line=0x7f060004;
+        public static final int about_release_info=0x7f060002;
+        public static final int action_bug=0x7f06000b;
+        public static final int action_settings=0x7f060006;
         public static final int app_name=0x7f060000;
-        public static final int bugReport_email_hint=0x7f06000a;
-        public static final int bugReport_negative=0x7f060008;
-        public static final int bugReport_notes_default=0x7f060009;
-        public static final int bugReport_positive=0x7f060007;
-        public static final int edit_input=0x7f060002;
-        public static final int prefButton_constants_title=0x7f060015;
-        public static final int prefButton_elements_title=0x7f060013;
-        public static final int prefButton_polyatomics_title=0x7f060014;
-        public static final int prefCat_defaults=0x7f060012;
-        public static final int prefCat_performance=0x7f06000b;
-        public static final int pref_auto_format_summary=0x7f06000d;
-        public static final int pref_auto_format_title=0x7f06000c;
-        public static final int pref_calculate_reasoning_summary=0x7f06000f;
-        public static final int pref_calculate_reasoning_title=0x7f06000e;
-        public static final int pref_send_data_summary=0x7f060011;
-        public static final int pref_send_data_title=0x7f060010;
-        public static final int submit=0x7f060003;
-        public static final int title_activity_response=0x7f060004;
-        public static final int title_activity_settings=0x7f060005;
+        public static final int bugReport_email_hint=0x7f06000f;
+        public static final int bugReport_negative=0x7f06000d;
+        public static final int bugReport_notes_default=0x7f06000e;
+        public static final int bugReport_positive=0x7f06000c;
+        public static final int edit_input=0x7f060007;
+        public static final int prefButton_about_title=0x7f06001c;
+        public static final int prefButton_constants_title=0x7f06001a;
+        public static final int prefButton_elements_title=0x7f060018;
+        public static final int prefButton_help_title=0x7f06001d;
+        public static final int prefButton_polyatomics_title=0x7f060019;
+        public static final int prefCat_defaults=0x7f060017;
+        public static final int prefCat_info=0x7f06001b;
+        public static final int prefCat_performance=0x7f060010;
+        public static final int pref_auto_format_summary=0x7f060012;
+        public static final int pref_auto_format_title=0x7f060011;
+        public static final int pref_calculate_reasoning_summary=0x7f060014;
+        public static final int pref_calculate_reasoning_title=0x7f060013;
+        public static final int pref_send_data_summary=0x7f060016;
+        public static final int pref_send_data_title=0x7f060015;
+        public static final int submit=0x7f060008;
+        public static final int title_activity_response=0x7f060009;
+        public static final int title_activity_settings=0x7f06000a;
     }
     public static final class style {
         /** 

@@ -10,6 +10,7 @@ package com.charredgames.chemify;
 public final class R {
     public static final class array {
         /** 
+		<item>Complete/Net Ionic</item>
 		<item>Oxidation</item>
 		<item>Dimensional Analysis</item>
 		<item>Thermochem</item>

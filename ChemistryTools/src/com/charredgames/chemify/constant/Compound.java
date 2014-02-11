@@ -3,7 +3,6 @@ package com.charredgames.chemify.constant;
 import java.util.ArrayList;
 
 import com.charredgames.chemify.Controller;
-import com.charredgames.chemify.problems.Problem;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -13,6 +12,7 @@ public class Compound {
 
 	private ArrayList<ElementGroup> elementGroups = new ArrayList<ElementGroup>();
 	private int moles = 1, soluble = -1;
+	private MatterState state = MatterState.UNKNOWN;
 	
 	public Compound(ArrayList <ElementGroup> groups, int moles){
 		this.elementGroups = groups;
@@ -88,6 +88,60 @@ public class Compound {
 	
 	public int getNumberOfElementGroups(){
 		return elementGroups.size();
+	}
+	
+	private boolean isCommonlySolid(){
+		if(elementGroups.size() == 1 && elementGroups.get(0).getElementSets().size() == 1){
+			Element element = elementGroups.get(0).getElementSets().get(0).getElement();
+			if(element.getMetalType() != MetalType.NONMETAL && element != Element.MERCURY) return true;
+		}
+		
+		if(elementGroups.size() == 1 && elementGroups.get(0).getElementSets().size() == 2){
+			if(!isMetal() && !isNonMetal()) return true; //Probably Ionic bonding -> generally solid.
+		}
+		
+		return false;
+	}
+	
+	private boolean isCommonlyGas(){
+		if(elementGroups.size() == 1 && elementGroups.get(0).getElementSets().size() == 1){
+			Element element = elementGroups.get(0).getElementSets().get(0).getElement();
+			int quantity = elementGroups.get(0).getQuantity() * elementGroups.get(0).getElementSets().get(0).getQuantity();
+			if(element.getGroup() == 18) return true;
+			if(quantity == 2 && (element == Element.HYDROGEN || element == Element.NITROGEN || element == Element.OXYGEN || element == element.FLUORINE || element == Element.CHLORINE || element == Element.BROMINE || element == Element.IODINE)) return true;
+		}
+		
+		return false;
+	}
+	
+	private boolean isCommonlyLiquid(){
+		if(isWater()) return true;
+		
+		return false;
+	}
+	
+	public MatterState getMatterState(){
+		normalizeCompound();
+		if(state == MatterState.UNKNOWN){
+			if(isCommonlyLiquid()) state = MatterState.LIQUID;
+			else if(isCommonlyGas()) state = MatterState.GAS;
+			else if(isCommonlySolid()){
+				state = MatterState.SOLID;
+				if(isSoluble()) state = MatterState.AQUEOUS;
+				else state = MatterState.SOLID;
+			}
+			if(state == MatterState.UNKNOWN){
+				state = MatterState.SOLID;
+				if(isSoluble()) state = MatterState.AQUEOUS;
+				else state = MatterState.SOLID;
+			}
+		}
+		
+		return state;
+	}
+	
+	public void setMatterState(MatterState state){
+		this.state = state;
 	}
 	
 	public boolean containsElement(Element element){
@@ -248,8 +302,15 @@ public class Compound {
 	}
 
 	public boolean isSoluble(){
+		if(state == MatterState.UNKNOWN) state = getMatterState();
+		if(state == MatterState.AQUEOUS) return true;
 		if(soluble != -1){
 			if(soluble == 1) return true;
+			return false;
+		}
+		
+		if(state != MatterState.SOLID){
+			soluble = -1;
 			return false;
 		}
 		
@@ -356,11 +417,12 @@ public class Compound {
 			drawString += group.getDrawString();
 		}
 		
-		if(drawString.equals("(OH)<sub>2</sub>H<sub>2</sub>")){
+		if(drawString.equals("(OH)<sub>2</sub>H<sub>2</sub>") || drawString.equals("H(OH)")){
 			elementGroups = new ArrayList<ElementGroup>();
-			
-			elementGroups.add(new ElementGroup(new ElementSet(Element.HYDROGEN, 2)));
-			elementGroups.add(new ElementGroup(new ElementSet(Element.OXYGEN, 1)));
+			ElementGroup g = new ElementGroup();
+			g.addElementSet(new ElementSet(Element.HYDROGEN, 2));
+			g.addElementSet(new ElementSet(Element.OXYGEN, 1));
+			elementGroups.add(g);
 		}
 	}
 	

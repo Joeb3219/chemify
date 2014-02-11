@@ -36,7 +36,7 @@ public class Ionic extends Problem{
 			reason += "<b>Complete Ionic</b><br>";
 			reason += "Breaking compounds into ions.<br><br>";
 			answer += "<u>Complete Ionic</u>:<br>";
-			answer += complete.getDrawStringWithAllCharges() + "<br>";
+			answer += complete.getDrawStringWithAllCharges(false) + "<br>";
 			
 			reason += "<b>Net Ionic</b><br>";
 			answer += "<u>Net Ionic</u>:<br>";
@@ -52,7 +52,7 @@ public class Ionic extends Problem{
 			for(Compound c : forRemoval) complete.removeAllInstancesOfCompound(c);
 			complete.balance();
 			
-			if(complete.getAllCompounds().size() != 0) answer += complete.getDrawStringWithAllCharges();
+			if(complete.getAllCompounds().size() != 0) answer += complete.getDrawStringWithAllCharges(false);
 			else answer = "No Reaction/All Compounds Soluble.";
 			
 		}else{

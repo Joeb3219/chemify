@@ -288,7 +288,7 @@ public class Reaction extends Problem{
 		}else{
 			//balanceEquation(compounds, answerCompounds);
 			
-			answer += equation.getDrawString();
+			answer += equation.getDrawString(true);
 		}
 		
 		answer += reason;

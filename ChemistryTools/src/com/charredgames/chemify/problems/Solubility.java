@@ -6,6 +6,7 @@ import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.Equation;
+import com.charredgames.chemify.constant.MatterState;
 
 public class Solubility extends Problem{
 
@@ -27,6 +28,13 @@ public class Solubility extends Problem{
 		for(Compound compound : compounds){
 			answer += "<b>" + compound.getDrawString(false) + ":</b>";
 			reason += "<b>" + compound.getDrawString(false) + ":</b><br>";
+			
+			if(compound.getMatterState() != MatterState.SOLID && compound.getMatterState() != MatterState.AQUEOUS){
+				answer += "insoluble.<br>";
+				reason += "Compound is liquid or gas.<br>";
+				continue;
+			}
+			reason += "Compound is not liquid or gas.<br>";
 			if(compound.allElementsInGroup(1) || compound.containsOnlyG1AndIon(Controller.getIon("OH")) || compound.containsPolyatomic(Controller.getIon("NH4")) || compound.containsOnlyG1AndIon(Controller.getIon("PO4"))){
 				answer += " soluble.<br>";
 				reason += "All elements in " + compound.getDrawString(false) + " are in group 1, or are hydroxide/ammonium ion.<br>";

@@ -68,34 +68,38 @@ public class Equation {
 		else right.addAll(cmps);
 	}
 	
-	public String getDrawString(){
+	public String getDrawString(boolean showMatterState){
 		String answer = "";
 		
 		for(Compound c : left){
 			answer += c.getDrawString();
+			if(showMatterState) answer += c.getMatterState().getDrawSymbol();
 			if(left.get(left.size() - 1) != c) answer += " + ";
 			else if(hasProducts()) answer += " &#8652; ";
 		}
 
 		for(Compound c : right){
 			answer += c.getDrawString();
+			if(showMatterState) answer += c.getMatterState().getDrawSymbol();
 			if(right.get(right.size() - 1) != c) answer += " + ";
 		}
 		
 		return answer;
 	}
 	
-	public String getDrawStringWithAllCharges(){
+	public String getDrawStringWithAllCharges(boolean showMatterState){
 		String answer = "";
 		
 		for(Compound c : left){
 			answer += c.getDrawStringWithAllCharges();
+			if(showMatterState) answer += c.getMatterState().getDrawSymbol();
 			if(left.get(left.size() - 1) != c) answer += " + ";
 			else if(hasProducts()) answer += " &#8652; ";
 		}
 
 		for(Compound c : right){
 			answer += c.getDrawStringWithAllCharges();
+			if(showMatterState) answer += c.getMatterState().getDrawSymbol();
 			if(right.get(right.size() - 1) != c) answer += " + ";
 		}
 		

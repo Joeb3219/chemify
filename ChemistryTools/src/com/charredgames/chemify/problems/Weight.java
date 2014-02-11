@@ -37,7 +37,7 @@ public class Weight extends Problem{
 			}
 		}
 		
-		collectiveInput = equation.getDrawString();
+		collectiveInput = equation.getDrawString(false);
 		
 		equation.balance();
 		

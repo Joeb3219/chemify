@@ -34,7 +34,7 @@ import com.charredgames.chemify.problems.ResponseType;
 public class Controller {
 
 	public static final String _VERSION = "1.2.3";
-	private static AssetManager assets;
+	private static AssetManager assets = null;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
 	public static SparseArray<String> romanNumerals = new SparseArray<String>();
@@ -46,6 +46,9 @@ public class Controller {
 		assets = aManager;
 		setElements("/default/elements.cgf");
 		setIons("/default/polyions.cgf");
+		
+		//Only needs to be run once by app.
+		if(assets != null) return;
 		if(ResponseType.answer instanceof ResponseType);
 		if(Prefix.mono instanceof Prefix);
 		
@@ -205,7 +208,6 @@ public class Controller {
 	
 	public static int getGCD(int a, int b){
 		if(a == 0 || b == 0) return a+b;
-		//if(a == b) return a;
 		return getGCD(b, a%b);
 	}
 	

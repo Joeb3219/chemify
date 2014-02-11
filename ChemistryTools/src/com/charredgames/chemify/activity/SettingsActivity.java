@@ -9,6 +9,7 @@ import com.charredgames.chemify.R;
 
 public class SettingsActivity extends PreferenceActivity{
 
+	@SuppressWarnings("deprecation")
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.settings);

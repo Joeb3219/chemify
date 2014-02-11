@@ -50,13 +50,13 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int about_about_chemify=0x7f0b0003;
+        public static final int about_about_chemify=0x7f0b0004;
         public static final int about_app_developer=0x7f0b0002;
         public static final int about_app_name=0x7f0b0000;
         public static final int about_app_version=0x7f0b0001;
         public static final int about_copyright=0x7f0b0006;
-        public static final int about_donation_line=0x7f0b0004;
-        public static final int about_release_info=0x7f0b0005;
+        public static final int about_donation_line=0x7f0b0005;
+        public static final int about_release_info=0x7f0b0003;
         public static final int action_bug=0x7f0b0014;
         public static final int action_settings=0x7f0b0013;
         public static final int bugReport_email=0x7f0b000a;

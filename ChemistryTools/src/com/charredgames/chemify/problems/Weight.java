@@ -3,6 +3,7 @@ package com.charredgames.chemify.problems;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
@@ -35,9 +36,10 @@ public class Weight extends Problem{
 				equation = new Equation();
 				equation.addCompound(c, 0);
 			}
-		}
+		}else if(input == null) input = equation.getDrawString(false);
 		
-		collectiveInput = equation.getDrawString(false);
+		if(Controller.autoFormat) collectiveInput = equation.getDrawString(false);
+		else collectiveInput = input;
 		
 		equation.balance();
 		

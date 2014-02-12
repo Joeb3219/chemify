@@ -41,14 +41,17 @@ public class Controller {
 	public static final Locale _LOCALE = Locale.getDefault();
 	public static boolean autoFormat = true, calculateReasoning = true, sendUsage = false;
 	public static Map<String, String> reactionSymbols = new HashMap<String, String>();
+	public static final String _GENERIC_PLUS_SIGN = "+", _GENERIC_YIELDS_SIGN = ">";
 	
 	public static void reset(AssetManager aManager){
+		//boolean firstLoad = false;
+		//if(assets == null) firstLoad = true;
 		assets = aManager;
 		setElements("/default/elements.cgf");
 		setIons("/default/polyions.cgf");
 		
 		//Only needs to be run once by app.
-		//if(assets != null) return;
+		//if(!firstLoad) return;
 		if(ResponseType.answer instanceof ResponseType);
 		if(Prefix.mono instanceof Prefix);
 		
@@ -68,27 +71,23 @@ public class Controller {
 		romanNumerals.put(14, "XIV");
 		romanNumerals.put(15, "XV");
 		
-		reactionSymbols.put(" +", "+");
-		reactionSymbols.put("+ ", "+");
-		reactionSymbols.put(" + ", "+");
-		reactionSymbols.put(" >", ">");
-		reactionSymbols.put("> ", ">");
-		reactionSymbols.put(" > ", ">");
-		reactionSymbols.put(" ->", ">");
-		reactionSymbols.put("-> ", ">");
-		reactionSymbols.put(" -> ", ">");
-		reactionSymbols.put(" =>", ">");
-		reactionSymbols.put("=> ", ">");
-		reactionSymbols.put(" => ", ">");
-		reactionSymbols.put(" &#8652;", ">");
-		reactionSymbols.put("&#8652; ", ">");
-		reactionSymbols.put(" &#8652; ", ">");
+		reactionSymbols.put("+", _GENERIC_PLUS_SIGN);
+		//reactionSymbols.put("with", "");
+		//reactionSymbols.put("reacts", _GENERIC_PLUS_SIGN);
+		reactionSymbols.put(">", _GENERIC_YIELDS_SIGN);
+		reactionSymbols.put("->", _GENERIC_YIELDS_SIGN);
+		reactionSymbols.put("=>", _GENERIC_YIELDS_SIGN);
+		reactionSymbols.put("&#8652;", _GENERIC_YIELDS_SIGN);
+		reactionSymbols.put("yields", _GENERIC_YIELDS_SIGN);
 	}
 
 	public static String replaceReactionSymbols(String str){
 		for(Entry<String, String> entry : reactionSymbols.entrySet()){
 			String key = entry.getKey();
 			if(str.contains(key)) str = str.replace(key, entry.getValue());
+			if(str.contains(" " + key)) str = str.replace(" " + key, entry.getValue());
+			if(str.contains(key + " ")) str = str.replace(key + " ", entry.getValue());
+			if(str.contains(" " + key + " ")) str = str.replace(" " + key + " ", entry.getValue());
 		}
 		
 		return str;

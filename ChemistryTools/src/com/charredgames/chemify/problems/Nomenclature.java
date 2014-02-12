@@ -3,7 +3,6 @@ package com.charredgames.chemify.problems;
 import java.util.ArrayList;
 
 import com.charredgames.chemify.Controller;
-import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;

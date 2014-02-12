@@ -20,9 +20,12 @@ public class Solubility extends Problem{
 	
 	public void solve(boolean isPrimary){
 		String collectiveInput, answer = "";
-		collectiveInput = input;
 		
 		if(equation == null) equation = getEquationFromString(input);
+		
+		if(Controller.autoFormat) collectiveInput = equation.getDrawString(false);
+		else collectiveInput = input;
+		
 		ArrayList<Compound> compounds = equation.getAllCompounds();
 		
 		for(Compound compound : compounds){

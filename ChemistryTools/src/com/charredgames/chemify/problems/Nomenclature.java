@@ -23,7 +23,8 @@ public class Nomenclature extends Problem{
 		ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
 		equation = new Equation();
 		
-		collectiveInput = input;
+		if(Controller.autoFormat) collectiveInput = getFormattedDisplay(input);
+		else collectiveInput = input;
 		
 		//Same code as in Problem method's getEquation && getCompound, but modified.
 		input = Controller.replaceReactionSymbols(input);

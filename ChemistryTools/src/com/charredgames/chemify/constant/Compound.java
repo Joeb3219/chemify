@@ -265,6 +265,17 @@ public class Compound {
 		return str;
 	}
 	
+	public String getDrawStringWithoutCharges(){
+		normalizeCompound();
+		String str = "";
+		if(moles != 1) str += moles;
+		for(ElementGroup group : elementGroups){
+			str += group.getDrawString();
+		}
+		
+		return str;
+	}
+	
 	public String getDrawString(boolean showMoles){
 		if(showMoles) return getDrawString();
 		String str = "";

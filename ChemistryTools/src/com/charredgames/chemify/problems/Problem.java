@@ -53,6 +53,30 @@ public abstract class Problem {
 		return response;
 	}
 	
+	public String getFormattedDisplay(String input){
+		String answer = "";
+		input = Controller.replaceReactionSymbols(input);
+		String[] sides = input.split("\\>");
+		for(int i = 0; i < sides.length; i++){
+			String side = sides[i];
+			side = Controller.replaceReactionSymbols(side);
+			String[] compoundStrings = side.split("\\+");
+			for(String str : compoundStrings){
+
+				if(str.contains(" ")) answer += str;
+				else{
+					ArrayList<Compound> cmps = getCompoundsFromString(str);
+					for(Compound c : cmps) answer += c.getDrawStringWithoutCharges();
+				}
+				
+				if(!sides[sides.length - 1].equals(side) && compoundStrings[compoundStrings.length - 1].equals(str)) answer += " &#8652; ";
+				if(!compoundStrings[compoundStrings.length - 1].equals(str)) answer += " + ";
+				
+			}
+		}
+		return answer;
+	}
+	
 	public static Compound correctAtomCount(Compound compound){
 		int maxLoop = 30;
 		ArrayList<ElementGroup> finalGroups = compound.getElementGroups();

@@ -19,6 +19,8 @@ public class Reaction extends Problem{
 
 	public void solve(boolean isPrimary){
 		String answer = "", collectiveInput = input;
+		if(Controller.autoFormat) collectiveInput = getFormattedDisplay(input);
+		
 		ArrayList<Compound> compounds = getCompoundsFromString(input);
 		ArrayList<Compound> answerCompounds = new ArrayList<Compound>();
 		ArrayList<ElementGroup> allElementGroups = new ArrayList<ElementGroup>();

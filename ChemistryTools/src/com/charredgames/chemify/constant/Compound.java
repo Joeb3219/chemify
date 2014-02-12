@@ -464,6 +464,7 @@ public class Compound {
 	
 	public void normalizeCompound(){
 		sortElements();
+		reduceAtomCount();
 		String drawString = "";
 		
 		for(ElementGroup group : elementGroups){

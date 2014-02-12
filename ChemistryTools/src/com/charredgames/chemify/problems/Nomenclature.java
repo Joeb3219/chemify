@@ -3,9 +3,11 @@ package com.charredgames.chemify.problems;
 import java.util.ArrayList;
 
 import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
+import com.charredgames.chemify.constant.Equation;
 import com.charredgames.chemify.constant.MetalType;
 
 public class Nomenclature extends Problem{
@@ -19,103 +21,139 @@ public class Nomenclature extends Problem{
 	public void solve(boolean isPrimary){
 		String collectiveInput = "";
 		String answer = "";
-		ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
 		ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
-		//Convert name to formula
-		if(input.contains(" ")){
-			collectiveInput = input;
-			groups = convertNameToElementGroups(collectiveInput, this);
-			for(ElementGroup group : groups) answer += group.getDrawString();
-		//Convert formula to name.
-		}else{
-			reason += "Does the input contain a space? No.<br>";
-			groups = getElementGroups(input);
-			for(ElementGroup group : groups){
-				collectiveInput += group.getDrawString();
-				for(ElementSet set : group.getElementSets()) sets.add(set);
-			}
-			
-	
-			if(sets.size() == 1 && groups.size() == 1){
-				reason += "Input contains only one element.<br>";
-				answer = normalizeString(sets.get(0).getElement().getName(), true);
-			}
-			else if(sets.size() == 2 && groups.size() < 2){
-				reason += "Input contains no polyatomic ions.<br>";
-				if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
-					answer =  "Hydro" + getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), true) + " Acid";
-					reason += "Contains hydrogen: must be an acid.<br>";
-					reason += "Binary acid - only Hydrogen and " + sets.get(1).getDrawString() + ".<br>";
+		equation = new Equation();
+		
+		collectiveInput = input;
+		
+		//Same code as in Problem method's getEquation && getCompound, but modified.
+		input = Controller.replaceReactionSymbols(input);
+		String[] sides = input.split("\\>");
+		
+		for(int i = 0; i < sides.length; i++){
+			String side = sides[i];
+			equation.addCompounds(getCompoundsFromString(side), i); //Used to build an equation
+			side = Controller.replaceReactionSymbols(side);
+			String[] compoundStrings = side.split("\\+");
+			for(String str : compoundStrings){
+
+				if(compoundStrings.length > 1 || sides.length > 1){
+					answer += "<u>" + str + "</u>: ";
+					reason += "<b>" + str + "</b><br>";
+				}
+				//Convert name to formula
+				if(str.contains(" ")){
+					groups = convertNameToElementGroups(str, this);
+					for(ElementGroup group : groups) answer += group.getDrawString();
+				//Convert formula to name.
 				}else{
-					
-					if(sets.get(0).getElement().getMetalType() == MetalType.METAL){
-						reason += "Is the first element a metal? Yes.<br>";
-						if(sets.get(0).getElement().getGroup() <= 2){
-							reason += "First element's group is 1 or 2: no roman numerals needed.<br>";
-							reason += "Adding 'ide' to end of nonmetal's name.<br>";
-							answer = normalizeString(sets.get(0).getElement().getName(), true) + " " + changeEnding(sets.get(1).getElement().getName(), "ide");
-						}else{
-							reason += "First element is a transition metal: roman numerals needed.<br>";
-							int anionCharge = Math.abs(sets.get(1).getTotalCharge());
-							int cationCharge = anionCharge / sets.get(0).getQuantity();
-							reason += "Using numeral " + Controller.convertIntToNumeral(cationCharge) + " in place of needed cation charge: " + cationCharge + ".<br>";
-							answer = normalizeString(sets.get(0).getElement().getName(), true) + " (" + Controller.convertIntToNumeral(cationCharge) + ") " + changeEnding(sets.get(1).getElement().getName(), "ide");
-						}
-						
-					}else{
-						reason += "Is the first element a metal? No.<br>";
-						reason += "Adding 'ide' to second element's name.<br>";
-						answer = normalizeString(sets.get(0).getElement().getName(), true) + " " + changeEnding(sets.get(1).getElement().getName(), "ide");
-					}
-					
+					groups = getElementGroups(str);
+					answer += convertGroupsToName(groups, this);
 				}
-			}else{
-				reason += "Input may contain polyatomic ions.<br>";
-				if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
-					reason += "Input begins with Hydrogen: acid.<br>";
-					if(groups.size() > 1 && groups.get(1).getIon() != null){
-						reason += "Input contains polyatomic ions: " + groups.get(1).getIon().getName() + ".<br>";
-						reason += "Converting " + groups.get(1).getIon().getName() + " to " + getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " and apending 'acid' to name.<br>";
-						answer = getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
-					}else{
-						reason += "Input does not contain polyatomic ions. Adding 'acid' to end of name.<br>";
-						answer = getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
-					}
+				
+				if((compoundStrings.length > 1 || sides.length > 1) && !(i == (sides.length - 1) && compoundStrings[compoundStrings.length - 1].equals(str))){
+					answer += "<br>";
+					reason += "<br>";
 				}
-				else if((groups.size() == 2 || groups.size() == 3) && groups.get(0).getElementCount() == 1){
-					reason += "Input contains one or more polyatomic ions.<br>";
-					ElementSet groupOneElement = groups.get(0).getElementSets().get(0);
-					String output = normalizeString(groupOneElement.getElement().getName() + " ", true);
-					reason += "Converting " + groupOneElement.getDrawString() + " to " + output + ".<br>";
-					
-					if(groupOneElement.getElement().getGroup() > 2){
-						reason += "First element is a transition metal: roman numerals needed.<br>";
-						int anionCharge = Math.abs(groups.get(1).getCharge());
-						int cationCharge = anionCharge / groupOneElement.getQuantity();
-						output += "(" + Controller.convertIntToNumeral(cationCharge) + ")";
-						reason += "Setting roman roman numeral equal to the needed cation charge: " + cationCharge + ".<br>";
-					}
-					
-					if(groups.get(1).getIon() != null){
-						output += " " + normalizeString(groups.get(1).getIon().getName(), true);
-						reason += "Converting " + groups.get(1).getIon().getName() + " to " + normalizeString(groups.get(1).getIon().getName(), true) + ".<br>";
-					}
-					
-					answer = output;
-				}
+			
 			}
 		}
+		
+		//collectiveInput = equation.getDrawString(false);
 		
 		answer += reason.intern();
 		
 		if(isPrimary){
 			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(answer, ResponseType.answer);
-			addProblemToPanel(response, new Weight(groups));
+			addProblemToPanel(response, new Weight(equation));
 			//addProblemToPanel(response, new Oxidation(groups));
 		}else{
 			response.addLine(answer, ResponseType.nomenclature);
 		}
+	}
+	
+	public String convertGroupsToName(ArrayList<ElementGroup> groups, Problem problem){
+		String reason = "", answer = "";
+		ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
+		
+		reason += "Does the input contain a space? No.<br>";
+		for(ElementGroup group : groups){
+			for(ElementSet set : group.getElementSets()) sets.add(set);
+		}
+		
+
+		if(sets.size() == 1 && groups.size() == 1){
+			reason += "Input contains only one element.<br>";
+			answer = normalizeString(sets.get(0).getElement().getName(), true);
+		}
+		else if(sets.size() == 2 && groups.size() < 2){
+			reason += "Input contains no polyatomic ions.<br>";
+			if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
+				answer =  "Hydro" + getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), true) + " Acid";
+				reason += "Contains hydrogen: must be an acid.<br>";
+				reason += "Binary acid - only Hydrogen and " + sets.get(1).getDrawString() + ".<br>";
+			}else{
+				
+				if(sets.get(0).getElement().getMetalType() == MetalType.METAL){
+					reason += "Is the first element a metal? Yes.<br>";
+					if(sets.get(0).getElement().getGroup() <= 2){
+						reason += "First element's group is 1 or 2: no roman numerals needed.<br>";
+						reason += "Adding 'ide' to end of nonmetal's name.<br>";
+						answer = normalizeString(sets.get(0).getElement().getName(), true) + " " + changeEnding(sets.get(1).getElement().getName(), "ide");
+					}else{
+						reason += "First element is a transition metal: roman numerals needed.<br>";
+						int anionCharge = Math.abs(sets.get(1).getTotalCharge());
+						int cationCharge = anionCharge / sets.get(0).getQuantity();
+						reason += "Using numeral " + Controller.convertIntToNumeral(cationCharge) + " in place of needed cation charge: " + cationCharge + ".<br>";
+						answer = normalizeString(sets.get(0).getElement().getName(), true) + " (" + Controller.convertIntToNumeral(cationCharge) + ") " + changeEnding(sets.get(1).getElement().getName(), "ide");
+					}
+					
+				}else{
+					reason += "Is the first element a metal? No.<br>";
+					reason += "Adding 'ide' to second element's name.<br>";
+					answer = normalizeString(sets.get(0).getElement().getName(), true) + " " + changeEnding(sets.get(1).getElement().getName(), "ide");
+				}
+				
+			}
+		}else{
+			reason += "Input may contain polyatomic ions.<br>";
+			if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
+				reason += "Input begins with Hydrogen: acid.<br>";
+				if(groups.size() > 1 && groups.get(1).getIon() != null){
+					reason += "Input contains polyatomic ions: " + groups.get(1).getIon().getName() + ".<br>";
+					reason += "Converting " + groups.get(1).getIon().getName() + " to " + getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " and apending 'acid' to name.<br>";
+					answer = getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
+				}else{
+					reason += "Input does not contain polyatomic ions. Adding 'acid' to end of name.<br>";
+					answer = getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
+				}
+			}
+			else if((groups.size() == 2 || groups.size() == 3) && groups.get(0).getElementCount() == 1){
+				reason += "Input contains one or more polyatomic ions.<br>";
+				ElementSet groupOneElement = groups.get(0).getElementSets().get(0);
+				String output = normalizeString(groupOneElement.getElement().getName() + " ", true);
+				reason += "Converting " + groupOneElement.getDrawString() + " to " + output + ".<br>";
+				
+				if(groupOneElement.getElement().getGroup() > 2){
+					reason += "First element is a transition metal: roman numerals needed.<br>";
+					int anionCharge = Math.abs(groups.get(1).getCharge());
+					int cationCharge = anionCharge / groupOneElement.getQuantity();
+					output += "(" + Controller.convertIntToNumeral(cationCharge) + ")";
+					reason += "Setting roman roman numeral equal to the needed cation charge: " + cationCharge + ".<br>";
+				}
+				
+				if(groups.get(1).getIon() != null){
+					output += " " + normalizeString(groups.get(1).getIon().getName(), true);
+					reason += "Converting " + groups.get(1).getIon().getName() + " to " + normalizeString(groups.get(1).getIon().getName(), true) + ".<br>";
+				}
+				
+				answer = output;
+			}
+		}
+		
+		if(problem != null && problem instanceof Nomenclature) problem.reason += reason;
+		return answer;
 	}
 	
 	public static ArrayList<ElementGroup> convertNameToElementGroups(String input, Problem problem){

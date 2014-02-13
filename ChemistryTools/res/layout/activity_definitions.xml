@@ -9,7 +9,7 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical"
 	    android:id = "@+id/definitions_linear_parent"
-	    android:paddingTop = "2pt">
+	    >
 	
 	    <EditText android:id = "@+id/search_box"
 	        android:layout_width = "fill_parent"
@@ -24,7 +24,7 @@
 	   		 android:layout_height="wrap_content"
 	   		 android:orientation="vertical"
 	   		 android:id = "@+id/definitions_results"
-	    	 android:paddingTop = "2pt">
+	    	 >
 	    
 	    
 	    </LinearLayout>

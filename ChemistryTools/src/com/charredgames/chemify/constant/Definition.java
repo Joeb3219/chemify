@@ -28,7 +28,7 @@ public class Definition {
 	}
 	
 	public String getExample(){
-		if(example != null) return "Example: <br>" + example;
+		if(example != null) return "<b>Example</b>: <br>" + example;
 		return "";
 	}
 	
@@ -38,7 +38,7 @@ public class Definition {
 		output += "<b>" + getWord() + "</b><br>";
 		output += getDefinition();
 		if(example != null){
-			output += "<br>";
+			output += "<br><br>";
 			output += getExample();
 		}
 		

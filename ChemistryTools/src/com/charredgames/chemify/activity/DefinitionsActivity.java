@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +20,8 @@ public class DefinitionsActivity extends Activity{
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		
+		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 		setContentView(R.layout.activity_definitions);
 		
@@ -50,10 +53,8 @@ public class DefinitionsActivity extends Activity{
 		container.removeAllViews();
 		boolean firstBox = true;
 		
-		int results = 0;
 		for(Definition def : Definition.definitions){
 			if(!def.containsWord(search)) continue;
-			results ++;
 			TextView defBox;
 			if(firstBox) defBox = (TextView)getLayoutInflater().inflate(R.layout.firstboxtemplate, null);
 			else defBox = (TextView)getLayoutInflater().inflate(R.layout.secondboxtemplate, null);
@@ -61,28 +62,14 @@ public class DefinitionsActivity extends Activity{
 			defBox.setText(Html.fromHtml(def.getDrawString()));
 			
 			container.addView(defBox);
-			//addContentView(defBox, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 			
 			firstBox = !firstBox;
 		}
-		System.out.println(results);
 	}
 	
 	
 	
 	public void responseClicked(View view){
-		/*int id = view.getId();
-		if(!answers.containsKey(id)) return;
-		ResponseBlock block = answers.get(id);
-		if(expandedViews.contains(id)){
-			expandedViews.remove(expandedViews.indexOf(id));
-			((TextView) (view)).setText(block.getAnswer());
-		}
-		else{
-			expandedViews.add(id);
-			((TextView) (view)).setText(block.getExpanded());
-		}*/
-		
 	}
 	
 }

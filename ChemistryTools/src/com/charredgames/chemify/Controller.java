@@ -23,6 +23,7 @@ import android.content.res.AssetManager;
 import android.preference.PreferenceManager;
 import android.util.SparseArray;
 
+import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.problems.Prefix;
 import com.charredgames.chemify.problems.ResponseType;
@@ -33,7 +34,7 @@ import com.charredgames.chemify.problems.ResponseType;
  */
 public class Controller {
 
-	public static final String _VERSION = "1.2.7";
+	public static final String _VERSION = "1.3.0";
 	private static AssetManager assets = null;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
@@ -49,6 +50,7 @@ public class Controller {
 		assets = aManager;
 		setElements("/default/elements.cgf");
 		setIons("/default/polyions.cgf");
+		setDefinitions("/default/definitions.cgf");
 		
 		//Only needs to be run once by app.
 		//if(!firstLoad) return;
@@ -157,8 +159,28 @@ public class Controller {
 						ionItem.getChild("string").getAttributeValue("name"),
 						Integer.parseInt(ionItem.getChild("int").getAttributeValue("charge"))
 						);
-		}
-  } catch (IOException e) {e.printStackTrace();} catch (JDOMException e) {e.printStackTrace();  }
+			}
+		} catch (IOException e) {e.printStackTrace();} catch (JDOMException e) {e.printStackTrace();  }
+	}
+	
+	private static void setDefinitions(String path){
+		SAXBuilder builder = new SAXBuilder();
+		File xmlFile;
+		try {
+			xmlFile = getFileFromStream("definitions", assets.open("default/definitions.cgf"));
+			Document document = (Document) builder.build(xmlFile);
+			Element rootNode = document.getRootElement();
+			
+			List<Element> list = rootNode.getChildren("entry");
+			for (int i = 0; i < list.size(); i++) {				
+				Element definition = (Element) list.get(i);
+				Definition d = new Definition(
+						definition.getChildText("word"),
+						definition.getChildText("definition"));
+				if(definition.getChildText("example") != null) d.setExample(definition.getChildText("example"));
+			}
+		} catch (IOException e) {e.printStackTrace();} catch (JDOMException e) {e.printStackTrace();  }
+		System.out.println(Definition.definitions.size());
 	}
 	
 	private static File getFileFromStream(String prefix, InputStream in){

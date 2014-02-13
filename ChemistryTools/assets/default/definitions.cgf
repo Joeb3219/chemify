@@ -1,0 +1,620 @@
+<?xml version="1.0"?>
+
+<definitions>
+
+	<entry>
+		<word>Absolute Zero</word>
+		<definition>0 Kelvin. Lowest possible temperature.</definition>
+	</entry>
+	
+	<entry>
+		<word>Acidic</word>
+		<definition>A compound or solution with a pH lower than 7.</definition>
+		<example>HF</example>
+	</entry>
+	
+	<entry>
+		<word>Activation Energy</word>
+		<definition>Minimum amount of energy needed to start a reaction.</definition>
+	</entry>
+	
+	<entry>
+		<word>Activity Series</word>
+		<definition>A list of metals, in order (top to bottom) of decreasing ease of oxidation.</definition>
+	</entry>
+	
+	<entry>
+		<word>Actual Yield</word>
+		<definition>Actual amount of product formed in a reaction.</definition>
+	</entry>
+	
+	<entry>
+		<word>Alkali Metals</word>
+		<definition>All elements in group 1 of the periodic table.</definition>
+		<example>Hydrogen, Lithium</example>
+	</entry>
+	
+	<entry>
+		<word>Amorphous Solid</word>
+		<definition>A solid in which the atoms are not arranged in a definite lattice pattern.</definition>
+		<example>Wax</example>
+	</entry>
+	
+	<entry>
+		<word>Amphoteric</word>
+		<definition>A molecule that can react as an acid or a base.</definition>
+		<example>H2O, Zinc Oxide</example>
+	</entry>
+	
+	<entry>
+		<word>Amplitude</word>
+		<definition>The height of a wave.</definition>
+	</entry>
+	
+	<entry>
+		<word>Anion</word>
+		<definition>Negatively charged ions</definition>
+		<example>F-, Cl-</example>
+	</entry>
+	
+	<entry>
+		<word>Anode</word>
+		<definition>An electrode where oxidation takes place.</definition>
+	</entry>
+	
+	<entry>
+		<word>Aqueous</word>
+		<definition>A solution in which water is the solvent.</definition>
+		<example>NaCl</example>
+	</entry>
+	
+	<entry>
+		<word>Aufbau Principle</word>
+		<definition>Electrons will fill the lowest energy level first.</definition>
+	</entry>
+	
+	<entry>
+		<word>Avogadro's Law</word>
+		<definition>The number of moles of gas and volume are directly proportional.</definition>
+	</entry>
+	
+	<entry>
+		<word>Avogadro's Number</word>
+		<definition>6.02 * 10^23</definition>
+	</entry>
+	
+	<entry>
+		<word>Basic</word>
+		<definition>A compound or solution with a pH above 7.</definition>
+		<example>NaOH</example>
+	</entry>
+	
+	<entry>
+		<word>Binary Compound</word>
+		<definition>A compound containing two elements.</definition>
+		<example>NaCl</example>
+	</entry>
+	
+	<entry>
+		<word>Boiling Point</word>
+		<definition>The temperature at which a liquid converts to a gaseous state.</definition>
+	</entry>
+	
+	<entry>
+		<word>Boyle's Law</word>
+		<definition>The volume and pressure of a gas are inversely proportional.</definition>
+	</entry>
+	
+	<entry>
+		<word>Buffer</word>
+		<definition>Solutions which resist changes in pH level.</definition>
+		<example>(NH4)HCO3 (ammonium bicarbonate)</example>
+	</entry>
+	
+	<entry>
+		<word>Calorie</word>
+		<definition>Amount of energy needed to raise the temperature of 1g H2O by 1 degree Celsius.</definition>
+	</entry>
+	
+	<entry>
+		<word>Capillary Action</word>
+		<definition>The rising of a liquid through a tube against the force of gravity.</definition>
+	</entry>
+	
+	<entry>
+		<word>Catalyst</word>
+		<definition>A substance that increases reaction rate, and is not consumed in the reaction.</definition>
+		<example>MnO2</example>
+	</entry>
+	
+	<entry>
+		<word>Cathode</word>
+		<definition>An electrode where reduction takes place.</definition>
+	</entry>
+	
+	<entry>
+		<word>Cation</word>
+		<definition>Positively charged ions</definition>
+		<example>Na+, Li+</example>
+	</entry>
+	
+	<entry>
+		<word>Charles's Law</word>
+		<definition>Volume and temperature are directly proportional.</definition>
+	</entry>
+	
+	<entry>
+		<word>Colloid</word>
+		<definition>A solution with particles ranging between 1 and 1000 nm in diameter.</definition>
+	</entry>
+	
+	<entry>
+		<word>Compound</word>
+		<definition>Pure substances with a fixed proportion of elements.</definition>
+		<example>NaCl</example>
+	</entry>
+	
+	<entry>
+		<word>Concentrated</word>
+		<definition>A solution in which there is more solute than solvent.</definition>
+	</entry>
+	
+	<entry>
+		<word>Concentration</word>
+		<definition>The amount of solute dissolved in the solvent.</definition>
+	</entry>
+	
+	<entry>
+		<word>Covalent Bonding</word>
+		<definition>One or more electron pairs shared between two atoms.</definition>
+		<example>PCl3</example>
+	</entry>
+	
+	<entry>
+		<word>Critical Point</word>
+		<definition>Point on a phase diagram at which the gas and liquid phases are indistinguishable from one-another.</definition>
+	</entry>
+	
+	<entry>
+		<word>Dalton's Law</word>
+		<definition>The total pressure of a mixture of gases is the sum of the partial pressures.</definition>
+	</entry>
+	
+	<entry>
+		<word>Dilute</word>
+		<definition>A solution with much less solute than solvent.</definition>
+	</entry>
+	
+	<entry>
+		<word>Dipole-Dipole IMF</word>
+		<definition>An intermolecular force between polar molecules.</definition>
+	</entry>
+	
+	<entry>
+		<word>Effective Nuclear Charge</word>
+		<definition>Net attraction that an electron experiences - affected by other electrons pulling on protons.</definition>
+	</entry>
+	
+	<entry>
+		<word>Electrode</word>
+		<definition>Part of cell that conducts electrons.</definition>
+	</entry>
+	
+	<entry>
+		<word>Electrolyte</word>
+		<definition>A substance that conducts electrical current when dissolved.</definition>
+		<example>NaCl</example>
+	</entry>
+	
+	<entry>
+		<word>Electron Affinity</word>
+		<definition>Energy change that occurs when adding electrons.</definition>
+	</entry>
+	
+	<entry>
+		<word>Electronegativity</word>
+		<definition>The ability of an atom to attract other atoms.</definition>
+		<example>Fluorine is the most electronegative element.</example>
+	</entry>
+	
+	<entry>
+		<word>Electron Cloud</word>
+		<definition>An area in which there is a high chance of finding an electron.</definition>
+	</entry>
+	
+	<entry>
+		<word>Elementary Step</word>
+		<definition>Individual steps in a reaction mechanism/system.</definition>
+	</entry>
+	
+	<entry>
+		<word>Empirical Formula</word>
+		<definition>A compound in which atoms are in the simplest whole number ratio.</definition>
+		<example>H4O2 -> H2O</example>
+	</entry>
+	
+	<entry>
+		<word>Endothermic</word>
+		<definition>Absorbs energy from surroundings.</definition>
+	</entry>
+	
+	<entry>
+		<word>Enthalphy</word>
+		<definition>Heat gained or lost by a system.</definition>
+	</entry>
+	
+	<entry>
+		<word>Entropy</word>
+		<definition>Disorder of the system.</definition>
+	</entry>
+	
+	<entry>
+		<word>Equivalence Point</word>
+		<definition>Point at which the pH is 7. Complete neutralization.</definition>
+	</entry>
+	
+	<entry>
+		<word>Exothermic</word>
+		<definition>Heat released to surroundings.</definition>
+	</entry>
+	
+	<entry>
+		<word>Frequency</word>
+		<definition>Number of waves per second.</definition>
+	</entry>
+	
+	<entry>
+		<word>Gay-Lussac's Law</word>
+		<definition>Pressure and temperature are directly proportional.</definition>
+	</entry>
+	
+	<entry>
+		<word>Gibbs Free Energy</word>
+		<definition>Denoted by G, combines enthalpy, entropy, and temperature.</definition>
+	</entry>
+	
+	<entry>
+		<word>Graham's Law</word>
+		<definition>Relates speed of gas diffusion/effusion to the square root of the gas' molar mass -> inversely proportional.</definition>
+	</entry>
+	
+	<entry>
+		<word>Half Life</word>
+		<definition>Amount of time for a concentration to decrease by one-half.</definition>
+	</entry>
+	
+	<entry>
+		<word>Heat Capacity</word>
+		<definition>Amount of heat needed to change a temperature by 1 Kelvin.</definition>
+	</entry>
+	
+	<entry>
+		<word>Henderson-Hasselbalch Equation</word>
+		<definition>Used to calculate the pH of a buffer.</definition>
+	</entry>
+	
+	<entry>
+		<word>Henry's Law</word>
+		<definition>Solubility and partial pressure of a gas are directly proportional.</definition>
+	</entry>
+	
+	<entry>
+		<word>Hess's Law</word>
+		<definition>The enthalpy change of a reaction is equal to the sum of its steps.</definition>
+	</entry>
+	
+	<entry>
+		<word>Hund's Rule</word>
+		<definition>Electrons half-fill orbitals before completely filling them.</definition>
+	</entry>
+	
+	<entry>
+		<word>Hydrocarbon</word>
+		<definition>A compound containing only hydrogen and carbon.</definition>
+		<example>CH2</example>
+	</entry>
+	
+	<entry>
+		<word>Hydrogen Bonds</word>
+		<definition>A bond between Hydrogen and oxygen, fluorine, or nitrogen.</definition>
+		<example>HF, H2O</example>
+	</entry>
+	
+	<entry>
+		<word>Ideal Gas</word>
+		<definition>A gas which obeys the ideal gas laws.</definition>
+	</entry>
+	
+	<entry>
+		<word>Indicators</word>
+		<definition>Substances which change colour in presence of specific pH's.</definition>
+		<example>Bromphenol Blue</example>
+	</entry>
+	
+	<entry>
+		<word>Intermediates</word>
+		<definition>Chemical species which show up in the mechanism, but not final reaction.</definition>
+	</entry>
+	
+	<entry>
+		<word>Intermolecular Forces (IMF)</word>
+		<definition>Attractive/repulsive forces between molecules.</definition>
+		<example>LDF, Dipole-Dipole, Hydrogen bond</example>
+	</entry>
+	
+	<entry>
+		<word>Ion-Dipole IMF</word>
+		<definition>A IMF between ions and polar molecules.</definition>
+	</entry>
+	
+	<entry>
+		<word>Ionic Bond</word>
+		<definition>A bond between a metal and non-metal.</definition>
+		<example>NaBr</example>
+	</entry>
+	
+	<entry>
+		<word>Ionization Energy</word>
+		<definition>Energy required to remove an atom.</definition>
+	</entry>
+	
+	<entry>
+		<word>Isomer</word>
+		<definition>Two compounds with the same formulas, but different structures.</definition>
+	</entry>
+	
+	<entry>
+		<word>Isotope</word>
+		<definition>Two atoms of the same elements with different numbers of neutrons.</definition>
+		<example>54Fe, 56Fe</example>
+	</entry>
+	
+	<entry>
+		<word>Kinetic Energy</word>
+		<definition>Energy of motion.</definition>
+	</entry>
+	
+	<entry>
+		<word>Le Chatelier's Principle</word>
+		<definition>When a system at equilibrium is stressed, it will shit to reestablish equilibrium.</definition>
+	</entry>
+	
+	<entry>
+		<word>Limiting Reactant</word>
+		<definition>The reactant in a reaction that is first used up.</definition>
+	</entry>
+	
+	<entry>
+		<word>Mechanism/System</word>
+		<definition>Sequence of steps to reach a final reaction.</definition>
+		<example>See Hess's Law</example>
+	</entry>
+	
+	<entry>
+		<word>Melting Point</word>
+		<definition>Temperature that causes a solid to convert to a liquid state.</definition>
+	</entry>
+	
+	<entry>
+		<word>Metallic Bond</word>
+		<definition>Electrons of the atom are delocalized; free to move around.</definition>
+		<example>Steel (Fe3C)</example>
+	</entry>
+	
+	<entry>
+		<word>Molality</word>
+		<definition>Moles divided by solute per kg of solvent.</definition>
+	</entry>
+	
+	<entry>
+		<word>Molarity</word>
+		<definition>Concentration of a compound; moles of solute divided by liters of solvent.</definition>
+	</entry>
+	
+	<entry>
+		<word>Mole</word>
+		<definition>Amount of a substance needed to contain the same number of atoms in 12g of carbon.</definition>
+	</entry>
+	
+	<entry>
+		<word>Molecule</word>
+		<definition>Covalently bonded compound.</definition>
+	</entry>
+	
+	<entry>
+		<word>Net Ionic Equation</word>
+		<definition>An equation that shows only the chemical species used in the reaction.</definition>
+	</entry>
+	
+	<entry>
+		<word>Noble Gases</word>
+		<definition>All elements in group 18.</definition>
+		<example>Xe</example>
+	</entry>
+	
+	<entry>
+		<word>Nucleus</word>
+		<definition>Dense core of positive charge at center of atom.</definition>
+	</entry>
+	<entry>
+		<word>Octet Rule</word>
+		<definition>Atoms gain/lose/share electrons to achieve a full valence shell.</definition>
+	</entry>
+	
+	<entry>
+		<word>Orbital</word>
+		<definition>An area in which electrons exist.</definition>
+	</entry>
+	
+	<entry>
+		<word>Osmosis</word>
+		<definition>When solvent molecules pass through a semipermeable membrane.</definition>
+	</entry>
+	
+	<entry>
+		<word>Oxidation</word>
+		<definition>Loss of electrons.</definition>
+	</entry>
+	
+	<entry>
+		<word>Percent Yield</word>
+		<definition>Actual yield divided by theoretical yield, multiplied by 100.</definition>
+	</entry>
+	
+	<entry>
+		<word>Phase Change</word>
+		<definition>When a compound changes state.</definition>
+	</entry>
+	
+	<entry>
+		<word>Pi Bonds</word>
+		<definition>Overlapping of atomic orbitals on both sides.</definition>
+	</entry>
+	
+	<entry>
+		<word>Quantum Numbers</word>
+		<definition>Four numbers used to describe location, spin, shape, and energy level of each electron.</definition>
+		<example>1111</example>
+	</entry>
+	
+	<entry>
+		<word>Rate-Determining Step</word>
+		<definition>Slowest step in a reaction.</definition>
+	</entry>
+	
+	<entry>
+		<word>Reactants</word>
+		<definition>Starting materials, all compounds on the left side of the equation.</definition>
+	</entry>
+	
+	<entry>
+		<word>Reactive Site</word>
+		<definition>Place in a molecule where a reaction takes place.</definition>
+	</entry>
+	
+	<entry>
+		<word>Reduction</word>
+		<definition>The gaining of an electron.</definition>
+	</entry>
+	
+	<entry>
+		<word>Resonance</word>
+		<definition>Different Lewis structures of the same compound, differing only by electron placement.</definition>
+	</entry>
+	
+	<entry>
+		<word>Sigma Bond</word>
+		<definition>Bonds with orbital overlap.</definition>
+	</entry>
+	
+	<entry>
+		<word>Solute</word>
+		<definition>Component in a solution that is the smallest amount.</definition>
+	</entry>
+	<entry>
+		<word>Solution</word>
+		<definition>Homogenous mixture of 1 solvent and 1+ solutes.</definition>
+	</entry>
+	
+	<entry>
+		<word>Solvent</word>
+		<definition>Component of a solution that is the largest amount.</definition>
+	</entry>
+	
+	<entry>
+		<word>Spectator Ion</word>
+		<definition>Ions that aren't involved in the actual reaction.</definition>
+	</entry>
+	
+	<entry>
+		<word>Strong Acid</word>
+		<definition>An acid that dissociates completely.</definition>
+		<example>HCl</example>
+	</entry>
+	
+	<entry>
+		<word>Strong Base</word>
+		<definition>A base that dissociates completely.</definition>
+		<example>NaOH</example>
+	</entry>
+	
+	<entry>
+		<word>Sublimation</word>
+		<definition>Going from a solid to gaseous state without ever being a liquid.</definition>
+	</entry>
+	<entry>
+		<word>Supersaturated Solution</word>
+		<definition>More than maximum amount of solute dissolved in solvent at a given temperature.</definition>
+	</entry>
+	
+	<entry>
+		<word>Surface Tension</word>
+		<definition>Amount of force needed to break through molecular layer at surface of liquid.</definition>
+	</entry>
+	
+	<entry>
+		<word>Surroundings</word>
+		<definition>Everything that is not the system.</definition>
+	</entry>
+	<entry>
+		<word>System</word>
+		<definition>The part of the universe that is being studied.</definition>
+	</entry>
+	
+	<entry>
+		<word>Ternary Compound</word>
+		<definition>Compounds with 3+ elements.</definition>
+		<example>HClO3</example>
+	</entry>
+	
+	<entry>
+		<word>Theoretical Yield</word>
+		<definition>Maximum amount of product that can possibly be formed.</definition>
+	</entry>
+	<entry>
+		<word>Triple Point</word>
+		<definition>The point at which all three states of matter exist at once.</definition>
+	</entry>
+	
+	<entry>
+		<word>Valence Electrons</word>
+		<definition>Electrons in the outermost energy shell.</definition>
+	</entry>
+	
+	<entry>
+		<word>Van Der Waals Equation</word>
+		<definition>Modification to Ideal Gas Equation to compensate for behavior of real gases.</definition>
+	</entry>
+	<entry>
+		<word>Van't Hoff Factor</word>
+		<definition>Ratio of moles of solute to moles of solute dissolved in solution.</definition>
+	</entry>
+	
+	<entry>
+		<word>Viscosity</word>
+		<definition>Resistance to flow of a liquid.</definition>
+	</entry>
+	
+	<entry>
+		<word>VSEPR Theory</word>
+		<definition>Valence Shell Electron Pair Repulsion -> Electrons will try to get as far away from one-another as possible.</definition>
+	</entry>
+	
+	<entry>
+		<word>Wavelength</word>
+		<definition>Distance between two points on a wave.</definition>
+	</entry>
+	
+	<entry>
+		<word>Weak Acid</word>
+		<definition>An acid that only partially dissociates.</definition>
+		<example>HF</example>
+	</entry>
+	
+	<entry>
+		<word>Weak Base</word>
+		<definition>An base that only partially dissociates.</definition>
+		<example>NH3</example>
+	</entry>
+	
+</definitions>

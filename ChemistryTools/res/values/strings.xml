@@ -8,10 +8,13 @@
     <string name="about_donation_line">Chemify is currently being developed with all expenses paid for out of pocket. Ads are displayed to help pay for these costs.</string>
     <string name="about_about_chemify">Chemify is an app designed to help students and chemistry fanatics do less work, and yet still learn. It was originally developed to reduce tedious, mundane activities within chemistry.</string>
     <string name="action_settings">Settings</string>
+    <string name="action_definitions">Dictionary</string>
     <string name="edit_input">NaCl</string>
     <string name="submit">Submit</string>
     <string name="title_activity_response">Response</string>
     <string name = "title_activity_settings">Settings</string>
+    <string name = "title_activity_definitions">Chemistry Dictionary</string>
+    <string name = "search_box_hint">Electron Affinity</string>
     <string name = "action_bug">Submit Bug Report</string>
     <string name = "bugReport_positive">Send Report</string>
     <string name = "bugReport_negative">Do Not Send</string>

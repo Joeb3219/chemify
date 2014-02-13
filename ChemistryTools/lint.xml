@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="NewApi" severity="ignore" />
     <issue id="TextFields">
         <ignore path="res/layout/activity_main.xml" />
         <ignore path="res/layout/bug_report.xml" />

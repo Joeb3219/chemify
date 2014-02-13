@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.charredgames.chemify"
-    android:versionCode="10"
-    android:versionName="1.2.7" >
+    android:versionCode="11"
+    android:versionName="1.3.0" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <supports-screens
@@ -15,8 +15,8 @@
           />
     
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="10" />
 
     <application
         android:allowBackup="true"
@@ -45,6 +45,15 @@
             android:name="com.charredgames.chemify.activity.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName="com.charredgames.chemify.activity.SettingsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charredgames.chemify.MainActivity" />
+        </activity>
+        
+        <activity
+            android:name="com.charredgames.chemify.activity.DefinitionsActivity"
+            android:label="@string/title_activity_definitions"
+            android:parentActivityName="com.charredgames.chemify.activity.DefinitionsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.charredgames.chemify.MainActivity" />

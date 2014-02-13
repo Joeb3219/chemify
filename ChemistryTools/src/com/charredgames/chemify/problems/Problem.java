@@ -193,9 +193,16 @@ public abstract class Problem {
 		String[] compoundStrings = string.split("\\+");
 		for(String str : compoundStrings){
 			ArrayList<ElementGroup> elementGroups;
-			elementGroups = Nomenclature.convertNameToElementGroups(str, null);
-
-			compounds.add(new Compound(elementGroups));
+			if(str.contains(" ")){
+				elementGroups = Nomenclature.convertNameToElementGroups(str, null);
+				Compound c = new Compound(elementGroups);
+				c = correctAtomCount(c);
+				compounds.add(c);
+			}else{
+				Compound c = new Compound(getElementGroups(string));
+				c = correctAtomCount(c);
+				compounds.add(c);
+			}
 		}
 		
 		return compounds;
@@ -233,6 +240,7 @@ public abstract class Problem {
 						ElementGroup g = new ElementGroup(getElementSets(ion.getElementString()));
 						g.setCharge(ion.getCharge());
 						g.setIon(ion);
+						System.out.println(quan);
 						g.setQuantity(quan);
 						elementGroups.add(g);
 						group = group.replace(ion.getElementString(), "");

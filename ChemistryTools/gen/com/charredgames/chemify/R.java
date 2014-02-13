@@ -11,7 +11,6 @@ public final class R {
     public static final class array {
         /** 
 		<item>Complete/Net Ionic</item>
-		<item>Oxidation</item>
 		<item>Dimensional Analysis</item>
 		<item>Thermochem</item>
 		<item>Stoichiometry</item>
@@ -64,10 +63,10 @@ public final class R {
         public static final int edit_input=0x7f0b0008;
         public static final int problem_answer=0x7f0b000d;
         public static final int problem_input=0x7f0b000c;
-        public static final int problem_ionic=0x7f0b0010;
-        public static final int problem_nomenclature=0x7f0b0012;
+        public static final int problem_ionic=0x7f0b0011;
+        public static final int problem_nomenclature=0x7f0b0010;
         public static final int problem_oxidation=0x7f0b000f;
-        public static final int problem_solubility=0x7f0b0011;
+        public static final int problem_solubility=0x7f0b0012;
         public static final int problem_type=0x7f0b0007;
         public static final int problem_weight=0x7f0b000e;
         public static final int submit=0x7f0b0009;

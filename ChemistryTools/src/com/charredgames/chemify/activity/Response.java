@@ -31,6 +31,7 @@ import com.charredgames.chemify.gui.ResponsePanel;
 import com.charredgames.chemify.problems.ElementInfo;
 import com.charredgames.chemify.problems.Ionic;
 import com.charredgames.chemify.problems.Nomenclature;
+import com.charredgames.chemify.problems.Oxidation;
 import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.Reaction;
 import com.charredgames.chemify.problems.ResponseType;
@@ -71,6 +72,7 @@ public class Response extends Activity {
 		if(selectedOperation.equalsIgnoreCase("element info")) problem = new ElementInfo(input);
 		else if(selectedOperation.equalsIgnoreCase("nomenclature")) problem = new Nomenclature(input);
 		else if(selectedOperation.equalsIgnoreCase("weight")) problem = new Weight(input);
+		else if(selectedOperation.equalsIgnoreCase("oxidation")) problem = new Oxidation(input);
 		else if(selectedOperation.equalsIgnoreCase("Predict Reactions")) problem = new Reaction(input);
 		else if(selectedOperation.equalsIgnoreCase("Solubility")) problem = new Solubility(input);
 		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) problem = new Ionic(input);
@@ -86,6 +88,7 @@ public class Response extends Activity {
 		
 		if(selectedOperation.equalsIgnoreCase("nomenclature")) setContentView(R.layout.problem_nomenclature);
 		else if(selectedOperation.equalsIgnoreCase("weight")) setContentView(R.layout.problem_weight);
+		else if(selectedOperation.equalsIgnoreCase("oxidation")) setContentView(R.layout.problem_oxidation);
 		else if(selectedOperation.equalsIgnoreCase("solubility")) setContentView(R.layout.problem_solubility);
 		else if(selectedOperation.equalsIgnoreCase("predict reactions")) setContentView(R.layout.problem_reactions);
 		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) setContentView(R.layout.problem_reactions);

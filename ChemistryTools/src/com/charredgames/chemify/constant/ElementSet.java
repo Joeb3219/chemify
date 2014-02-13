@@ -8,6 +8,7 @@ public class ElementSet{
 
 	private Element element;
 	private int quantity;
+	private int oxidationNumber = -6;
 	
 	public ElementSet(Element element, int quantity){
 		this.element = element;
@@ -41,5 +42,12 @@ public class ElementSet{
 		this.quantity = Math.abs(num);
 	}
 
+	public int getOxidationNumber(){
+		return oxidationNumber;
+	}
 	
+	public void setOxidationNumber(int num){
+		this.oxidationNumber = num;
+	}
+
 }

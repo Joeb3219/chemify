@@ -23,13 +23,11 @@
 		<TextView
 		  android:id = "@+id/problem_weight"
 		  style = "@style/firstBox"
-		  android:background = "@color/first_bg"
 		/>   
 		
 		<TextView
-			android:id = "@+id/problem_oxidation"
+			android:id = "@+id/problem_nomenclature"
 			style = "@style/secondBox"    
-			android:background = "@color/second_bg"
 		/>
         
     </LinearLayout>

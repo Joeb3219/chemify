@@ -1,13 +1,15 @@
 package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
+import com.charredgames.chemify.constant.Equation;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -17,100 +19,199 @@ public class Oxidation extends Problem{
 
 	protected ResponseType type = ResponseType.oxidation;
 	
-	public Oxidation(ArrayList<ElementGroup> elementGroups) {
-		super(elementGroups);
+	public Oxidation(String input){
+		super(input);
 	}
-
+	
+	public Oxidation(Equation equation){
+		super(equation);
+	}
+	
 	public void solve(boolean isPrimary){
-		ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
-		for(ElementGroup group : elementGroups){
-			for(ElementSet set : group.getElementSets()){
-				sets.add(set);
+		String collectiveInput = input, answer = "";
+		if(equation == null) equation = getEquationFromString(input);
+		if(Controller.autoFormat) collectiveInput = equation.getDrawString(false);
+		if(input == null) input = equation.getDrawString(false);
+		
+		for(Compound c : equation.getAllCompounds()){
+			ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
+			for(ElementGroup g : c.getElementGroups()) groups.add(g);
+			
+			reason += "<b>" + c.getDrawStringWithAllCharges() + "<b>:<br>";
+			
+			if(groups.size() == 1 && groups.get(0).getElementCount() == 1){
+				reason += "Atom is in elemental form: 0.<br>";
+				groups.get(0).getElementSets().get(0).setOxidationNumber(0);
+			}else{
+				for(ElementGroup group : groups){
+					boolean scanNeeded = false;
+					for(ElementSet set : group.getElementSets()){
+						Element element = set.getElement();
+						int quantity = set.getQuantity() * group.getQuantity();
+						if(element == Element.FLUORINE || element == Element.BROMINE || element == Element.IODINE){
+							reason += element.getSymbol() + " is a monatomic ion with charge of -1.<br>";
+							set.setOxidationNumber(-1);
+						}
+						else if(element == Element.OXYGEN){
+							reason += element.getSymbol() + " is a monatomic ion with charge of -2.<br>";
+							set.setOxidationNumber(-2);
+						}
+						else if(element.getGroup() == 1){
+							reason += element.getSymbol() + " is in group 1: charge of 1.<br>";
+							set.setOxidationNumber(1);
+						}
+						else if(element.getGroup() == 2){
+							reason += element.getSymbol() + " is in group 2: charge of 2.<br>";
+							set.setOxidationNumber(1);
+						}
+						else scanNeeded = true;
+					}
+					if(scanNeeded){
+						//Assign values in a for loop.
+						reason += "Predicting remaining oxidation numbers via algebra.<br>";
+						ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
+						for(ElementSet set : group.getElementSets()){
+							if(set.getOxidationNumber() == -6) sets.add(set); //-6 is the default for an unknown.
+						}
+						
+						predictViaScan(sets, group);
+					}
+				}
 			}
+			
 		}
 		
-		String collectiveInput = "";
-		for(ElementGroup group : elementGroups){
-			collectiveInput += group.getDrawString();
-			for(ElementSet set : group.getElementSets()) sets.add(set);
+		for(Compound c : equation.getAllCompounds()){
+			if(equation.getAllCompounds().size() > 1) answer += "<b>" + c.getDrawStringWithAllCharges() + "</b>:<br>";
+			for(ElementGroup g : c.getElementGroups()){
+				for(ElementSet set : g.getElementSets()){
+					answer += set.getDrawString() + ": ";
+					if(set.getOxidationNumber() > 0) answer += "+";
+					answer += set.getOxidationNumber();
+					if(g.getElementSets().get(g.getElementSets().size() - 1) != set) answer += "<br>";
+				}
+				if(c.getElementGroups().get(c.getElementGroups().size() - 1) != g) answer += "<br>";
+			}
+			if(equation.getAllCompounds().get(equation.getAllCompounds().size() - 1) != c) answer += "<br>";
 		}
 		
-		String output = "";
+		answer += reason;
 		
-		if(sets.size() == 1) {
-			output += sets.get(0).getElement().getSymbol() + ": 0";
-			if(isPrimary) response.addLine(output, ResponseType.answer);
-			else response.addLine(output, type);
+		if(isPrimary){
+			response.addLine(collectiveInput, ResponseType.input);
+			response.addLine(answer, ResponseType.answer);
+			addProblemToPanel(response, new Nomenclature(input));
+			addProblemToPanel(response, new Weight(equation));
+		}else{
+			response.addLine(answer, ResponseType.oxidation);
+		}
+		
+	}
+	
+	private void predictViaScan(ArrayList<ElementSet> sets, ElementGroup group){
+		int maxLoop = 10;
+		int smallestNumber = -5;
+		int charge = 0;//group.getCharge();
+		if(group.isPolyatomic()) charge = group.getCharge();
+		int gQuantity = group.getQuantity();
+		
+		for(ElementSet set : group.getElementSets()){
+			if(!sets.contains(set)) charge -= (set.getOxidationNumber() * set.getQuantity() * group.getQuantity());
+		}
+		
+		if(sets.size() == 1){
+			int a = charge / (sets.get(0).getQuantity() * group.getQuantity());
+			sets.get(0).setOxidationNumber(a);
 			return;
 		}
-		for(ElementGroup group : elementGroups){
-			Map<Element, Integer> oxidations = new HashMap<Element, Integer>();
-			for(ElementSet set : group.getElementSets()){
-				Element element = set.getElement();
-				if(element == Element.FLUORINE) oxidations.put(element, -1);
-				else if (element == Element.OXYGEN) oxidations.put(element, -2);
-				else if(element.getGroup() == 1) oxidations.put(element, 1);
-				else if(element.getGroup() == 1) oxidations.put(element, 2);
-				else oxidations.put(element, -9);
+		
+		if(sets.size() == 2){
+			for(int a = smallestNumber; a <= maxLoop; a++){
+				sets.get(0).setOxidationNumber(a);
+				for(int b = smallestNumber; b <= maxLoop; b++){
+					sets.get(1).setOxidationNumber(b);
+					if(numbersEqualCharge(sets, gQuantity, charge)) return;
+				}
 			}
-			while(mapContainsInteger(oxidations, -9)){
-				for(Entry<Element, Integer> entry : oxidations.entrySet()){
-					Element element = entry.getKey();
-					Integer value = entry.getValue();
-					
-					if(value == -9){
-						int totalCharge = 0;
-						for(ElementSet set : sets){
-							Element ele = set.getElement();
-							if(oxidations.get(ele) == null) oxidations.put(ele, -9);
-							if(oxidations.get(ele) != -9){
-								totalCharge += Math.abs(oxidations.get(ele) * set.getQuantity());
+		}
+		
+		if(sets.size() == 3){
+			for(int a = smallestNumber; a <= maxLoop; a++){
+				sets.get(0).setOxidationNumber(a);
+				for(int b = smallestNumber; b <= maxLoop; b++){
+					sets.get(1).setOxidationNumber(b);
+					for(int c = smallestNumber; c <= maxLoop; c++){
+						sets.get(2).setOxidationNumber(c);
+						if(numbersEqualCharge(sets, gQuantity, charge)) return;
+					}
+				}
+			}
+		}
+		
+		if(sets.size() == 4){
+			for(int a = smallestNumber; a <= maxLoop; a++){
+				sets.get(0).setOxidationNumber(a);
+				for(int b = smallestNumber; b <= maxLoop; b++){
+					sets.get(1).setOxidationNumber(b);
+					for(int c = smallestNumber; c <= maxLoop; c++){
+						sets.get(2).setOxidationNumber(c);
+						for(int d = smallestNumber; d <= maxLoop; d++){
+							sets.get(3).setOxidationNumber(d);
+							if(numbersEqualCharge(sets, gQuantity, charge)) return;
+						}
+					}
+				}
+			}
+		}
+		
+		if(sets.size() == 5){
+			for(int a = smallestNumber; a <= maxLoop; a++){
+				sets.get(0).setOxidationNumber(a);
+				for(int b = smallestNumber; b <= maxLoop; b++){
+					sets.get(1).setOxidationNumber(b);
+					for(int c = smallestNumber; c <= maxLoop; c++){
+						sets.get(2).setOxidationNumber(c);
+						for(int d = smallestNumber; d <= maxLoop; d++){
+							sets.get(3).setOxidationNumber(d);
+							for(int e = smallestNumber; e <= maxLoop; e++){
+								sets.get(4).setOxidationNumber(e);
+								if(numbersEqualCharge(sets, gQuantity, charge)) return;
 							}
 						}
-						for(ElementSet set : sets){
-							if(set.getElement() == element){
-								int quantity = set.getQuantity();
-								if(totalCharge == 0){
-									if(element.getGroup() == 1) oxidations.put(element, 1);
-									else if(element.getGroup() == 2) oxidations.put(element, 2);
-									else if(element.getGroup() == 3) oxidations.put(element, 3);
-									else if(element.getGroup() == 13) oxidations.put(element, 3);
-									else if(element.getGroup() == 14) oxidations.put(element, 4);
-									else if(element.getGroup() == 15) oxidations.put(element, -3);
-									else if(element.getGroup() == 16) oxidations.put(element, -2);
-									else if(element.getGroup() == 17) oxidations.put(element, -1);
-									else if(element.getGroup() == 18) oxidations.put(element, 1);
-								}else{
-									try{
-										entry.setValue((totalCharge / quantity));
-									}catch(Exception e){}
-									//oxidations.put(element, (totalCharge / quantity));
+					}
+				}
+			}
+		}
+		
+		if(sets.size() == 6){
+			for(int a = smallestNumber; a <= maxLoop; a++){
+				sets.get(0).setOxidationNumber(a);
+				for(int b = smallestNumber; b <= maxLoop; b++){
+					sets.get(1).setOxidationNumber(b);
+					for(int c = smallestNumber; c <= maxLoop; c++){
+						sets.get(2).setOxidationNumber(c);
+						for(int d = smallestNumber; d <= maxLoop; d++){
+							sets.get(3).setOxidationNumber(d);
+							for(int e = smallestNumber; e <= maxLoop; e++){
+								sets.get(4).setOxidationNumber(e);
+								for(int f = smallestNumber; f <= maxLoop; f++){
+									sets.get(5).setOxidationNumber(f);
+									if(numbersEqualCharge(sets, gQuantity, charge)) return;
 								}
 							}
 						}
 					}
 				}
 			}
-			
-			for(Entry<Element, Integer> entry : oxidations.entrySet()){
-				output += entry.getKey().getSymbol() + ": " + entry.getValue() + "<br>";
-			}
-			
-		}
-		
-		if(isPrimary){
-			response.addLine(collectiveInput, ResponseType.input);
-			response.addLine(output, ResponseType.answer);
-		}else{
-			response.addLine(output, ResponseType.oxidation);
 		}
 		
 	}
 	
-	private boolean mapContainsInteger(Map<Element, Integer> map, int num){
-		for(Entry<Element, Integer> e : map.entrySet()){
-			if(e.getValue() == num) return true;
-		}
+	private boolean numbersEqualCharge(ArrayList<ElementSet> sets, int gQuantity, int charge){
+		int current = 0;
+		for(ElementSet set : sets) current += (set.getOxidationNumber() * set.getQuantity() * gQuantity);
+		
+		if(charge - current == 0) return true;
 		return false;
 	}
 	

@@ -59,7 +59,7 @@ public class Response extends Activity {
 		setTitle(MainActivity.problem_type.getSelectedItem().toString());
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
-        }else getActionBar().setDisplayHomeAsUpEnabled(true);
+        }//else getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		
 		Intent intent = getIntent();

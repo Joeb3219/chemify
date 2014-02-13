@@ -23,6 +23,7 @@ import android.content.res.AssetManager;
 import android.preference.PreferenceManager;
 import android.util.SparseArray;
 
+import com.charredgames.chemify.activity.MainActivity;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.problems.Prefix;
@@ -43,6 +44,7 @@ public class Controller {
 	public static boolean autoFormat = true, calculateReasoning = true, sendUsage = false;
 	public static Map<String, String> reactionSymbols = new HashMap<String, String>();
 	public static final String _GENERIC_PLUS_SIGN = "+", _GENERIC_YIELDS_SIGN = ">";
+	public static Context context;
 	
 	public static void reset(AssetManager aManager){
 		//boolean firstLoad = false;
@@ -119,6 +121,7 @@ public class Controller {
 		File xmlFile;
 		try {
 			xmlFile = getFileFromStream("elements", assets.open("default/elements.cgf"));
+			
 		try {
 			Document document = (Document) builder.build(xmlFile);
 			Element rootNode = document.getRootElement();
@@ -180,13 +183,12 @@ public class Controller {
 				if(definition.getChildText("example") != null) d.setExample(definition.getChildText("example"));
 			}
 		} catch (IOException e) {e.printStackTrace();} catch (JDOMException e) {e.printStackTrace();  }
-		System.out.println(Definition.definitions.size());
 	}
 	
 	private static File getFileFromStream(String prefix, InputStream in){
 		File file = null;
 		try{
-			file = File.createTempFile(prefix, ".cgf");
+			file = File.createTempFile(prefix, ".cgf", context.getCacheDir());
 			file.deleteOnExit();
 			OutputStream os = new FileOutputStream(file);
             
@@ -198,7 +200,7 @@ public class Controller {
             in.close();
             os.flush();
             os.close();
-		}catch(Exception e){}
+		}catch(Exception e){e.printStackTrace();}
 		if(file == null) file = new File("p");
 		return file;
 	}

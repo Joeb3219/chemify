@@ -90,6 +90,9 @@ public class Solubility extends Problem{
 		if(isPrimary){
 			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(answer, ResponseType.answer);
+			addProblemToPanel(response, new Weight(equation));
+			addProblemToPanel(response, new Oxidation(equation));
+			addProblemToPanel(response, new Nomenclature(equation.getDrawString(false)));
 		}else{
 			response.addLine(answer, ResponseType.solubility);
 		}

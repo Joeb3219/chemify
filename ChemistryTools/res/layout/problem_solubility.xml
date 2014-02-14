@@ -1,6 +1,7 @@
 <ScrollView
   	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
+    android:background = "@color/generic_bg"
   	android:layout_width = "fill_parent"
   	android:layout_height = "fill_parent">
   	
@@ -24,7 +25,19 @@
 		  android:id = "@+id/problem_weight"
 		  style = "@style/firstBox"
 		  android:background = "@color/first_bg"
-		/>   
+		/>  
+		
+		<TextView
+		  android:id = "@+id/problem_oxidation"
+		  style = "@style/firstBox"
+		  android:background = "@color/second_bg"
+		/>  
+		
+		<TextView
+		  android:id = "@+id/problem_nomenclature"
+		  style = "@style/firstBox"
+		  android:background = "@color/first_bg"
+		/>  
 		
     </LinearLayout>
 

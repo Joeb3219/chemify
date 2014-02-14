@@ -102,6 +102,7 @@ public class Oxidation extends Problem{
 			response.addLine(answer, ResponseType.answer);
 			addProblemToPanel(response, new Nomenclature(input));
 			addProblemToPanel(response, new Weight(equation));
+			addProblemToPanel(response, new Solubility(equation));
 		}else{
 			response.addLine(answer, ResponseType.oxidation);
 		}

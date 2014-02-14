@@ -23,7 +23,7 @@ public class DefinitionsActivity extends Activity{
 		
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
-		setContentView(R.layout.activity_definitions);
+		setContentView(R.layout.resources_search_activity);
 		
 		EditText textBox = (EditText)findViewById(R.id.search_box);
 		textBox.addTextChangedListener(new TextWatcher(){
@@ -49,7 +49,7 @@ public class DefinitionsActivity extends Activity{
 	}
 	
 	private void fillResults(){
-		LinearLayout container = (LinearLayout)this.findViewById(R.id.definitions_results);
+		LinearLayout container = (LinearLayout)this.findViewById(R.id.search_results);
 		container.removeAllViews();
 		boolean firstBox = true;
 		

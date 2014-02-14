@@ -56,5 +56,23 @@ public class Ion{
 		
 		return false;
 	}
+	
+	public boolean containsString(String str){
+		if(str == null || str.equals("") || str.equals(" ")) return true;
+		if(name.toLowerCase().contains(str.toLowerCase())) return true;
+		if(elementString.toLowerCase().contains(str.toLowerCase())) return true;
+		
+		return false;
+	}
+	
+	public String getDrawString(){
+		String output = "";
+		
+		output += "<b>" + name + "</b><br>";
+		output += "<u>Elements</u>: " + elementString + "<br>";
+		output += "<u>Charge</u>:" + charge;
+		
+		return output;
+	}
 
 }

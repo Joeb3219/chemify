@@ -77,7 +77,8 @@ public class Weight extends Problem{
 		if(isPrimary) {
 			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(answer, ResponseType.answer);
-			addProblemToPanel(response, new Nomenclature(input));
+			addProblemToPanel(response, new Solubility(equation));
+			addProblemToPanel(response, new Oxidation(equation));
 		}
 		else response.addLine(answer, ResponseType.weight);
 	}

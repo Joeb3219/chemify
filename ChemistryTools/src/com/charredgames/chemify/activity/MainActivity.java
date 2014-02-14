@@ -1,5 +1,7 @@
 package com.charredgames.chemify.activity;
 
+import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.charredgames.chemify.Controller;
@@ -84,6 +87,9 @@ public class MainActivity extends Activity {
             return true;
 		case R.id.action_definitions:
         	startActivity(new Intent(this, DefinitionsActivity.class));
+            return true;
+		case R.id.action_polyions:
+        	startActivity(new Intent(this, PolyIonsActivity.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);

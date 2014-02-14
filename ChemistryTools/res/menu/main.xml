@@ -1,10 +1,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_definitions"
+        android:id="@+id/resources_tab"
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
-        android:title="@string/action_definitions"/>
+        android:title="@string/resources_tab">
+        <menu>
+            <item                
+                android:id = "@+id/action_definitions"
+                android:title = "@string/action_definitions"/>
+             <item                
+                android:id = "@+id/action_polyions"
+                android:title = "@string/action_polyions"/>
+             <item                
+                android:id = "@+id/action_constants"
+                android:title = "@string/action_constants"/>
+             <item                
+                android:id = "@+id/action_equations"
+                android:title = "@string/action_equations"/>
+        </menu>
+    </item>
     
     <item
         android:id="@+id/action_settings"

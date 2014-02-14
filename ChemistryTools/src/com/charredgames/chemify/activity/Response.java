@@ -86,7 +86,8 @@ public class Response extends Activity {
 			
 		}
 		
-		if(selectedOperation.equalsIgnoreCase("nomenclature")) setContentView(R.layout.problem_nomenclature);
+		if(selectedOperation.equalsIgnoreCase("element info")) setContentView(R.layout.problem_elementinfo);
+		else if(selectedOperation.equalsIgnoreCase("nomenclature")) setContentView(R.layout.problem_nomenclature);
 		else if(selectedOperation.equalsIgnoreCase("weight")) setContentView(R.layout.problem_weight);
 		else if(selectedOperation.equalsIgnoreCase("oxidation")) setContentView(R.layout.problem_oxidation);
 		else if(selectedOperation.equalsIgnoreCase("solubility")) setContentView(R.layout.problem_solubility);

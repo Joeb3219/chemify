@@ -61,6 +61,15 @@
                 android:value="com.charredgames.chemify.MainActivity" />
         </activity>
         
+		<activity
+            android:name="com.charredgames.chemify.activity.PolyIonsActivity"
+            android:label="@string/title_activity_polyIons"
+            android:parentActivityName="com.charredgames.chemify.activity.PolyIonsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charredgames.chemify.MainActivity" />
+        </activity>        
+        
         <activity
             android:name="com.charredgames.chemify.activity.ElementEdit"
             android:label="@string/prefButton_elements_title"

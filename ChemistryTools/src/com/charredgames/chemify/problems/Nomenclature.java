@@ -67,7 +67,7 @@ public class Nomenclature extends Problem{
 			response.addLine(collectiveInput, ResponseType.input);
 			response.addLine(answer, ResponseType.answer);
 			addProblemToPanel(response, new Weight(equation));
-			//addProblemToPanel(response, new Oxidation(groups));
+			addProblemToPanel(response, new Oxidation(equation));
 		}else{
 			response.addLine(answer, ResponseType.nomenclature);
 		}

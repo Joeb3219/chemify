@@ -10,6 +10,7 @@ public class Ion{
 	public static ArrayList<Ion> ions = new ArrayList<Ion>();
 	private ArrayList<ElementSet> elements;
 	private String name, elementString;
+	private Compound compound;
 	private int charge;
 	
 	public Ion(String elements, String name, int charge){
@@ -18,6 +19,10 @@ public class Ion{
 		this.elementString = elements;
 		
 		this.elements = Problem.getElementSets(elements);
+		
+		ElementGroup g = new ElementGroup(this.elements);
+		g.setIon(this);
+		compound = new Compound(g);
 		
 		ions.add(this);
 	}
@@ -68,8 +73,11 @@ public class Ion{
 	public String getDrawString(){
 		String output = "";
 		
-		output += "<b>" + name + "</b><br>";
-		output += "<u>Elements</u>: " + elementString + "<br>";
+		output += "<b>" + Controller.normalizeString(name, true) + "</b><br>";
+		String drawString = compound.getDrawStringWithoutCharges();
+		drawString = drawString.replace("(", "");
+		drawString = drawString.replace(")", "");
+		output += "<u>Formula</u>: " + drawString + "<br>";
 		output += "<u>Charge</u>:" + charge;
 		
 		return output;

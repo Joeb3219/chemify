@@ -84,6 +84,11 @@ public abstract class Problem {
 		
 		if(compound.getOverallCharge() == 0) return compound;
 		
+		for(ElementGroup g : compound.getElementGroups()){
+			if(g.isPolyatomic()) continue;
+			for(ElementSet set : g.getElementSets()) set.setQuantity(1);
+		}
+		
 		if(finalGroups.size() == 1){
 			if(finalGroups.get(0).getElementCount() == 1){
 				Element element = finalGroups.get(0).getElementSets().get(0).getElement();
@@ -298,12 +303,6 @@ public abstract class Problem {
 		}
 		
 		return elementSets;
-	}
-	
-	public String normalizeString(String string, boolean upper){
-		String str = string.toLowerCase(Controller._LOCALE);
-		if(upper) return str.substring(0,1).toUpperCase(Controller._LOCALE) + str.substring(1);
-		return str;
 	}
 	
 	public String changeEnding(String string, String ending){

@@ -132,32 +132,32 @@ public class Equation {
 		int iterations = 0;
 		
 		balanceLoop:
-		while(!isBalanced() || iterations <= 35){
-			iterations ++;
-			for(Entry<Element, Integer> entry : l.entrySet()){
-				Element element = entry.getKey();
-				int quantity = entry.getValue();
-				if(!r.containsKey(element)) return;
-				if(r.get(element) == quantity) continue;
-				
-				if(r.get(element) > quantity){
-					for(Compound c : left){
-						if(c.containsElement(element)){
-							c.setMoles(c.getMoles() * (int)((r.get(element) / quantity) + 0.5));
+			while(!isBalanced() || iterations <= 35){
+				iterations ++;
+				for(Entry<Element, Integer> entry : l.entrySet()){
+					Element element = entry.getKey();
+					int quantity = entry.getValue();
+					if(!r.containsKey(element)) return;
+					if(r.get(element) == quantity) continue;
+					
+					if(r.get(element) > quantity){
+						for(Compound c : left){
+							if(c.containsElement(element)){
+								c.setMoles(c.getMoles() * (int)((r.get(element) / quantity) + 0.5));
+							}
 						}
 					}
-				}
-				else{
-					for(Compound c : right){
-						if(c.containsElement(element)) c.setMoles(c.getMoles() * (int)((quantity / r.get(element)) + 0.5));
+					else{
+						for(Compound c : right){
+							if(c.containsElement(element)) c.setMoles(c.getMoles() * (int)((quantity / r.get(element)) + 0.5));
+						}
 					}
+					
+					l = getElementQuantityMap(left);
+					r = getElementQuantityMap(right);
+					break balanceLoop;	
 				}
-				
-				l = getElementQuantityMap(left);
-				r = getElementQuantityMap(right);
-				break balanceLoop;	
 			}
-		}
 		
 		balanceAttempts++;
 		if(balanceAttempts < 5) balance();

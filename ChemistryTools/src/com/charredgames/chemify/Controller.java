@@ -241,5 +241,11 @@ public class Controller {
 		
 		return result;
 	}
+
+	public static String normalizeString(String string, boolean upper){
+		String str = string.toLowerCase(_LOCALE);
+		if(upper) return str.substring(0,1).toUpperCase(_LOCALE) + str.substring(1);
+		return str;
+	}
 	
 }

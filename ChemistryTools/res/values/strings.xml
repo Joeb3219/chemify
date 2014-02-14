@@ -42,14 +42,17 @@
     <string name = "prefCat_info">Information</string>
     <string name = "prefButton_about_title">About</string>
     <string name = "prefButton_help_title">Help</string>
+    
+    <string name = "nomenclature_hint">NaCl</string>
+    <string name = "reactions_hint">NaCl + </string>
 
     <string-array name = "problem_types">
-        <item>Element Info</item>
         <item>Nomenclature</item>
-		<item>Weight</item>
         <item>Predict Reactions</item>
+		<item>Weight</item>
 		<item>Solubility</item>
 		<item>Oxidation</item>
+        <item>Element Info</item>
 		<!--
 		<item>Complete/Net Ionic</item>
 		<item>Dimensional Analysis</item>

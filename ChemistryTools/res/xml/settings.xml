@@ -29,7 +29,7 @@
     
     
     
-    <PreferenceCategory
+  <!-- <PreferenceCategory
         android:title = "@string/prefCat_defaults"
         android:key = "prefCat_defaults"
     >
@@ -48,7 +48,7 @@
             android:title = "@string/prefButton_constants_title">
         </Preference>
         
-    </PreferenceCategory>
+    </PreferenceCategory> -->
     
     <PreferenceCategory 
         android:title = "@string/prefCat_info"

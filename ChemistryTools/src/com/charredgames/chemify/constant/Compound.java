@@ -451,6 +451,7 @@ public class Compound {
 				for(ElementGroup compared : newGroups){
 					if(group.isPolyatomic() && !compared.isPolyatomic()) newGroups.add(newGroups.indexOf(compared) + 1, group);
 					else if(group.getCharge() > compared.getCharge()) newGroups.add(newGroups.indexOf(compared), group);
+					else if(group.getCharge() < compared.getCharge()) newGroups.add(newGroups.indexOf(compared) + 1, group);
 					else{
 						if(group.getDrawString().compareToIgnoreCase(compared.getDrawString()) < 0) newGroups.add(newGroups.indexOf(compared), group);
 						else newGroups.add(newGroups.indexOf(compared) + 1, group);

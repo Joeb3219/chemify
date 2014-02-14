@@ -118,6 +118,7 @@ public final class R {
         public static final int bugReport_notes_default=0x7f060016;
         public static final int bugReport_positive=0x7f060014;
         public static final int edit_input=0x7f06000c;
+        public static final int nomenclature_hint=0x7f060026;
         public static final int prefButton_about_title=0x7f060024;
         public static final int prefButton_constants_title=0x7f060022;
         public static final int prefButton_elements_title=0x7f060020;
@@ -132,6 +133,7 @@ public final class R {
         public static final int pref_calculate_reasoning_title=0x7f06001b;
         public static final int pref_send_data_summary=0x7f06001e;
         public static final int pref_send_data_title=0x7f06001d;
+        public static final int reactions_hint=0x7f060027;
         public static final int resources_tab=0x7f06000b;
         public static final int search_box_hint=0x7f060012;
         public static final int submit=0x7f06000d;

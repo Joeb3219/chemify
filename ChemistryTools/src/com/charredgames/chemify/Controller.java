@@ -47,8 +47,7 @@ public class Controller {
 	public static Context context;
 	
 	public static void reset(AssetManager aManager){
-		//boolean firstLoad = false;
-		//if(assets == null) firstLoad = true;
+		if(assets != null) return;
 		assets = aManager;
 		setElements("/default/elements.cgf");
 		setIons("/default/polyions.cgf");

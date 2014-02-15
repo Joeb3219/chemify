@@ -36,17 +36,19 @@
     <string name = "pref_send_data_title">Send usage data</string>
     <string name = "pref_send_data_summary">Send the Chemify developers usage data (inputs + results) to help them find bugs.</string>
     
-    <string name = "prefCat_defaults">Constant values</string>
     <string name = "prefButton_elements_title">Edit Elements</string>
+    <!--<string name = "prefCat_defaults">Constant values</string>
     <string name = "prefButton_polyatomics_title">Edit Polyatomic Ions</string>
     <string name = "prefButton_constants_title">Edit Constants</string>
+    
+    
+    <string name = "invalid_input_empty">Invalid input: Input is blank.</string>
+    <string name = "invalid_input_title">Invalid Input</string>-->
     
     <string name = "prefCat_info">Information</string>
     <string name = "prefButton_about_title">About</string>
     <string name = "prefButton_help_title">Help</string>
-    
-    <string name = "invalid_input_empty">Invalid input: Input is blank.</string>
-    <string name = "invalid_input_title">Invalid Input</string>
+
     <string name = "nomenclature_hint">NaCl</string>
     <string name = "reactions_hint">NaCl + </string>
 

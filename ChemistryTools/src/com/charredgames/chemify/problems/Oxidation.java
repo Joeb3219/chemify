@@ -1,9 +1,6 @@
 package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
@@ -47,7 +44,6 @@ public class Oxidation extends Problem{
 					boolean scanNeeded = false;
 					for(ElementSet set : group.getElementSets()){
 						Element element = set.getElement();
-						int quantity = set.getQuantity() * group.getQuantity();
 						if(element == Element.FLUORINE || element == Element.BROMINE || element == Element.IODINE){
 							reason += element.getSymbol() + " is a monatomic ion with charge of -1.<br>";
 							set.setOxidationNumber(-1);

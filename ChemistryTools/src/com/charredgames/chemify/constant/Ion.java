@@ -64,8 +64,8 @@ public class Ion{
 	
 	public boolean containsString(String str){
 		if(str == null || str.equals("") || str.equals(" ")) return true;
-		if(name.toLowerCase().contains(str.toLowerCase())) return true;
-		if(elementString.toLowerCase().contains(str.toLowerCase())) return true;
+		if(name.toLowerCase(Controller._LOCALE).contains(str.toLowerCase())) return true;
+		if(elementString.toLowerCase(Controller._LOCALE).contains(str.toLowerCase())) return true;
 		
 		return false;
 	}

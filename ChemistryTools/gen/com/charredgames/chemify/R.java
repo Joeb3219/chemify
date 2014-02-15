@@ -122,16 +122,19 @@ public final class R {
         public static final int bugReport_notes_default=0x7f060018;
         public static final int bugReport_positive=0x7f060016;
         public static final int edit_input=0x7f06000d;
-        public static final int invalid_input_empty=0x7f060028;
-        public static final int invalid_input_title=0x7f060029;
-        public static final int nomenclature_hint=0x7f06002a;
-        public static final int prefButton_about_title=0x7f060026;
-        public static final int prefButton_constants_title=0x7f060024;
-        public static final int prefButton_elements_title=0x7f060022;
-        public static final int prefButton_help_title=0x7f060027;
-        public static final int prefButton_polyatomics_title=0x7f060023;
-        public static final int prefCat_defaults=0x7f060021;
-        public static final int prefCat_info=0x7f060025;
+        public static final int nomenclature_hint=0x7f060025;
+        public static final int prefButton_about_title=0x7f060023;
+        public static final int prefButton_elements_title=0x7f060021;
+        public static final int prefButton_help_title=0x7f060024;
+        /** <string name = "prefCat_defaults">Constant values</string>
+    <string name = "prefButton_polyatomics_title">Edit Polyatomic Ions</string>
+    <string name = "prefButton_constants_title">Edit Constants</string>
+    
+    
+    <string name = "invalid_input_empty">Invalid input: Input is blank.</string>
+    <string name = "invalid_input_title">Invalid Input</string>
+         */
+        public static final int prefCat_info=0x7f060022;
         public static final int prefCat_performance=0x7f06001a;
         public static final int pref_auto_format_summary=0x7f06001c;
         public static final int pref_auto_format_title=0x7f06001b;
@@ -139,7 +142,7 @@ public final class R {
         public static final int pref_calculate_reasoning_title=0x7f06001d;
         public static final int pref_send_data_summary=0x7f060020;
         public static final int pref_send_data_title=0x7f06001f;
-        public static final int reactions_hint=0x7f06002b;
+        public static final int reactions_hint=0x7f060026;
         public static final int resources_tab=0x7f06000c;
         public static final int search_box_hint=0x7f060014;
         public static final int submit=0x7f06000e;

@@ -2,13 +2,15 @@ package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
 
+import com.charredgames.chemify.Controller;
+
 /**
  * @author Joe Boyle <joe@charredgames.com>
  * @since Nov 17, 2013
  */
 public class Element {
 
-	private String name, symbol = null;
+	private String name, symbol, electronConfig = null;
 	private int atomicNumber, period, group, protons, electrons, neutrons, charge, valence, activityNum;
 	private double atomicMass;
 	private MetalType metalType;
@@ -224,6 +226,62 @@ public class Element {
 	
 	public MetalType getMetalType(){
 		return metalType;
+	}
+	
+	public String getElectronConfig(){
+		if(electronConfig != null) return electronConfig;
+		String config = "";
+		
+		int elec = electrons;
+		
+		config += getFilledPortion("1S", 2, 2, electrons);
+		config += getFilledPortion("2S", 4, 2, electrons);
+		config += getFilledPortion("2P", 10, 6, electrons);
+		config += getFilledPortion("3S", 12, 2, electrons);
+		config += getFilledPortion("3P", 18, 6, electrons);
+		config += getFilledPortion("4S", 20, 2, electrons);
+		config += getFilledPortion("3D", 30, 10, electrons);
+		config += getFilledPortion("4P", 36, 6, electrons);
+		config += getFilledPortion("5S", 38, 2, electrons);
+		config += getFilledPortion("4D", 48, 10, electrons);
+		config += getFilledPortion("5P", 54, 6, electrons);
+		config += getFilledPortion("6S", 56, 2, electrons);
+		config += getFilledPortion("4F", 70, 14, electrons);
+		config += getFilledPortion("5D", 80, 10, electrons);
+		config += getFilledPortion("6P", 86, 6, electrons);
+		config += getFilledPortion("7S", 88, 2, electrons);
+		config += getFilledPortion("5F", 102, 14, electrons);
+		config += getFilledPortion("6D", 112, 10, electrons);
+		config += getFilledPortion("7P", 118, 6, electrons);
+		
+		
+		electrons = elec;
+		electronConfig = config;
+		return electronConfig;
+	}
+	
+	private String getFilledPortion(String orbital, int filled, int size, int actual){
+		if(actual <= 0) return "";
+		orbital += "<sup>";
+		if(actual >= size){
+			orbital += size;
+			electrons -= size;
+		}
+		if(actual < size){
+			orbital += actual;
+			electrons -= actual;
+		}
+		
+		return orbital + "</sup>";
+	}
+	
+	
+	public String getDrawString(){
+		String output = "";
+		
+		output += "<b>" + Controller.normalizeString(name, true) + "</b> (" + symbol + ")";
+		
+		return output;
 	}
 	
 }

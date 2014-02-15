@@ -32,6 +32,7 @@ public class ElementInfo extends Problem{
 			output += "Electrons: " + element.getElectrons() + "<br>";
 			output += "Valence Electrons: " + element.getValence() + "<br>";
 			output += "Charge: " + element.getCharge() + "<br>";
+			output += "Electron Config: " + element.getElectronConfig();
 		}
 		
 		if(getElements(input).size() != 1) output = "Multiple elements entered.";

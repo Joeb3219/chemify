@@ -1,8 +1,8 @@
 package com.charredgames.chemify.activity;
 
-import android.app.ActionBar;
-import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.charredgames.chemify.Controller;
@@ -53,6 +52,8 @@ public class MainActivity extends Activity {
 	public void submit(View view){
 		Intent intent = new Intent(this, Response.class);
 		EditText input = (EditText) findViewById(R.id.edit_input);
+		if(input.getText() == null || input.getText().toString() == null || input.getText().toString().equals("") || 
+				input.getText().toString().equals(" ")) return;
 		intent.putExtra(EXTRA_MESSAGE, input.getText().toString());
 		startActivity(intent);
 	}
@@ -90,6 +91,9 @@ public class MainActivity extends Activity {
             return true;
 		case R.id.action_polyions:
         	startActivity(new Intent(this, PolyIonsActivity.class));
+            return true;
+		case R.id.action_activitySeries:
+        	startActivity(new Intent(this, ActivitySeriesActivity.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);

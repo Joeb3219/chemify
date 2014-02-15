@@ -18,6 +18,9 @@
              <item                
                 android:id = "@+id/action_equations"
                 android:title = "@string/action_equations"/>
+             <item                
+                android:id = "@+id/action_activitySeries"
+                android:title = "@string/action_activitySeries"/>
         </menu>
     </item>
     

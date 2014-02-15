@@ -11,7 +11,7 @@
     <!-- <color name = "second_bg">#177AB0</color> -->
     <color name = "second_bg">#1985C0</color>
     <color name = "generic_bg">#BEDDED</color>
-    <color name = "accent_bg">#DCE2E6</color>
+    <color name = "accent_bg">#E1E4E6</color>
         
     <style name = "problem_generic" parent = "@android:style/TextAppearance.Medium">
         <item name = "android:layout_width">fill_parent</item>

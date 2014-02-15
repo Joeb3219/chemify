@@ -23,7 +23,6 @@ import android.content.res.AssetManager;
 import android.preference.PreferenceManager;
 import android.util.SparseArray;
 
-import com.charredgames.chemify.activity.MainActivity;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.problems.Prefix;
@@ -47,7 +46,7 @@ public class Controller {
 	public static Context context;
 	
 	public static void reset(AssetManager aManager){
-		if(assets != null) return;
+		//if(assets != null) return;
 		assets = aManager;
 		setElements("/default/elements.cgf");
 		setIons("/default/polyions.cgf");
@@ -57,6 +56,8 @@ public class Controller {
 		//if(!firstLoad) return;
 		if(ResponseType.answer instanceof ResponseType);
 		if(Prefix.mono instanceof Prefix);
+		if(Ion.ions.size() > 4);
+		if(com.charredgames.chemify.constant.Element.elements.size() > 3);
 		
 		romanNumerals.put(1, "I");
 		romanNumerals.put(2, "II");

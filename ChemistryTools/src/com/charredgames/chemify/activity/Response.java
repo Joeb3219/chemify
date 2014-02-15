@@ -43,7 +43,7 @@ public class Response extends Activity {
 	private Problem problem;
 	private ArrayList<Integer> expandedViews = new ArrayList<Integer>();
 	private Map<Integer, ResponseBlock> answers = new HashMap<Integer, ResponseBlock>();
-	private String input, selectedOperation = "";
+	private String input, selectedOperation = null;
 	private static final String STATE_INPUT = "state_input";
 	private static final String STATE_OPERATION = "state_operation";
 	
@@ -51,22 +51,25 @@ public class Response extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		/*if(savedInstanceState != null){
+		if(savedInstanceState != null){
 			input = savedInstanceState.getString(STATE_INPUT);
 			selectedOperation = savedInstanceState.getString(STATE_OPERATION);
-		}*/
+			Controller.context = this;
+			Controller.reset(this.getAssets());
+		}else{
+			if(!getIntent().hasExtra(MainActivity.EXTRA_MESSAGE)) startActivity(new Intent(this, MainActivity.class));
+		}
 		
-		setTitle(MainActivity.problem_type.getSelectedItem().toString());
+		if(selectedOperation == null) selectedOperation = MainActivity.problem_type.getSelectedItem().toString();
+		setTitle(selectedOperation);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }//else getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		
 		Intent intent = getIntent();
-		input = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		if(input == null) input = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 		//Spanned answer;
-		
-		selectedOperation = MainActivity.problem_type.getSelectedItem().toString();
 		
 		//Set the problem
 		if(selectedOperation.equalsIgnoreCase("element info")) problem = new ElementInfo(input);
@@ -161,12 +164,6 @@ public class Response extends Activity {
 		
 	}
 
-	public void onRestoreInstanceState(Bundle savedInstanceState){
-		super.onRestoreInstanceState(savedInstanceState);
-		input = savedInstanceState.getString(STATE_INPUT);
-		selectedOperation = savedInstanceState.getString(STATE_OPERATION);
-	}
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

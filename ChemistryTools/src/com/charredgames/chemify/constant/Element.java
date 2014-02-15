@@ -164,8 +164,8 @@ public class Element {
 	
 	public static Element getElement(String name){
 		for(Element element : elements){
-			if(element.getName().equalsIgnoreCase(name)) return element;
 			if(element.getSymbol() != null && element.getSymbol().equals(name)) return element;
+			if(element.getName().equalsIgnoreCase(name)) return element;
 			try{
 				int num = Integer.parseInt(name);
 				if(element.getAtomicNumber() == num) return element;

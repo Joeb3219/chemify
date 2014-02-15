@@ -35,7 +35,7 @@ public class ElementInfo extends Problem{
 			output += "Electron Config: " + element.getElectronConfig();
 		}
 		
-		if(getElements(input).size() != 1) output = "Multiple elements entered.";
+		if(element == Element.HYDROGEN && !input.equalsIgnoreCase("H") && !input.equalsIgnoreCase("hydrogen") && !input.equals("1") && !input.equals("1.01")) output = "Multiple elements entered.";
 
 		if(isPrimary){
 			response.addLine(input, ResponseType.input);

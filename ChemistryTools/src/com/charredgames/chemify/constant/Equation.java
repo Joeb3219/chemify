@@ -125,6 +125,7 @@ public class Equation {
 				for(Compound c : getAllCompounds()) c.setMoles(c.getMoles() / gcd);
 			}
 			
+			balanceAttempts = 0;
 			return;
 		}
 		Map<Element, Integer> l = getElementQuantityMap(left);
@@ -163,6 +164,7 @@ public class Equation {
 		if(balanceAttempts < 5) balance();
 		else{
 			for(Compound c : getAllCompounds()) c.setMoles(1);
+			balanceAttempts = 0;
 		}
 		
 	}

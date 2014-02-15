@@ -143,30 +143,12 @@ public class Response extends Activity {
 			}
 		}
 		
-		if(Controller.sendUsage){
-			 HttpClient httpclient = new DefaultHttpClient();
-       		 HttpPost httppost = new HttpPost("http://www.charredgames.com/usagedata.php");
-       		    
-       		 try {
-       			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-       			nameValuePairs.add(new BasicNameValuePair("version", Controller._VERSION));
-       			nameValuePairs.add(new BasicNameValuePair("problem", selectedOperation));
-       			nameValuePairs.add(new BasicNameValuePair("input", problem.getInput()));
-       			String r = "";
-       			if(problem.getResponse() != null) r = problem.getResponse().getResponse();
-       			nameValuePairs.add(new BasicNameValuePair("output", r));
-       			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-       			
-       			new SendPost(httpclient, httppost).execute();
-
-       		} catch (IOException e) {}
-		}
+		if(Controller.sendUsage) Controller.sendUsageReport(selectedOperation, problem);
 		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.response, menu);
 		return true;
 	}
@@ -176,9 +158,6 @@ public class Response extends Activity {
 		switch (item.getItemId()) {
 	        case R.id.action_bug:
 	            sendBugReport();
-	            return true;
-	        case R.id.action_settings:
-	        	//Do something
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);

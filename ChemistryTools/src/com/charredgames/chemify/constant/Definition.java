@@ -2,11 +2,15 @@ package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
 
+import android.text.Html;
+import android.text.Spanned;
+
 import com.charredgames.chemify.Controller;
 
 public class Definition {
 
 	public String word, definition, example;
+	public Spanned response = null;
 	public static ArrayList<Definition> definitions = new ArrayList<Definition>();
 	
 	public Definition(String word, String definition){
@@ -32,17 +36,19 @@ public class Definition {
 		return "";
 	}
 	
-	public String getDrawString(){
-		String output = "";
+	public Spanned getDrawString(){
+		if(response != null) return response;
 		
+		String output = "";
 		output += "<b>" + getWord() + "</b><br>";
 		output += getDefinition();
 		if(example != null){
 			output += "<br><br>";
 			output += getExample();
 		}
+		response = Html.fromHtml(output);
 		
-		return output;
+		return response;
 	}
 	
 	public static Definition getDefinitionByWord(String word){

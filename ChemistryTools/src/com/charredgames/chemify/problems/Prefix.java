@@ -33,4 +33,16 @@ public enum Prefix {
 		return value;
 	}
 	
+	public boolean stringMatchesPrefix(String input){
+		if(input.contains(printed)) return true;
+		if(input.contains(secondaryPrint)) return true;
+		return false;
+	}
+	
+	public String emitPrefix(String string){
+		if(string.contains(printed)) return string.replace(printed, "");
+		if(string.contains(secondaryPrint)) return string.replace(secondaryPrint, "");
+		return string;
+	}
+	
 }

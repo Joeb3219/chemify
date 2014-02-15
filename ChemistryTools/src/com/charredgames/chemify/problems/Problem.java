@@ -151,34 +151,6 @@ public abstract class Problem {
 		
 		return compound;
 	}
-	
-	public ArrayList<Element> getElements(String string){
-		ArrayList<Element> elements = new ArrayList<Element>();
-		String current = null;
-		for(int i = 0; i < string.length(); i++){
-			Character cha = string.charAt(i);
-			if(Character.isUpperCase(cha)) {
-				if(current != null){
-					elements.add(Element.getElement(current));
-				}
-				current = cha.toString();
-			}
-			else if(Character.isLowerCase(cha)) {
-				if(current != null) current = current + cha.toString();
-				else current = cha.toString();
-			}
-		}
-		elements.add(Element.getElement(current));
-		return elements;
-	}
-	
-	public double getMolecularWeight(ArrayList<ElementSet> elementSet){
-		double weight = 0;
-		for(ElementSet set : elementSet){
-			weight += set.getWeight();
-		}
-		return weight;
-	}
 		
 	public Equation getEquationFromString(String str){
 		Equation equation = new Equation();
@@ -198,21 +170,10 @@ public abstract class Problem {
 		String[] compoundStrings = string.split("\\+");
 		for(String str : compoundStrings){
 			ArrayList<ElementGroup> elementGroups;
-			/*if(str.contains(" ")){
-				elementGroups = Nomenclature.convertNameToElementGroups(str, null);
-				Compound c = new Compound(elementGroups);
-				c = correctAtomCount(c);
-				compounds.add(c);
-			}else{
-				Compound c = new Compound(getElementGroups(string));
-				c = correctAtomCount(c);
-				compounds.add(c);
-			}*/
 			elementGroups = Nomenclature.convertNameToElementGroups(str, null);
 			Compound c = new Compound(elementGroups);
 			c = correctAtomCount(c);
 			compounds.add(c);
-			
 		}
 		
 		return compounds;
@@ -345,14 +306,9 @@ public abstract class Problem {
 			ElementSet elementSet = null;
 			int quantity = 1;
 			for(Prefix prefix : Controller.prefixes){
-				if(string.contains(prefix.getPrinted())) {
+				if(prefix.stringMatchesPrefix(string)){
+					string = prefix.emitPrefix(string);
 					quantity = prefix.getValue();
-					string = string.replace(prefix.getPrinted(), "");
-					break;
-				}
-				else if(string.contains(prefix.getSecondary())) {
-					quantity = prefix.getValue();
-					string = string.replace(prefix.getSecondary(), "");
 					break;
 				}
 			}

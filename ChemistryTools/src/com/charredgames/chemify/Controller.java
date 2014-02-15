@@ -12,6 +12,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -23,9 +29,11 @@ import android.content.res.AssetManager;
 import android.preference.PreferenceManager;
 import android.util.SparseArray;
 
+import com.charredgames.chemify.activity.SendPost;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.problems.Prefix;
+import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.ResponseType;
 
 /**
@@ -247,6 +255,25 @@ public class Controller {
 		String str = string.toLowerCase(_LOCALE);
 		if(upper) return str.substring(0,1).toUpperCase(_LOCALE) + str.substring(1);
 		return str;
+	}
+	
+	public static void sendUsageReport(String operation, Problem problem){
+		HttpClient httpclient = new DefaultHttpClient();
+  		 HttpPost httppost = new HttpPost("http://www.charredgames.com/usagedata.php");
+  		    
+  		 try {
+  			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+  			nameValuePairs.add(new BasicNameValuePair("version", Controller._VERSION));
+  			nameValuePairs.add(new BasicNameValuePair("problem", operation));
+  			nameValuePairs.add(new BasicNameValuePair("input", problem.getInput()));
+  			String r = "";
+  			if(problem.getResponse() != null) r = problem.getResponse().getResponse();
+  			nameValuePairs.add(new BasicNameValuePair("output", r));
+  			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+  			
+  			new SendPost(httpclient, httppost).execute();
+
+  		} catch (IOException e) {}
 	}
 	
 }

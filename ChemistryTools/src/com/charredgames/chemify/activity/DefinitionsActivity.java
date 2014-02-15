@@ -3,7 +3,6 @@ package com.charredgames.chemify.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
@@ -59,7 +58,7 @@ public class DefinitionsActivity extends Activity{
 			if(firstBox) defBox = (TextView)getLayoutInflater().inflate(R.layout.firstboxtemplate, null);
 			else defBox = (TextView)getLayoutInflater().inflate(R.layout.secondboxtemplate, null);
 				
-			defBox.setText(Html.fromHtml(def.getDrawString()));
+			defBox.setText(def.getDrawString());
 			
 			container.addView(defBox);
 			

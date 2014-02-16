@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
+import com.charredgames.chemify.constant.Ion;
 
 public class MainActivity extends Activity {
 
@@ -37,7 +40,30 @@ public class MainActivity extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		problem_type.setAdapter(adapter);
 		
-		Controller.reset(this.getAssets());
+		if(Ion.ions.size() == 0) Controller.reset(this.getAssets());
+	}
+	
+	public void onStart(){
+		super.onStart();
+		if(problem_type == null) problem_type = (Spinner) findViewById(R.id.problem_type);
+		problem_type.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    @Override
+		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+		    	TextView txt = ((TextView)findViewById(R.id.edit_input));
+		    	String pType = problem_type.getSelectedItem().toString();
+		    	if(pType.equalsIgnoreCase("nomenclature")) txt.setHint(R.string.nomenclature_hint);
+		    	else if(pType.equalsIgnoreCase("predict reactions")) txt.setHint(R.string.reactions_hint);
+		    	else if(pType.equalsIgnoreCase("Weight")) txt.setHint(R.string.weight_hint);
+		    	else if(pType.equalsIgnoreCase("Solubility")) txt.setHint(R.string.solubility_hint);
+		    	else if(pType.equalsIgnoreCase("Oxidation")) txt.setHint(R.string.oxidation_hint);
+		    	else if(pType.equalsIgnoreCase("Element Info")) txt.setHint(R.string.element_info_hint);
+		    }
+
+		    @Override
+		    public void onNothingSelected(AdapterView<?> parentView) {
+		    }
+
+		});
 	}
 	
 	@Override

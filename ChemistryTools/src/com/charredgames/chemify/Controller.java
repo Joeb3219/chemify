@@ -57,7 +57,9 @@ public class Controller {
 		//if(assets != null) return;
 		assets = aManager;
 		setElements("/default/elements.cgf");
+		Ion.ions = new ArrayList<Ion>();
 		setIons("/default/polyions.cgf");
+		Definition.definitions = new ArrayList<Definition>();
 		setDefinitions("/default/definitions.cgf");
 		
 		//Only needs to be run once by app.

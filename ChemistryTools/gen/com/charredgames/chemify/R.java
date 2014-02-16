@@ -49,7 +49,8 @@ public final class R {
     public static final class drawable {
         public static final int ic_action_send=0x7f020000;
         public static final int ic_action_settings=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
+        public static final int ic_bug=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
         public static final int about_about_chemify=0x7f0b0004;
@@ -122,7 +123,9 @@ public final class R {
         public static final int bugReport_notes_default=0x7f060018;
         public static final int bugReport_positive=0x7f060016;
         public static final int edit_input=0x7f06000d;
+        public static final int element_info_hint=0x7f06002a;
         public static final int nomenclature_hint=0x7f060025;
+        public static final int oxidation_hint=0x7f060029;
         public static final int prefButton_about_title=0x7f060023;
         public static final int prefButton_elements_title=0x7f060021;
         public static final int prefButton_help_title=0x7f060024;
@@ -145,12 +148,14 @@ public final class R {
         public static final int reactions_hint=0x7f060026;
         public static final int resources_tab=0x7f06000c;
         public static final int search_box_hint=0x7f060014;
+        public static final int solubility_hint=0x7f060028;
         public static final int submit=0x7f06000e;
         public static final int title_activity_activityseries=0x7f060013;
         public static final int title_activity_definitions=0x7f060011;
         public static final int title_activity_polyIons=0x7f060012;
         public static final int title_activity_response=0x7f06000f;
         public static final int title_activity_settings=0x7f060010;
+        public static final int weight_hint=0x7f060027;
     }
     public static final class style {
         /** 

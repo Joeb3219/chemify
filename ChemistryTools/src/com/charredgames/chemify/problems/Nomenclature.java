@@ -3,6 +3,7 @@ package com.charredgames.chemify.problems;
 import java.util.ArrayList;
 
 import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
@@ -77,75 +78,75 @@ public class Nomenclature extends Problem{
 		String reason = "", answer = "";
 		ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
 		
-		reason += "Does the input contain a space? No.<br>";
+		reason += Controller.resources.getString(R.string.nomenclature_contains_space) + " " + Controller.resources.getString(R.string.no) + ".<br>";
 		for(ElementGroup group : groups){
 			for(ElementSet set : group.getElementSets()) sets.add(set);
 		}
 		
 
 		if(sets.size() == 1 && groups.size() == 1){
-			reason += "Input contains only one element.<br>";
+			reason += Controller.resources.getString(R.string.nomenclature_one_element) + "<br>";
 			answer = Controller.normalizeString(sets.get(0).getElement().getName(), true);
 		}
 		else if(sets.size() == 2 && groups.size() < 2){
-			reason += "Input contains no polyatomic ions.<br>";
+			reason += Controller.resources.getString(R.string.nomenclature_no_polyatomics) + "<br>";
 			if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
 				answer =  "Hydro" + getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), true) + " Acid";
-				reason += "Contains hydrogen: must be an acid.<br>";
-				reason += "Binary acid - only Hydrogen and " + sets.get(1).getDrawString() + ".<br>";
+				reason += Controller.resources.getString(R.string.nomenclature_must_be_acid) + "<br>";
+				reason += Controller.resources.getString(R.string.nomenclature_binary_acid) + " " + sets.get(1).getDrawString() + ".<br>";
 			}else{
 				
 				if(sets.get(0).getElement().getMetalType() == MetalType.METAL){
-					reason += "Is the first element a metal? Yes.<br>";
+					reason += Controller.resources.getString(R.string.nomenclature_first_is_metal) + " " + Controller.resources.getString(R.string.yes) + ".<br>";
 					if(sets.get(0).getElement().getGroup() <= 2){
-						reason += "First element's group is 1 or 2: no roman numerals needed.<br>";
-						reason += "Adding 'ide' to end of nonmetal's name.<br>";
+						reason += Controller.resources.getString(R.string.nomenclature_no_numerals_needed) + "<br>";
+						reason += Controller.resources.getString(R.string.nomenclature_adding_ide) + "<br>";
 						answer = Controller.normalizeString(sets.get(0).getElement().getName(), true) + " " + changeEnding(sets.get(1).getElement().getName(), "ide");
 					}else{
-						reason += "First element is a transition metal: roman numerals needed.<br>";
+						reason += Controller.resources.getString(R.string.nomenclature_numerals_needed) + "<br>";
 						int anionCharge = Math.abs(sets.get(1).getTotalCharge());
 						int cationCharge = anionCharge / sets.get(0).getQuantity();
-						reason += "Using numeral " + Controller.convertIntToNumeral(cationCharge) + " in place of needed cation charge: " + cationCharge + ".<br>";
+						reason += Controller.resources.getString(R.string.nomenclature_using_numeral) + " " + Controller.convertIntToNumeral(cationCharge) + " " + Controller.resources.getString(R.string.nomenclature_numeral_in_place_of) + " " + cationCharge + ".<br>";
 						answer = Controller.normalizeString(sets.get(0).getElement().getName(), true) + " (" + Controller.convertIntToNumeral(cationCharge) + ") " + changeEnding(sets.get(1).getElement().getName(), "ide");
 					}
 					
 				}else{
-					reason += "Is the first element a metal? No.<br>";
-					reason += "Adding 'ide' to second element's name.<br>";
+					reason += Controller.resources.getString(R.string.nomenclature_first_is_metal) + " " + Controller.resources.getString(R.string.no) + ".<br>";
+					reason += Controller.resources.getString(R.string.nomenclature_adding_ide) + "<br>";
 					answer = Controller.normalizeString(sets.get(0).getElement().getName(), true) + " " + changeEnding(sets.get(1).getElement().getName(), "ide");
 				}
 				
 			}
 		}else{
-			reason += "Input may contain polyatomic ions.<br>";
+			reason += Controller.resources.getString(R.string.nomenclature_may_contain_polyatomics) + "<br>";
 			if(sets.get(0).getElement().getName().equalsIgnoreCase("Hydrogen")){
-				reason += "Input begins with Hydrogen: acid.<br>";
+				reason += Controller.resources.getString(R.string.nomenclature_must_be_acid) + "<br>";
 				if(groups.size() > 1 && groups.get(1).getIon() != null){
-					reason += "Input contains polyatomic ions: " + groups.get(1).getIon().getName() + ".<br>";
-					reason += "Converting " + groups.get(1).getIon().getName() + " to " + getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " and apending 'acid' to name.<br>";
+					reason += Controller.resources.getString(R.string.nomenclature_contains_polyatomic) + " " + groups.get(1).getIon().getName() + ".<br>";
+					reason += Controller.resources.getString(R.string.converting) + " " + groups.get(1).getIon().getName() + " " + Controller.resources.getString(R.string.to) + " " + getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " " + Controller.resources.getString(R.string.nomenclature_appending_acid) + "<br>";
 					answer = getAcidEnding(groups.get(1).getIon().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
 				}else{
-					reason += "Input does not contain polyatomic ions. Adding 'acid' to end of name.<br>";
+					reason += Controller.resources.getString(R.string.nomenclature_no_polyatomics) + " " + Controller.resources.getString(R.string.nomenclature_appending_acid) + "<br>";
 					answer = getAcidEnding(sets.get(1).getElement().getName().toLowerCase(Controller._LOCALE), false) + " Acid";
 				}
 			}
 			else if((groups.size() == 2 || groups.size() == 3) && groups.get(0).getElementCount() == 1){
-				reason += "Input contains one or more polyatomic ions.<br>";
+				reason += Controller.resources.getString(R.string.nomenclature_many_polyatomics) + "<br>";
 				ElementSet groupOneElement = groups.get(0).getElementSets().get(0);
 				String output = Controller.normalizeString(groupOneElement.getElement().getName() + " ", true);
-				reason += "Converting " + groupOneElement.getDrawString() + " to " + output + ".<br>";
+				reason += Controller.resources.getString(R.string.converting) + " " + groupOneElement.getDrawString() + " " + Controller.resources.getString(R.string.to) + " " + output + ".<br>";
 				
 				if(groupOneElement.getElement().getGroup() > 2){
-					reason += "First element is a transition metal: roman numerals needed.<br>";
+					reason += Controller.resources.getString(R.string.nomenclature_transition_metal_numerals_needed)+ "<br>";
 					int anionCharge = Math.abs(groups.get(1).getCharge());
 					int cationCharge = anionCharge / groupOneElement.getQuantity();
 					output += "(" + Controller.convertIntToNumeral(cationCharge) + ")";
-					reason += "Setting roman roman numeral equal to the needed cation charge: " + cationCharge + ".<br>";
+					reason += Controller.resources.getString(R.string.nomenclature_setting_numeral_to_charge) +" " + cationCharge + ".<br>";
 				}
 				
 				if(groups.get(1).getIon() != null){
 					output += " " + Controller.normalizeString(groups.get(1).getIon().getName(), true);
-					reason += "Converting " + groups.get(1).getIon().getName() + " to " + Controller.normalizeString(groups.get(1).getIon().getName(), true) + ".<br>";
+					reason += Controller.resources.getString(R.string.converting) + " " + groups.get(1).getIon().getName() + " " + Controller.resources.getString(R.string.to) + " " + Controller.normalizeString(groups.get(1).getIon().getName(), true) + ".<br>";
 				}
 				
 				answer = output;
@@ -165,26 +166,26 @@ public class Nomenclature extends Problem{
 		groups.add(new ElementGroup(new ElementSet(Element.HYDROGEN, 1)));
 		
 		input = input.toLowerCase(Controller._LOCALE);
-		if(addReason) problem.reason +="Does the input contain a space? Yes.<br>";
+		if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_contains_space) + " " + Controller.resources.getString(R.string.yes) + ".<br>";
 		String[] inputGroups = input.split(" ");
 		//Binary acid
 		if(inputGroups[1].equalsIgnoreCase("acid")){
-			if(addReason) problem.reason +="Does input contain the word 'acid'? Yes.<br>";
+			if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_contains_word_acid) + " " + Controller.resources.getString(R.string.yes) + ".<br>";
 			if(inputGroups[0].contains("hydro")){
-				if(addReason) problem.reason +="The word 'hydro' was found: Binary Acid.<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_word_hydro_found) + "<br>";
 				inputGroups[0] = inputGroups[0].replace("hydro", "");
 				ElementGroup acidSet = revertEnding(inputGroups[0], true);
-				if(addReason) problem.reason +="The first element must be hydrogen.<br>";
-				if(addReason) problem.reason +="Converted " + inputGroups[0] + " to " + acidSet.getDrawString() + ".<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_first_element_must_be_hydrogen) + "<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + inputGroups[0] + " " + Controller.resources.getString(R.string.to) + " " + acidSet.getDrawString() + ".<br>";
 				ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
 				
 				if((acidSet.getCharge() + hydrogen.getCharge()) == 0){
-					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidSet.getDrawString() + " equal zero when added.<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + hydrogen.getDrawString() + " " + Controller.resources.getString(R.string.and) +" " + acidSet.getDrawString() + " " +  Controller.resources.getString(R.string.nomenclature_equals_zero) + "<br>";
 					answer = hydrogen.getDrawString() + acidSet.getDrawString();
 				}
 				else{
-					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidSet.getDrawString() + " do not equal zero when added.<br>";
-					if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + hydrogen.getDrawString() + " " + Controller.resources.getString(R.string.and) + " " + acidSet.getDrawString() + Controller.resources.getString(R.string.nomenclature_not_equals_zero) + "<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_setting_charges_opposite) + "<br>";
 					int acidElementCharge = acidSet.getCharge();
 					int hydrogenCharge = hydrogen.getCharge();
 					hydrogen.setQuantity(acidElementCharge);
@@ -193,18 +194,18 @@ public class Nomenclature extends Problem{
 				}
 			//Non-binary acid.
 			}else{
-				if(addReason) problem.reason +="The word 'hydro' wasn't found: non-binary acid.<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_word_hydro_not_found) + "<br>";
 				ElementGroup acidGroup = revertEnding(inputGroups[0], false);
 				ElementGroup hydrogen = new ElementGroup(new ElementSet(Element.HYDROGEN, 1));
-				if(addReason) problem.reason +="First element must be Hydrogen.<br>";
-				if(addReason) problem.reason +="Converted " + inputGroups[0] + " to " + acidGroup.getDrawString() + ".<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_first_element_must_be_hydrogen) + "<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + " " + inputGroups[0] + " " + Controller.resources.getString(R.string.to) + " " + acidGroup.getDrawString() + ".<br>";
 				
 				if((acidGroup.getCharge() + hydrogen.getCharge()) == 0){
-					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidGroup.getDrawString() + " equal zero when added.";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + hydrogen.getDrawString() + " " + Controller.resources.getString(R.string.and) + " " + acidGroup.getDrawString() + " " + Controller.resources.getString(R.string.nomenclature_equals_zero);
 					answer = hydrogen.getDrawString() + acidGroup.getDrawString();
 				}else{
-					if(addReason) problem.reason +="Charges of " + hydrogen.getDrawString() + " and " + acidGroup.getDrawString() + " do not equal zero when added.<br>";
-					if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + hydrogen.getDrawString() + " " + Controller.resources.getString(R.string.and) + " " + acidGroup.getDrawString() + " " + Controller.resources.getString(R.string.nomenclature_not_equals_zero) + "<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_setting_charges_opposite) + "<br>";
 					int acidGroupCharge = acidGroup.getCharge();
 					int hydrogenCharge = hydrogen.getCharge();
 					
@@ -216,32 +217,32 @@ public class Nomenclature extends Problem{
 			}
 		//Not an acid.
 		}else{
-			if(addReason) problem.reason +="Does input contain the word 'acid'? No.<br>";
+			if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_contains_word_acid) + " " + Controller.resources.getString(R.string.no) +".<br>";
 			//Contains roman-numerals
 			if(input.contains("(")){
-				if(addReason) problem.reason +="Input contains roman numerals? No.<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_contains_numerals) + " " + Controller.resources.getString(R.string.no) + ".<br>";
 				input = input.replace(" ", "");
 				String[] split = input.split("[()]");
 				int anionCharge = Controller.convertNumeralToInt(split[1]);
-				if(addReason) problem.reason +="Roman numeral " + split[1] + " recognized as " + anionCharge + ": anion's charge.<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_roman_numeral) + " " + split[1] + " " + Controller.resources.getString(R.string.nomenclature_recognized_as) + " " + anionCharge + ": " + Controller.resources.getString(R.string.nomenclature_anion_charge) + ".<br>";
 				
 				ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
-				if(addReason) problem.reason +="Converted input string " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + " " + split[0] + " " + Controller.resources.getString(R.string.to) + " " + anion.getDrawString() + " (" + Controller.resources.getString(R.string.nomenclature_anion) + ").<br>";
 				ElementGroup cation;
 				if(split[2].contains("ide")) cation = revertEnding(split[2], true);
 				else cation = revertEnding(split[2], false);
 				
-				if(addReason) problem.reason +="Converted input string " + split[2] + " to " + cation.getDrawString() + " (cation).<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + " " + split[2] + " " + Controller.resources.getString(R.string.to) + " " + cation.getDrawString() + " (" + Controller.resources.getString(R.string.nomenclature_cation) + ").<br>";
 				
 				anion.setCharge(anionCharge);
 				
 				if((anion.getCharge() + cation.getCharge()) == 0){
-					if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " equal zero when added.<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + anion.getDrawString() + " " + Controller.resources.getString(R.string.and) + " " + cation.getDrawString() + " " + Controller.resources.getString(R.string.nomenclature_equals_zero) + "<br>";
 					answer = anion.getDrawString() + cation.getDrawString();
 				}
 				else{
-					if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " do not equal zero when added.<br>";
-					if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + anion.getDrawString() + " " + Controller.resources.getString(R.string.and) + " " + cation.getDrawString() + " " + Controller.resources.getString(R.string.nomenclature_not_equals_zero) + "<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_setting_charges_opposite) + "<br>";
 					int cationCharge = cation.getCharge();
 					
 					anion.setQuantity(cationCharge / anion.getQuantity());
@@ -252,7 +253,7 @@ public class Nomenclature extends Problem{
 				}
 				
 			}else{
-				if(addReason) problem.reason +="Input contains roman numerals? No.<br>";
+				if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_contains_numerals) + " " + Controller.resources.getString(R.string.no) + ".<br>";
 				boolean usesPrefixes = false;
 				for(Prefix prefix : Controller.prefixes){
 					if(input.contains(prefix.getPrinted()) || input.contains(prefix.getSecondary())){
@@ -265,33 +266,33 @@ public class Nomenclature extends Problem{
 				
 				//Really easy, just decipher prefixes.
 				if(usesPrefixes){
-					if(addReason) problem.reason +="Input contains at least one prefix (mon, dec, etc).<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_contains_prefixes) + " " + Controller.resources.getString(R.string.yes) + ".<br>";
 					String[] split = input.split(" ");
 					ElementGroup anion = revertEnding(split[0], true);
 					ElementGroup cation = revertEnding(split[1], true);
 					
-					if(addReason) problem.reason +="Converted input string  " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
-					if(addReason) problem.reason +="Converted input string  " + split[1] + " to " + cation.getDrawString() + " (cation).<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + " " + split[0] + " " + Controller.resources.getString(R.string.to) + " " + anion.getDrawString() + " (" + Controller.resources.getString(R.string.nomenclature_anion) + ").<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + " " + split[1] + " " + Controller.resources.getString(R.string.to) + " " + cation.getDrawString() + " (" + Controller.resources.getString(R.string.nomenclature_cation) + ").<br>";
 					
 					answer = anion.getDrawString() + cation.getDrawString();
 					
 				}else{
-					if(addReason) problem.reason +="Input does not contain at least one prefix.<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_contains_prefixes) + " " + Controller.resources.getString(R.string.yes) + ".<br>";
 					String[] split = input.split(" ");
 					ElementGroup anion = new ElementGroup(new ElementSet(Element.getElement(split[0]), 1));
-					if(addReason) problem.reason +="Converted input string " + split[0] + " to " + anion.getDrawString() + " (anion).<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + " " + split[0] + " " + Controller.resources.getString(R.string.to) + " " + anion.getDrawString() + " (" + Controller.resources.getString(R.string.nomenclature_anion) + ").<br>";
 					ElementGroup cation;
 					if(split[1].contains("ide")) cation = revertEnding(split[1], true);
 					else cation = revertEnding(split[1], false);
-					if(addReason) problem.reason +="Converted input string " + split[1] + " to " + cation.getDrawString() + " (cation).<br>";
+					if(addReason) problem.reason += Controller.resources.getString(R.string.converting) + " " + split[1] + Controller.resources.getString(R.string.to) + cation.getDrawString() + " (" + Controller.resources.getString(R.string.nomenclature_cation) + ").<br>";
 					
 					if((anion.getCharge() + cation.getCharge()) == 0) {
-						if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " equal zero when added.<br>";
+						if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + anion.getDrawString() + " " + Controller.resources.getString(R.string.and) + " " + cation.getDrawString() + " " + Controller.resources.getString(R.string.nomenclature_equals_zero) + "<br>";
 						answer = anion.getDrawString() + cation.getDrawString();
 					}
 					else{
-						if(addReason) problem.reason +="Charges of " + anion.getDrawString() + " and " + cation.getDrawString() + " do not equal zero when added.<br>";
-						if(addReason) problem.reason +="Setting the quantities of each to the opposite's charge.<br>";
+						if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_charges_of) + " " + anion.getDrawString() + " " + Controller.resources.getString(R.string.and) + " " + cation.getDrawString() + " " + Controller.resources.getString(R.string.nomenclature_not_equals_zero) + "<br>";
+						if(addReason) problem.reason += Controller.resources.getString(R.string.nomenclature_setting_charges_opposite) + "<br>";
 						int anionCharge = anion.getCharge();
 						int cationCharge = cation.getCharge();
 						

@@ -486,6 +486,12 @@ public class Compound {
 			g.addElementSet(new ElementSet(Element.CHLORINE, 1));
 			elementGroups.add(g);
 		}
+		else if(drawString.equals("HH")){
+			elementGroups = new ArrayList<ElementGroup>();
+			ElementGroup g = new ElementGroup();
+			g.addElementSet(new ElementSet(Element.HYDROGEN, 2));
+			elementGroups.add(g);
+		}
 	}
 	
 }

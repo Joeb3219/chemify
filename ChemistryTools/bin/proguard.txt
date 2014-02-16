@@ -1,0 +1,27 @@
+# view AndroidManifest.xml #generated:95
+-keep class com.charredgames.chemify.activity.AboutActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:73
+-keep class com.charredgames.chemify.activity.ActivitySeriesActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:55
+-keep class com.charredgames.chemify.activity.DefinitionsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:82
+-keep class com.charredgames.chemify.activity.ElementEdit { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class com.charredgames.chemify.activity.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:64
+-keep class com.charredgames.chemify.activity.PolyIonsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:37
+-keep class com.charredgames.chemify.activity.Response { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
+-keep class com.charredgames.chemify.activity.SettingsActivity { <init>(...); }
+
+# onClick res/layout/activity_main.xml #generated:27
+-keepclassmembers class * { *** submit(...); }
+

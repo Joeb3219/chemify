@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
@@ -64,13 +65,7 @@ public class Weight extends Problem{
 			else answer += " grams<br>";
 		}
 		
-		/*if(equation.hasProducts()){
-			for(Compound c : equation.getReactants()){
-				answer += 
-			}
-		}*/
-		
-		if(compounds.size() > 1) answer += "Overall weight: " + f.format(weight) + " grams";
+		if(compounds.size() > 1) answer += Controller.resources.getString(R.string.weight_overall_weight) + " " + f.format(weight) + " grams";
 		
 		answer += reason;
 		

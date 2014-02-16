@@ -26,6 +26,7 @@ import org.jdom2.input.SAXBuilder;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.SparseArray;
 
@@ -42,7 +43,7 @@ import com.charredgames.chemify.problems.ResponseType;
  */
 public class Controller {
 
-	public static final String _VERSION = "1.3.1";
+	public static final String _VERSION = "1.3.2";
 	private static AssetManager assets = null;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
@@ -52,10 +53,12 @@ public class Controller {
 	public static Map<String, String> reactionSymbols = new HashMap<String, String>();
 	public static final String _GENERIC_PLUS_SIGN = "+", _GENERIC_YIELDS_SIGN = ">";
 	public static Context context;
+	public static Resources resources;
 	
 	public static void reset(AssetManager aManager){
 		//if(assets != null) return;
 		assets = aManager;
+		resources = context.getResources();
 		setElements("/default/elements.cgf");
 		Ion.ions = new ArrayList<Ion>();
 		setIons("/default/polyions.cgf");

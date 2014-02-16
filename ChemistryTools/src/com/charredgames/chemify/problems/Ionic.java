@@ -2,6 +2,8 @@ package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
 
+import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Equation;
 
@@ -33,19 +35,19 @@ public class Ionic extends Problem{
 				complete.addCompounds(c.breakIntoIons(), 1);
 			}
 			
-			reason += "<b>Complete Ionic</b><br>";
-			reason += "Breaking compounds into ions.<br><br>";
-			answer += "<u>Complete Ionic</u>:<br>";
+			reason += "<b>" + Controller.resources.getString(R.string.ionic_complete_ionic) + "</b><br>";
+			reason += Controller.resources.getString(R.string.ionic_breaking_into_ions) + "<br><br>";
+			answer += "<u>" + Controller.resources.getString(R.string.ionic_complete_ionic) +"</u>:<br>";
 			answer += complete.getDrawStringWithAllCharges(false) + "<br>";
 			
-			reason += "<b>Net Ionic</b><br>";
-			answer += "<u>Net Ionic</u>:<br>";
+			reason += "<b>" + Controller.resources.getString(R.string.ionic_net_ionic) + "</b><br>";
+			answer += "<u>" + Controller.resources.getString(R.string.ionic_net_ionic) + "</u>:<br>";
 			
 			ArrayList<Compound> forRemoval = new ArrayList<Compound>();
 			
 			for(Compound c : complete.getReactants()){
 				if(complete.compoundOnBothSides(c)){
-					reason += c.getDrawStringWithAllCharges() + " exists on both sides: spectator ion.<br>";
+					reason += c.getDrawStringWithAllCharges() + " " + Controller.resources.getString(R.string.ionic_is_both_sides) + "<br>";
 					forRemoval.add(c);
 				}
 			}
@@ -53,7 +55,7 @@ public class Ionic extends Problem{
 			complete.balance();
 			
 			if(complete.getAllCompounds().size() != 0) answer += complete.getDrawStringWithAllCharges(false);
-			else answer = "No Reaction/All Compounds Soluble.";
+			else answer = Controller.resources.getString(R.string.ionic_no_reaction);
 			
 		}else{
 			reason = "";

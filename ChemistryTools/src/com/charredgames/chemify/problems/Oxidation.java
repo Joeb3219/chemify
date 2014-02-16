@@ -1,7 +1,9 @@
 package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
+
 import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
@@ -37,7 +39,7 @@ public class Oxidation extends Problem{
 			reason += "<b>" + c.getDrawStringWithAllCharges() + "<b>:<br>";
 			
 			if(groups.size() == 1 && groups.get(0).getElementCount() == 1){
-				reason += "Atom is in elemental form: 0.<br>";
+				reason += Controller.resources.getString(R.string.oxidation_elemental_form) + "<br>";
 				groups.get(0).getElementSets().get(0).setOxidationNumber(0);
 			}else{
 				for(ElementGroup group : groups){
@@ -45,26 +47,26 @@ public class Oxidation extends Problem{
 					for(ElementSet set : group.getElementSets()){
 						Element element = set.getElement();
 						if(element == Element.FLUORINE || element == Element.BROMINE || element == Element.IODINE){
-							reason += element.getSymbol() + " is a monatomic ion with charge of -1.<br>";
+							reason += element.getSymbol() + " " + Controller.resources.getString(R.string.oxidation_monatomic_ion) + " -1.<br>";
 							set.setOxidationNumber(-1);
 						}
 						else if(element == Element.OXYGEN){
-							reason += element.getSymbol() + " is a monatomic ion with charge of -2.<br>";
+							reason += element.getSymbol() + " " + Controller.resources.getString(R.string.oxidation_monatomic_ion) + " -2.<br>";
 							set.setOxidationNumber(-2);
 						}
 						else if(element.getGroup() == 1){
-							reason += element.getSymbol() + " is in group 1: charge of 1.<br>";
+							reason += element.getSymbol() + " " + Controller.resources.getString(R.string.oxidation_is_in_group) + " 1: " + Controller.resources.getString(R.string.oxidation_charge_of) + " 1.<br>";
 							set.setOxidationNumber(1);
 						}
 						else if(element.getGroup() == 2){
-							reason += element.getSymbol() + " is in group 2: charge of 2.<br>";
+							reason += element.getSymbol() + " " + Controller.resources.getString(R.string.oxidation_is_in_group) + " 2: " + Controller.resources.getString(R.string.oxidation_charge_of) + " 2.<br>";
 							set.setOxidationNumber(1);
 						}
 						else scanNeeded = true;
 					}
 					if(scanNeeded){
 						//Assign values in a for loop.
-						reason += "Predicting remaining oxidation numbers via algebra.<br>";
+						reason += Controller.resources.getString(R.string.oxidation_predicting_via_algebra) + "<br>";
 						ArrayList<ElementSet> sets = new ArrayList<ElementSet>();
 						for(ElementSet set : group.getElementSets()){
 							if(set.getOxidationNumber() == -6) sets.add(set); //-6 is the default for an unknown.

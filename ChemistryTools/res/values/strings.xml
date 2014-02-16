@@ -37,13 +37,6 @@
     <string name = "pref_send_data_summary">Send the Chemify developers usage data (inputs + results) to help them find bugs.</string>
     
     <string name = "prefButton_elements_title">Edit Elements</string>
-    <!--<string name = "prefCat_defaults">Constant values</string>
-    <string name = "prefButton_polyatomics_title">Edit Polyatomic Ions</string>
-    <string name = "prefButton_constants_title">Edit Constants</string>
-    
-    
-    <string name = "invalid_input_empty">Invalid input: Input is blank.</string>
-    <string name = "invalid_input_title">Invalid Input</string>-->
     
     <string name = "prefCat_info">Information</string>
     <string name = "prefButton_about_title">About</string>
@@ -55,6 +48,103 @@
     <string name = "solubility_hint">NaCl, silver (i) nitrate, etc.</string>
     <string name = "oxidation_hint">NaCl, silver (i) nitrate, etc.</string>
 	<string name = "element_info_hint">Uranium</string>
+	
+	
+	<!-- 
+	These strings are some of the most important for the app.
+	They control all of the app's reasoning output, and therein must be accurate, gramatically correct,
+	and most importantly easy to read.
+	-->
+
+	<string name = "no">No</string>
+	<string name = "yes">Yes</string>
+	<string name = "converting">Converting</string>
+	<string name = "to">to</string>
+	<string name = "and">and</string>
+	
+	<string name = "weight_overall_weight">Overall Weight:</string>
+	
+	<string name = "element_info_none_found">No element found.</string>
+	<string name = "element_info_multiple_entered">Multiple elements entered.</string>
+	<string name = "element_info_name">Name</string>
+	<string name = "element_info_symbol">Symbol</string>
+	<string name = "element_info_atomic">Atomic #</string>
+	<string name = "element_info_mass">Mass</string>
+	<string name = "element_info_period_group">Period, Group</string>
+	<string name = "element_info_protons">Protons</string>
+	<string name = "element_info_neutrons">Neutrons</string>
+	<string name = "element_info_electrons">Electrons</string>
+	<string name = "element_info_valence_electrons">Valence Electrons</string>
+	<string name = "element_info_charge">Charge</string>
+	<string name = "element_info_electron_config">Electron Config</string>
+	
+	<string name = "ionic_complete_ionic">Complete Ionic</string>
+	<string name = "ionic_net_ionic">Net Ionic</string>
+	<string name = "ionic_breaking_into_ions">Breaking compounds into ions.</string>
+	<string name = "ionic_is_both_sides">exists on both sides: spectator ion.</string>
+	<string name = "ionic_no_reaction">No Reaction/All Compounds Soluble</string>
+	
+	<string name = "oxidation_elemental_form">Atom is in elemental form: 0.</string>
+	<string name = "oxidation_monatomic_ion">is a monatomic ion with charge of</string>
+	<string name = "oxidation_is_in_group">is in group</string>
+	<string name = "oxidation_charge_of">charge of</string>
+	<string name = "oxidation_predicting_via_algebra">Predicting remaining oxidation numbers via algebra.</string>
+	
+	<string name = "nomenclature_contains_space">Does the input contain a space?</string>
+	<string name = "nomenclature_one_element">Input contains only one element.</string>
+	<string name = "nomenclature_no_polyatomics">Input contains no polyatomic ions.</string>
+	<string name = "nomenclature_must_be_acid">Contains hydrogen: must be an acid.</string>
+	<string name = "nomenclature_binary_acid">Binary acid - only Hydrogen and</string>
+	<string name = "nomenclature_first_is_metal">Is the first element a metal?</string>
+	<string name = "nomenclature_no_numerals_needed">First element\'s group is 1 or 2: no roman numerals needed.</string>
+	<string name = "nomenclature_adding_ide">Adding \'ide\' to end of element\'s name.</string>
+	<string name = "nomenclature_numerals_needed">First element is a transition metal: roman numerals needed.</string>
+	<string name = "nomenclature_using_numeral">Using numeral</string>
+	<string name = "nomenclature_numeral_in_place_of">in place of needed cation charge:</string>
+	<string name = "nomenclature_may_contain_polyatomics">Input may contain polyatomic ions.</string>
+	<string name = "nomenclature_contains_polyatomic">Input contains polyatomic ions:</string>
+	<string name = "nomenclature_appending_acid">and apending \'acid\' to name.</string>
+	<string name = "nomenclature_many_polyatomics">Input contains one or more polyatomic ions.</string>
+	<string name = "nomenclature_transition_metal_numerals_needed">First element is a transition metal: roman numerals needed.</string>
+	<string name = "nomenclature_setting_numeral_to_charge">Setting roman numeral equal to the needed cation charge:</string>
+	<string name = "nomenclature_contains_word_acid">"Does input contain the word \'acid\'?</string>
+	<string name = "nomenclature_word_hydro_found">The word \'hydro\' was found: Binary Acid.</string>
+	<string name = "nomenclature_word_hydro_not_found">The word \'hydro\' wasn\'t found: Non-Binary Acid.</string>
+	<string name = "nomenclature_first_element_must_be_hydrogen">The first element must be hydrogen.</string>
+	<string name = "nomenclature_charges_of">Charges of</string>
+	<string name = "nomenclature_equals_zero">equal zero when added.</string>
+	<string name = "nomenclature_not_equals_zero">don\'t equal zero when added.</string>
+	<string name = "nomenclature_setting_charges_opposite">Setting the quantities of each to the opposite\'s charge.</string>
+	<string name = "nomenclature_contains_numerals">Input contains roman numerals?</string>
+	<string name = "nomenclature_roman_numeral">Roman numeral</string>
+	<string name = "nomenclature_recognized_as">recognized as</string>
+	<string name = "nomenclature_anion_charge">anion\'s charge</string>
+	<string name = "nomenclature_anion">anion</string>
+	<string name = "nomenclature_cation">cation</string>
+	<string name = "nomenclature_contains_prefixes">Does input contain prefixes?</string>
+		
+	<string name = "solubility_soluble">soluble.</string>
+	<string name = "solubility_insoluble">insoluble.</string>
+	<string name = "solubility_is_liquid_or_gas">Compound is liquid or gas.</string>
+	<string name = "solubility_not_liquid_or_gas">Compound is not liquid or gas.</string>
+	<string name = "solubility_all_group_one">All elements in compound are in group 1, or are hydroxide/ammonium ion.</string>
+	<string name = "solubility_not_group_one">All elements in are either not in group 1, or aren\'t hydroxide ion.</string>
+	<string name = "solubility_has_nitrate_or_chlorite">Compound contains nitrate, chlorite, perchlorate, or acetate ion.</string>
+	<string name = "solubility_not_has_nitrate_or_chlorite">Compound contains nitrate, chlorite, perchlorate, or acetate ion.</string>
+	<string name = "solubility_has_br_cl_i">Compound contains Br, Cl, or I, but not Ag, Pb, or Hg.</string>
+	<string name = "solubility_has_br_cl_i_exception">Compound doesn\'t contain Br, Cl, or I, or has Ag, Pb, or Hg.</string>
+	<string name = "solubility_so4_no_exceptions">Compound contains SO4 and no exceptions.</string>
+	<string name = "solubility_so4_exceptions">Compound does not contains SO4, or has exceptions.</string>
+	<string name = "solubility_s_g1g2">Compound contains Sulfur and G1 or G2 metals.</string>
+	<string name = "solubility_no_s_g1g2">Compound either contains no Sulfur, or no G1/G2 metals.</string>
+	<string name = "solubility_so3_co3">Compound contains SO3, CO3, CrO4, or PO4, and G1 metals.</string>
+	<string name = "solubility_no_so3_co3">Compound doesn\'t contain SO3, CO3, CrO4, or PO4, or has no G1 metals.</string>
+	<string name = "solubility_failed_all">Compound failed all checks.</string>
+	
+			
+	<!-- 
+	The remaining strng entires are used just to create spinners.
+	 -->	
     
     <string-array name = "problem_types">
         <item>Nomenclature</item>

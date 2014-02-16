@@ -12,12 +12,12 @@
              <item                
                 android:id = "@+id/action_polyions"
                 android:title = "@string/action_polyions"/>
-             <item                
+         <!--    <item                
                 android:id = "@+id/action_constants"
                 android:title = "@string/action_constants"/>
              <item                
                 android:id = "@+id/action_equations"
-                android:title = "@string/action_equations"/>
+                android:title = "@string/action_equations"/> -->
              <item                
                 android:id = "@+id/action_activitySeries"
                 android:title = "@string/action_activitySeries"/>

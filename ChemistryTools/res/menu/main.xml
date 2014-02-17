@@ -3,7 +3,7 @@
     <item
         android:id="@+id/resources_tab"
         android:orderInCategory="100"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/resources_tab">
         <menu>
             <item                

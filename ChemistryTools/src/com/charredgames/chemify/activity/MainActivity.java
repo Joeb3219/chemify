@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -17,6 +18,11 @@ import android.widget.TextView;
 import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
+import com.google.ads.Ad;
+import com.google.ads.AdListener;
+import com.google.ads.AdRequest;
+import com.google.ads.AdRequest.ErrorCode;
+import com.google.ads.AdView;
 
 public class MainActivity extends Activity {
 
@@ -41,6 +47,37 @@ public class MainActivity extends Activity {
 		problem_type.setAdapter(adapter);
 		
 		if(Ion.ions.size() == 0) Controller.reset(this.getAssets());
+		
+		AdView adView = (AdView) findViewById(R.id.ad);
+		adView.setAdListener(new AdListener() {
+			
+			@Override
+			public void onReceiveAd(Ad arg0) {
+			}
+			
+			@Override
+			public void onPresentScreen(Ad arg0) {
+			}
+			
+			@Override
+			public void onLeaveApplication(Ad arg0) {
+				
+			}
+			
+			@Override
+			public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
+			}
+			
+			@Override
+			public void onDismissScreen(Ad arg0) {
+			}
+		});
+		AdRequest request = new AdRequest();
+		request.addKeyword("education");
+		adView.loadAd(request);
+		AdView.LayoutParams params = new AdView.LayoutParams(AdView.LayoutParams.WRAP_CONTENT, AdView.LayoutParams.WRAP_CONTENT);
+		params.addRule(AdView.ALIGN_PARENT_BOTTOM);
+		adView.setLayoutParams(params);
 	}
 	
 	public void onStart(){

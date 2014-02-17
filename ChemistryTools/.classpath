@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="lib" path="assets"/>
 	<classpathentry exported="true" kind="lib" path="assets/jdom-2.0.5/jdom-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="assets/GoogleAdMobAdsSdk-6.4.1.jar"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>

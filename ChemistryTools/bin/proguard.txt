@@ -1,27 +1,33 @@
-# view AndroidManifest.xml #generated:95
+# view AndroidManifest.xml #generated:96
 -keep class com.charredgames.chemify.activity.AboutActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:73
+# view AndroidManifest.xml #generated:74
 -keep class com.charredgames.chemify.activity.ActivitySeriesActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:55
+# view AndroidManifest.xml #generated:56
 -keep class com.charredgames.chemify.activity.DefinitionsActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:82
+# view AndroidManifest.xml #generated:83
 -keep class com.charredgames.chemify.activity.ElementEdit { <init>(...); }
 
-# view AndroidManifest.xml #generated:28
+# view AndroidManifest.xml #generated:29
 -keep class com.charredgames.chemify.activity.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:64
+# view AndroidManifest.xml #generated:65
 -keep class com.charredgames.chemify.activity.PolyIonsActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:37
+# view AndroidManifest.xml #generated:38
 -keep class com.charredgames.chemify.activity.Response { <init>(...); }
 
-# view AndroidManifest.xml #generated:46
+# view AndroidManifest.xml #generated:47
 -keep class com.charredgames.chemify.activity.SettingsActivity { <init>(...); }
 
-# onClick res/layout/activity_main.xml #generated:27
+# view AndroidManifest.xml #generated:109
+-keep class com.google.ads.AdActivity { <init>(...); }
+
+# view res/layout/activity_main.xml #generated:32
+-keep class com.google.ads.AdView { <init>(...); }
+
+# onClick res/layout/activity_main.xml #generated:23
 -keepclassmembers class * { *** submit(...); }
 

@@ -36,7 +36,9 @@ public class Nomenclature extends Problem{
 			equation.addCompounds(getCompoundsFromString(side), i); //Used to build an equation
 			side = Controller.replaceReactionSymbols(side);
 			String[] compoundStrings = side.split("\\+");
+			int iteration = 0;
 			for(String str : compoundStrings){
+				iteration ++;
 
 				if(compoundStrings.length > 1 || sides.length > 1){
 					answer += "<u>" + str + "</u>: ";
@@ -52,7 +54,7 @@ public class Nomenclature extends Problem{
 					answer += convertGroupsToName(groups, this);
 				}
 				
-				if((compoundStrings.length > 1 || sides.length > 1) && !(i == (sides.length - 1) && compoundStrings[compoundStrings.length - 1].equals(str))){
+				if((compoundStrings.length > 1 || sides.length > 1) && !((i == (sides.length - 1)) && compoundStrings.length == iteration)){
 					answer += "<br>";
 					reason += "<br>";
 				}

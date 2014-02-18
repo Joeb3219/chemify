@@ -4,7 +4,7 @@
         android:id = "@+id/action_bug"
         android:icon = "@drawable/ic_bug"
         android:title = "@string/action_bug"
-        android:showAsAction = "ifRoom"
+        android:showAsAction = "always"
         />
 
 </menu>

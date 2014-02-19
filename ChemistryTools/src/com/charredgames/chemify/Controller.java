@@ -43,7 +43,7 @@ import com.charredgames.chemify.problems.ResponseType;
  */
 public class Controller {
 
-	public static final String _VERSION = "1.4.0";
+	public static final String _VERSION = "1.4.1";
 	private static AssetManager assets = null;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();

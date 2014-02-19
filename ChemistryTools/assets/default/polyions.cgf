@@ -203,13 +203,13 @@
 	
 	<ion>
 		<string name = "chromate"/>
-		<elements list = "CO3"/>
+		<elements list = "CrO4"/>
 		<int charge = "-2"/>
 	</ion>
 	
 	<ion>
 		<string name = "dichromate"/>
-		<elements list = "C2O7"/>
+		<elements list = "Cr2O7"/>
 		<int charge = "-2"/>
 	</ion>
 	

@@ -3,7 +3,7 @@
 
     <string name="app_name">Chemify</string>
     <string name = "admob_id">ca-app-pub-2166176549761155/6017349421</string>
-    <string name="about_app_developer">Developed by Joe Boyle.</string>
+    <string name="about_app_developer">Developed by CharredSoftware.</string>
     <string name="about_release_info">Chemify is in beta release.</string>
     <string name="about_copyright">Chemify is actively developed by Joe Boyle, who retains the right to grant and revoke access to the app. Chemify is considered a work in progress, and makes no claims to be 100% accurate, nor holds any liability for damages which the user may incur.</string>
     <string name="about_donation_line">Chemify is currently being developed with all expenses paid for out of pocket. Ads are displayed to help pay for these costs.</string>

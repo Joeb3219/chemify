@@ -19,10 +19,12 @@ public class Reaction extends Problem{
 
 	public void solve(boolean isPrimary){
 		String answer = "", collectiveInput = input;
-		if(Controller.autoFormat) collectiveInput = getFormattedDisplay(input);
 		
-		if(getElementSets(input).size() == 1){
-			answer = "Only one element entered.";
+		if(input.matches("[0-9]+") || getElementSets(input).size() == 1){
+			if(isPrimary){
+				answer = "Invalid input.<br>";
+				answer += "Either all numbers, or only one element entered.";
+			}
 			reason = "";
 			if(isPrimary){
 				response.addLine(collectiveInput, ResponseType.input);
@@ -36,6 +38,8 @@ public class Reaction extends Problem{
 			return;
 		}
 		
+		if(Controller.autoFormat) collectiveInput = getFormattedDisplay(input);
+
 		ArrayList<Compound> compounds = getCompoundsFromString(input);
 		ArrayList<Compound> answerCompounds = new ArrayList<Compound>();
 		ArrayList<ElementGroup> allElementGroups = new ArrayList<ElementGroup>();

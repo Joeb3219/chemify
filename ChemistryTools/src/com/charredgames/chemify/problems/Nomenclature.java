@@ -24,6 +24,14 @@ public class Nomenclature extends Problem{
 		ArrayList<ElementGroup> groups = new ArrayList<ElementGroup>();
 		equation = new Equation();
 		
+		if(input.matches("[0-9]+")){
+			if(isPrimary){
+				answer += Controller.resources.getString(R.string.weight_invalid_input_numbers) + "<br>";
+				answer += Controller.resources.getString(R.string.weight_invalid_input_finding_element) + "<br>";
+			}
+			input = Element.getElement(input).getSymbol();
+		}
+		
 		if(Controller.autoFormat) collectiveInput = getFormattedDisplay(input);
 		else collectiveInput = input;
 		

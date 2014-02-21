@@ -28,7 +28,16 @@ public class Oxidation extends Problem{
 	
 	public void solve(boolean isPrimary){
 		String collectiveInput = input, answer = "";
-		if(equation == null) equation = getEquationFromString(input);
+		if(equation == null){
+			if(input.matches("[0-9]+")){
+				if(isPrimary){
+					answer += Controller.resources.getString(R.string.weight_invalid_input_numbers) + "<br>";
+					answer += Controller.resources.getString(R.string.weight_invalid_input_finding_element) + "<br>";
+				}
+				input = Element.getElement(input).getSymbol();
+			}
+			equation = getEquationFromString(input);
+		}
 		if(Controller.autoFormat) collectiveInput = equation.getDrawString(false);
 		if(input == null) input = equation.getDrawString(false);
 		

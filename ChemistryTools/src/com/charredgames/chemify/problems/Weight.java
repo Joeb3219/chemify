@@ -37,8 +37,10 @@ public class Weight extends Problem{
 				if(input.matches("[0-9]+")){
 					equation = new Equation();
 					equation.addCompound(new Compound(new ElementGroup(new ElementSet(Element.getElement(input), 1))), 0);
-					answer += Controller.resources.getString(R.string.weight_invalid_input_numbers) + "<br>";
-					answer += Controller.resources.getString(R.string.weight_invalid_input_finding_element) + "<br>";
+					if(isPrimary){
+						answer += Controller.resources.getString(R.string.weight_invalid_input_numbers) + "<br>";
+						answer += Controller.resources.getString(R.string.weight_invalid_input_finding_element) + "<br>";
+					}
 				}else equation = getEquationFromString(input);
 			}
 			else{

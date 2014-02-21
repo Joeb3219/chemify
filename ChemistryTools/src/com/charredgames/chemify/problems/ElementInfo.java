@@ -25,7 +25,7 @@ public class ElementInfo extends Problem{
 		
 		if(element == null) output += Controller.resources.getString(R.string.element_info_none_found);
 		else{
-			output += Controller.resources.getString(R.string.element_info_name) + ": " + element.getName() + "<br>";
+			output += Controller.resources.getString(R.string.element_info_name) + ": " + Controller.normalizeString(element.getName(), true) + "<br>";
 			output += Controller.resources.getString(R.string.element_info_symbol) + ": " + element.getSymbol() + "<br>";
 			output += Controller.resources.getString(R.string.element_info_atomic) + ": " + element.getAtomicNumber() + "<br>";
 			output += Controller.resources.getString(R.string.element_info_mass) + ": " + element.getAtomicMass() + "g/mole<br>";

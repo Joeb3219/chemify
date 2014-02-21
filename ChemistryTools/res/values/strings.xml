@@ -64,7 +64,9 @@
 	<string name = "and">and</string>
 	
 	<string name = "weight_overall_weight">Overall Weight:</string>
-	
+	<string name = "weight_invalid_input_numbers">Invalid input: only numbers entered.</string>
+	<string name = "weight_invalid_input_finding_element">Attempting to find an element with this data.</string>
+		
 	<string name = "element_info_none_found">No element found.</string>
 	<string name = "element_info_multiple_entered">Multiple elements entered.</string>
 	<string name = "element_info_name">Name</string>

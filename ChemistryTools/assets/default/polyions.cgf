@@ -21,12 +21,6 @@
 	</ion>
 	
 	<ion>
-		<string name = "hydronium"/>
-		<elements list = "H3O"/>
-		<int charge = "1"/>
-	</ion>
-	
-	<ion>
 		<string name = "nitrite"/>
 		<elements list = "NO2"/>
 		<int charge = "-1"/>
@@ -94,6 +88,12 @@
 	</ion>
 
 	<ion>
+		<string name = "perchlorate"/>
+		<elements list = "ClO4"/>
+		<int charge = "-1"/>
+	</ion>
+
+	<ion>
 		<string name = "borite"/>
 		<elements list = "BO2"/>
 		<int charge = "-3"/>
@@ -103,12 +103,6 @@
 		<string name = "borate"/>
 		<elements list = "BO3"/>
 		<int charge = "-3"/>
-	</ion>
-	
-	<ion>
-		<string name = "perchlorate"/>
-		<elements list = "ClO4"/>
-		<int charge = "-1"/>
 	</ion>
 	
 	<ion>
@@ -154,12 +148,6 @@
 	</ion>
 	
 	<ion>
-		<string name = "bicarbonate"/>
-		<elements list = "HCO3"/>
-		<int charge = "-1"/>
-	</ion>
-	
-	<ion>
 		<string name = "carbonate"/>
 		<elements list = "CO3"/>
 		<int charge = "-2"/>
@@ -170,6 +158,13 @@
 		<elements list = "CO2"/>
 		<int charge = "-2"/>
 	</ion>
+
+	<ion>
+		<string name = "bicarbonate"/>
+		<elements list = "CHO3"/>
+		<int charge = "-1"/>
+	</ion>
+	
 	
 	<ion>
 		<string name = "sulfite"/>

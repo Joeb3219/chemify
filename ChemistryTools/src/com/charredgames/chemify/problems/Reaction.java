@@ -21,6 +21,21 @@ public class Reaction extends Problem{
 		String answer = "", collectiveInput = input;
 		if(Controller.autoFormat) collectiveInput = getFormattedDisplay(input);
 		
+		if(getElementSets(input).size() == 1){
+			answer = "Only one element entered.";
+			reason = "";
+			if(isPrimary){
+				response.addLine(collectiveInput, ResponseType.input);
+				response.addLine(answer, ResponseType.answer);
+				addProblemToPanel(response, new Weight(input));
+				addProblemToPanel(response, new Solubility(input));
+				addProblemToPanel(response, new Ionic(input));
+			}else{
+				response.addLine(answer, ResponseType.reactions);
+			}
+			return;
+		}
+		
 		ArrayList<Compound> compounds = getCompoundsFromString(input);
 		ArrayList<Compound> answerCompounds = new ArrayList<Compound>();
 		ArrayList<ElementGroup> allElementGroups = new ArrayList<ElementGroup>();
@@ -33,6 +48,8 @@ public class Reaction extends Problem{
 			//else cmp = reduceAtomCount(cmp);
 		}
 		
+		
+
 		//Decomposition
 		if(compounds.size() == 1){
 			reason += "Only one reactant -> decomposition. <br>";

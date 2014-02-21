@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Compound;
+import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
 import com.charredgames.chemify.constant.Equation;
@@ -30,8 +31,16 @@ public class Weight extends Problem{
 		double weight = 0.00;
 		String collectiveInput, answer = "";
 		
+		
 		if(equation == null){
-			if(input != null) equation = getEquationFromString(input);
+			if(input != null){
+				if(input.matches("[0-9]+")){
+					equation = new Equation();
+					equation.addCompound(new Compound(new ElementGroup(new ElementSet(Element.getElement(input), 1))), 0);
+					answer += Controller.resources.getString(R.string.weight_invalid_input_numbers) + "<br>";
+					answer += Controller.resources.getString(R.string.weight_invalid_input_finding_element) + "<br>";
+				}else equation = getEquationFromString(input);
+			}
 			else{
 				Compound c = new Compound(elementGroups);
 				equation = new Equation();

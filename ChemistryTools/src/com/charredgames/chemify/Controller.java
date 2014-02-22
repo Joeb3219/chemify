@@ -41,9 +41,10 @@ import com.charredgames.chemify.problems.ResponseType;
  * @author Joe Boyle <joe@charredgames.com>
  * @since Nov 17, 2013
  */
+
 public class Controller {
 
-	public static final String _VERSION = "1.4.2";
+	public static final String _VERSION = "1.4.3";
 	private static AssetManager assets = null;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();

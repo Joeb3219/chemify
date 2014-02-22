@@ -33,6 +33,8 @@ import android.util.SparseArray;
 import com.charredgames.chemify.activity.SendPost;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.constant.Measurement;
+import com.charredgames.chemify.constant.Unit;
 import com.charredgames.chemify.problems.Prefix;
 import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.ResponseType;

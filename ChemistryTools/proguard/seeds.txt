@@ -244,6 +244,8 @@ com.charredgames.chemify.R$string: int title_activity_response
 com.charredgames.chemify.R$string: int title_activity_settings
 com.charredgames.chemify.R$string: int to
 com.charredgames.chemify.R$string: int weight_hint
+com.charredgames.chemify.R$string: int weight_invalid_input_finding_element
+com.charredgames.chemify.R$string: int weight_invalid_input_numbers
 com.charredgames.chemify.R$string: int weight_overall_weight
 com.charredgames.chemify.R$string: int yes
 com.charredgames.chemify.R$style: int AppBaseTheme

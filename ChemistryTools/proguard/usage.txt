@@ -1151,7 +1151,7 @@ com.charredgames.chemify.problems.Problem:
 com.charredgames.chemify.problems.Stoichiometry
 com.charredgames.chemify.problems.ThermoEquation
 com.charredgames.chemify.problems.Weight:
-    22:23:public Weight(java.util.ArrayList)
+    23:24:public Weight(java.util.ArrayList)
 com.google.ads.Ad:
     public abstract boolean isReady()
     public abstract void loadAd(com.google.ads.AdRequest)

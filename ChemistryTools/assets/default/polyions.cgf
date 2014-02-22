@@ -15,6 +15,12 @@
 	</ion>
 	
 	<ion>
+		<string name = "ammonia"/>
+		<elements list = "NH3"/>
+		<int charge = "0"/>
+	</ion>
+	
+	<ion>
 		<string name = "hydronium"/>
 		<elements list = "H3O"/>
 		<int charge = "1"/>

@@ -124,6 +124,7 @@ public class Controller {
 		for(String s : conversionSymbols){
 			if(str.contains(s)) str = str.replace(s, "to");
 		}
+		str = str.replace("of", "");
 		return str;
 	}
 	

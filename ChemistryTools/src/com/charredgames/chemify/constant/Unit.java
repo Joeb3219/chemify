@@ -40,7 +40,10 @@ public class Unit {
 	public static Unit HOUR = new Unit("hour", 1.0 / (60.0 * 60.0), UnitType.TIME, false, new ArrayList<String>(Arrays.asList("hr", "hour", "hours", "hrs")));
 	public static Unit DAY = new Unit("day", 1.0 / (60.0 * 60.0 * 24.0), UnitType.TIME, false, new ArrayList<String>(Arrays.asList("day", "days", "days")));
 	public static Unit WEEK = new Unit("week", 1.0 / (60.0 * 60.0 * 24.0 * 7.0), UnitType.TIME, false, new ArrayList<String>(Arrays.asList("wk", "week", "weeks", "wks")));
+	public static Unit MONTH = new Unit("month", 1.0 / (60.0 * 60.0 * 24.0 * 7.0 * 4), UnitType.TIME, false, new ArrayList<String>(Arrays.asList("mnth", "month", "months")));
 	public static Unit YEAR = new Unit("year", 1.0 / (3.15569 * Math.pow(10, 7)), UnitType.TIME, false, new ArrayList<String>(Arrays.asList("yr", "year", "years")));
+	public static Unit DECADE = new Unit("decade", 1.0 / (3.15569 * Math.pow(10, 8)), UnitType.TIME, false, new ArrayList<String>(Arrays.asList("decade", "decade", "decades")));
+	public static Unit CENTURY = new Unit("century", 1.0 / (3.15569 * Math.pow(10, 9)), UnitType.TIME, false, new ArrayList<String>(Arrays.asList("century", "century", "centuries")));
 	
 	public static Unit INCH = new Unit("inch", 39.3701, UnitType.LENGTH, false, new ArrayList<String>(Arrays.asList("in", "inch", "inches")));
 	public static Unit FOOT = new Unit("foot", 3.28084, UnitType.LENGTH, false, new ArrayList<String>(Arrays.asList("ft", "foot", "feet")));

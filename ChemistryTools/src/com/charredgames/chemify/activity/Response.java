@@ -19,6 +19,7 @@ import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.gui.ResponseBlock;
 import com.charredgames.chemify.gui.ResponsePanel;
+import com.charredgames.chemify.problems.DimensionalAnalysis;
 import com.charredgames.chemify.problems.ElementInfo;
 import com.charredgames.chemify.problems.Ionic;
 import com.charredgames.chemify.problems.Nomenclature;
@@ -70,6 +71,7 @@ public class Response extends Activity {
 		else if(selectedOperation.equalsIgnoreCase("Predict Reactions")) problem = new Reaction(input);
 		else if(selectedOperation.equalsIgnoreCase("Solubility")) problem = new Solubility(input);
 		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) problem = new Ionic(input);
+		else if(selectedOperation.equalsIgnoreCase("dimensional analysis")) problem = new DimensionalAnalysis(input);
 		else problem = new Nomenclature(input);
 		
 		problem.solve(true);

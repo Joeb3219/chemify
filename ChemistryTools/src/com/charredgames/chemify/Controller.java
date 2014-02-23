@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -33,6 +34,8 @@ import android.util.SparseArray;
 import com.charredgames.chemify.activity.SendPost;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.constant.Unit;
+import com.charredgames.chemify.constant.UnitPrefix;
 import com.charredgames.chemify.problems.Prefix;
 import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.ResponseType;
@@ -48,7 +51,10 @@ public class Controller {
 	private static AssetManager assets = null;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
+	public static ArrayList<Unit> units = new ArrayList<Unit>();
+	public static ArrayList<String> conversionSymbols = new ArrayList<String>(Arrays.asList("converted to", "equals"));
 	public static SparseArray<String> romanNumerals = new SparseArray<String>();
+	public static ArrayList<UnitPrefix> unitPrefixes = new ArrayList<UnitPrefix>();
 	public static final Locale _LOCALE = Locale.getDefault();
 	public static boolean autoFormat = true, calculateReasoning = true, sendUsage = false;
 	public static Map<String, String> reactionSymbols = new HashMap<String, String>();
@@ -69,8 +75,10 @@ public class Controller {
 		//Only needs to be run once by app.
 		//if(!firstLoad) return;
 		if(ResponseType.answer instanceof ResponseType);
+		if(UnitPrefix.ATTO instanceof UnitPrefix);
 		if(Prefix.mono instanceof Prefix);
 		if(Ion.ions.size() > 4);
+		if(Controller.units.size() > 1);
 		if(com.charredgames.chemify.constant.Element.elements.size() > 3);
 		
 		romanNumerals.put(1, "I");
@@ -97,6 +105,7 @@ public class Controller {
 		reactionSymbols.put("=>", _GENERIC_YIELDS_SIGN);
 		reactionSymbols.put("&#8652;", _GENERIC_YIELDS_SIGN);
 		reactionSymbols.put("yields", _GENERIC_YIELDS_SIGN);
+
 	}
 
 	public static String replaceReactionSymbols(String str){
@@ -108,6 +117,14 @@ public class Controller {
 			if(str.contains(" " + key + " ")) str = str.replace(" " + key + " ", entry.getValue());
 		}
 		
+		return str;
+	}
+	
+	public static String replaceConversionSymbols(String str){
+		for(String s : conversionSymbols){
+			if(str.contains(s)) str = str.replace(s, "to");
+		}
+		str = str.replace("of", "");
 		return str;
 	}
 	

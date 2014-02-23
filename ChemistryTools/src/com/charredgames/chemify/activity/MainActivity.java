@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.constant.Measurement;
 import com.google.ads.Ad;
 import com.google.ads.AdListener;
 import com.google.ads.AdRequest;
@@ -73,7 +74,7 @@ public class MainActivity extends Activity {
 		});
 		AdRequest request = new AdRequest();
 		request.addKeyword("education");
-		adView.loadAd(request);
+//		adView.loadAd(request);
 		AdView.LayoutParams params = new AdView.LayoutParams(AdView.LayoutParams.WRAP_CONTENT, AdView.LayoutParams.WRAP_CONTENT);
 		params.addRule(AdView.ALIGN_PARENT_BOTTOM);
 		adView.setLayoutParams(params);
@@ -93,6 +94,7 @@ public class MainActivity extends Activity {
 		    	else if(pType.equalsIgnoreCase("Solubility")) txt.setHint(R.string.solubility_hint);
 		    	else if(pType.equalsIgnoreCase("Oxidation")) txt.setHint(R.string.oxidation_hint);
 		    	else if(pType.equalsIgnoreCase("Element Info")) txt.setHint(R.string.element_info_hint);
+		    	else if(pType.equalsIgnoreCase("dimensional analysis")) txt.setHint(R.string.dimensional_analysis_hint);
 		    }
 
 		    @Override
@@ -117,7 +119,6 @@ public class MainActivity extends Activity {
 		intent.putExtra(EXTRA_MESSAGE, input.getText().toString());
 		startActivity(intent);
 	}
-	
 	
 	public void onPause(){
 		super.onPause();

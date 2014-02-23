@@ -21,6 +21,7 @@
     <string name = "title_activity_settings">Settings</string>
     <string name = "title_activity_definitions">Chemistry Dictionary</string>
     <string name = "title_activity_polyIons">Polyatomic Ions List</string>
+    <string name = "title_activity_constants">Constants List</string>
     <string name = "title_activity_activityseries">Activity Series</string>
     <string name = "search_box_hint">Electron Affinity</string>
     <string name = "action_bug">Submit Bug Report</string>

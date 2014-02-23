@@ -6,16 +6,16 @@
         android:showAsAction="always"
         android:title="@string/resources_tab">
         <menu>
-            <item                
+        	<item                
                 android:id = "@+id/action_definitions"
                 android:title = "@string/action_definitions"/>
-             <item                
+            <item                
                 android:id = "@+id/action_polyions"
                 android:title = "@string/action_polyions"/>
-         <!--    <item                
+         	<item                
                 android:id = "@+id/action_constants"
                 android:title = "@string/action_constants"/>
-             <item                
+         <!--<item                
                 android:id = "@+id/action_equations"
                 android:title = "@string/action_equations"/> -->
              <item                

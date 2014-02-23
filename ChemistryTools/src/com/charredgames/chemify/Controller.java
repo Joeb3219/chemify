@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -297,6 +298,20 @@ public class Controller {
   			new SendPost(httpclient, httppost).execute();
 
   		} catch (IOException e) {}
+	}
+	
+	public static String doubleToScientific(Double num){
+		DecimalFormat f = new DecimalFormat("0.###E0");
+		String formatted = "";
+		if(num <= 9999 && num >= -9999 && (num >= 0.001 || num <= -0.001)){
+			f = new DecimalFormat("0.000");
+			formatted = f.format(num);
+		}else{
+			formatted = f.format(num);
+			formatted = formatted.replace("E", " * 10<sup>");
+			formatted += "</sup>";
+		}
+		return formatted;
 	}
 	
 }

@@ -1,6 +1,6 @@
 package com.charredgames.chemify.constant;
 
-import java.text.DecimalFormat;
+import com.charredgames.chemify.Controller;
 
 public class Measurement {
 
@@ -34,19 +34,7 @@ public class Measurement {
 	}
 	
 	public String getDrawString(){
-		DecimalFormat f = new DecimalFormat("0.##E0");
-		String formatted = "";
-		if(value <= 99999 && value >= -99999){
-			f = new DecimalFormat("0.00");
-			formatted = f.format(value);
-		}else{
-			formatted = f.format(value);
-			formatted = formatted.replace("E", " * 10<sup>");
-			formatted += "</sup>";
-		}
-	
-		
-		return formatted + " " + unit.getCommonAbbreviation();
+		return Controller.doubleToScientific(value) + " " + unit.getCommonAbbreviation();
 	}
 	
 	public Measurement convertUnit(Unit desired){

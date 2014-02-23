@@ -1,13 +1,16 @@
-# view AndroidManifest.xml #generated:96
+# view AndroidManifest.xml #generated:105
 -keep class com.charredgames.chemify.activity.AboutActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:74
+# view AndroidManifest.xml #generated:83
 -keep class com.charredgames.chemify.activity.ActivitySeriesActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:74
+-keep class com.charredgames.chemify.activity.ConstantsActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:56
 -keep class com.charredgames.chemify.activity.DefinitionsActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:83
+# view AndroidManifest.xml #generated:92
 -keep class com.charredgames.chemify.activity.ElementEdit { <init>(...); }
 
 # view AndroidManifest.xml #generated:29
@@ -22,7 +25,7 @@
 # view AndroidManifest.xml #generated:47
 -keep class com.charredgames.chemify.activity.SettingsActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:109
+# view AndroidManifest.xml #generated:118
 -keep class com.google.ads.AdActivity { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:32

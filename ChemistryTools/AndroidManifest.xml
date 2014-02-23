@@ -72,6 +72,15 @@
         </activity>    
         
 		<activity
+            android:name="com.charredgames.chemify.activity.ConstantsActivity"
+            android:label="@string/title_activity_constants"
+            android:parentActivityName="com.charredgames.chemify.activity.ConstantsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charredgames.chemify.MainActivity" />
+        </activity>    
+        
+		<activity
             android:name="com.charredgames.chemify.activity.ActivitySeriesActivity"
             android:label="@string/title_activity_activityseries"
             android:parentActivityName="com.charredgames.chemify.activity.ActivitySeriesActivity" >

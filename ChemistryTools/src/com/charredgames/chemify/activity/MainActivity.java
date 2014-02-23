@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
-import com.charredgames.chemify.constant.Measurement;
 import com.google.ads.Ad;
 import com.google.ads.AdListener;
 import com.google.ads.AdRequest;
@@ -152,6 +151,9 @@ public class MainActivity extends Activity {
             return true;
 		case R.id.action_polyions:
         	startActivity(new Intent(this, PolyIonsActivity.class));
+            return true;
+		case R.id.action_constants:
+        	startActivity(new Intent(this, ConstantsActivity.class));
             return true;
 		case R.id.action_activitySeries:
         	startActivity(new Intent(this, ActivitySeriesActivity.class));

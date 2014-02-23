@@ -18,7 +18,6 @@ import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.constant.Measurement;
-import com.charredgames.chemify.constant.Unit;
 import com.google.ads.Ad;
 import com.google.ads.AdListener;
 import com.google.ads.AdRequest;
@@ -119,7 +118,6 @@ public class MainActivity extends Activity {
 		intent.putExtra(EXTRA_MESSAGE, input.getText().toString());
 		startActivity(intent);
 	}
-	
 	
 	public void onPause(){
 		super.onPause();

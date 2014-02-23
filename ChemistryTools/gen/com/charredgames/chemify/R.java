@@ -14,7 +14,6 @@ public final class R {
 	 
 
 		<item>Complete/Net Ionic</item>
-		<item>Dimensional Analysis</item>
 		<item>Thermochem</item>
 		<item>Stoichiometry</item>
 		<item>Hess Law</item>

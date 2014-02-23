@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -33,7 +34,6 @@ import android.util.SparseArray;
 import com.charredgames.chemify.activity.SendPost;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
-import com.charredgames.chemify.constant.Measurement;
 import com.charredgames.chemify.constant.Unit;
 import com.charredgames.chemify.problems.Prefix;
 import com.charredgames.chemify.problems.Problem;
@@ -50,6 +50,8 @@ public class Controller {
 	private static AssetManager assets = null;
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
+	public static ArrayList<Unit> units = new ArrayList<Unit>();
+	public static ArrayList<String> conversionSymbols = new ArrayList<String>(Arrays.asList("converted to", "to", "equals"));
 	public static SparseArray<String> romanNumerals = new SparseArray<String>();
 	public static final Locale _LOCALE = Locale.getDefault();
 	public static boolean autoFormat = true, calculateReasoning = true, sendUsage = false;
@@ -110,6 +112,13 @@ public class Controller {
 			if(str.contains(" " + key + " ")) str = str.replace(" " + key + " ", entry.getValue());
 		}
 		
+		return str;
+	}
+	
+	public static String replaceConversionSymbols(String str){
+		for(String s : conversionSymbols){
+			if(str.contains(s)) str = str.replace(s, "to");
+		}
 		return str;
 	}
 	

@@ -94,6 +94,7 @@ public class MainActivity extends Activity {
 		    	else if(pType.equalsIgnoreCase("Solubility")) txt.setHint(R.string.solubility_hint);
 		    	else if(pType.equalsIgnoreCase("Oxidation")) txt.setHint(R.string.oxidation_hint);
 		    	else if(pType.equalsIgnoreCase("Element Info")) txt.setHint(R.string.element_info_hint);
+		    	else if(pType.equalsIgnoreCase("dimensional analysis")) txt.setHint(R.string.dimensional_analysis_hint);
 		    }
 
 		    @Override

@@ -49,7 +49,8 @@
     <string name = "solubility_hint">NaCl, silver (i) nitrate, etc.</string>
     <string name = "oxidation_hint">NaCl, silver (i) nitrate, etc.</string>
 	<string name = "element_info_hint">Uranium</string>
-	
+	<string name = "dimensional_analysis_hint">12 g AgNO3 to moles, 12 K to C, etc.</string>
+		
 	
 	<!-- 
 	These strings are some of the most important for the app.

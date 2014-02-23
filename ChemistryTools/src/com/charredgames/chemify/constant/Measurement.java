@@ -36,7 +36,7 @@ public class Measurement {
 	public String getDrawString(){
 		DecimalFormat f = new DecimalFormat("0.##E0");
 		String formatted = "";
-		if(value <= 9999 && value >= .9999){
+		if(value <= 99999 && value >= -99999){
 			f = new DecimalFormat("0.00");
 			formatted = f.format(value);
 		}else{

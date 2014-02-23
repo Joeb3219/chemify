@@ -69,7 +69,22 @@ public class DimensionalAnalysis extends Problem{
 			Unit desiredUnit = null;
 			if(sides.length > 1) desiredUnit = Unit.getUnitFromString(sides[1]);
 			else desiredUnit = Unit.GRAM;
-			Measurement converted = current.convertUnit(desiredUnit);
+			Measurement converted;
+			if((desiredUnit != current.getUnit()) && desiredUnit.type == UnitType.TEMPERATURE && current.getUnit().type == UnitType.TEMPERATURE){
+				converted = new Measurement(desiredUnit);
+				converted.setValue(current.getValue());
+				if(desiredUnit == Unit.KELVIN){
+					if(current.getUnit() == Unit.FAHRENHEIT) converted.setValue((((current.getValue() - 32.0) * 5.0) / 9.0) );
+					converted.setValue(converted.getValue() + 273.15);
+				}else if(desiredUnit == Unit.FAHRENHEIT){
+					if(current.getUnit() == Unit.KELVIN) converted.setValue(current.getValue() - 273.15);
+					converted.setValue( (((converted.getValue() * 9.0) / 5.0) + 32.0) );
+				}else{
+					if(current.getUnit() == Unit.KELVIN) converted.setValue(current.getValue() - 273.15);
+					else converted.setValue( (((converted.getValue() - 32.0) * 5.0) / 9.0) );
+				}
+			}
+			else converted = current.convertUnit(desiredUnit);
 			answer += converted.getDrawString();
 		}
 		

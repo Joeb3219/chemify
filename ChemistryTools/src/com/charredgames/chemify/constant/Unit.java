@@ -22,9 +22,9 @@ public class Unit {
 	public static Unit JOULE = new Unit("joule", 1.00, UnitType.ENERGY, true, new ArrayList<String>(Arrays.asList("J","joule", "joules")));
 	public static Unit PASCAL = new Unit("pascal", 1.00, UnitType.PRESSURE, true, new ArrayList<String>(Arrays.asList("Pa", "pascal", "pascals")));
 	public static Unit WATT = new Unit("watt", 1.00, UnitType.POWER, true, new ArrayList<String>(Arrays.asList("W", "watt", "watts")));
-	public static Unit AMPERE = new Unit("A", 1.00, UnitType.ELECTRICAL_CHARGE, true, new ArrayList<String>(Arrays.asList("A", "ampere", "amps", "amperes")));
-	public static Unit VOLT = new Unit("V", 1.00, UnitType.ELECTRICAL_POTENTIAL, true, new ArrayList<String>(Arrays.asList("V", "volt", "volts")));
-	
+	public static Unit AMPERE = new Unit("ampere", 1.00, UnitType.ELECTRICAL_CHARGE, true, new ArrayList<String>(Arrays.asList("A", "ampere", "amps", "amperes")));
+	public static Unit VOLT = new Unit("volt", 1.00, UnitType.ELECTRICAL_POTENTIAL, true, new ArrayList<String>(Arrays.asList("V", "volt", "volts")));
+	public static Unit LITRE = new Unit("litre", 1.00, UnitType.VOLUME, true, new ArrayList<String>(Arrays.asList("L", "litre", "litres", "liter", "liters")));
 	
 	public static Unit CELSIUS = new Unit("celsius", 1.00, UnitType.TEMPERATURE, false, new ArrayList<String>(Arrays.asList("C", "celsius", "celsius")));
 	public static Unit FAHRENHEIT = new Unit("fahrenheit", 1.00, UnitType.TEMPERATURE, false, new ArrayList<String>(Arrays.asList("F", "fahrenheit", "fahrenheit")));

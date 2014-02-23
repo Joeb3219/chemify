@@ -52,7 +52,7 @@ public class Controller {
 	public static ArrayList<ResponseType> types = new ArrayList<ResponseType>();
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
 	public static ArrayList<Unit> units = new ArrayList<Unit>();
-	public static ArrayList<String> conversionSymbols = new ArrayList<String>(Arrays.asList("converted to", "to", "equals"));
+	public static ArrayList<String> conversionSymbols = new ArrayList<String>(Arrays.asList("converted to", "equals"));
 	public static SparseArray<String> romanNumerals = new SparseArray<String>();
 	public static ArrayList<UnitPrefix> unitPrefixes = new ArrayList<UnitPrefix>();
 	public static final Locale _LOCALE = Locale.getDefault();

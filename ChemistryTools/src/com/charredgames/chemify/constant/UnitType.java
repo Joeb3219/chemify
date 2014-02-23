@@ -8,8 +8,8 @@ import com.charredgames.chemify.Controller;
  */
 public enum UnitType {
 
-	LENGTH(true), TIME(true), MASS(true), TEMPERATURE(false), AMOUNT_SUBSTANCE(false), ELECTRICAL_CHARGE(false), 
-	FORCE(false), ENERGY(false), PRESSURE(false), POWER(false), ELECTRICAL_CURRENT(false), ELECTRICAL_POTENTIAL(false);
+	LENGTH(true), TIME(true), MASS(true), TEMPERATURE(false), AMOUNT_SUBSTANCE(false), ELECTRICAL_CHARGE(true), 
+	FORCE(true), ENERGY(true), PRESSURE(true), POWER(true), ELECTRICAL_CURRENT(true), ELECTRICAL_POTENTIAL(true);
 	
 	public Unit baseUnit = null;
 	public boolean usesPrefixes = false;

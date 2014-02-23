@@ -34,9 +34,19 @@ public class Measurement {
 	}
 	
 	public String getDrawString(){
-		DecimalFormat f = new DecimalFormat("##.00000");
+		DecimalFormat f = new DecimalFormat("0.##E0");
+		String formatted = "";
+		if(value <= 9999 && value >= .9999){
+			f = new DecimalFormat("0.00");
+			formatted = f.format(value);
+		}else{
+			formatted = f.format(value);
+			formatted = formatted.replace("E", " * 10<sup>");
+			formatted += "</sup>";
+		}
+	
 		
-		return f.format(value) + " " + unit.getCommonAbbreviation();
+		return formatted + " " + unit.getCommonAbbreviation();
 	}
 	
 	public Measurement convertUnit(Unit desired){

@@ -13,7 +13,7 @@ public class DimensionalAnalysis extends Problem{
 	public void solve(boolean isPrimary){
 		String collectiveInput = input, answer = "";
 		input = Controller.replaceConversionSymbols(input);
-		String[] sides = input.split("to");
+		String[] sides = input.split(" to ");
 		
 		if(sides.length == 0){
 			response.addLine(collectiveInput, ResponseType.input);

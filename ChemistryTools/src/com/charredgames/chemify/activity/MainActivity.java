@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 		});
 		AdRequest request = new AdRequest();
 		request.addKeyword("education");
-//		adView.loadAd(request);
+		adView.loadAd(request);
 		AdView.LayoutParams params = new AdView.LayoutParams(AdView.LayoutParams.WRAP_CONTENT, AdView.LayoutParams.WRAP_CONTENT);
 		params.addRule(AdView.ALIGN_PARENT_BOTTOM);
 		adView.setLayoutParams(params);

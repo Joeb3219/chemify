@@ -29,8 +29,8 @@ public class Unit {
 	public static Unit CELSIUS = new Unit("celsius", 1.00, UnitType.TEMPERATURE, false, new ArrayList<String>(Arrays.asList("C", "celsius", "celsius")));
 	public static Unit FAHRENHEIT = new Unit("fahrenheit", 1.00, UnitType.TEMPERATURE, false, new ArrayList<String>(Arrays.asList("F", "fahrenheit", "fahrenheit")));
 	
-	public static Unit ATOMS = new Unit("atoms", 6.02 * Math.pow(10, 23), UnitType.AMOUNT_SUBSTANCE, false, new ArrayList<String>(Arrays.asList("atom", "atom", "atoms")));
-	public static Unit MOLECULES = new Unit("molecules", 6.02 * Math.pow(10, 23), UnitType.AMOUNT_SUBSTANCE, false, new ArrayList<String>(Arrays.asList("molecules", "molecule", "molecules")));
+	public static Unit ATOMS = new Unit("atom", 6.02 * Math.pow(10, 23), UnitType.AMOUNT_SUBSTANCE, false, new ArrayList<String>(Arrays.asList("atom", "atom", "atoms")));
+	public static Unit MOLECULES = new Unit("molecule", 6.02 * Math.pow(10, 23), UnitType.AMOUNT_SUBSTANCE, false, new ArrayList<String>(Arrays.asList("molecules", "molecule", "molecules")));
 	
 	public static Unit TORR = new Unit("torr", 1 / 133.325, UnitType.PRESSURE, false, new ArrayList<String>(Arrays.asList("torr", "torr", "torr")));
 	public static Unit ATOMOSPHERES = new Unit("atmosphere", 0.0000098692, UnitType.PRESSURE, false, new ArrayList<String>(Arrays.asList("atm", "atmosphere", "atmospheres")));
@@ -84,7 +84,8 @@ public class Unit {
 	}
 	
 	public String getCommonAbbreviation(){
-		return abbreviations.get(0);
+		if(abbreviations.size() != 0) return abbreviations.get(0);
+		return name;
 	}
 	
 	public static Unit getUnitFromString(String str){
@@ -101,6 +102,10 @@ public class Unit {
 			}
 		}
 		return Unit.GRAM;
+	}
+	
+	public String getScientificFactor(){
+		return Controller.doubleToScientific(factor);
 	}
 	
 }

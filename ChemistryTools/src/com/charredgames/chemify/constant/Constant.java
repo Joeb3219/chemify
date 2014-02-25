@@ -18,20 +18,20 @@ public class Constant {
 	public double value;
 	public Spanned drawString = null;
 	
-	public static Constant SPEED_OF_LIGHT = new Constant("Speed of Light", "C", 2.998 * Math.pow(10, 8), "m/s<sup>-1</sup>");
-	public static Constant PLANCK_CONSTANT = new Constant("Planck Constant", "h", 6.626 * Math.pow(10, -34), "Js");
-	public static Constant BOLTZMANN_CONSTANT = new Constant("Boltzmann Constant", "k", 1.381 * Math.pow(10, -23), "JK<sup>-1</sup>");
+	public static Constant SPEED_OF_LIGHT = new Constant("Speed of Light", "C", 2.998 * Math.pow(10, 8), "m/s");
+	public static Constant PLANCK_CONSTANT = new Constant("Planck Constant", "h", 6.626 * Math.pow(10, -34), "J*s");
+	public static Constant BOLTZMANN_CONSTANT = new Constant("Boltzmann Constant", "k", 1.381 * Math.pow(10, -23), "J*K");
 	public static Constant AVOGADROS_NUMBER = new Constant("Avogadro's Number", "N<sub>A</sub>", 6.022 * Math.pow(10, 23), "");
 	public static Constant ELECTRON_MASS = new Constant("Electron Mass", "m<sub>e</sub>", 9.109 * Math.pow(10, -31), "kg");
 	public static Constant PROTON_MASS = new Constant("Proton Mass", "m<sub>p</sub>", 1.673 * Math.pow(10, -27), "kg");
 	public static Constant NEUTRON_MASS = new Constant("Neutron Mass", "m<sub>n</sub>", 1.675 * Math.pow(10, -27), "kg");
-	public static Constant BOHR_RADIUS = new Constant("Bohr Radius", "a<sub>0</sub>", 5.292 * Math.pow(10, -11), "J/mol<sup>-1</sup>K<sup>-1</sup>");
+	public static Constant BOHR_RADIUS = new Constant("Bohr Radius", "a<sub>0</sub>", 5.292 * Math.pow(10, -11), "J/molK");
 	public static Constant GAS_CONSTANT = new Constant("Gas Constant", "R", 8.314, "kg");
-	public static Constant GRAVITY_ACCELERATION = new Constant("Gravity Acceleration", "g", 8.9, "m/s<sup>-2</sup>");
+	public static Constant GRAVITY_ACCELERATION = new Constant("Gravity Acceleration", "g", 8.9, "m/s<sup>2</sup>");
 	public static Constant ELEMENTARY_CHARGE = new Constant("Elementary Charge", "e", 1.6 * Math.pow(10, -19), "Coulombs");
 	public static Constant FARADY_CONSTANT = new Constant("Farady Constant", "F", 9.65 * Math.pow(10, 4), "Coulombs/mol");
-	public static Constant GRAVITY_CONSTANT = new Constant("Gravity Constant", "G", 6.673 * Math.pow(10, -11), "m<sup>3</sup>kg<sup>-1</sup>s<sup>-2</sup>");
-	public static Constant RYDBERG_CONSTANT = new Constant("Rydberg Constant", "R<sub>&#8734;</sub>", 1.0973 * Math.pow(10, 7), "m<sup>-1</sup>");
+	public static Constant GRAVITY_CONSTANT = new Constant("Gravity Constant", "G", 6.673 * Math.pow(10, -11), "m<sup>3</sup>*kg*s<sup>2</sup>");
+	public static Constant RYDBERG_CONSTANT = new Constant("Rydberg Constant", "R<sub>&#8734;</sub>", 1.0973 * Math.pow(10, 7), "1/m");
 	
 	public Constant(String name, String symbol, double value, String units){
 		this.name = name;

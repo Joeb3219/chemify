@@ -146,7 +146,11 @@
 	<string name = "solubility_no_so3_co3">Compound doesn\'t contain SO3, CO3, CrO4, or PO4, or has no G1 metals.</string>
 	<string name = "solubility_failed_all">Compound failed all checks.</string>
 	
-			
+	<string name = "dimensional_analysis_invalid_input">Invalid input:</string>
+	<string name = "dimensional_analysis_incomparable_types">[unit] and [unit2] cannot be compared.</string>
+	<string name = "dimensional_analysis_unit_equals">One [base] is equal to [value] [unit]s.</string>
+	<string name = "dimensional_analysis_converting_unit">Converting [unit]s to [unit2]s.</string>
+	
 	<!-- 
 	The remaining strng entires are used just to create spinners.
 	 -->	

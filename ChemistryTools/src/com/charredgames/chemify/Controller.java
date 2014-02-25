@@ -303,7 +303,7 @@ public class Controller {
 	public static String doubleToScientific(Double num){
 		DecimalFormat f = new DecimalFormat("0.###E0");
 		String formatted = "";
-		if(num <= 9999 && num >= -9999 && (num >= 0.001 || num <= -0.001)){
+		if(num <= 9999 && num >= -9999 && (num >= 0.001 || num <= -0.001 || num == 0)){
 			f = new DecimalFormat("0.000");
 			formatted = f.format(num);
 		}else{

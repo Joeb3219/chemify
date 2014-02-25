@@ -64,9 +64,23 @@ public class Measurement {
 				unit = Unit.getUnitFromString(s);
 			}
 		}
+		if(val == 0.00) val += 1.00;
 		
+		if(unit == null) unit = Unit.GRAM;
 		
 		return new Measurement(unit, val);
+	}
+	
+	public static boolean stringContainsMeasurement(String str){
+		Measurement fromStr = getMeasurementFromString(str);
+		if(fromStr.getUnit() != Unit.GRAM) return true;
+		str = str.replaceAll("\\d", "");
+		if(str.equals("") || str.equals(" ")) return false;
+		for(String abr : Unit.GRAM.abbreviations){
+			if(abr.equalsIgnoreCase(str)) return true;
+		}
+		
+		return false;
 	}
 	
 }

@@ -89,6 +89,7 @@ public class Response extends Activity {
 		else if(selectedOperation.equalsIgnoreCase("solubility")) setContentView(R.layout.problem_solubility);
 		else if(selectedOperation.equalsIgnoreCase("predict reactions")) setContentView(R.layout.problem_reactions);
 		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) setContentView(R.layout.problem_reactions);
+		else if(selectedOperation.equalsIgnoreCase("dimensional analysis")) setContentView(R.layout.problem_dimensionalanalysis);
 		else setContentView(R.layout.problem_nomenclature);
 		
 		//Get each string that the problem returned.

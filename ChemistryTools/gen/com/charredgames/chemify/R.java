@@ -90,15 +90,16 @@ public final class R {
         public static final int activity_main=0x7f030001;
         public static final int bug_report=0x7f030002;
         public static final int firstboxtemplate=0x7f030003;
-        public static final int problem_elementinfo=0x7f030004;
-        public static final int problem_nomenclature=0x7f030005;
-        public static final int problem_oxidation=0x7f030006;
-        public static final int problem_reactions=0x7f030007;
-        public static final int problem_solubility=0x7f030008;
-        public static final int problem_weight=0x7f030009;
-        public static final int resources_activity=0x7f03000a;
-        public static final int resources_search_activity=0x7f03000b;
-        public static final int secondboxtemplate=0x7f03000c;
+        public static final int problem_dimensionalanalysis=0x7f030004;
+        public static final int problem_elementinfo=0x7f030005;
+        public static final int problem_nomenclature=0x7f030006;
+        public static final int problem_oxidation=0x7f030007;
+        public static final int problem_reactions=0x7f030008;
+        public static final int problem_solubility=0x7f030009;
+        public static final int problem_weight=0x7f03000a;
+        public static final int resources_activity=0x7f03000b;
+        public static final int resources_search_activity=0x7f03000c;
+        public static final int secondboxtemplate=0x7f03000d;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
@@ -125,7 +126,11 @@ public final class R {
         public static final int bugReport_notes_default=0x7f06001a;
         public static final int bugReport_positive=0x7f060018;
         public static final int converting=0x7f060030;
+        public static final int dimensional_analysis_converting_unit=0x7f060081;
         public static final int dimensional_analysis_hint=0x7f06002d;
+        public static final int dimensional_analysis_incomparable_types=0x7f06007f;
+        public static final int dimensional_analysis_invalid_input=0x7f06007e;
+        public static final int dimensional_analysis_unit_equals=0x7f060080;
         public static final int edit_input=0x7f06000e;
         public static final int element_info_atomic=0x7f06003a;
         public static final int element_info_charge=0x7f060041;

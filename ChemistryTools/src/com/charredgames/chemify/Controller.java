@@ -150,7 +150,7 @@ public class Controller {
 	private static void setElements(String path){
 		if(assets == null) return;
 		SAXBuilder builder = new SAXBuilder();
-		File xmlFile;
+		File xmlFile = null;
 		try {
 			xmlFile = getFileFromStream("elements", assets.open("default/elements.cgf"));
 			
@@ -175,12 +175,14 @@ public class Controller {
 			}
 		  } catch (IOException e) {e.printStackTrace();} catch (JDOMException e) {e.printStackTrace();  }} catch (IOException e1) {
 			e1.printStackTrace();
+		}finally{
+			if(xmlFile != null) xmlFile.delete();
 		}
 	}
 	
 	private static void setIons(String path){
 		SAXBuilder builder = new SAXBuilder();
-		File xmlFile;
+		File xmlFile = null;
 		try {
 			xmlFile = getFileFromStream("polyions", assets.open("default/polyions.cgf"));
 			Document document = (Document) builder.build(xmlFile);
@@ -196,11 +198,14 @@ public class Controller {
 						);
 			}
 		} catch (IOException e) {e.printStackTrace();} catch (JDOMException e) {e.printStackTrace();  }
+		finally{
+			if(xmlFile != null) xmlFile.delete();
+		}
 	}
 	
 	private static void setDefinitions(String path){
 		SAXBuilder builder = new SAXBuilder();
-		File xmlFile;
+		File xmlFile = null;
 		try {
 			xmlFile = getFileFromStream("definitions", assets.open("default/definitions.cgf"));
 			Document document = (Document) builder.build(xmlFile);
@@ -215,6 +220,9 @@ public class Controller {
 				if(definition.getChildText("example") != null) d.setExample(definition.getChildText("example"));
 			}
 		} catch (IOException e) {e.printStackTrace();} catch (JDOMException e) {e.printStackTrace();  }
+		finally{
+			if(xmlFile != null) xmlFile.delete();
+		}
 	}
 	
 	private static File getFileFromStream(String prefix, InputStream in){

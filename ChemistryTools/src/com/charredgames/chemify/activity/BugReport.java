@@ -20,9 +20,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.problems.Problem;
+import com.charredgames.chemify.util.Controller;
 
 public class BugReport extends DialogFragment{
 

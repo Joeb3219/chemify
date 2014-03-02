@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.Menu;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
+import com.charredgames.chemify.util.Controller;
 
 public class SettingsActivity extends PreferenceActivity{
 

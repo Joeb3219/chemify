@@ -1,6 +1,6 @@
 package com.charredgames.chemify.constant;
 
-import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.util.Controller;
 
 public class Measurement {
 

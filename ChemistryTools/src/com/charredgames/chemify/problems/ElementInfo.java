@@ -1,9 +1,9 @@
 package com.charredgames.chemify.problems;
 
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Element;
+import com.charredgames.chemify.util.Controller;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>

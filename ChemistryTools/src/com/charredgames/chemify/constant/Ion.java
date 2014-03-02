@@ -2,8 +2,8 @@ package com.charredgames.chemify.constant;
 
 import java.util.ArrayList;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.problems.Problem;
+import com.charredgames.chemify.util.Controller;
 
 public class Ion{
 

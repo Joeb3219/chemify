@@ -2,10 +2,10 @@ package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Equation;
+import com.charredgames.chemify.util.Controller;
 
 public class Ionic extends Problem{
 

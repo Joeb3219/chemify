@@ -1,6 +1,8 @@
 package com.charredgames.chemify.constant;
 
-import com.charredgames.chemify.Controller;
+import java.util.ArrayList;
+
+import com.charredgames.chemify.util.Controller;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -27,6 +29,16 @@ public enum UnitType {
 			}
 		}
 		return Unit.GRAM;
+	}
+	
+	public ArrayList<Unit> getUnits(){
+		ArrayList<Unit> units = new ArrayList<Unit>();
+		
+		for(Unit unit : Controller.units){
+			if(unit.type == this) units.add(unit);
+		}
+		
+		return units;
 	}
 	
 }

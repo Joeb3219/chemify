@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import android.text.Html;
 import android.text.Spanned;
 
-import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.util.Controller;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>

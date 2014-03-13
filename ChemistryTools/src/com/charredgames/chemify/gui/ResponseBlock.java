@@ -1,6 +1,6 @@
 package com.charredgames.chemify.gui;
 
-import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.util.Controller;
 
 import android.text.Html;
 import android.text.Spanned;

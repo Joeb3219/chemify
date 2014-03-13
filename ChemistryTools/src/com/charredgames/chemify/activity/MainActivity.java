@@ -14,9 +14,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.util.Controller;
+import com.charredgames.chemify.util.SigFigCalculator;
 import com.google.ads.Ad;
 import com.google.ads.AdListener;
 import com.google.ads.AdRequest;
@@ -75,10 +76,21 @@ public class MainActivity extends Activity {
 		});
 		AdRequest request = new AdRequest();
 		request.addKeyword("education");
-		adView.loadAd(request);
+		//adView.loadAd(request);
 		AdView.LayoutParams params = new AdView.LayoutParams(AdView.LayoutParams.WRAP_CONTENT, AdView.LayoutParams.WRAP_CONTENT);
 		params.addRule(AdView.ALIGN_PARENT_BOTTOM);
 		adView.setLayoutParams(params);
+		
+		/*SigFigCalculator sigFigs = new SigFigCalculator(15.00);
+		System.out.println(sigFigs.value + " " + sigFigs.getDisplayString());
+		sigFigs = new SigFigCalculator(234.3);
+		System.out.println(sigFigs.value + " " + sigFigs.getDisplayString());
+		sigFigs = new SigFigCalculator(234.300);
+		System.out.println(sigFigs.value + " " + sigFigs.getDisplayString());
+		sigFigs = new SigFigCalculator(20001);
+		System.out.println(sigFigs.value + " " + sigFigs.getDisplayString());
+		sigFigs = new SigFigCalculator(20001);
+		System.out.println(sigFigs.value + " " + sigFigs.getDisplayString(4));*/
 	}
 	
 	public void onStart(){

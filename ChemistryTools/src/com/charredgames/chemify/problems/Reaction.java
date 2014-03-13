@@ -2,7 +2,6 @@ package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
@@ -10,6 +9,7 @@ import com.charredgames.chemify.constant.ElementSet;
 import com.charredgames.chemify.constant.Equation;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.constant.MetalType;
+import com.charredgames.chemify.util.Controller;
 
 public class Reaction extends Problem{
 

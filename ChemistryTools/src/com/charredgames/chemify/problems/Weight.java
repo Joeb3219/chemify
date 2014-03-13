@@ -3,13 +3,13 @@ package com.charredgames.chemify.problems;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Compound;
 import com.charredgames.chemify.constant.Element;
 import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
 import com.charredgames.chemify.constant.Equation;
+import com.charredgames.chemify.util.Controller;
 
 public class Weight extends Problem{
 

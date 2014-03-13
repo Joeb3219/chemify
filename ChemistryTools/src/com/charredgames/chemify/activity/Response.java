@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.charredgames.chemify.Controller;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.gui.ResponseBlock;
 import com.charredgames.chemify.gui.ResponsePanel;
@@ -29,6 +28,7 @@ import com.charredgames.chemify.problems.Reaction;
 import com.charredgames.chemify.problems.ResponseType;
 import com.charredgames.chemify.problems.Solubility;
 import com.charredgames.chemify.problems.Weight;
+import com.charredgames.chemify.util.Controller;
 
 public class Response extends Activity {
 

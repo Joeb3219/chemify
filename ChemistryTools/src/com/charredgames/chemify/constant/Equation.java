@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.charredgames.chemify.Controller;
+import com.charredgames.chemify.util.Controller;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>

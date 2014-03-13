@@ -36,6 +36,8 @@ public class MainActivity extends Activity {
 
 		Controller.context = this;
 		
+		startActivity(new Intent(this, TestActivity.class));
+		
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 		setContentView(R.layout.activity_main);

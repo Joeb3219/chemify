@@ -26,6 +26,9 @@
 -keep class com.charredgames.chemify.activity.SettingsActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:118
+-keep class com.charredgames.chemify.activity.TestActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:127
 -keep class com.google.ads.AdActivity { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:32

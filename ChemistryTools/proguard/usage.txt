@@ -1095,7 +1095,7 @@ com.charredgames.chemify.Controller:
     public static final java.lang.String _VERSION
     public static final java.lang.String _GENERIC_PLUS_SIGN
     public static final java.lang.String _GENERIC_YIELDS_SIGN
-    44:44:public Controller()
+    49:49:public Controller()
 com.charredgames.chemify.Info
 com.charredgames.chemify.R
 com.charredgames.chemify.R$array
@@ -1109,6 +1109,7 @@ com.charredgames.chemify.R$menu
 com.charredgames.chemify.R$string
 com.charredgames.chemify.R$style
 com.charredgames.chemify.R$xml
+com.charredgames.chemify.XMLParser
 com.charredgames.chemify.activity.MainActivity:
     public static final java.lang.String EXTRA_MESSAGE
     private static final java.lang.String STATE_INPUT
@@ -1125,23 +1126,22 @@ com.charredgames.chemify.constant.Compound:
     366:387:public boolean containsOnlyElementsInCompound(com.charredgames.chemify.constant.Compound)
     391:399:public com.charredgames.chemify.constant.Compound cloneCompound()
     428:431:public boolean containsPolyatomics()
-com.charredgames.chemify.constant.Constant
+com.charredgames.chemify.constant.Constant:
+    45:56:public static com.charredgames.chemify.constant.Constant getConstantByString(java.lang.String)
 com.charredgames.chemify.constant.Definition:
     55:58:public static com.charredgames.chemify.constant.Definition getDefinitionByWord(java.lang.String)
 com.charredgames.chemify.constant.ElementGroup:
     112:113:public void multiplyAllSets(double)
 com.charredgames.chemify.constant.Equation:
     20:23:public Equation(java.util.ArrayList,java.util.ArrayList)
-    35:36:public boolean hasReactants()
     48:49:public java.util.ArrayList getCompounds(int)
 com.charredgames.chemify.constant.Ion:
     31:33:public boolean compareElements(java.lang.String)
     53:62:public boolean compoundMatches(com.charredgames.chemify.constant.Compound)
 com.charredgames.chemify.constant.MatterState:
     14:14:public java.lang.String getSymbol()
-com.charredgames.chemify.constant.Unit
-com.charredgames.chemify.constant.UnitType
-com.charredgames.chemify.problems.DimensionalAnalysis
+com.charredgames.chemify.constant.Measurement:
+    29:30:public void setUnit(com.charredgames.chemify.constant.Unit)
 com.charredgames.chemify.problems.HessEquation
 com.charredgames.chemify.problems.Problem:
     protected java.lang.String leftSide

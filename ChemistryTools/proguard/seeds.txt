@@ -88,6 +88,7 @@ com.charredgames.chemify.R$id: int about_donation_line
 com.charredgames.chemify.R$id: int about_release_info
 com.charredgames.chemify.R$id: int action_activitySeries
 com.charredgames.chemify.R$id: int action_bug
+com.charredgames.chemify.R$id: int action_constants
 com.charredgames.chemify.R$id: int action_definitions
 com.charredgames.chemify.R$id: int action_polyions
 com.charredgames.chemify.R$id: int action_settings
@@ -113,6 +114,7 @@ com.charredgames.chemify.R$layout: int activity_about
 com.charredgames.chemify.R$layout: int activity_main
 com.charredgames.chemify.R$layout: int bug_report
 com.charredgames.chemify.R$layout: int firstboxtemplate
+com.charredgames.chemify.R$layout: int problem_dimensionalanalysis
 com.charredgames.chemify.R$layout: int problem_elementinfo
 com.charredgames.chemify.R$layout: int problem_nomenclature
 com.charredgames.chemify.R$layout: int problem_oxidation
@@ -144,6 +146,11 @@ com.charredgames.chemify.R$string: int bugReport_negative
 com.charredgames.chemify.R$string: int bugReport_notes_default
 com.charredgames.chemify.R$string: int bugReport_positive
 com.charredgames.chemify.R$string: int converting
+com.charredgames.chemify.R$string: int dimensional_analysis_converting_unit
+com.charredgames.chemify.R$string: int dimensional_analysis_hint
+com.charredgames.chemify.R$string: int dimensional_analysis_incomparable_types
+com.charredgames.chemify.R$string: int dimensional_analysis_invalid_input
+com.charredgames.chemify.R$string: int dimensional_analysis_unit_equals
 com.charredgames.chemify.R$string: int edit_input
 com.charredgames.chemify.R$string: int element_info_atomic
 com.charredgames.chemify.R$string: int element_info_charge
@@ -238,6 +245,7 @@ com.charredgames.chemify.R$string: int solubility_so4_no_exceptions
 com.charredgames.chemify.R$string: int solubility_soluble
 com.charredgames.chemify.R$string: int submit
 com.charredgames.chemify.R$string: int title_activity_activityseries
+com.charredgames.chemify.R$string: int title_activity_constants
 com.charredgames.chemify.R$string: int title_activity_definitions
 com.charredgames.chemify.R$string: int title_activity_polyIons
 com.charredgames.chemify.R$string: int title_activity_response
@@ -263,6 +271,9 @@ com.charredgames.chemify.activity.ActivitySeriesActivity
 com.charredgames.chemify.activity.ActivitySeriesActivity: ActivitySeriesActivity()
 com.charredgames.chemify.activity.ActivitySeriesActivity: void responseClicked(android.view.View)
 com.charredgames.chemify.activity.BugReport
+com.charredgames.chemify.activity.ConstantsActivity
+com.charredgames.chemify.activity.ConstantsActivity: ConstantsActivity()
+com.charredgames.chemify.activity.ConstantsActivity: void responseClicked(android.view.View)
 com.charredgames.chemify.activity.DefinitionsActivity
 com.charredgames.chemify.activity.DefinitionsActivity: DefinitionsActivity()
 com.charredgames.chemify.activity.DefinitionsActivity: void responseClicked(android.view.View)
@@ -285,8 +296,8 @@ com.charredgames.chemify.constant.MatterState: com.charredgames.chemify.constant
 com.charredgames.chemify.constant.MatterState: com.charredgames.chemify.constant.MatterState valueOf(java.lang.String)
 com.charredgames.chemify.constant.MetalType: com.charredgames.chemify.constant.MetalType[] values()
 com.charredgames.chemify.constant.MetalType: com.charredgames.chemify.constant.MetalType valueOf(java.lang.String)
-com.charredgames.chemify.constant.Unit: com.charredgames.chemify.constant.Unit[] values()
-com.charredgames.chemify.constant.Unit: com.charredgames.chemify.constant.Unit valueOf(java.lang.String)
+com.charredgames.chemify.constant.UnitPrefix: com.charredgames.chemify.constant.UnitPrefix[] values()
+com.charredgames.chemify.constant.UnitPrefix: com.charredgames.chemify.constant.UnitPrefix valueOf(java.lang.String)
 com.charredgames.chemify.constant.UnitType: com.charredgames.chemify.constant.UnitType[] values()
 com.charredgames.chemify.constant.UnitType: com.charredgames.chemify.constant.UnitType valueOf(java.lang.String)
 com.charredgames.chemify.problems.Prefix: com.charredgames.chemify.problems.Prefix[] values()

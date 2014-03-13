@@ -1507,32 +1507,37 @@ android.support.v4.widget.ViewDragHelper$Callback -> android.support.v4.widget.a
     int clampViewPositionHorizontal(android.view.View,int,int) -> a
     int clampViewPositionVertical(android.view.View,int,int) -> b
 com.charredgames.chemify.Controller -> com.charredgames.chemify.a:
-    android.content.res.AssetManager assets -> k
+    android.content.res.AssetManager assets -> n
     java.util.ArrayList types -> a
     java.util.ArrayList prefixes -> b
-    android.util.SparseArray romanNumerals -> c
-    java.util.Locale _LOCALE -> d
-    boolean autoFormat -> e
-    boolean calculateReasoning -> f
-    boolean sendUsage -> g
-    java.util.Map reactionSymbols -> h
-    android.content.Context context -> i
-    android.content.res.Resources resources -> j
+    java.util.ArrayList units -> c
+    java.util.ArrayList conversionSymbols -> d
+    android.util.SparseArray romanNumerals -> e
+    java.util.ArrayList unitPrefixes -> f
+    java.util.Locale _LOCALE -> g
+    boolean autoFormat -> h
+    boolean calculateReasoning -> i
+    boolean sendUsage -> j
+    java.util.Map reactionSymbols -> k
+    android.content.Context context -> l
+    android.content.res.Resources resources -> m
     void reset(android.content.res.AssetManager) -> a
     java.lang.String replaceReactionSymbols(java.lang.String) -> a
+    java.lang.String replaceConversionSymbols(java.lang.String) -> b
     java.lang.String convertIntToNumeral(int) -> a
-    int convertNumeralToInt(java.lang.String) -> b
-    void setElements(java.lang.String) -> e
-    void setIons(java.lang.String) -> f
-    void setDefinitions(java.lang.String) -> g
+    int convertNumeralToInt(java.lang.String) -> c
+    void setElements(java.lang.String) -> f
+    void setIons(java.lang.String) -> g
+    void setDefinitions(java.lang.String) -> h
     java.io.File getFileFromStream(java.lang.String,java.io.InputStream) -> a
-    com.charredgames.chemify.constant.Ion getIon(java.lang.String) -> c
-    java.lang.String stripHtmlTags(java.lang.String) -> d
+    com.charredgames.chemify.constant.Ion getIon(java.lang.String) -> d
+    java.lang.String stripHtmlTags(java.lang.String) -> e
     void reloadSettings(android.content.Context) -> a
     int getGCD(int,int) -> a
     int getGCD(java.util.ArrayList) -> a
     java.lang.String normalizeString(java.lang.String,boolean) -> a
     void sendUsageReport(java.lang.String,com.charredgames.chemify.problems.Problem) -> a
+    java.lang.String doubleToScientific(java.lang.Double) -> a
 com.charredgames.chemify.activity.AboutActivity -> com.charredgames.chemify.activity.AboutActivity:
     void onCreate(android.os.Bundle) -> onCreate
     void responseClicked(android.view.View) -> responseClicked
@@ -1550,6 +1555,18 @@ com.charredgames.chemify.activity.BugReport$1 -> com.charredgames.chemify.activi
 com.charredgames.chemify.activity.BugReport$2 -> com.charredgames.chemify.activity.b:
     com.charredgames.chemify.activity.BugReport this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
+com.charredgames.chemify.activity.ConstantsActivity -> com.charredgames.chemify.activity.ConstantsActivity:
+    java.lang.String search -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void fillResults() -> a
+    void responseClicked(android.view.View) -> responseClicked
+    void access$0(com.charredgames.chemify.activity.ConstantsActivity,java.lang.String) -> a
+    void access$1(com.charredgames.chemify.activity.ConstantsActivity) -> a
+com.charredgames.chemify.activity.ConstantsActivity$1 -> com.charredgames.chemify.activity.c:
+    com.charredgames.chemify.activity.ConstantsActivity this$0 -> a
+    void afterTextChanged(android.text.Editable) -> afterTextChanged
+    void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
 com.charredgames.chemify.activity.DefinitionsActivity -> com.charredgames.chemify.activity.DefinitionsActivity:
     java.lang.String search -> a
     void onCreate(android.os.Bundle) -> onCreate
@@ -1557,7 +1574,7 @@ com.charredgames.chemify.activity.DefinitionsActivity -> com.charredgames.chemif
     void responseClicked(android.view.View) -> responseClicked
     void access$0(com.charredgames.chemify.activity.DefinitionsActivity,java.lang.String) -> a
     void access$1(com.charredgames.chemify.activity.DefinitionsActivity) -> a
-com.charredgames.chemify.activity.DefinitionsActivity$1 -> com.charredgames.chemify.activity.c:
+com.charredgames.chemify.activity.DefinitionsActivity$1 -> com.charredgames.chemify.activity.d:
     com.charredgames.chemify.activity.DefinitionsActivity this$0 -> a
     void afterTextChanged(android.text.Editable) -> afterTextChanged
     void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
@@ -1575,14 +1592,14 @@ com.charredgames.chemify.activity.MainActivity -> com.charredgames.chemify.activ
     void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
     void onResume() -> onResume
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-com.charredgames.chemify.activity.MainActivity$1 -> com.charredgames.chemify.activity.d:
+com.charredgames.chemify.activity.MainActivity$1 -> com.charredgames.chemify.activity.e:
     com.charredgames.chemify.activity.MainActivity this$0 -> a
     void onReceiveAd(com.google.ads.Ad) -> a
     void onPresentScreen(com.google.ads.Ad) -> b
     void onLeaveApplication(com.google.ads.Ad) -> c
     void onFailedToReceiveAd(com.google.ads.Ad,com.google.ads.AdRequest$ErrorCode) -> a
     void onDismissScreen(com.google.ads.Ad) -> d
-com.charredgames.chemify.activity.MainActivity$2 -> com.charredgames.chemify.activity.e:
+com.charredgames.chemify.activity.MainActivity$2 -> com.charredgames.chemify.activity.f:
     com.charredgames.chemify.activity.MainActivity this$0 -> a
     void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
     void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
@@ -1593,7 +1610,7 @@ com.charredgames.chemify.activity.PolyIonsActivity -> com.charredgames.chemify.a
     void responseClicked(android.view.View) -> responseClicked
     void access$0(com.charredgames.chemify.activity.PolyIonsActivity,java.lang.String) -> a
     void access$1(com.charredgames.chemify.activity.PolyIonsActivity) -> a
-com.charredgames.chemify.activity.PolyIonsActivity$1 -> com.charredgames.chemify.activity.f:
+com.charredgames.chemify.activity.PolyIonsActivity$1 -> com.charredgames.chemify.activity.g:
     com.charredgames.chemify.activity.PolyIonsActivity this$0 -> a
     void afterTextChanged(android.text.Editable) -> afterTextChanged
     void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
@@ -1612,7 +1629,7 @@ com.charredgames.chemify.activity.Response -> com.charredgames.chemify.activity.
     void sendBugReport() -> b
     void responseClicked(android.view.View) -> responseClicked
     int[] $SWITCH_TABLE$com$charredgames$chemify$problems$ResponseType() -> a
-com.charredgames.chemify.activity.SendPost -> com.charredgames.chemify.activity.g:
+com.charredgames.chemify.activity.SendPost -> com.charredgames.chemify.activity.h:
     org.apache.http.client.HttpClient client -> b
     org.apache.http.client.methods.HttpPost post -> c
     java.lang.Exception exception -> a
@@ -1660,7 +1677,30 @@ com.charredgames.chemify.constant.Compound -> com.charredgames.chemify.a.a:
     void reduceAtomCount() -> u
     void sortElements() -> z
     void normalizeCompound() -> v
-com.charredgames.chemify.constant.Definition -> com.charredgames.chemify.a.b:
+com.charredgames.chemify.constant.Constant -> com.charredgames.chemify.a.b:
+    java.util.ArrayList constants -> a
+    java.lang.String name -> b
+    java.lang.String symbol -> c
+    java.lang.String units -> d
+    double value -> e
+    android.text.Spanned drawString -> f
+    com.charredgames.chemify.constant.Constant SPEED_OF_LIGHT -> g
+    com.charredgames.chemify.constant.Constant PLANCK_CONSTANT -> h
+    com.charredgames.chemify.constant.Constant BOLTZMANN_CONSTANT -> i
+    com.charredgames.chemify.constant.Constant AVOGADROS_NUMBER -> j
+    com.charredgames.chemify.constant.Constant ELECTRON_MASS -> k
+    com.charredgames.chemify.constant.Constant PROTON_MASS -> l
+    com.charredgames.chemify.constant.Constant NEUTRON_MASS -> m
+    com.charredgames.chemify.constant.Constant BOHR_RADIUS -> n
+    com.charredgames.chemify.constant.Constant GAS_CONSTANT -> o
+    com.charredgames.chemify.constant.Constant GRAVITY_ACCELERATION -> p
+    com.charredgames.chemify.constant.Constant ELEMENTARY_CHARGE -> q
+    com.charredgames.chemify.constant.Constant FARADY_CONSTANT -> r
+    com.charredgames.chemify.constant.Constant GRAVITY_CONSTANT -> s
+    com.charredgames.chemify.constant.Constant RYDBERG_CONSTANT -> t
+    android.text.Spanned getDrawString() -> a
+    boolean matchesSearch(java.lang.String) -> a
+com.charredgames.chemify.constant.Definition -> com.charredgames.chemify.a.c:
     java.lang.String word -> a
     java.lang.String definition -> b
     java.lang.String example -> c
@@ -1672,7 +1712,7 @@ com.charredgames.chemify.constant.Definition -> com.charredgames.chemify.a.b:
     java.lang.String getExample() -> c
     android.text.Spanned getDrawString() -> d
     boolean containsWord(java.lang.String) -> b
-com.charredgames.chemify.constant.Element -> com.charredgames.chemify.a.c:
+com.charredgames.chemify.constant.Element -> com.charredgames.chemify.a.d:
     java.lang.String name -> bp
     java.lang.String symbol -> bq
     java.lang.String electronConfig -> br
@@ -1824,7 +1864,7 @@ com.charredgames.chemify.constant.Element -> com.charredgames.chemify.a.c:
     java.lang.String getElectronConfig() -> n
     java.lang.String getFilledPortion(java.lang.String,int,int,int) -> a
     java.lang.String getDrawString() -> o
-com.charredgames.chemify.constant.ElementGroup -> com.charredgames.chemify.a.d:
+com.charredgames.chemify.constant.ElementGroup -> com.charredgames.chemify.a.e:
     java.util.ArrayList elementSets -> a
     int quantity -> b
     int charge -> c
@@ -1846,7 +1886,7 @@ com.charredgames.chemify.constant.ElementGroup -> com.charredgames.chemify.a.d:
     boolean containsOnlyNM() -> j
     boolean containsOnlyM() -> k
     int compareTo(java.lang.Object) -> compareTo
-com.charredgames.chemify.constant.ElementSet -> com.charredgames.chemify.a.e:
+com.charredgames.chemify.constant.ElementSet -> com.charredgames.chemify.a.f:
     com.charredgames.chemify.constant.Element element -> a
     int quantity -> b
     int oxidationNumber -> c
@@ -1858,25 +1898,26 @@ com.charredgames.chemify.constant.ElementSet -> com.charredgames.chemify.a.e:
     void setQuantity(int) -> a
     int getOxidationNumber() -> f
     void setOxidationNumber(int) -> b
-com.charredgames.chemify.constant.Equation -> com.charredgames.chemify.a.f:
+com.charredgames.chemify.constant.Equation -> com.charredgames.chemify.a.g:
     java.util.ArrayList left -> a
     java.util.ArrayList right -> b
     int balanceAttempts -> c
     boolean hasProducts() -> a
-    java.util.ArrayList getReactants() -> b
-    java.util.ArrayList getProducts() -> c
-    java.util.ArrayList getAllCompounds() -> d
+    boolean hasReactants() -> b
+    java.util.ArrayList getReactants() -> c
+    java.util.ArrayList getProducts() -> d
+    java.util.ArrayList getAllCompounds() -> e
     void addCompound(com.charredgames.chemify.constant.Compound,int) -> a
     void addCompounds(java.util.ArrayList,int) -> a
     java.lang.String getDrawString(boolean) -> a
     java.lang.String getDrawStringWithAllCharges(boolean) -> b
-    double getMass() -> e
-    void balance() -> f
-    boolean isBalanced() -> g
+    double getMass() -> f
+    void balance() -> g
+    boolean isBalanced() -> h
     java.util.Map getElementQuantityMap(java.util.ArrayList) -> a
     boolean compoundOnBothSides(com.charredgames.chemify.constant.Compound) -> a
     void removeAllInstancesOfCompound(com.charredgames.chemify.constant.Compound) -> b
-com.charredgames.chemify.constant.Ion -> com.charredgames.chemify.a.g:
+com.charredgames.chemify.constant.Ion -> com.charredgames.chemify.a.h:
     java.util.ArrayList ions -> a
     java.util.ArrayList elements -> b
     java.lang.String name -> c
@@ -1889,7 +1930,7 @@ com.charredgames.chemify.constant.Ion -> com.charredgames.chemify.a.g:
     java.util.ArrayList getElementSet() -> d
     boolean containsString(java.lang.String) -> a
     java.lang.String getDrawString() -> e
-com.charredgames.chemify.constant.MatterState -> com.charredgames.chemify.a.h:
+com.charredgames.chemify.constant.MatterState -> com.charredgames.chemify.a.i:
     com.charredgames.chemify.constant.MatterState GAS -> a
     com.charredgames.chemify.constant.MatterState LIQUID -> b
     com.charredgames.chemify.constant.MatterState SOLID -> c
@@ -1900,13 +1941,124 @@ com.charredgames.chemify.constant.MatterState -> com.charredgames.chemify.a.h:
     java.lang.String getDrawSymbol() -> a
     com.charredgames.chemify.constant.MatterState[] values() -> values
     com.charredgames.chemify.constant.MatterState valueOf(java.lang.String) -> valueOf
-com.charredgames.chemify.constant.MetalType -> com.charredgames.chemify.a.i:
+com.charredgames.chemify.constant.Measurement -> com.charredgames.chemify.a.j:
+    double value -> a
+    com.charredgames.chemify.constant.Unit unit -> b
+    int sigFigs -> c
+    double getValue() -> a
+    com.charredgames.chemify.constant.Unit getUnit() -> b
+    void setValue(double) -> a
+    java.lang.String getDrawString() -> c
+    com.charredgames.chemify.constant.Measurement convertUnit(com.charredgames.chemify.constant.Unit) -> a
+    com.charredgames.chemify.constant.Measurement getMeasurementFromString(java.lang.String) -> a
+    boolean stringContainsMeasurement(java.lang.String) -> b
+com.charredgames.chemify.constant.MetalType -> com.charredgames.chemify.a.k:
     com.charredgames.chemify.constant.MetalType METAL -> a
     com.charredgames.chemify.constant.MetalType METALLOID -> b
     com.charredgames.chemify.constant.MetalType NONMETAL -> c
     com.charredgames.chemify.constant.MetalType[] ENUM$VALUES -> d
     com.charredgames.chemify.constant.MetalType[] values() -> values
     com.charredgames.chemify.constant.MetalType valueOf(java.lang.String) -> valueOf
+com.charredgames.chemify.constant.Unit -> com.charredgames.chemify.a.l:
+    com.charredgames.chemify.constant.Unit GRAM -> a
+    com.charredgames.chemify.constant.Unit SECOND -> b
+    com.charredgames.chemify.constant.Unit METER -> c
+    com.charredgames.chemify.constant.Unit KELVIN -> d
+    com.charredgames.chemify.constant.Unit MOLE -> e
+    com.charredgames.chemify.constant.Unit COULOMB -> f
+    com.charredgames.chemify.constant.Unit NEWTON -> g
+    com.charredgames.chemify.constant.Unit JOULE -> h
+    com.charredgames.chemify.constant.Unit PASCAL -> i
+    com.charredgames.chemify.constant.Unit WATT -> j
+    com.charredgames.chemify.constant.Unit AMPERE -> k
+    com.charredgames.chemify.constant.Unit VOLT -> l
+    com.charredgames.chemify.constant.Unit LITRE -> m
+    com.charredgames.chemify.constant.Unit CELSIUS -> n
+    com.charredgames.chemify.constant.Unit FAHRENHEIT -> o
+    com.charredgames.chemify.constant.Unit ATOMS -> p
+    com.charredgames.chemify.constant.Unit MOLECULES -> q
+    com.charredgames.chemify.constant.Unit TORR -> r
+    com.charredgames.chemify.constant.Unit ATOMOSPHERES -> s
+    com.charredgames.chemify.constant.Unit MM_HG -> t
+    com.charredgames.chemify.constant.Unit MINUTE -> u
+    com.charredgames.chemify.constant.Unit HOUR -> v
+    com.charredgames.chemify.constant.Unit DAY -> w
+    com.charredgames.chemify.constant.Unit WEEK -> x
+    com.charredgames.chemify.constant.Unit MONTH -> y
+    com.charredgames.chemify.constant.Unit YEAR -> z
+    com.charredgames.chemify.constant.Unit DECADE -> A
+    com.charredgames.chemify.constant.Unit CENTURY -> B
+    com.charredgames.chemify.constant.Unit INCH -> C
+    com.charredgames.chemify.constant.Unit FOOT -> D
+    com.charredgames.chemify.constant.Unit YARD -> E
+    com.charredgames.chemify.constant.Unit MILE -> F
+    com.charredgames.chemify.constant.Unit ACRE -> G
+    com.charredgames.chemify.constant.Unit GALLON -> H
+    com.charredgames.chemify.constant.Unit QUART -> I
+    com.charredgames.chemify.constant.Unit PINT -> J
+    com.charredgames.chemify.constant.Unit CUP -> K
+    com.charredgames.chemify.constant.Unit FL_OUNCE -> L
+    com.charredgames.chemify.constant.Unit TABLESPOON -> M
+    com.charredgames.chemify.constant.Unit TEASPOON -> N
+    com.charredgames.chemify.constant.Unit OUNCE -> O
+    com.charredgames.chemify.constant.Unit POUND -> P
+    java.lang.String name -> Q
+    java.util.ArrayList abbreviations -> R
+    double factor -> S
+    com.charredgames.chemify.constant.UnitType type -> T
+    boolean base -> U
+    java.lang.String getCommonAbbreviation() -> a
+    com.charredgames.chemify.constant.Unit getUnitFromString(java.lang.String) -> a
+    java.lang.String getScientificFactor() -> b
+com.charredgames.chemify.constant.UnitPrefix -> com.charredgames.chemify.a.m:
+    com.charredgames.chemify.constant.UnitPrefix YOTTA -> a
+    com.charredgames.chemify.constant.UnitPrefix ZETTA -> b
+    com.charredgames.chemify.constant.UnitPrefix EXA -> c
+    com.charredgames.chemify.constant.UnitPrefix PETA -> d
+    com.charredgames.chemify.constant.UnitPrefix TERA -> e
+    com.charredgames.chemify.constant.UnitPrefix GIGA -> f
+    com.charredgames.chemify.constant.UnitPrefix MEGA -> g
+    com.charredgames.chemify.constant.UnitPrefix KILO -> h
+    com.charredgames.chemify.constant.UnitPrefix HECTO -> i
+    com.charredgames.chemify.constant.UnitPrefix DECA -> j
+    com.charredgames.chemify.constant.UnitPrefix BASE -> k
+    com.charredgames.chemify.constant.UnitPrefix DECI -> l
+    com.charredgames.chemify.constant.UnitPrefix CENTI -> m
+    com.charredgames.chemify.constant.UnitPrefix MILLI -> n
+    com.charredgames.chemify.constant.UnitPrefix MICRO -> o
+    com.charredgames.chemify.constant.UnitPrefix MICRO_U -> p
+    com.charredgames.chemify.constant.UnitPrefix NANO -> q
+    com.charredgames.chemify.constant.UnitPrefix PICO -> r
+    com.charredgames.chemify.constant.UnitPrefix FEMTO -> s
+    com.charredgames.chemify.constant.UnitPrefix ATTO -> t
+    com.charredgames.chemify.constant.UnitPrefix ZEPTO -> u
+    com.charredgames.chemify.constant.UnitPrefix YOCTO -> v
+    double value -> w
+    java.lang.String name -> x
+    java.lang.String abbreviation -> y
+    com.charredgames.chemify.constant.UnitPrefix[] ENUM$VALUES -> z
+    com.charredgames.chemify.constant.UnitPrefix[] values() -> values
+    com.charredgames.chemify.constant.UnitPrefix valueOf(java.lang.String) -> valueOf
+com.charredgames.chemify.constant.UnitType -> com.charredgames.chemify.a.n:
+    com.charredgames.chemify.constant.UnitType LENGTH -> a
+    com.charredgames.chemify.constant.UnitType TIME -> b
+    com.charredgames.chemify.constant.UnitType MASS -> c
+    com.charredgames.chemify.constant.UnitType TEMPERATURE -> d
+    com.charredgames.chemify.constant.UnitType AMOUNT_SUBSTANCE -> e
+    com.charredgames.chemify.constant.UnitType ELECTRICAL_CHARGE -> f
+    com.charredgames.chemify.constant.UnitType FORCE -> g
+    com.charredgames.chemify.constant.UnitType ENERGY -> h
+    com.charredgames.chemify.constant.UnitType PRESSURE -> i
+    com.charredgames.chemify.constant.UnitType POWER -> j
+    com.charredgames.chemify.constant.UnitType ELECTRICAL_CURRENT -> k
+    com.charredgames.chemify.constant.UnitType ELECTRICAL_POTENTIAL -> l
+    com.charredgames.chemify.constant.UnitType VOLUME -> m
+    com.charredgames.chemify.constant.Unit baseUnit -> n
+    boolean usesPrefixes -> o
+    com.charredgames.chemify.constant.UnitType[] ENUM$VALUES -> p
+    com.charredgames.chemify.constant.Unit getBaseUnit(com.charredgames.chemify.constant.UnitType) -> a
+    com.charredgames.chemify.constant.UnitType[] values() -> values
+    com.charredgames.chemify.constant.UnitType valueOf(java.lang.String) -> valueOf
 com.charredgames.chemify.gui.ResponseBlock -> com.charredgames.chemify.b.a:
     android.text.Spanned answer -> a
     android.text.Spanned expanded -> b
@@ -1919,22 +2071,24 @@ com.charredgames.chemify.gui.ResponsePanel -> com.charredgames.chemify.b.b:
     void addLine(java.lang.String) -> a
     java.util.ArrayList getResponses() -> a
     java.lang.String getResponse() -> b
-com.charredgames.chemify.problems.ElementInfo -> com.charredgames.chemify.c.a:
+com.charredgames.chemify.problems.DimensionalAnalysis -> com.charredgames.chemify.c.a:
+    void solve(boolean) -> a
+com.charredgames.chemify.problems.ElementInfo -> com.charredgames.chemify.c.b:
     com.charredgames.chemify.problems.ResponseType type -> a
     void solve(boolean) -> a
-com.charredgames.chemify.problems.Ionic -> com.charredgames.chemify.c.b:
+com.charredgames.chemify.problems.Ionic -> com.charredgames.chemify.c.c:
     void solve(boolean) -> a
-com.charredgames.chemify.problems.Nomenclature -> com.charredgames.chemify.c.c:
+com.charredgames.chemify.problems.Nomenclature -> com.charredgames.chemify.c.d:
     com.charredgames.chemify.problems.ResponseType type -> a
     void solve(boolean) -> a
     java.lang.String convertGroupsToName(java.util.ArrayList,com.charredgames.chemify.problems.Problem) -> a
     java.util.ArrayList convertNameToElementGroups(java.lang.String,com.charredgames.chemify.problems.Problem) -> a
-com.charredgames.chemify.problems.Oxidation -> com.charredgames.chemify.c.d:
+com.charredgames.chemify.problems.Oxidation -> com.charredgames.chemify.c.e:
     com.charredgames.chemify.problems.ResponseType type -> a
     void solve(boolean) -> a
     void predictViaScan(java.util.ArrayList,com.charredgames.chemify.constant.ElementGroup) -> a
     boolean numbersEqualCharge(java.util.ArrayList,int,int) -> a
-com.charredgames.chemify.problems.Prefix -> com.charredgames.chemify.c.e:
+com.charredgames.chemify.problems.Prefix -> com.charredgames.chemify.c.f:
     com.charredgames.chemify.problems.Prefix mono -> a
     com.charredgames.chemify.problems.Prefix di -> b
     com.charredgames.chemify.problems.Prefix tri -> c
@@ -1956,7 +2110,7 @@ com.charredgames.chemify.problems.Prefix -> com.charredgames.chemify.c.e:
     java.lang.String emitPrefix(java.lang.String) -> b
     com.charredgames.chemify.problems.Prefix[] values() -> values
     com.charredgames.chemify.problems.Prefix valueOf(java.lang.String) -> valueOf
-com.charredgames.chemify.problems.Problem -> com.charredgames.chemify.c.f:
+com.charredgames.chemify.problems.Problem -> com.charredgames.chemify.c.g:
     java.lang.String input -> b
     com.charredgames.chemify.gui.ResponsePanel response -> c
     java.util.ArrayList elementGroups -> d
@@ -1976,9 +2130,9 @@ com.charredgames.chemify.problems.Problem -> com.charredgames.chemify.c.f:
     com.charredgames.chemify.constant.ElementGroup revertEnding(java.lang.String,boolean) -> a
     java.lang.String getAcidEnding(java.lang.String,boolean) -> b
     void addProblemToPanel(com.charredgames.chemify.gui.ResponsePanel,com.charredgames.chemify.problems.Problem) -> a
-com.charredgames.chemify.problems.Reaction -> com.charredgames.chemify.c.g:
+com.charredgames.chemify.problems.Reaction -> com.charredgames.chemify.c.h:
     void solve(boolean) -> a
-com.charredgames.chemify.problems.ResponseType -> com.charredgames.chemify.c.h:
+com.charredgames.chemify.problems.ResponseType -> com.charredgames.chemify.c.i:
     com.charredgames.chemify.problems.ResponseType input -> a
     com.charredgames.chemify.problems.ResponseType answer -> b
     com.charredgames.chemify.problems.ResponseType element_info -> c
@@ -1998,9 +2152,9 @@ com.charredgames.chemify.problems.ResponseType -> com.charredgames.chemify.c.h:
     com.charredgames.chemify.problems.ResponseType getTypeByString(java.lang.String) -> a
     com.charredgames.chemify.problems.ResponseType[] values() -> values
     com.charredgames.chemify.problems.ResponseType valueOf(java.lang.String) -> valueOf
-com.charredgames.chemify.problems.Solubility -> com.charredgames.chemify.c.i:
+com.charredgames.chemify.problems.Solubility -> com.charredgames.chemify.c.j:
     void solve(boolean) -> a
-com.charredgames.chemify.problems.Weight -> com.charredgames.chemify.c.j:
+com.charredgames.chemify.problems.Weight -> com.charredgames.chemify.c.k:
     com.charredgames.chemify.problems.ResponseType type -> a
     void solve(boolean) -> a
 com.google.ads.Ad -> com.google.ads.a:

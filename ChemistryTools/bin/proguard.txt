@@ -32,8 +32,10 @@
 -keep class com.google.ads.AdActivity { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:32
+# view res/layout/generic_problem_input.xml #generated:26
 -keep class com.google.ads.AdView { <init>(...); }
 
 # onClick res/layout/activity_main.xml #generated:23
+# onClick res/layout/generic_problem_input.xml #generated:17
 -keepclassmembers class * { *** submit(...); }
 

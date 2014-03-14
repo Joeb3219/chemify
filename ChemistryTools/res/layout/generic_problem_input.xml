@@ -1,0 +1,36 @@
+<RelativeLayout
+  	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+  	android:layout_width="fill_parent"
+  	android:layout_height="fill_parent"
+  	android:background = "@color/accent_bg">
+	
+	<EditText android:id = "@+id/edit_input"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:text = "@string/edit_input"
+        android:layout_below = "@id/problem_type"
+        android:layout_marginTop = "12pt"
+        android:layout_marginBottom = "12pt"
+	/>
+		
+	<Button android:id = "@+id/submit"
+		android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "@string/submit"
+		android:onClick = "submit"
+		android:layout_below = "@id/edit_input"
+		android:layout_centerHorizontal = "true"
+	/>
+	
+	<com.google.ads.AdView
+        xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads"
+        android:id="@+id/ad"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        googleads:adSize="SMART_BANNER"
+        googleads:adUnitId="@string/admob_id" 
+	/>
+
+</RelativeLayout>

@@ -95,17 +95,18 @@ public final class R {
         public static final int expandedlist_child_item=0x7f030003;
         public static final int expandedlist_group_item=0x7f030004;
         public static final int firstboxtemplate=0x7f030005;
-        public static final int problem_dimensionalanalysis=0x7f030006;
-        public static final int problem_elementinfo=0x7f030007;
-        public static final int problem_nomenclature=0x7f030008;
-        public static final int problem_oxidation=0x7f030009;
-        public static final int problem_reactions=0x7f03000a;
-        public static final int problem_solubility=0x7f03000b;
-        public static final int problem_weight=0x7f03000c;
-        public static final int resources_activity=0x7f03000d;
-        public static final int resources_search_activity=0x7f03000e;
-        public static final int secondboxtemplate=0x7f03000f;
-        public static final int test_activity=0x7f030010;
+        public static final int generic_problem_input=0x7f030006;
+        public static final int problem_dimensionalanalysis=0x7f030007;
+        public static final int problem_elementinfo=0x7f030008;
+        public static final int problem_nomenclature=0x7f030009;
+        public static final int problem_oxidation=0x7f03000a;
+        public static final int problem_reactions=0x7f03000b;
+        public static final int problem_solubility=0x7f03000c;
+        public static final int problem_weight=0x7f03000d;
+        public static final int resources_activity=0x7f03000e;
+        public static final int resources_search_activity=0x7f03000f;
+        public static final int secondboxtemplate=0x7f030010;
+        public static final int test_activity=0x7f030011;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

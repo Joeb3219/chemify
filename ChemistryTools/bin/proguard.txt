@@ -19,6 +19,9 @@
 # view AndroidManifest.xml #generated:65
 -keep class com.charredgames.chemify.activity.PolyIonsActivity { <init>(...); }
 
+# view AndroidManifest.xml #generated:127
+-keep class com.charredgames.chemify.activity.ProblemInput { <init>(...); }
+
 # view AndroidManifest.xml #generated:38
 -keep class com.charredgames.chemify.activity.Response { <init>(...); }
 
@@ -28,7 +31,7 @@
 # view AndroidManifest.xml #generated:118
 -keep class com.charredgames.chemify.activity.TestActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:127
+# view AndroidManifest.xml #generated:136
 -keep class com.google.ads.AdActivity { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:32

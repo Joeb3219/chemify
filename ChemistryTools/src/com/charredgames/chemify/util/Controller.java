@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -26,15 +27,23 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.charredgames.chemify.ExpandedListAdapter;
 import com.charredgames.chemify.ExpandedListGroup;
 import com.charredgames.chemify.R;
+import com.charredgames.chemify.activity.ActivitySeriesActivity;
+import com.charredgames.chemify.activity.ConstantsActivity;
+import com.charredgames.chemify.activity.DefinitionsActivity;
+import com.charredgames.chemify.activity.PolyIonsActivity;
+import com.charredgames.chemify.activity.ProblemInput;
 import com.charredgames.chemify.activity.SendPost;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
@@ -42,6 +51,7 @@ import com.charredgames.chemify.constant.Unit;
 import com.charredgames.chemify.constant.UnitPrefix;
 import com.charredgames.chemify.problems.Prefix;
 import com.charredgames.chemify.problems.Problem;
+import com.charredgames.chemify.problems.ProblemGuts;
 import com.charredgames.chemify.problems.ResponseType;
 
 /**
@@ -57,6 +67,7 @@ public class Controller {
 	public static ArrayList<Prefix> prefixes = new ArrayList<Prefix>();
 	public static ArrayList<Unit> units = new ArrayList<Unit>();
 	public static ArrayList<String> conversionSymbols = new ArrayList<String>(Arrays.asList("converted to", "equals"));
+	public static Map<String, ProblemGuts> problemTypes = new TreeMap<String, ProblemGuts>();
 	public static SparseArray<String> romanNumerals = new SparseArray<String>();
 	public static ArrayList<UnitPrefix> unitPrefixes = new ArrayList<UnitPrefix>();
 	public static final Locale _LOCALE = Locale.getDefault();
@@ -67,7 +78,8 @@ public class Controller {
 	public static Resources resources;
 	
 	public static void reset(AssetManager aManager){
-		//if(assets != null) return;
+		boolean firstRun = false;
+		if(assets == null) firstRun = true;
 		assets = aManager;
 		resources = context.getResources();
 		setElements("/default/elements.cgf");
@@ -76,8 +88,6 @@ public class Controller {
 		Definition.definitions = new ArrayList<Definition>();
 		setDefinitions("/default/definitions.cgf");
 		
-		//Only needs to be run once by app.
-		//if(!firstLoad) return;
 		if(ResponseType.answer instanceof ResponseType);
 		if(UnitPrefix.ATTO instanceof UnitPrefix);
 		if(Prefix.mono instanceof Prefix);
@@ -109,7 +119,501 @@ public class Controller {
 		reactionSymbols.put("=>", _GENERIC_YIELDS_SIGN);
 		reactionSymbols.put("&#8652;", _GENERIC_YIELDS_SIGN);
 		reactionSymbols.put("yields", _GENERIC_YIELDS_SIGN);
-
+		
+		if(!firstRun) return;
+		
+		problemTypes.put(resources.getString(R.string.problem_nomenclature), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_molar_mass), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_reactions), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_element_info), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_solubility), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_oxdidation), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_dimensional_analysis), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_balancer), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_basic))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_stoichiometry), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_converters))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_unit_converter), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_converters))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_ph_converter), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_converters))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_half_life), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_converters))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_waves), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_converters))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_boyle_law), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_gas_laws))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_charles_law), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_gas_laws))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_gaylussac_law), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_gas_laws))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_ideal_law), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_gas_laws))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_combined_law), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_gas_laws))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_entropy), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_thermodynamics))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_calorimetry), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_thermodynamics))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_gibbs), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_thermodynamics))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_specific_heat), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_thermodynamics))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_rate), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_kinetics))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_order), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_kinetics))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_activation_energy), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_kinetics))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_k), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_equilibrium))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_buffer_capacity), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_equilibrium))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_half_cell), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_electrochemistry))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_cell_potential), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_electrochemistry))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_nuclear_something), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_nuclear))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.problem_organic_stuff), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.problem_organic_stuff))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_quizzes), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_dictionary), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, DefinitionsActivity.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_periodic_table), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_activity_series), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ActivitySeriesActivity.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_standard_reduction), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_solubility_rules), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_constants), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ConstantsActivity.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_polyatomics), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, PolyIonsActivity.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_formulas), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
+		problemTypes.put(resources.getString(R.string.reference_units), new ProblemGuts(){
+			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void getInputView(Context context, View view) {
+				view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+			}
+			public boolean getSubmit(Context context, View view) {
+				return true;
+			}
+			public boolean fitsCategory(String cat) {
+				if(cat.equals(resources.getString(R.string.group_reference))) return true;
+				return false;
+			}});
 	}
 	
 	public static ExpandedListAdapter getMainGroupsAdapter(Context context){
@@ -117,77 +621,52 @@ public class Controller {
 		ArrayList<String> items = new ArrayList<String>();
 		
 		ExpandedListGroup g = new ExpandedListGroup(resources.getString(R.string.group_basic), items);
-		items.add(resources.getString(R.string.problem_nomenclature));
-		items.add(resources.getString(R.string.problem_molar_mass));
-		items.add(resources.getString(R.string.problem_reactions));
-		items.add(resources.getString(R.string.problem_element_info));
-		items.add(resources.getString(R.string.problem_solubility));
-		items.add(resources.getString(R.string.problem_oxdidation));
-		items.add(resources.getString(R.string.problem_dimensional_analysis));
-		items.add(resources.getString(R.string.problem_balancer));
+		populateGroup(resources.getString(R.string.group_basic), items);
 		groups.add(g);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_converters), items);
-		items.add(resources.getString(R.string.problem_stoichiometry));
-		items.add(resources.getString(R.string.problem_unit_converter));
-		items.add(resources.getString(R.string.problem_ph_converter));
-		items.add(resources.getString(R.string.problem_half_life));
-		items.add(resources.getString(R.string.problem_waves));
+		populateGroup(resources.getString(R.string.group_converters), items);
 		groups.add(g);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_gas_laws), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.problem_boyle_law));
-		items.add(resources.getString(R.string.problem_charles_law));
-		items.add(resources.getString(R.string.problem_gaylussac_law));
-		items.add(resources.getString(R.string.problem_ideal_law));
-		items.add(resources.getString(R.string.problem_combined_law));
+		populateGroup(resources.getString(R.string.group_gas_laws), items);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_thermodynamics), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.problem_entropy));
-		items.add(resources.getString(R.string.problem_calorimetry));
-		items.add(resources.getString(R.string.problem_gibbs));
-		items.add(resources.getString(R.string.problem_specific_heat));
+		populateGroup(resources.getString(R.string.group_thermodynamics), items);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_kinetics), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.problem_rate));
-		items.add(resources.getString(R.string.problem_order));
-		items.add(resources.getString(R.string.problem_activation_energy));
+		populateGroup(resources.getString(R.string.group_kinetics), items);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_equilibrium), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.problem_k));
-		items.add(resources.getString(R.string.problem_buffer_capacity));
+		populateGroup(resources.getString(R.string.group_equilibrium), items);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_electrochemistry), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.problem_half_cell));
-		items.add(resources.getString(R.string.problem_cell_potential));
+		populateGroup(resources.getString(R.string.group_electrochemistry), items);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_nuclear), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.problem_nuclear_something));
+		populateGroup(resources.getString(R.string.group_nuclear), items);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_organic), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.problem_organic_stuff));
+		populateGroup(resources.getString(R.string.group_organic), items);
 		items = new ArrayList<String>();
 		g = new ExpandedListGroup(resources.getString(R.string.group_reference), items);
 		groups.add(g);
-		items.add(resources.getString(R.string.reference_quizzes));
-		items.add(resources.getString(R.string.reference_dictionary));
-		items.add(resources.getString(R.string.reference_periodic_table));
-		items.add(resources.getString(R.string.reference_activity_series));
-		items.add(resources.getString(R.string.reference_standard_reduction));
-		items.add(resources.getString(R.string.reference_solubility_rules));
-		items.add(resources.getString(R.string.reference_constants));
-		items.add(resources.getString(R.string.reference_polyatomics));
-		items.add(resources.getString(R.string.reference_formulas));
-		items.add(resources.getString(R.string.reference_units));
+		populateGroup(resources.getString(R.string.group_reference), items);
 		
 		return new ExpandedListAdapter(context, groups);
+	}
+	
+	private static void populateGroup(String category, ArrayList<String> items){
+		for(Entry<String, ProblemGuts> entry : problemTypes.entrySet()){
+			if(entry.getValue().fitsCategory(category)) items.add(entry.getKey());
+		}
 	}
 
 	public static String replaceReactionSymbols(String str){

@@ -10,6 +10,7 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import com.charredgames.chemify.ExpandedListAdapter;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.problems.ProblemGuts;
 import com.charredgames.chemify.util.Controller;
 
 /**
@@ -46,10 +47,9 @@ public class TestActivity extends Activity{
 	
 	private void checkClick(String child){
 		problemType = child;
-		if(child.equalsIgnoreCase(Controller.resources.getString(R.string.reference_dictionary))) startActivity(new Intent(this, DefinitionsActivity.class));
-		else if(child.equalsIgnoreCase(Controller.resources.getString(R.string.reference_polyatomics))) startActivity(new Intent(this, PolyIonsActivity.class));
-		else if(child.equalsIgnoreCase(Controller.resources.getString(R.string.reference_constants))) startActivity(new Intent(this, ConstantsActivity.class));
-		else startActivity(new Intent(this, ProblemInput.class));
+		ProblemGuts problemGuts = Controller.problemTypes.get(child);
+		if(problemGuts == null) return;
+		problemGuts.openActivity(this);
 	}
 	
 }

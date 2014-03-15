@@ -124,6 +124,15 @@
                 android:value="com.charredgames.chemify.MainActivity" />
         </activity>    
         
+        <activity
+            android:name="com.charredgames.chemify.activity.ProblemInput"
+            android:label="Testificate"
+            android:parentActivityName="com.charredgames.chemify.activity.ProblemInput" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charredgames.chemify.MainActivity" />
+        </activity>    
+        
         <activity android:name="com.google.ads.AdActivity" 
    android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
     </application>

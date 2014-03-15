@@ -4,13 +4,13 @@
   	android:layout_width="fill_parent"
   	android:layout_height="fill_parent"
   	android:background = "@color/accent_bg">
-	
+
+    
 	<EditText android:id = "@+id/edit_input"
         android:layout_width = "fill_parent"
         android:layout_height = "wrap_content"
         android:text = "@string/edit_input"
-        android:layout_below = "@id/problem_type"
-        android:layout_marginTop = "12pt"
+        android:layout_marginTop = "24pt"
         android:layout_marginBottom = "12pt"
 	/>
 		

@@ -49,18 +49,18 @@ public class Response extends Activity {
 			Controller.context = this;
 			Controller.reset(this.getAssets());
 		}else{
-			if(!getIntent().hasExtra(MainActivity.EXTRA_MESSAGE)) startActivity(new Intent(this, MainActivity.class));
+			if(!getIntent().hasExtra("problem_type")) startActivity(new Intent(this, MainActivity.class));
 		}
 		
-		if(selectedOperation == null) selectedOperation = MainActivity.problem_type.getSelectedItem().toString();
+		if(selectedOperation == null) selectedOperation = getIntent().getStringExtra("problem_type");
 		setTitle(selectedOperation);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
-        }//else getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
 		
 		Intent intent = getIntent();
-		if(input == null) input = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		if(input == null) input = intent.getStringExtra("input");
 		//Spanned answer;
 		
 		//Set the problem

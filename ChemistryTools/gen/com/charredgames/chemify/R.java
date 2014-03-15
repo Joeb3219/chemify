@@ -9,10 +9,7 @@ package com.charredgames.chemify;
 
 public final class R {
     public static final class array {
-        /**  
-	The remaining strng entires are used just to create spinners.
-	 
-
+        /** 
 		<item>Thermochem</item>
 		<item>Stoichiometry</item>
 		<item>Hess Law</item>
@@ -153,6 +150,20 @@ public final class R {
         public static final int element_info_protons=0x7f06003d;
         public static final int element_info_symbol=0x7f060039;
         public static final int element_info_valence_electrons=0x7f060040;
+        /**  
+	The remaining strng entires are used just to create spinners.
+	 
+         */
+        public static final int group_basic=0x7f060082;
+        public static final int group_converters=0x7f06008b;
+        public static final int group_electrochemistry=0x7f0600a3;
+        public static final int group_equilibrium=0x7f0600a0;
+        public static final int group_gas_laws=0x7f060091;
+        public static final int group_kinetics=0x7f06009c;
+        public static final int group_nuclear=0x7f0600a6;
+        public static final int group_organic=0x7f0600a8;
+        public static final int group_reference=0x7f0600aa;
+        public static final int group_thermodynamics=0x7f060097;
         public static final int ionic_breaking_into_ions=0x7f060045;
         public static final int ionic_complete_ionic=0x7f060043;
         public static final int ionic_is_both_sides=0x7f060046;
@@ -215,7 +226,48 @@ public final class R {
         public static final int pref_calculate_reasoning_title=0x7f06001f;
         public static final int pref_send_data_summary=0x7f060022;
         public static final int pref_send_data_title=0x7f060021;
+        public static final int problem_activation_energy=0x7f06009f;
+        public static final int problem_balancer=0x7f06008a;
+        public static final int problem_boyle_law=0x7f060092;
+        public static final int problem_buffer_capacity=0x7f0600a2;
+        public static final int problem_calorimetry=0x7f060099;
+        public static final int problem_cell_potential=0x7f0600a5;
+        public static final int problem_charles_law=0x7f060093;
+        public static final int problem_combined_law=0x7f060096;
+        public static final int problem_dimensional_analysis=0x7f060089;
+        public static final int problem_element_info=0x7f060086;
+        public static final int problem_entropy=0x7f060098;
+        public static final int problem_gaylussac_law=0x7f060094;
+        public static final int problem_gibbs=0x7f06009a;
+        public static final int problem_half_cell=0x7f0600a4;
+        public static final int problem_half_life=0x7f06008f;
+        public static final int problem_ideal_law=0x7f060095;
+        public static final int problem_k=0x7f0600a1;
+        public static final int problem_molar_mass=0x7f060084;
+        public static final int problem_nomenclature=0x7f060083;
+        public static final int problem_nuclear_something=0x7f0600a7;
+        public static final int problem_order=0x7f06009e;
+        public static final int problem_organic_stuff=0x7f0600a9;
+        public static final int problem_oxdidation=0x7f060088;
+        public static final int problem_ph_converter=0x7f06008e;
+        public static final int problem_rate=0x7f06009d;
+        public static final int problem_reactions=0x7f060085;
+        public static final int problem_solubility=0x7f060087;
+        public static final int problem_specific_heat=0x7f06009b;
+        public static final int problem_stoichiometry=0x7f06008c;
+        public static final int problem_unit_converter=0x7f06008d;
+        public static final int problem_waves=0x7f060090;
         public static final int reactions_hint=0x7f060028;
+        public static final int reference_activity_series=0x7f0600ae;
+        public static final int reference_constants=0x7f0600b1;
+        public static final int reference_dictionary=0x7f0600ac;
+        public static final int reference_formulas=0x7f0600b3;
+        public static final int reference_periodic_table=0x7f0600ad;
+        public static final int reference_polyatomics=0x7f0600b2;
+        public static final int reference_quizzes=0x7f0600ab;
+        public static final int reference_solubility_rules=0x7f0600b0;
+        public static final int reference_standard_reduction=0x7f0600af;
+        public static final int reference_units=0x7f0600b4;
         public static final int resources_tab=0x7f06000d;
         public static final int search_box_hint=0x7f060016;
         public static final int solubility_all_group_one=0x7f060071;

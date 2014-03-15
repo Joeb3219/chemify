@@ -154,7 +154,68 @@
 	<!-- 
 	The remaining strng entires are used just to create spinners.
 	 -->	
-    
+	 
+	 <string name = "group_basic">Basic Chemistry Tools</string>
+	 <string name = "problem_nomenclature">Nomenclature</string>
+	 <string name = "problem_molar_mass">Molar Mass</string>
+	 <string name = "problem_reactions">Predict Reactions</string>
+	 <string name = "problem_element_info">Element Info</string>
+	 <string name = "problem_solubility">Predict Solubility</string>
+	 <string name = "problem_oxdidation">Oxidation Numbers</string>
+	 <string name = "problem_dimensional_analysis">Dimensional Analysis</string>
+	 <string name = "problem_balancer">Formula Balancer</string>
+	 
+	 <string name = "group_converters">Converters</string>
+	 <string name = "problem_stoichiometry">Stoichiometry</string>
+	 <string name = "problem_unit_converter">Unit Converter</string>
+	 <string name = "problem_ph_converter">pH/pOH Calculator</string>
+	 <string name = "problem_half_life">Half Life Calculator</string>
+	 <string name = "problem_waves">Wavelength/Amplitude/Energy Calculator</string>
+	 
+	 <string name = "group_gas_laws">Gas Laws Tools</string>
+	 <string name = "problem_boyle_law">Boyle\'s Law</string>
+	 <string name = "problem_charles_law">Charles\'s Law</string>
+	 <string name = "problem_gaylussac_law">Gay-Lussac Law</string>
+	 <string name = "problem_ideal_law">Ideal Gas Law</string>
+	 <string name = "problem_combined_law">Combined Gas Law</string>
+	 
+	 <string name = "group_thermodynamics">Thermodynamics Tools</string>
+	 <string name = "problem_entropy">Entropy/Etholpy/Enthropy Calculator</string>
+	 <string name = "problem_calorimetry">Calorimetry Calculator</string>
+	 <string name = "problem_gibbs">Gibbs Free Energy Calculator</string>
+	 <string name = "problem_specific_heat">Specific Heat Capacity</string>
+	 
+	 <string name = "group_kinetics">Kinetics Tools</string>
+	 <string name = "problem_rate">Rate/K Calculator</string>
+	 <string name = "problem_order">Order of Reaction</string>
+	 <string name = "problem_activation_energy">Activation Energy Calculator</string>
+	 
+	 <string name = "group_equilibrium">Equilibrium Tools</string>
+	 <string name = "problem_k">K Calculator</string>
+	 <string name = "problem_buffer_capacity">Buffer Capacity</string>
+	 
+	 <string name = "group_electrochemistry">Electrochemistry Tools</string>
+	 <string name = "problem_half_cell">Half-Cell</string>
+	 <string name = "problem_cell_potential">Cell Potential</string>
+	 
+	 <string name = "group_nuclear">Nuclear Chemistry Tools</string>
+	 <string name = "problem_nuclear_something">Nuclear missiles!</string>
+	 
+	 <string name = "group_organic">Organic Chemistry Tools</string>
+	 <string name = "problem_organic_stuff">Stuff</string>
+	 
+	 <string name = "group_reference">Reference</string>
+	 <string name = "reference_quizzes">Quizzes</string>
+	 <string name = "reference_dictionary">Dictionary</string>
+	 <string name = "reference_periodic_table">Periodic Table</string>
+	 <string name = "reference_activity_series">Activity Series</string>
+	 <string name = "reference_standard_reduction">Standard Reduction Series</string>
+	 <string name = "reference_solubility_rules">Solubility Rules</string>
+	 <string name = "reference_constants">Constants</string>
+	 <string name = "reference_polyatomics">Polyatomic Ions</string>
+	 <string name = "reference_formulas">Formulas</string>
+	 <string name = "reference_units">Units</string>
+	 
     <string-array name = "problem_types">
         <item>Nomenclature</item>
         <item>Predict Reactions</item>

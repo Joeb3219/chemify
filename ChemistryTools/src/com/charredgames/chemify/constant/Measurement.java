@@ -37,6 +37,10 @@ public class Measurement {
 		return Controller.doubleToScientific(value) + " " + unit.getCommonAbbreviation();
 	}
 	
+	public String getDrawStringWithoutAbbrev(){
+		return Controller.doubleToScientific(value);
+	}
+	
 	public Measurement convertUnit(Unit desired){
 		//Only really meant to be used for mass, time, length, etc. (not moles, etc)
 		if(unit == desired) return this;

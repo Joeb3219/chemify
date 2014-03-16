@@ -3,6 +3,7 @@ package com.charredgames.chemify.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -16,12 +17,18 @@ public class ProblemInput extends Activity{
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.generic_problem_input);
+		
+		//setContentView(R.layout.generic_problem_input);
 		
 		if(TestActivity.problemType == null && problemType == null) startActivity(new Intent(this, MainActivity.class));
 		if(problemType == null) problemType = TestActivity.problemType;
 		setTitle(problemType);
 
+		View view = new View(this);
+		//Controller.problemTypes.get(problemType).getInputView(this, view);
+		view = LayoutInflater.from(this).inflate(R.layout.generic_problem_input, null);
+		setContentView(view);
+		
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 		

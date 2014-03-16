@@ -124,6 +124,15 @@
                 android:value="com.charredgames.chemify.MainActivity" />
         </activity>    
         
+          <activity
+            android:name="com.charredgames.chemify.activity.UnitConverter"
+            android:label="Testificate"
+            android:parentActivityName="com.charredgames.chemify.activity.UnitConverter" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charredgames.chemify.MainActivity" />
+        </activity>    
+        
         <activity
             android:name="com.charredgames.chemify.activity.ProblemInput"
             android:label="Testificate"

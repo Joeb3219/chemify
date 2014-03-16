@@ -18,7 +18,7 @@ public enum UnitPrefix {
 	KILO("kilo", "k", Math.pow(10, -3)),
 	HECTO("hecto", "h", Math.pow(10, -2)),
 	DECA("deca", "da", Math.pow(10, -1)),
-	BASE("", "", Math.pow(10, 0)),
+	//BASE("", "", Math.pow(10, 0)),
 	DECI("deci", "d", Math.pow(10, 1)),
 	CENTI("centi", "c", Math.pow(10, 2)),
 	MILLI("milli", "m", Math.pow(10, 3)),
@@ -39,6 +39,14 @@ public enum UnitPrefix {
 		this.abbreviation = abbreviation;
 		this.value = val;
 		Controller.unitPrefixes.add(this);
+	}
+	
+	public static boolean containsPrefix(String str){
+		for(UnitPrefix prefix : Controller.unitPrefixes){
+			//if(prefix == UnitPrefix.BASE) continue;
+			if(str.toLowerCase(Controller._LOCALE).contains(prefix.name)) return true;
+		}
+		return false;
 	}
 	
 }

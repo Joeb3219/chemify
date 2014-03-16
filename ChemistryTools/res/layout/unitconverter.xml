@@ -1,0 +1,64 @@
+<RelativeLayout
+  	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+  	android:layout_width="fill_parent"
+  	android:layout_height="fill_parent"
+  	android:background = "@color/accent_bg">
+  	
+    
+    <Spinner android:id = "@+id/unit_type"
+		android:layout_width = "fill_parent"
+		android:layout_height = "wrap_content"
+	 />
+    
+    <RelativeLayout 
+        android:id = "@+id/units_layer"
+        android:layout_width = "fill_parent"
+        android:layout_height = "match_parent"
+        android:layout_below="@id/unit_type"
+        >
+    
+        <View android:id="@+id/fakeView"
+       android:layout_width="0dp"
+       android:layout_height="0dp" 
+       android:layout_centerInParent="true"/>
+        
+       <EditText android:id = "@+id/value_from"
+           android:layout_width = "wrap_content"
+           android:layout_height = "wrap_content"
+           android:layout_alignRight="@id/fakeView"
+		   android:layout_alignParentLeft="true"
+		   android:ems="10"
+		   android:hint = "1.00"
+	       android:inputType="numberDecimal" />
+        
+	   <Spinner android:id = "@+id/unit_from"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:layout_alignRight="@id/fakeView"
+			android:layout_alignParentLeft="true"
+			android:layout_below = "@id/value_from"/>   
+		 
+	   
+	   	<EditText android:id = "@+id/value_to"
+           android:layout_width = "wrap_content"
+           android:layout_height = "wrap_content"
+           android:layout_alignLeft="@id/fakeView"
+		   android:layout_alignParentRight="true"
+		   android:ems="10"
+		   android:hint = "1.00"
+	       android:clickable="false" 
+           android:cursorVisible="false" 
+           android:focusable="false" 
+           android:focusableInTouchMode="false"/>
+	   
+	    <Spinner android:id = "@+id/unit_to"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:layout_alignLeft="@id/fakeView"
+			android:layout_alignParentRight="true"
+			android:layout_below = "@id/value_to"/>
+
+	 </RelativeLayout>
+    
+</RelativeLayout>

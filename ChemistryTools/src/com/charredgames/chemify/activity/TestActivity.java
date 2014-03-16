@@ -10,7 +10,7 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import com.charredgames.chemify.ExpandedListAdapter;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
-import com.charredgames.chemify.problems.ProblemGuts;
+import com.charredgames.chemify.constant.ProblemGuts;
 import com.charredgames.chemify.util.Controller;
 
 /**

@@ -58,16 +58,17 @@ public final class R {
         public static final int about_copyright=0x7f0b0006;
         public static final int about_donation_line=0x7f0b0005;
         public static final int about_release_info=0x7f0b0003;
-        public static final int action_activitySeries=0x7f0b001f;
-        public static final int action_bug=0x7f0b0021;
-        public static final int action_constants=0x7f0b001e;
-        public static final int action_definitions=0x7f0b001c;
-        public static final int action_polyions=0x7f0b001d;
-        public static final int action_settings=0x7f0b0020;
+        public static final int action_activitySeries=0x7f0b0026;
+        public static final int action_bug=0x7f0b0028;
+        public static final int action_constants=0x7f0b0025;
+        public static final int action_definitions=0x7f0b0023;
+        public static final int action_polyions=0x7f0b0024;
+        public static final int action_settings=0x7f0b0027;
         public static final int ad=0x7f0b000a;
         public static final int bugReport_email=0x7f0b000b;
         public static final int bugReport_notes=0x7f0b000c;
         public static final int edit_input=0x7f0b0008;
+        public static final int fakeView=0x7f0b001d;
         public static final int problem_answer=0x7f0b0010;
         public static final int problem_input=0x7f0b000f;
         public static final int problem_ionic=0x7f0b0015;
@@ -77,13 +78,19 @@ public final class R {
         public static final int problem_type=0x7f0b0007;
         public static final int problem_weight=0x7f0b0011;
         public static final int resources_linear_parent=0x7f0b0016;
-        public static final int resources_tab=0x7f0b001b;
+        public static final int resources_tab=0x7f0b0022;
         public static final int search_box=0x7f0b0018;
         public static final int search_linear_parent=0x7f0b0017;
         public static final int search_results=0x7f0b0019;
         public static final int submit=0x7f0b0009;
         public static final int tvChild=0x7f0b000d;
         public static final int tvGroup=0x7f0b000e;
+        public static final int unit_from=0x7f0b001f;
+        public static final int unit_to=0x7f0b0021;
+        public static final int unit_type=0x7f0b001b;
+        public static final int units_layer=0x7f0b001c;
+        public static final int value_from=0x7f0b001e;
+        public static final int value_to=0x7f0b0020;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
@@ -104,6 +111,7 @@ public final class R {
         public static final int resources_search_activity=0x7f03000f;
         public static final int secondboxtemplate=0x7f030010;
         public static final int test_activity=0x7f030011;
+        public static final int unitconverter=0x7f030012;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

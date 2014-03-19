@@ -19,9 +19,8 @@ public class PHConverter extends Activity{
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		setTitle(Controller.resources.getString(R.string.problem_ph_converter));
 		setContentView(R.layout.phconverter);
-		
-		
 	}
 	
 	public void onStart(){

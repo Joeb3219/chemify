@@ -23,7 +23,7 @@
            android:layout_alignLeft="@id/fakeView"
 		   android:layout_alignParentRight="true"
 		   android:gravity="center_horizontal"
-		   android:text = "poH"
+		   android:text = "pOH"
 		   android:ems="10"/>
         
        <EditText android:id = "@+id/value_poh"

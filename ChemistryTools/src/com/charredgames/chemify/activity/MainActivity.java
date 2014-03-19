@@ -7,50 +7,47 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 
+import com.charredgames.chemify.ExpandedListAdapter;
 import com.charredgames.chemify.R;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.constant.ProblemGuts;
 import com.charredgames.chemify.util.Controller;
-import com.charredgames.chemify.util.SigFigCalculator;
-import com.google.ads.Ad;
-import com.google.ads.AdListener;
-import com.google.ads.AdRequest;
-import com.google.ads.AdRequest.ErrorCode;
-import com.google.ads.AdView;
 
-public class MainActivity extends Activity {
+/**
+ * @author Joe Boyle <joe@charredgames.com>
+ * @since Mar 12, 2014
+ */
+public class MainActivity extends Activity{
 
-	public final static String EXTRA_MESSAGE = "com.charredgames.chemify.MESSAGE";
-	public static Spinner problem_type;
-	private static final String STATE_INPUT = "state_input";
-	private static final String STATE_PTYPE = "ptype_value";
+	public static String problemType = null;
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		Controller.context = this;
+	public void onCreate(Bundle savedInstanceBundle){
+		super.onCreate(savedInstanceBundle);
 		
-		startActivity(new Intent(this, TestActivity.class));
+		Controller.context = this;
+		if(Ion.ions.size() == 0) Controller.reset(this.getAssets());
 		
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.test_activity);
+		ExpandableListView expandable = (ExpandableListView) findViewById(R.id.ExpList);
+		
+		final ExpandedListAdapter adapter = Controller.getMainGroupsAdapter(this);
+		expandable.setAdapter(adapter);
+		expandable.setOnChildClickListener(new OnChildClickListener(){
 
-		problem_type = (Spinner) findViewById(R.id.problem_type);
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.problem_types, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		problem_type.setAdapter(adapter);
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+				checkClick(adapter.groups.get(groupPosition).items.get(childPosition));
+				return true;
+			}
+			
+		});
 		
-		if(Ion.ions.size() == 0) Controller.reset(this.getAssets());
-		
-		AdView adView = (AdView) findViewById(R.id.ad);
+		/*AdView adView = (AdView) findViewById(R.id.ad);
 		adView.setAdListener(new AdListener() {
 			
 			@Override
@@ -79,70 +76,42 @@ public class MainActivity extends Activity {
 		//adView.loadAd(request);
 		AdView.LayoutParams params = new AdView.LayoutParams(AdView.LayoutParams.WRAP_CONTENT, AdView.LayoutParams.WRAP_CONTENT);
 		params.addRule(AdView.ALIGN_PARENT_BOTTOM);
-		adView.setLayoutParams(params);
+		adView.setLayoutParams(params);*/
+		
 	}
 	
-	public void onStart(){
-		super.onStart();
-		if(problem_type == null) problem_type = (Spinner) findViewById(R.id.problem_type);
-		problem_type.setOnItemSelectedListener(new OnItemSelectedListener() {
-		    @Override
-		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-		    	TextView txt = ((TextView)findViewById(R.id.edit_input));
-		    	String pType = problem_type.getSelectedItem().toString();
-		    	if(pType.equalsIgnoreCase("nomenclature")) txt.setHint(R.string.nomenclature_hint);
-		    	else if(pType.equalsIgnoreCase("predict reactions")) txt.setHint(R.string.reactions_hint);
-		    	else if(pType.equalsIgnoreCase("Weight")) txt.setHint(R.string.weight_hint);
-		    	else if(pType.equalsIgnoreCase("Solubility")) txt.setHint(R.string.solubility_hint);
-		    	else if(pType.equalsIgnoreCase("Oxidation")) txt.setHint(R.string.oxidation_hint);
-		    	else if(pType.equalsIgnoreCase("Element Info")) txt.setHint(R.string.element_info_hint);
-		    	else if(pType.equalsIgnoreCase("dimensional analysis")) txt.setHint(R.string.dimensional_analysis_hint);
-		    }
+	private void checkClick(String child){
+		problemType = child;
+		ProblemGuts problemGuts = Controller.problemTypes.get(child);
+		if(problemGuts == null) return;
+		problemGuts.openActivity(this);
+	}
 
-		    @Override
-		    public void onNothingSelected(AdapterView<?> parentView) {
-		    }
+	public void onResume(){
+		super.onResume();
+	}
 
-		});
-	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	public void submit(View view){
-		Intent intent = new Intent(this, Response.class);
-		EditText input = (EditText) findViewById(R.id.edit_input);
-		if(input.getText() == null || input.getText().toString() == null || input.getText().toString().equals("") || 
-				input.getText().toString().equals(" ")) return;
-		intent.putExtra(EXTRA_MESSAGE, input.getText().toString());
-		startActivity(intent);
-	}
-	
 	public void onPause(){
 		super.onPause();
 	}
 	
 	public void onRestoreInstanceState(Bundle savedInstanceState){
 		super.onRestoreInstanceState(savedInstanceState);
-		
-		((TextView)findViewById(R.id.edit_input)).setText(savedInstanceState.getString(STATE_INPUT));
-		problem_type.setSelection(savedInstanceState.getInt(STATE_PTYPE));
+		String s = savedInstanceState.getString("problemType");
+		if(s != null) problemType = s;
 	}
 	
 	public void onSaveInstanceState(Bundle outState){
-		outState.putString(STATE_INPUT, ((TextView)findViewById(R.id.edit_input)).getText().toString());
-		outState.putInt(STATE_PTYPE, problem_type.getSelectedItemPosition());
+		if(problemType != null) outState.putString("problemType", problemType);
 
 		super.onSaveInstanceState(outState);
 	}
 	
-	public void onResume(){
-		super.onResume();
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
-	
+
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_settings:

@@ -49,7 +49,7 @@ public class Response extends Activity {
 			Controller.context = this;
 			Controller.reset(this.getAssets());
 		}else{
-			if(!getIntent().hasExtra("problem_type")) startActivity(new Intent(this, MainActivity.class));
+			if(!getIntent().hasExtra("problem_type")) startActivity(new Intent(this, OldMainActivity.class));
 		}
 		
 		if(selectedOperation == null) selectedOperation = getIntent().getStringExtra("problem_type");

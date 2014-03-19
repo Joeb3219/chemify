@@ -18,10 +18,10 @@ public class ProblemInput extends Activity{
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		
-		if(TestActivity.problemType == null && problemType == null) startActivity(new Intent(this, MainActivity.class));
+		if(MainActivity.problemType == null && problemType == null) startActivity(new Intent(this, OldMainActivity.class));
 		if(problemType == null){
-			if(TestActivity.problemType == null) startActivity(new Intent(this, TestActivity.class));
-			else problemType = TestActivity.problemType;
+			if(MainActivity.problemType == null) startActivity(new Intent(this, MainActivity.class));
+			else problemType = MainActivity.problemType;
 		}
 		setTitle(problemType);
 

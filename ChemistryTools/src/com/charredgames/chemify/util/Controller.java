@@ -35,6 +35,7 @@ import android.preference.PreferenceManager;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 import com.charredgames.chemify.ExpandedListAdapter;
 import com.charredgames.chemify.ExpandedListGroup;
@@ -42,6 +43,7 @@ import com.charredgames.chemify.R;
 import com.charredgames.chemify.activity.ActivitySeriesActivity;
 import com.charredgames.chemify.activity.ConstantsActivity;
 import com.charredgames.chemify.activity.DefinitionsActivity;
+import com.charredgames.chemify.activity.PHConverter;
 import com.charredgames.chemify.activity.PolyIonsActivity;
 import com.charredgames.chemify.activity.ProblemInput;
 import com.charredgames.chemify.activity.SendPost;
@@ -131,7 +133,9 @@ public class Controller {
 		problemTypes.put(resources.getString(R.string.problem_nomenclature), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
-				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				View view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				((EditText) view.findViewById(R.id.edit_input)).setHint(resources.getString(R.string.nomenclature_hint));
+				return view;
 			}
 			public boolean getSubmit(Context context, View view) {
 				return true;
@@ -143,8 +147,9 @@ public class Controller {
 		problemTypes.put(resources.getString(R.string.problem_molar_mass), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
-				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
-			}
+				View view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				((EditText) view.findViewById(R.id.edit_input)).setHint(resources.getString(R.string.weight_hint));
+				return view;			}
 			public boolean getSubmit(Context context, View view) {
 				return true;
 			}
@@ -155,8 +160,9 @@ public class Controller {
 		problemTypes.put(resources.getString(R.string.problem_reactions), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
-				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
-			}
+				View view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				((EditText) view.findViewById(R.id.edit_input)).setHint(resources.getString(R.string.reactions_hint));
+				return view;			}
 			public boolean getSubmit(Context context, View view) {
 				return true;
 			}
@@ -167,8 +173,9 @@ public class Controller {
 		problemTypes.put(resources.getString(R.string.problem_element_info), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
-				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
-			}
+				View view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				((EditText) view.findViewById(R.id.edit_input)).setHint(resources.getString(R.string.element_info_hint));
+				return view;			}
 			public boolean getSubmit(Context context, View view) {
 				return true;
 			}
@@ -179,8 +186,9 @@ public class Controller {
 		problemTypes.put(resources.getString(R.string.problem_solubility), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
-				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
-			}
+				View view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				((EditText) view.findViewById(R.id.edit_input)).setHint(resources.getString(R.string.solubility_hint));
+				return view;			}
 			public boolean getSubmit(Context context, View view) {
 				return true;
 			}
@@ -191,8 +199,9 @@ public class Controller {
 		problemTypes.put(resources.getString(R.string.problem_oxdidation), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
-				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
-			}
+				View view = LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				((EditText) view.findViewById(R.id.edit_input)).setHint(resources.getString(R.string.oxidation_hint));
+				return view;			}
 			public boolean getSubmit(Context context, View view) {
 				return true;
 			}
@@ -200,7 +209,7 @@ public class Controller {
 				if(cat.equals(resources.getString(R.string.group_basic))) return true;
 				return false;
 			}});
-		problemTypes.put(resources.getString(R.string.problem_dimensional_analysis), new ProblemGuts(){
+		/*problemTypes.put(resources.getString(R.string.problem_dimensional_analysis), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
 				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
@@ -211,7 +220,7 @@ public class Controller {
 			public boolean fitsCategory(String cat) {
 				if(cat.equals(resources.getString(R.string.group_basic))) return true;
 				return false;
-			}});
+			}});*/
 		problemTypes.put(resources.getString(R.string.problem_balancer), new ProblemGuts(){
 			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
 			public View getInputView(Context context) {
@@ -249,7 +258,7 @@ public class Controller {
 				return false;
 			}});
 		problemTypes.put(resources.getString(R.string.problem_ph_converter), new ProblemGuts(){
-			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void openActivity(Context context){context.startActivity(new Intent(context, PHConverter.class));}
 			public View getInputView(Context context) {
 				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
 			}
@@ -886,6 +895,14 @@ public class Controller {
 			formatted += "</sup>";
 		}
 		return formatted;
+	}
+	
+	public static double checkInfinityValues(double val){
+		if(Double.isInfinite(val)) return 0.00;
+		if(val > Double.MAX_VALUE) return Double.MAX_VALUE;
+		if(val < Double.MIN_VALUE) return Double.MIN_VALUE;
+		
+		return val;
 	}
 	
 }

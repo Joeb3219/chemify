@@ -64,15 +64,34 @@ public class Response extends Activity {
 		//Spanned answer;
 		
 		//Set the problem
-		if(selectedOperation.equalsIgnoreCase("element info")) problem = new ElementInfo(input);
-		else if(selectedOperation.equalsIgnoreCase("nomenclature")) problem = new Nomenclature(input);
-		else if(selectedOperation.equalsIgnoreCase("weight")) problem = new Weight(input);
-		else if(selectedOperation.equalsIgnoreCase("oxidation")) problem = new Oxidation(input);
-		else if(selectedOperation.equalsIgnoreCase("Predict Reactions")) problem = new Reaction(input);
-		else if(selectedOperation.equalsIgnoreCase("Solubility")) problem = new Solubility(input);
-		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) problem = new Ionic(input);
-		else if(selectedOperation.equalsIgnoreCase("dimensional analysis")) problem = new DimensionalAnalysis(input);
-		else problem = new Nomenclature(input);
+		if(selectedOperation.equalsIgnoreCase(Controller.resources.getString(R.string.problem_element_info))) {
+			problem = new ElementInfo(input);
+			setContentView(R.layout.problem_elementinfo);
+		}
+		else if(selectedOperation.equalsIgnoreCase(Controller.resources.getString(R.string.problem_nomenclature))){
+			problem = new Nomenclature(input);
+			setContentView(R.layout.problem_nomenclature);
+		}
+		else if(selectedOperation.equalsIgnoreCase(Controller.resources.getString(R.string.problem_molar_mass))){
+			problem = new Weight(input);
+			setContentView(R.layout.problem_weight);
+		}
+		else if(selectedOperation.equalsIgnoreCase(Controller.resources.getString(R.string.problem_oxdidation))){
+			problem = new Oxidation(input);
+			setContentView(R.layout.problem_oxidation);
+		}
+		else if(selectedOperation.equalsIgnoreCase(Controller.resources.getString(R.string.problem_reactions))){
+			problem = new Reaction(input);
+			setContentView(R.layout.problem_reactions);
+		}
+		else if(selectedOperation.equalsIgnoreCase(Controller.resources.getString(R.string.problem_solubility))){
+			problem = new Solubility(input);
+			setContentView(R.layout.problem_solubility);
+		}
+		else{
+			problem = new Nomenclature(input);
+			setContentView(R.layout.problem_nomenclature);
+		}
 		
 		problem.solve(true);
 		ArrayList<String> responses = new ArrayList<String>();
@@ -81,16 +100,6 @@ public class Response extends Activity {
 			responses = response.getResponses();
 			
 		}
-		
-		if(selectedOperation.equalsIgnoreCase("element info")) setContentView(R.layout.problem_elementinfo);
-		else if(selectedOperation.equalsIgnoreCase("nomenclature")) setContentView(R.layout.problem_nomenclature);
-		else if(selectedOperation.equalsIgnoreCase("weight")) setContentView(R.layout.problem_weight);
-		else if(selectedOperation.equalsIgnoreCase("oxidation")) setContentView(R.layout.problem_oxidation);
-		else if(selectedOperation.equalsIgnoreCase("solubility")) setContentView(R.layout.problem_solubility);
-		else if(selectedOperation.equalsIgnoreCase("predict reactions")) setContentView(R.layout.problem_reactions);
-		else if(selectedOperation.equalsIgnoreCase("Complete/Net Ionic")) setContentView(R.layout.problem_reactions);
-		else if(selectedOperation.equalsIgnoreCase("dimensional analysis")) setContentView(R.layout.problem_dimensionalanalysis);
-		else setContentView(R.layout.problem_nomenclature);
 		
 		//Get each string that the problem returned.
 		for(String str : responses){

@@ -3,6 +3,8 @@ package com.charredgames.chemify.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -50,6 +52,33 @@ public class TestActivity extends Activity{
 		ProblemGuts problemGuts = Controller.problemTypes.get(child);
 		if(problemGuts == null) return;
 		problemGuts.openActivity(this);
+	}
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+        	startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+		case R.id.action_definitions:
+        	startActivity(new Intent(this, DefinitionsActivity.class));
+            return true;
+		case R.id.action_polyions:
+        	startActivity(new Intent(this, PolyIonsActivity.class));
+            return true;
+		case R.id.action_constants:
+        	startActivity(new Intent(this, ConstantsActivity.class));
+            return true;
+		case R.id.action_activitySeries:
+        	startActivity(new Intent(this, ActivitySeriesActivity.class));
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+		}
 	}
 	
 }

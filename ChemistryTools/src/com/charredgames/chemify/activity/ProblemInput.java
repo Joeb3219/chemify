@@ -18,16 +18,14 @@ public class ProblemInput extends Activity{
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		
-		//setContentView(R.layout.generic_problem_input);
-		
 		if(TestActivity.problemType == null && problemType == null) startActivity(new Intent(this, MainActivity.class));
-		if(problemType == null) problemType = TestActivity.problemType;
+		if(problemType == null){
+			if(TestActivity.problemType == null) startActivity(new Intent(this, TestActivity.class));
+			else problemType = TestActivity.problemType;
+		}
 		setTitle(problemType);
 
-		View view = new View(this);
-		//Controller.problemTypes.get(problemType).getInputView(this, view);
-		view = LayoutInflater.from(this).inflate(R.layout.generic_problem_input, null);
-		setContentView(view);
+		setContentView(Controller.problemTypes.get(problemType).getInputView(this));
 		
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		

@@ -16,10 +16,13 @@
 # view AndroidManifest.xml #generated:29
 -keep class com.charredgames.chemify.activity.MainActivity { <init>(...); }
 
+# view AndroidManifest.xml #generated:136
+-keep class com.charredgames.chemify.activity.PHConverter { <init>(...); }
+
 # view AndroidManifest.xml #generated:65
 -keep class com.charredgames.chemify.activity.PolyIonsActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:136
+# view AndroidManifest.xml #generated:145
 -keep class com.charredgames.chemify.activity.ProblemInput { <init>(...); }
 
 # view AndroidManifest.xml #generated:38
@@ -34,7 +37,7 @@
 # view AndroidManifest.xml #generated:127
 -keep class com.charredgames.chemify.activity.UnitConverter { <init>(...); }
 
-# view AndroidManifest.xml #generated:145
+# view AndroidManifest.xml #generated:154
 -keep class com.google.ads.AdActivity { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:32

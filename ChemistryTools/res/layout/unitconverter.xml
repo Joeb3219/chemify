@@ -30,7 +30,7 @@
 		   android:layout_alignParentLeft="true"
 		   android:ems="10"
 		   android:hint = "1.00"
-	       android:inputType="numberDecimal" />
+	       android:inputType="numberDecimal|numberSigned" />
         
 	   <Spinner android:id = "@+id/unit_from"
 			android:layout_width = "wrap_content"

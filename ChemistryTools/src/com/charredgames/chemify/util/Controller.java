@@ -48,6 +48,7 @@ import com.charredgames.chemify.activity.PolyIonsActivity;
 import com.charredgames.chemify.activity.ProblemInput;
 import com.charredgames.chemify.activity.SendPost;
 import com.charredgames.chemify.activity.UnitConverter;
+import com.charredgames.chemify.activity.WavelengthConverter;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
 import com.charredgames.chemify.constant.ProblemGuts;
@@ -282,9 +283,9 @@ public class Controller {
 				return false;
 			}});
 		problemTypes.put(resources.getString(R.string.problem_waves), new ProblemGuts(){
-			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void openActivity(Context context){context.startActivity(new Intent(context, WavelengthConverter.class));}
 			public View getInputView(Context context) {
-				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
+				return LayoutInflater.from(context).inflate(R.layout.wavelengthconverter, null);
 			}
 			public boolean getSubmit(Context context, View view) {
 				return true;

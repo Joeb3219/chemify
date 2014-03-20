@@ -22,7 +22,7 @@
 # view AndroidManifest.xml #generated:65
 -keep class com.charredgames.chemify.activity.PolyIonsActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:132
+# view AndroidManifest.xml #generated:141
 -keep class com.charredgames.chemify.activity.ProblemInput { <init>(...); }
 
 # view AndroidManifest.xml #generated:38
@@ -34,7 +34,10 @@
 # view AndroidManifest.xml #generated:114
 -keep class com.charredgames.chemify.activity.UnitConverter { <init>(...); }
 
-# view AndroidManifest.xml #generated:141
+# view AndroidManifest.xml #generated:132
+-keep class com.charredgames.chemify.activity.WavelengthConverter { <init>(...); }
+
+# view AndroidManifest.xml #generated:150
 -keep class com.google.ads.AdActivity { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:32

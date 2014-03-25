@@ -27,8 +27,7 @@ public class MainActivity extends Activity{
 	public void onCreate(Bundle savedInstanceBundle){
 		super.onCreate(savedInstanceBundle);
 		
-		Controller.context = this;
-		if(Ion.ions.size() == 0) Controller.reset(this.getAssets());
+		Controller.resetIfNeeded(this);
 		
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		

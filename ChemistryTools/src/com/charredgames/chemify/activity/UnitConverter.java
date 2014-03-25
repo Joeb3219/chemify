@@ -28,6 +28,7 @@ public class UnitConverter extends Activity{
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Controller.resetIfNeeded(this);
 		
 		setTitle(Controller.resources.getString(R.string.problem_unit_converter));
 		

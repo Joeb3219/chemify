@@ -15,6 +15,7 @@ public class WavelengthConverter extends Activity{
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		Controller.resetIfNeeded(this);
 		setContentView(R.layout.wavelengthconverter);
 		setTitle(Controller.resources.getString(R.string.problem_waves));
 	}

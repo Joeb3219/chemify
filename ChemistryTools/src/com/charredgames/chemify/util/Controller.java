@@ -83,6 +83,12 @@ public class Controller {
 	public static Context context;
 	public static Resources resources;
 	
+	public static void resetIfNeeded(Context c){
+		if(context == null) context = c;
+		if(resources == null) resources = context.getResources();
+		if(Ion.ions.size() == 0) reset(context.getAssets());
+	}
+	
 	public static void reset(AssetManager aManager){
 		boolean firstRun = false;
 		if(assets == null) firstRun = true;
@@ -279,7 +285,7 @@ public class Controller {
 				return true;
 			}
 			public boolean fitsCategory(String cat) {
-				if(cat.equals(resources.getString(R.string.group_converters))) return true;
+				if(cat.equals(resources.getString(R.string.group_nuclear))) return true;
 				return false;
 			}});
 		problemTypes.put(resources.getString(R.string.problem_waves), new ProblemGuts(){

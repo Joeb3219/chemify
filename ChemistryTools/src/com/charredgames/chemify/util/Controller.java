@@ -47,17 +47,17 @@ import com.charredgames.chemify.activity.PHConverter;
 import com.charredgames.chemify.activity.PolyIonsActivity;
 import com.charredgames.chemify.activity.ProblemInput;
 import com.charredgames.chemify.activity.SendPost;
-import com.charredgames.chemify.activity.UnitConverter;
-import com.charredgames.chemify.activity.WavelengthConverter;
 import com.charredgames.chemify.constant.Definition;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.constant.Prefix;
 import com.charredgames.chemify.constant.ProblemGuts;
 import com.charredgames.chemify.constant.Unit;
 import com.charredgames.chemify.constant.UnitPrefix;
 import com.charredgames.chemify.constant.UnitType;
-import com.charredgames.chemify.problems.Prefix;
 import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.ResponseType;
+import com.charredgames.chemify.problems.UnitConverter;
+import com.charredgames.chemify.problems.WavelengthConverter;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -513,7 +513,7 @@ public class Controller {
 				return true;
 			}
 			public boolean fitsCategory(String cat) {
-				if(cat.equals(resources.getString(R.string.problem_organic_stuff))) return true;
+				if(cat.equals(resources.getString(R.string.group_organic))) return true;
 				return false;
 			}});
 		problemTypes.put(resources.getString(R.string.reference_quizzes), new ProblemGuts(){

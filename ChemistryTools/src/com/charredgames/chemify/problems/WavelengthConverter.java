@@ -1,4 +1,4 @@
-package com.charredgames.chemify.activity;
+package com.charredgames.chemify.problems;
 
 import android.app.Activity;
 import android.os.Bundle;

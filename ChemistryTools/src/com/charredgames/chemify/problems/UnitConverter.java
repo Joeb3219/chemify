@@ -1,4 +1,4 @@
-package com.charredgames.chemify.activity;
+package com.charredgames.chemify.problems;
 
 import java.util.ArrayList;
 

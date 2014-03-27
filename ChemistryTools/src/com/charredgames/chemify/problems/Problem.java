@@ -9,6 +9,7 @@ import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
 import com.charredgames.chemify.constant.Equation;
 import com.charredgames.chemify.constant.Ion;
+import com.charredgames.chemify.constant.Prefix;
 import com.charredgames.chemify.gui.ResponsePanel;
 import com.charredgames.chemify.util.Controller;
 

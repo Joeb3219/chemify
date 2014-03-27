@@ -112,9 +112,9 @@
         </activity>    
         
         <activity
-            android:name="com.charredgames.chemify.activity.UnitConverter"
+            android:name="com.charredgames.chemify.problems.UnitConverter"
             android:label="Testificate"
-            android:parentActivityName="com.charredgames.chemify.activity.UnitConverter" >
+            android:parentActivityName="com.charredgames.chemify.problems.UnitConverter" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.charredgames.chemify.MainActivity" />
@@ -130,9 +130,9 @@
         </activity>
         
         <activity
-            android:name="com.charredgames.chemify.activity.WavelengthConverter"
+            android:name="com.charredgames.chemify.problems.WavelengthConverter"
             android:label="Testificate"
-            android:parentActivityName="com.charredgames.chemify.activity.WavelengthConverter" >
+            android:parentActivityName="com.charredgames.chemify.problems.WavelengthConverter" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.charredgames.chemify.MainActivity" />

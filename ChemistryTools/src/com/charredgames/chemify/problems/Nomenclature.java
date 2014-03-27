@@ -8,6 +8,7 @@ import com.charredgames.chemify.constant.ElementGroup;
 import com.charredgames.chemify.constant.ElementSet;
 import com.charredgames.chemify.constant.Equation;
 import com.charredgames.chemify.constant.MetalType;
+import com.charredgames.chemify.constant.Prefix;
 import com.charredgames.chemify.util.Controller;
 
 public class Nomenclature extends Problem{

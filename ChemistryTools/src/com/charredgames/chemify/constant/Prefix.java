@@ -1,4 +1,4 @@
-package com.charredgames.chemify.problems;
+package com.charredgames.chemify.constant;
 
 import com.charredgames.chemify.util.Controller;
 

@@ -58,6 +58,7 @@ import com.charredgames.chemify.problems.Problem;
 import com.charredgames.chemify.problems.ResponseType;
 import com.charredgames.chemify.problems.UnitConverter;
 import com.charredgames.chemify.problems.WavelengthConverter;
+import com.charredgames.chemify.problems.gas.BoyleLaw;
 
 /**
  * @author Joe Boyle <joe@charredgames.com>
@@ -301,7 +302,7 @@ public class Controller {
 				return false;
 			}});
 		problemTypes.put(resources.getString(R.string.problem_boyle_law), new ProblemGuts(){
-			public void openActivity(Context context){context.startActivity(new Intent(context, ProblemInput.class));}
+			public void openActivity(Context context){context.startActivity(new Intent(context, BoyleLaw.class));}
 			public View getInputView(Context context) {
 				return LayoutInflater.from(context).inflate(R.layout.generic_problem_input, null);
 			}

@@ -36,10 +36,14 @@ public enum UnitType {
 	
 	public ArrayList<Unit> getUnits(){
 		ArrayList<Unit> units = new ArrayList<Unit>();
-		
+		ArrayList<Unit> secondary = new ArrayList<Unit>();
 		for(Unit unit : Controller.units){
-			if(unit.type == this) units.add(unit);
+			if(unit.type != this) continue;
+			if(UnitPrefix.containsPrefix(unit.name)) secondary.add(unit);
+			else units.add(unit);
 		}
+		
+		for(Unit u : secondary) units.add(u);
 		
 		return units;
 	}
